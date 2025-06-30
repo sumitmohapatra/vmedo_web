@@ -1,0 +1,781 @@
+<div style="height: calc(100% + 5px);overflow: auto;">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-lg-12" id="navigation">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand">
+                    <svg class="logo logo-md">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo"></use>
+                    </svg>
+                    <svg [routerLink]="'/home'" class="logo logo-sm">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo-white"></use>
+                    </svg>
+                </a>
+                <div *ngIf="common.auth_token !== undefined && common.auth_token !== null"
+                    class="back pull-right btn btn-sm btn-outline-secondary profile-icon"
+                    [routerLink]="'/dashboard/profile/1'" placement="bottom" ngbTooltip="Profile"
+                    style="margin-right: 40px;">
+                    <svg class="">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user-solid-circle"></use>
+                    </svg>
+                </div>
+                <div class="back pull-right btn btn-sm btn-outline-secondary" [routerLink]="'/home'" placement="bottom"
+                    ngbTooltip="Back">
+                    <svg class="">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-back"></use>
+                    </svg>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- landing page -->
+
+    <div>
+
+
+
+
+
+
+
+        <div class="container" style="overflow-y: scroll;overflow: auto;">
+
+            <div class="row body emergencyid" id="searchemergencycard" style="padding: 36px 0px;">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="row panel">
+                        <div class="col-12 col-sm-6 col-md-6 col-xl-6"
+                            style="display: flex; align-items: center; justify-content: center;">
+                            <span
+                                style="margin-top: -30px; color: #000000; font-size: 19px; text-align: center;font-weight: 600;">
+                                <span *ngIf="!searchedEmergencyCard" style="color: rgb(0, 0, 0);">Access emergency
+                                    Information
+                                    <br>to save a life !</span>
+                                <strong *ngIf="searchedEmergencyCard">Emergency Details !</strong>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row panel" *ngIf="!searchedEmergencyCard"
+                        style="width: 95%; margin-right: 17%; margin-left: 3%;">
+                        <div class="col-12 col-sm-12 col-md-6 col-xl-6">
+
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12" *ngIf="!isHideSearch">
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 no-padding card"
+                                            style="margin-right: 5px;">
+                                            <div class="text-control">
+                                                <svg>
+                                                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-idcard">
+                                                    </use>
+                                                </svg>
+                                                <input type="text" placeholder="Enter emergency ID"
+                                                    [(ngModel)]="txtSearch">
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="col-12 col-sm-12 col-md-5 col-lg-5 no-padding search card srch align-center">
+                                            <div class="text-control">
+                                                <svg>
+                                                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-key">
+                                                    </use>
+                                                </svg>
+                                                <input type="text" placeholder="Enter emergency pin"
+                                                    [(ngModel)]="txtPin" (keypress)="common.AllowOnlyNumbers($event)">
+                                            </div>
+                                            <button type="button"
+                                                class="btn btn-sm btn-outline-secondary rd-button search2"
+                                                (click)="OnClickSearch()">
+                                                <svg style="height: 20px; width: 20px;">
+                                                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-search">
+                                                    </use>
+                                                    <title>Search</title>
+                                                </svg>
+                                                <span style="margin-left: 10px;">Get details</span>
+                                            </button>
+                                        </div>
+                                        <div
+                                            class="col-12 col-sm-12 col-md-1 col-lg-1 no-padding search search-md srch align-center">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                                (click)="OnClickSearch()">
+                                                <svg>
+                                                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-search">
+                                                    </use>
+                                                    <title>Search</title>
+                                                </svg>
+                                                <span style="margin-left: 10px;">Get details</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+
+                   
+
+
+
+                    <div class="row panel" style="margin-top: -15px;" *ngIf="searchedEmergencyCard">
+                        <div class="col-12 col-sm-12 col-md-6 col-xl-6  searchedCard">
+
+                            <div class="row no-padding">
+                                <!-- <div
+                                    class="col-12 col-sm-12 col-md-12 col-xl-12 align-center personal-details no-padding">
+                                    <div class="img-container">
+                                        <div class="img-wrapper">
+                                            <img *ngIf="common.IsFile(searchedEmergencyCard.profilepic)"
+                                                [src]="searchedEmergencyCard.profilepic" />
+                                            <img *ngIf="!common.IsFile(searchedEmergencyCard.profilepic)"
+                                                src="./assets/img/no-image.jpg" />
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 10px;">
+
+                                        <span class="name">{{searchedEmergencyCard.pname}}</span>
+                                    </div>
+                                </div> -->
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row panel" *ngIf="searchedEmergencyCard">
+                        <div class="col-12 col-sm-12 col-md-6 col-xl-6 card searchedCard">
+                            <div class="row no-padding" style="justify-content: center;">
+                                <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding primary-contact">
+                                    <span>Personal Details</span>
+                                    <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding">
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Card Holder Name:</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">{{searchedEmergencyCard.pname}}
+                                            </div>
+                                        </div>
+                                        <!-- <div class="row">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Emergency Id</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">{{searchedEmergencyCard.emid}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Pin</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">{{searchedEmergencyCard.pin}}
+                                            </div>
+                                        </div> -->
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Birth Date</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">
+                                                {{searchedEmergencyCard.pDob.split('T')[0]}}</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Gender</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">
+                                                {{searchedEmergencyCard.pGender}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Blood Group</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">
+                                                {{searchedEmergencyCard.pbloodgroup}}</div>
+                                        </div>
+
+                                        <div class="row" *ngIf="searchedEmergencyCard && searchedEmergencyCard.abha">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">ABHA Number</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">{{searchedEmergencyCard.abha}}
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Organ Donor</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">
+                                                {{searchedEmergencyCard.organdoner
+                                                === true ? 'Yes' : 'No'}}</div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row panel"
+                        *ngIf="searchedEmergencyCard && (searchedEmergencyCard.pcontName || searchedEmergencyCard.pcontMobile)">
+                        <div class="col-12 col-sm-12 col-md-6 col-xl-6 card searchedCard">
+                            <div class="row no-padding" style="justify-content: center;"
+                                *ngIf="searchedEmergencyCard.pcontName || searchedEmergencyCard.pcontMobile">
+                                <div
+                                    class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding primary-contact secondary-contact">
+                                    <span>Primary Contact</span>
+                                    <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding">
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Name</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">
+                                                {{searchedEmergencyCard.pcontName}}</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Contact</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">
+                                                {{searchedEmergencyCard.pcontMobile}}</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="call-now"
+                                                (click)="OnClickCall(searchedEmergencyCard.pcontMobile)">
+                                                <svg>
+                                                    <use
+                                                        xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-phone-call">
+                                                    </use>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row panel"
+                        *ngIf="searchedEmergencyCard && (searchedEmergencyCard.scontName || searchedEmergencyCard.scontMobile)">
+                        <div class="col-12 col-sm-12 col-md-6 col-xl-6 card searchedCard">
+                            <div class="row no-padding" style="justify-content: center;"
+                                *ngIf="searchedEmergencyCard.scontName || searchedEmergencyCard.scontMobile">
+                                <div
+                                    class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding primary-contact secondary-contact">
+                                    <span>Secondary Contact</span>
+                                    <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding">
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Name</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">
+                                                {{searchedEmergencyCard.scontName}}</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Contact</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">
+                                                {{searchedEmergencyCard.scontMobile}}</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="call-now"
+                                                (click)="OnClickCall(searchedEmergencyCard.scontMobile)">
+                                                <svg>
+                                                    <use
+                                                        xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-phone-call">
+                                                    </use>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row panel"
+                        *ngIf="searchedEmergencyCard && (searchedEmergencyCard.insuranceprovider || searchedEmergencyCard.policynumber)">
+                        <div class="col-12 col-sm-12 col-md-6 col-xl-6 card searchedCard">
+                            <div class="row no-padding" style="justify-content: center;"
+                                *ngIf="searchedEmergencyCard.insuranceprovider || searchedEmergencyCard.policynumber">
+                                <div
+                                    class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding primary-contact secondary-contact">
+                                    <span>Insurance Details</span>
+                                    <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding">
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Insurance Provider</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">
+                                                {{searchedEmergencyCard.insuranceprovider}}</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Policy Number</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">
+                                                {{searchedEmergencyCard.policynumber}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row panel" *ngIf="searchedEmergencyCard && searchedEmergencyCard.medicalcondition">
+                        <div class="col-12 col-sm-12 col-md-6 col-xl-6 card searchedCard">
+                            <div class="row no-padding" style="justify-content: center;"
+                                *ngIf="searchedEmergencyCard.medicalcondition">
+                                <div
+                                    class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding primary-contact secondary-contact">
+                                    <span>Medical Condition</span>
+                                    <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                                                {{searchedEmergencyCard.medicalcondition}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row panel" *ngIf="searchedEmergencyCard && searchedEmergencyCard.emergencydrug">
+                        <div class="col-12 col-sm-12 col-md-6 col-xl-6 card searchedCard">
+                            <div class="row no-padding" style="justify-content: center;"
+                                *ngIf="searchedEmergencyCard.emergencydrug">
+                                <div
+                                    class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding primary-contact secondary-contact">
+                                    <span>Emergency Drugs</span>
+                                    <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                                                {{searchedEmergencyCard.emergencydrug}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container" style="position: relative;top: -35px;" *ngIf="searchedEmergencyCard">
+            <div style="display: flex;justify-content: center;text-align: center;">
+                <a [href]="'tel:' + phone">
+                    <button class="btn btn-danger btn-lg" > Call 24x7 VMEDO Helpline
+
+                    </button>
+                </a>
+            </div>
+        </div>
+      
+
+
+
+
+
+    </div>
+
+
+
+    <div class="main-footer" style="font-weight: 200;" *ngIf="!searchedEmergencyCard">
+
+        <div class="container mom8">
+
+            <div class="row">
+
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 mb-3">
+
+                    <div class="mcare-foot-about footer-box">
+                        <h4>
+
+                            About VMEDO
+
+                        </h4>
+                        <p class="about-vmedo">
+                            VMEDO is a digital healthcare platform, on a mission to make quality healthcare accessible and affordable to all..
+                            <br>
+                            <a [routerLink]="'/info/aboutus'" class="know" style="color: #fff;">View More. . .</a>
+
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+
+                    <div class="mcare-foot-about footer-box">
+                        <h4>
+
+                            Quick Links
+
+                        </h4>
+
+                        <ul class="lst">
+
+                            <li><a (click)="common.RedirectToUrl(links.pages.training)"><i
+                                        class="fa fa-chevron-right"></i>VMEDO
+                                    Academy</a></li>
+                             <li><a href="https://store.vmedo.com"><i class="fa fa-chevron-right"></i>VMEDO Store</a>
+                </li>
+
+                           
+                <li><a [routerLink]="'/services/ambulance-service-india'"><i class="fa fa-chevron-right"></i>VMEDO
+                    Ambulance</a></li>
+                            <li><a href="corporate.html"><i class="fa fa-chevron-right"></i>For
+                                    Corporates</a></li>
+
+                                <li><a href="https://vmedo.com/first-aid-training/index.html"><i class="fa fa-chevron-right"></i>First
+                    Aid Training</a></li>
+
+                                    <li><a [routerLink]="'/services/find-blood-donor'"><i class="fa fa-chevron-right"></i>Find blood donors</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+
+                    <div class="mcare-foot-address footer-box">
+                        <h4>More</h4>
+                        <ul class="lst">
+                            <li><a href="https://www.vmedo.com/blog/"><i class="fa fa-chevron-right"></i> Blog</a></li>
+
+                            <li><a [routerLink]="'/info/aboutus'"><i class="fa fa-chevron-right"></i> About Us</a>
+                            </li>
+                            <li><a href="https://vmedo.com/blog/join-our-team-vmedo/"><i
+                                        class="fa fa-chevron-right"></i> Career</a></li>
+
+                           <li><a [routerLink]="'/info/partner-with-us'"><i class="fa fa-chevron-right"></i> Partner
+                    With Us</a></li>
+                          <li><a [routerLink]="'/info/contact-us'"><i class="fa fa-chevron-right"></i> Contact
+                    Us</a></li>
+
+
+
+
+                        </ul>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+
+                    <div class="mcare-foot-tweets footer-box">
+
+                        <h4>
+
+                            Subscribe
+
+                        </h4>
+
+
+                        <div class="follow-us">
+                            <a href="" class="follow-us-text">Follow Us On</a>
+                        </div>
+                        <ul class="foot-social">
+                            <li><a href="https://www.facebook.com/vmedohealthcare"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://twitter.com/vmedoapp"><i class="fa fa-twitter"></i></a>
+                            </li>
+
+                            <li><a href="https://www.linkedin.com/company/vmedo"><i class="fa fa-linkedin"
+                                        aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.instagram.com/vmedo_healthcare/"><i class="fa fa-instagram"
+                                        aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.youtube.com/c/Bloodforsureapp/featured"><i
+                                        class="fa fa-youtube"></i></a></li>
+                        </ul>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <h5 style="text-align: center; font-weight:500;color:white;margin-top: 15px;">
+                "we work to save lives"</h5>
+        </div>
+    </div>
+
+    <div class="row widget-menu" *ngIf="!searchedEmergencyCard">
+        <div class="col-4 col-md-4 col-sm-4 col-lg-4" >
+         
+          <div *ngIf="!common.auth_token">
+            <svg (click)="app.OnOpenLoginForm('/dashboard/profile')"  >
+              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-key1"></use>
+            </svg>
+          </div>
+         
+          <div *ngIf="common.auth_token">
+            <svg [routerLink]="getDashboardLink()">
+              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-user-1"></use>
+            </svg>
+          </div>
+          
+      
+          <!-- Profile -->
+      
+          <div>
+            {{ common.auth_token ? 'Profile' : 'Login' }}
+          </div>
+      
+        </div>
+        <div class="col-4 col-md-4 col-sm-4 col-lg-4"
+        >
+      <svg [routerLink]="'/home'">
+       <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-home"></use>
+      </svg>
+      Home
+      </div>
+        <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+          <svg [routerLink]="'/services/more'">
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-navigation-more"></use>
+          </svg>
+          More
+        </div>
+      </div>
+</div>
+
+<ng-template #emidOtplogin let-modal>
+    <div class="modal-body">
+        <div class="row logo">
+            <!-- <span>VMEDO</span> -->
+            <label (click)="CloseOTPLoginModal();">
+                <svg>
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-cross"></use>
+                </svg>
+            </label>
+        </div>
+        <div class="row title">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                <div class="card" style="padding: 2px;">
+                    <svg style="height: 55px; width: 55px;">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-profile"></use>
+                    </svg>
+                </div>
+                <!-- Validate -->
+                <span style="color: #000;
+                text-align: center;
+                font-size: 18px;
+                margin-top: 10px;">Please verify your Identity to<br>access Emergency Information</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 card">
+                <div class="text-control" [ngClass]="{'error': lblMobileNo !== undefined}">
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-phone1"></use>
+                    </svg>
+                    <input type="text" placeholder="Mobile No" [disabled]="isOTPSent" [(ngModel)]="txtMobileNo"
+                        (ngModelChange)="OnLoginControlsTextChanged('txtMobileNo', $event)">
+
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-warning"></use>
+                        <title>{{lblMobileNo}}</title>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="isOTPSent === true">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 card">
+                <div class="text-control" [ngClass]="{'error': lblOTP !== undefined}">
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-key3"></use>
+                    </svg>
+                    <input type="text" placeholder="OTP" [(ngModel)]="txtOTP" [disabled]="!isOTPSent"
+                        (ngModelChange)="OnLoginControlsTextChanged('txtOTP', $event)">
+                    <!-- <span class="error-line" placement="bottom" ngbTooltip="{{lblOTP}}">{{lblOTP}}</span> -->
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-warning"></use>
+                        <title>{{lblOTP}}</title>
+                    </svg>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="row controls">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 register">
+                <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="isOTPSent === false"
+                    (click)="OnClickSendOTP();">Send OTP</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="isOTPSent === true"
+                    (click)="OnClickValidateOTP();">Validate</button>
+                <!-- <button type="button" class="btn btn-sm btn-outline-secondary" (click)="CloseOTPLoginModal();">Cancel</button> -->
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #createID let-modal>
+    <div class="modal-body">
+        <div class="row logo">
+            <span>VMEDO</span>
+        </div>
+        <div class="row title">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 createID">
+                <div class="emergencyid photo" style="padding: 0; margin: 0; border: none; border-radius: none;">
+                    <div>
+                        <img [src]="profileImage[0].src" [alt]="profileImage[0].caption" class="img2" for="img-upload"
+                            *ngIf="profileImage.length > 0 && profileImage[0].src !== undefined">
+                        <label class="img-upload" *ngIf="profileImage.length === 0">
+                            <svg>
+                                <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user"></use>
+                                <title>Image</title>
+                            </svg>
+                        </label>
+                    </div>
+                    <span>
+                        <input type="file" id="img-upload" accept="image/*" (change)="OnImageUpload($event)"
+                            [hidden]="true">
+                        <label for="img-upload" class="img-upload">
+                            <svg>
+                                <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-plus"></use>
+                                <title>Image</title>
+                            </svg>
+                            <span>Add Image</span>
+                        </label>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row createID no-padding">
+            <ul ngbNav #nav="ngbNav" [(activeId)]="activeTabId" class="nav-tabs  no-padding">
+                <li [ngbNavItem]="1">
+                    <ng-template ngbNavContent>
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12 createID no-padding">
+                            <div>
+                                <p>Personal Details</p>
+                            </div>
+                            <div class="pos-rel">
+                                <input type="text" placeholder="Name" [(ngModel)]="txtName"
+                                    (ngModelChange)="OnTextChanged('txtName', $event)">
+                                <span class="error-line" placement="bottom" ngbTooltip="{{lblName}}">{{lblName}}</span>
+                            </div>
+                            <div class="date pos-rel">
+                                <input type="text" placeholder="Birth date" ngbDatepicker #d="ngbDatepicker"
+                                    (click)="d.toggle()" [autoClose]="false" [minDate]="{year: 1922, month:1, day: 1}"
+                                    [maxDate]="maxDate" readonly [(ngModel)]="txtDOB"
+                                    (ngModelChange)="OnTextChanged('txtDOB', $event)">
+                                <span class="error-line" placement="bottom" ngbTooltip="{{lblDOB}}">{{lblDOB}}</span>
+                            </div>
+                            <div class="combobox pos-rel" ngbDropdown>
+                                <input type="text" placeholder="Blood group" id="dropdownBloodGroup" ngbDropdownToggle
+                                    readonly [(ngModel)]="txtBloodGroup"
+                                    (ngModelChange)="OnTextChanged('txtBloodGroup', $event)">
+                                <span class="error-line" placement="bottom"
+                                    ngbTooltip="{{lblBloodGroup}}">{{lblBloodGroup}}</span>
+                                <div ngbDropdownMenu aria-labelledby="dropdownBloodGroup">
+                                    <div ngbDropdownItem *ngFor="let group of bloodGroups"
+                                        (click)="txtBloodGroup = group; OnTextChanged('txtBloodGroup', $event);">
+                                        {{group}}</div>
+                                </div>
+                                <svg class="dropmenu nomargin" ngbDropdownToggle>
+                                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-dropmenu"></use>
+                                </svg>
+                            </div>
+                            <div class="combobox pos-rel" ngbDropdown>
+                                <input type="text" placeholder="Gender" id="dropdownGender" ngbDropdownToggle readonly
+                                    [(ngModel)]="txtGender" (ngModelChange)="OnTextChanged('txtGender', $event)">
+                                <span class="error-line" placement="bottom"
+                                    ngbTooltip="{{lblGender}}">{{lblGender}}</span>
+                                <div ngbDropdownMenu aria-labelledby="dropdownGender">
+                                    <div ngbDropdownItem *ngFor="let gender of genders"
+                                        (click)="txtGender = gender; OnTextChanged('txtGender', $event);">{{gender}}
+                                    </div>
+                                </div>
+                                <svg class="dropmenu nomargin" ngbDropdownToggle>
+                                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-dropmenu"></use>
+                                </svg>
+                            </div>
+                        </div>
+                    </ng-template>
+                </li>
+                <li [ngbNavItem]="2">
+                    <ng-template ngbNavContent>
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12 createID no-padding">
+                            <div>
+                                <p>Primary Contact</p>
+                            </div>
+
+                            <div class=" pos-rel">
+                                <input type="text" placeholder="Name" [(ngModel)]="txtPrimaryContactName"
+                                    (ngModelChange)="OnTextChanged('txtPrimaryContactName', $event)">
+                                <span class="error-line" placement="bottom"
+                                    ngbTooltip="{{lblPrimaryContactName}}">{{lblPrimaryContactName}}</span>
+                            </div>
+                            <div class=" pos-rel">
+                                <input type="text" placeholder="Mobile no" [(ngModel)]="txtPrimaryContactNo"
+                                    (ngModelChange)="OnTextChanged('txtPrimaryContactNo', $event)"
+                                    (keypress)="common.AllowOnlyNumbers($event)">
+                                <span class="error-line" placement="bottom"
+                                    ngbTooltip="{{lblPrimaryContactNo}}">{{lblPrimaryContactNo}}</span>
+                            </div>
+                        </div>
+                    </ng-template>
+                </li>
+                <li [ngbNavItem]="3">
+                    <ng-template ngbNavContent>
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12 createID no-padding">
+                            <div>
+                                <p>Secondary Contact</p>
+                            </div>
+
+                            <div class=" pos-rel">
+                                <input type="text" placeholder="Name" [(ngModel)]="txtSecondaryContactName"
+                                    (ngModelChange)="OnTextChanged('txtSecondaryContactName', $event)">
+                                <span class="error-line" placement="bottom"
+                                    ngbTooltip="{{lblSecondaryContactName}}">{{lblSecondaryContactName}}</span>
+                            </div>
+                            <div class=" pos-rel">
+                                <input type="text" placeholder="Mobile no" [(ngModel)]="txtSecondaryContactNo"
+                                    (ngModelChange)="OnTextChanged('txtSecondaryContactNo', $event)"
+                                    (keypress)="common.AllowOnlyNumbers($event)">
+                                <span class="error-line" placement="bottom"
+                                    ngbTooltip="{{lblSecondaryContactNo}}">{{lblSecondaryContactNo}}</span>
+                            </div>
+                        </div>
+                    </ng-template>
+                </li>
+                <li [ngbNavItem]="4">
+                    <ng-template ngbNavContent>
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12 createID no-padding">
+                            <div>
+                                <p>Medical Details</p>
+                            </div>
+                            <div class=" pos-rel">
+                                <textarea cols="5" rows="5" placeholder="Medical condition"
+                                    [(ngModel)]="txtInsuranceMedicalCondition"
+                                    (ngModelChange)="OnTextChanged('txtInsuranceMedicalCondition', $event)"></textarea>
+                                <span class="error-line" style="top: 135px;" placement="bottom"
+                                    ngbTooltip="{{lblInsuranceMedicalCondition}}">{{lblInsuranceMedicalCondition}}</span>
+                            </div>
+                            <div class=" pos-rel">
+                                <textarea cols="5" rows="5" placeholder="Emergency drugs"
+                                    [(ngModel)]="txtInsuranceEmergencyDrugs"
+                                    (ngModelChange)="OnTextChanged('txtInsuranceEmergencyDrugs', $event)"></textarea>
+                                <span class="error-line" style="top: 135px;" placement="bottom"
+                                    ngbTooltip="{{lblInsuranceEmergencyDrugs}}">{{lblInsuranceEmergencyDrugs}}</span>
+                            </div>
+                            <div class="combobox pos-rel" ngbDropdown>
+                                <input type="text" placeholder="Provider" [(ngModel)]="txtInsuranceProvider"
+                                    (ngModelChange)="OnTextChanged('txtInsuranceProvider', $event)">
+                                <span class="error-line" placement="bottom"
+                                    ngbTooltip="{{lblInsuranceProvider}}">{{lblInsuranceProvider}}</span>
+                            </div>
+                            <div class=" pos-rel">
+                                <input type="text" placeholder="Policy number" [(ngModel)]="txtInsurancePolicyNo"
+                                    (ngModelChange)="OnTextChanged('txtInsurancePolicyNo', $event)">
+                                <span class="error-line" placement="bottom"
+                                    ngbTooltip="{{lblInsurancePolicyNo}}">{{lblInsurancePolicyNo}}</span>
+                            </div>
+                            <div class="organdonor">
+                                <p>
+                                    <input type="checkbox" id="organdonor" [(ngModel)]="chkOrganDonor">
+                                    <label for="organdonor">Organ donor</label>
+                                </p>
+                            </div>
+                        </div>
+                    </ng-template>
+                </li>
+            </ul>
+
+            <div [ngbNavOutlet]="nav" class="mt-2 full-width"></div>
+        </div>
+        <div class="row controls">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="activeTabId > 1"
+                    (click)="OnClickBack()">Back</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="activeTabId < 4"
+                    (click)="OnClickNext()">Next</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary rd-button" *ngIf="activeTabId === 4"
+                    (click)="OnClickSubmit()">Submit</button>
+            </div>
+        </div>
+    </div>
+</ng-template>

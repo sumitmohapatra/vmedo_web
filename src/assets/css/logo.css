@@ -1,0 +1,35 @@
+@media (max-width: 767px) {
+
+    .logo.logo-md{
+     display: flex;
+    }
+    .logo.logo-sm{
+     display: none;
+    }
+   }
+ 
+   
+ @media (min-width: 768px) {    
+     .logo.logo-md{
+         display: none;
+     }
+     .logo.logo-sm{
+         display: flex;
+     }
+ 
+     .navbar .back{
+         position: absolute;
+         right: 10px;
+         margin: 35px 5px;
+     }
+ 
+     .navbar .back svg{
+         fill: #ffffff !important;
+     }
+ }
+
+ svg.logo,
+svg.logo-white{
+    height: 30px;
+    width: 120px;
+}

@@ -1,0 +1,138 @@
+<section class="vmedo-services-mobile-section px-3 py-3 bg-white section-2" id="section2">
+    <div class="grid grid-cols-2 gap-4 px-1 py-2">
+      <!-- First column for "Our services" -->
+      <div>
+        <h2 class="font-medium text-left mb-2">Our services</h2>
+      </div>
+
+      <!-- Second column for "Hide Section" text -->
+      <div class="text-right mt-2">
+        <p (click)="toggleSection()" style="cursor: pointer">
+          {{ showSection ? "show less" : "show more" }}
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-3">
+      <!-- First card -->
+      <div class="vmedo-service-card-mobile bg-white-500 rounded-xl shadow-md flex items-center overflow-hidden"
+        [routerLink]="'/services/emergency-online-doctor-consultation'">
+        <!-- Left column (image) -->
+        <div class="h-20 w-2/6 flex items-center justify-center">
+          <!-- Replace "path_to_your_image" with the path to your image -->
+          <img src="assets\images\new_images\service-mobile-1.png" alt="Image" class="max-h-full max-w-full" />
+        </div>
+        <!-- Right column (content) -->
+        <div class="h-20 w-4/6 flex items-center p-2">
+          <p class="font-medium text-gray-700" style="font-size: 14px">
+            Online doctor <br />
+            consultation
+          </p>
+        </div>
+      </div>
+
+      <!-- Second card -->
+      <div class="vmedo-service-card-mobile bg-white-500 rounded-xl shadow-md flex items-center overflow-hidden"
+        [routerLink]="'/services/ambulance-service-india'">
+        <!-- Left column (image) -->
+        <div class="h-20 w-2/6 flex items-center justify-center">
+          <!-- Replace "path_to_your_image" with the path to your image -->
+          <img src="assets\images\new_images\service-mobile-2.png" alt="Image" class="max-h-full max-w-full" />
+        </div>
+        <!-- Right column (content) -->
+        <div class="h-20 w-4/6 flex items-center p-2">
+          <p class="font-medium text-gray-700" style="font-size: 14px">
+            Ambulance <br />
+            Service
+          </p>
+        </div>
+      </div>
+      <!-- Third card -->
+
+      <div class="vmedo-service-card-mobile bg-white-500 rounded-xl shadow-md flex items-center overflow-hidden"
+        [routerLink]="'/services/urgent-medical-care-at-home'">
+        <!-- Left column (image) -->
+        <div class="h-20 w-2/6 flex items-center justify-center">
+          <!-- Replace "path_to_your_image" with the path to your image -->
+          <img src="assets\images\new_images\service-mobile-4.png" alt="Image" class="max-h-full max-w-full" />
+        </div>
+        <!-- Right column (content) -->
+        <div class="h-20 w-4/6 flex items-center p-2">
+          <p class="font-medium text-gray-700" style="font-size: 14px">
+            Urgent care <br />
+            at home
+          </p>
+        </div>
+      </div>
+      <!-- Fourth card -->
+      <div class="vmedo-service-card-mobile bg-white-500 rounded-xl shadow-md flex items-center overflow-hidden"
+        [routerLink]="'/services/diagnostics-at-home'">
+        <!-- Left column (image) -->
+        <div class="h-20 w-2/6 flex items-center justify-center">
+          <!-- Replace "path_to_your_image" with the path to your image -->
+          <img src="assets\images\new_images\service-mobile-8.png" alt="Image" class="max-h-full max-w-full" />
+        </div>
+        <!-- Right column (content) -->
+        <div class="h-20 w-4/6 flex items-center p-2">
+          <p class="font-medium text-gray-700" style="font-size: 14px">
+            Diagnostics<br />
+            at home
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-3 pt-3" *ngIf="showSection">
+      <!-- First card -->
+
+      <div class="vmedo-service-card-mobile bg-white-500 rounded-xl shadow-md flex items-center flex-col"
+        [routerLink]="'/hospitals'">
+        <!-- Image (2/5 of the card's height) -->
+        <div class="w-3/6 flex items-center justify-center">
+          <!-- Replace "path_to_your_image" with the path to your image -->
+          <img src="assets\images\new_images\service-mobile-3.png" alt="Image" class="max-h-full max-w-full" />
+        </div>
+        <!-- Text (3/5 of the card's height) -->
+        <div class="flex-3/6 items-center pb-2">
+          <p class="font-medium text-gray-700" style="font-size: 10px">
+            Hospital admission
+          </p>
+        </div>
+      </div>
+
+      <!-- Second card -->
+      <div class="vmedo-service-card-mobile bg-white-500 rounded-xl shadow-md flex items-center flex-col"
+        onclick="window.location.href='https://store.vmedo.com/'">
+        <!-- Image (2/5 of the card's height) -->
+        <div class="w-3/6 flex items-center justify-center">
+          <!-- Replace "path_to_your_image" with the path to your image -->
+          <img src="assets\images\new_images\service-mobile-9.png" alt="Image" class="max-h-full max-w-full" />
+        </div>
+        <!-- Text (3/5 of the card's height) -->
+        <div class="flex-3/6 items-center pb-2">
+          <p class="font-medium text-gray-700" style="font-size: 10px">
+            Medical Supplies
+          </p>
+        </div>
+      </div>
+
+
+      <!-- Third card -->
+      <div class="vmedo-service-card-mobile bg-white-500 rounded-xl shadow-md flex items-center flex-col"
+        [routerLink]="'/services/find-blood-donor'">
+        <!-- Image (2/5 of the card's height) -->
+        <div class="w-3/6 flex items-center justify-center">
+          <!-- Replace "path_to_your_image" with the path to your image -->
+          <img src="assets\images\new_images\service-mobile-7.png" alt="Image" class="max-h-full max-w-full" />
+        </div>
+        <!-- Text (3/5 of the card's height) -->
+        <div class="flex-3/6 items-center pb-2">
+          <p class="font-medium text-gray-700" style="font-size: 10px">
+            Find blood donor
+          </p>
+        </div>
+      </div>
+      
+    </div>
+
+  </section>

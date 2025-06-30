@@ -1,0 +1,284 @@
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+
+
+.no-flex{
+    display: block !important;
+}
+
+.no-padding{
+    padding: 0 !important;
+}
+
+.no-r-padding{
+    padding-right: 0 !important;
+}
+
+.no-l-padding{
+    padding-left: 0 !important;
+}
+
+.r-padding-10{
+    padding-right: 10px !important;
+}
+
+.cursor-default{
+    cursor: default !important;
+}
+
+.full-width{
+    width: 100% !important;
+}
+
+.align-center{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.align-v-center{
+    display: flex !important;
+    align-items: center !important;
+}
+
+.align-v-left{
+    display: flex !important;
+    align-items: flex-start !important;
+}
+
+.align-v-top{
+    display: flex !important;
+    align-items: flex-start !important;
+}
+
+.align-v-right{
+    display: flex !important;
+    align-items: flex-end !important;
+}
+
+.align-h-center{
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.align-h-left{
+    display: flex !important;
+    justify-content: flex-start !important;
+}
+
+.align-h-right{
+    display: flex !important;
+    justify-content: flex-end !important;
+}
+
+.wrap{
+    flex-wrap: wrap;
+}
+
+.align-v{
+    flex-direction: column;
+}
+
+.align-h{
+    flex-direction: row;
+}
+
+.m-bottom-5{
+    margin-bottom: 5px;
+  }
+
+  .cursor-default{
+      cursor: default;
+  }
+
+
+  
+  .font-14{
+      font-size: 14px;
+  }
+
+  .font-16{
+      font-size: 16px;
+  }
+
+  .pad-15-0{
+      padding: 15px 0;
+  }
+
+  .pad-b-15{
+      padding-bottom: 15px;
+  }
+
+  .svg-12{
+      height: 12px;
+      width: 12px;
+      fill: #ce2424;
+  }
+
+  .svg-15{
+      height: 15px;
+      width: 15px;
+      fill: #ce2424;
+  }
+
+  .svg-20{
+      height: 20px;
+      width: 20px;
+      fill: #ce2424;
+  }
+
+    
+  h1 {
+    font-size: 36px;
+    line-height: 54px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    line-height: 36px;
+  }
+  
+  h3 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  
+  h4 {
+    font-size: 10px;
+    line-height: 15px;
+  }
+  
+  p {
+    font-size: var(--base-font-size);
+    /* Use custom property for base font size */
+    line-height: 1.5;
+    /* Example line height */
+  }
+  
+  .error-line{
+    /* top: 30px;
+    right: 10px; */
+    top: 38px !important;
+    right: 5px !important;
+}
+
+.error-line.success{
+    color: #108d05 !important;
+}
+
+.mandatory{
+    margin: 0 5px;
+    color: #ce2424;
+}
+
+.call-button{
+    background: #ff637a !important;
+    border: 1px solid #c44558 !important;
+    display: flex !important;
+}
+
+.call-button > svg{
+    color: #000000 !important;
+}
+
+ 
+
+.flex-float-right{
+    align-items: flex-end;
+}
+
+
+.combobox,
+.combobox > input[type=text]{
+    cursor: pointer;
+}
+.combobox > input[type=text]{
+    padding-right: 20px;
+}
+
+.combobox > svg.dropmenu{
+    height: 10px !important;
+    width: 10px !important;
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    fill: #666666 !important;
+    z-index: 1;
+}
+
+.combobox > svg.dropmenu.nomargin{
+    right: 10px;
+}
+
+.combobox > svg.dropmenu.margin-70{    
+    right: 70px;
+}
+
+.page-loader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    height: 100%;
+    width: 100%;
+    background: rgba(51, 51, 51, 0.616);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-loader svg{
+    height: 50px;
+    width: 50px;
+    fill: #ce2424;
+    animation: rotation 1s infinite linear;
+}
+
+.h-100{
+    height: 100% !important;
+}
+
+.zi-10k{
+    z-index: 10000 !important;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid #f8f8f8;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #b4b4b4;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #b4b4b4;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #b4b4b4;
+  }
+
+  html, body { height: 100%; }
+body { margin: 0;}
+/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+.vmedo-more-card-mobile .grid-cols-3{
+    height: calc(100% - 78px);
+    padding-bottom: 10px;
+    overflow-y: scroll;
+}

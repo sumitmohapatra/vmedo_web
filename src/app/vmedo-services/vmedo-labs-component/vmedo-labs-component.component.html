@@ -1,0 +1,1757 @@
+<div *ngIf="isMobile; else desktopContent">
+    <div class="h-screen overflow-y-auto pb-10">
+        <!-- Mobile navbar -->
+        <nav class="flex items-center justify-between bg-red-500 p-2"
+            style="position: fixed; top: 0; left: 0; right: 0; z-index: 999">
+            <button class="text-white focus:outline-none focus:text-white" (click)="toggleSideMenu()">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+            <img src="assets/img/logo-white.png" alt="Logo" class="h-8 w-auto pl-3" [routerLink]="'/home'" />
+
+            <div>
+                <p class="text-white font-normal" (click)="app.OnOpenLoginForm('/dashboard/profile')">
+                    Login
+                </p>
+            </div>
+        </nav>
+
+        <div class="home-mobile-container mt-5">
+            <!--Mobile Side Menu -->
+            <div [ngClass]="{ 'side-menu-open': isSideMenuOpen }"
+        class="side-menu bg-white shadow-2xl text-gray-800 fixed left-0 h-full w-60 transition-all duration-300 ease-in-out z-10">
+        <!-- Side Menu Content -->
+        <ul class="py-3">
+          <li class="px-4 py-2 hover:bg-gray-50">
+            <a class="font-medium block hover:no-underline hover:text-red-700" (click)="toggleServices2()">Healthcare
+              Services <i *ngIf="!isOpen2" class="fa-solid fa-chevron-down"></i> <i *ngIf="isOpen2"
+                class="fa-solid fa-chevron-up"></i> </a>
+            <!-- Display services if isOpen is true -->
+            <ul *ngIf="isOpen2" class="pl-2 py-2">
+              <li class="text-sm pt-2 block hover:no-underline hover:text-red-700"
+                [routerLink]="'/services/emergency-online-doctor-consultation'"><i class="fa-solid fa-caret-right"></i> Doctor Consultation</li>
+              <li class="text-sm pt-3 block hover:no-underline hover:text-red-700"
+                [routerLink]="'/services/ambulance-service-india'"><i class="fa-solid fa-caret-right"></i> VMEDO Ambulance</li>
+              <li class="text-sm pt-3 block hover:no-underline hover:text-red-700"
+                [routerLink]="'/services/urgent-medical-care-at-home'"><i class="fa-solid fa-caret-right"></i> Urgent care at home</li>
+              <li class="text-sm pt-3 block hover:no-underline hover:text-red-700"
+                [routerLink]="'/services/diagnostics-at-home'"><i class="fa-solid fa-caret-right"></i> Labtest and scans</li>
+              <li class="text-sm pt-3 block hover:no-underline hover:text-red-700" [routerLink]="'/hospitals'"><i class="fa-solid fa-caret-right"></i> Hospital
+                admission</li>
+              <li class="text-sm pt-3 block hover:no-underline hover:text-red-700"
+                onclick="window.location.href='https://store.vmedo.com/'"><i class="fa-solid fa-caret-right"></i> VMEDO Store</li>
+            </ul>
+          </li>
+
+          <li class="px-4 py-2 hover:bg-red-50">
+            <a class="font-medium block hover:no-underline hover:text-red-700"
+              [routerLink]="'/info/occupational-health-services'">For Corporates</a>
+          </li>
+        </ul>
+      </div>
+
+            <section class="container mx-auto py-5">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h2 class="text-2xl font-semibold mb-4">
+                            Urgent lab test at home
+                        </h2>
+                        <h3 class="text-md font-medium text-gray-600 mb-2">
+                            <ul class="list-disc ml-4">
+                                <li>
+                                    Free sample pickup within 60 minutes
+                                </li>
+
+                                <li class="py-3">
+                                    Get a free doctor consultation
+                                </li>
+
+                                <li>
+                                    Report within 6 hours
+                                </li>
+
+                                <li class="py-3">
+                                    Available from 6:00am to 10:00pm
+                                </li>
+                            </ul>
+                        </h3>
+                    </div>
+                    <div>
+                        <img class="w-full h-auto rounded-3xl" src="assets/images/website-images/care_at_home_3.png"
+                            alt="Urgent Care Image" />
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Desktop about us section -->
+            <section class="vmedo-about-us-section-desktop py-6">
+                <div
+                    class="about-us-section-swiper-container2 bg-red-50 rounded-lg p-6 grid grid-cols-2 md:grid-cols-2 gap-6">
+                    <!-- Card 1 -->
+                    <div class="bg-white rounded-lg p-4 text-center">
+                        <p class=" font-semibold mb-2 text-red-700">
+                            100+ <br> Hospitals
+                        </p>
+
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white rounded-lg p-4 text-center">
+                        <p class="font-semibold mb-2 text-red-700">
+                            500+ <br> Admissions
+                        </p>
+
+                    </div>
+
+                </div>
+            </section>
+
+
+            <!-- Mobile tab tests section -->
+            <section class="vmedo-labs-mobile-section px-3">
+                <!-- Tabs -->
+                <div class="flex justify-between border-b border-gray-200">
+                  <button class="tab" [class.active]="selectedTab === 1" (click)="selectTab(1)">Checkups</button>
+                  <button class="tab" [class.active]="selectedTab === 2" (click)="selectTab(2)">Labtests</button>
+                  <button class="tab" [class.active]="selectedTab === 3" (click)="selectTab(3)">Scans</button>
+                </div>
+              
+                <!-- Cards -->
+                <div class="card-container overflow-y-auto max-h-120 px-3">
+                  <!-- Display cards based on selected tab -->
+                  <ng-container *ngIf="selectedTab === 1">
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">Full Body Checkup - Essential</p>
+                        </div>
+                        <div class="py-1">
+                            <p>10 tests</p>
+                        </div>
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">Full Body Checkup - Advanced</p>
+                        </div>
+                        <div class="py-1">
+                            <p>14 tests</p>
+                        </div>
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">Full Body Checkup - Comprehensive</p>
+                        </div>
+                        <div class="py-1">
+                            <p>22 tests</p>
+                        </div>
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">STD Test Package - Essential</p>
+                        </div>
+                        <div class="py-1">
+                            <p>4 tests</p>
+                        </div>
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">Vitamin package</p>
+                        </div>
+                        <div class="py-1">
+                            <p>2 tests</p>
+                        </div>
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">Women Health Checkup - Comprehensive</p>
+                        </div>
+                        <div class="py-1">
+                            <p>14 tests</p>
+                        </div>
+                    </div>
+                    <!-- Add more cards as needed -->
+                  </ng-container>
+                  <ng-container *ngIf="selectedTab === 2">
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">Complete Blood Count (CBC)</p>
+                        </div>
+                        <div class="py-1">
+                            <p>24 tests</p>
+                        </div>
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">Fasting Blood Sugar (FBS)</p>
+                        </div>
+                        <div class="py-1">
+                            <p>10 tests</p>
+                        </div>
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">Glycosylated Haemoglobin (HbA1c)</p>
+                        </div>
+                        <div class="py-1">
+                            <p>10 tests</p>
+                        </div>
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">Full Body Checkup - Essential</p>
+                        </div>
+                        <div class="py-1">
+                            <p>10 tests</p>
+                        </div>
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">Full Body Checkup - Essential</p>
+                        </div>
+                        <div class="py-1">
+                            <p>10 tests</p>
+                        </div>
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">Full Body Checkup - Essential</p>
+                        </div>
+                        <div class="py-1">
+                            <p>10 tests</p>
+                        </div>
+                    </div>
+                    <!-- Add more cards as needed -->
+                  </ng-container>
+                  <ng-container *ngIf="selectedTab === 3">
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">CT Scan</p>
+                        </div>
+                        
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">X-ray scan</p>
+                        </div>
+                        
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">MRI Scan</p>
+                        </div>
+                        
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">Ultrasound Scan</p>
+                        </div>
+                        
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">EEG Scan</p>
+                        </div>
+                        
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">ECG Scan</p>
+                        </div>
+                        
+                    </div>
+                    <!-- Add more cards as needed -->
+                  </ng-container>
+                </div>
+              </section>
+              
+
+
+            <!-- Mobile Urgent care at home -->
+            <section class="why-subscribe-desktop py-4 px-3">
+
+                <div class="pb-3 pt-4">
+                    <h2 class="font-medium">Why VMEDO?</h2>
+                </div>
+
+                <div class="py-2 px-3">
+                    <h3 class="font-medium text-red-700 text-lg">
+                        Why choose VMEDO for home lab tests?
+                    </h3>
+
+                    <p class="mt-3">VMEDO offers lab tests at your convenience, saving you time and effort by conducting tests in the comfort of your home.</p>
+                </div>
+
+                <div class="py-2 px-3">
+                    <h3 class="font-medium text-red-700 text-lg">
+                        How reliable are VMEDO's home lab tests?
+                    </h3>
+
+                    <p class="mt-3"> VMEDO maintains high standards of quality and accuracy, employing certified professionals and partnering with accredited labs for precise results.</p>
+                </div>
+
+                <div class="py-2 px-3">
+                    <h3 class="font-medium text-red-700 text-lg">
+                        What makes VMEDO stand out in home lab testing?
+                    </h3>
+
+                    <p class="mt-3">
+                        VMEDO provides personalized attention throughout the testing process, ensuring clear communication and support for a seamless experience tailored to your needs.
+                    </p>
+                </div>
+
+            </section>
+
+
+
+            <!-- Mobile doctor consultation banner  -->
+            <section class="Doctor-consultation-section-mobile py-4 bg-white flex justify-center">
+                <div class="doctor-consultation-card-mobile rounded-xl bg-gray-200 content-center">
+                    <img src="assets/images/website-images/vmedo-subscription-banner.png" alt="Image Description"
+                        class="w-full h-full rounded-xl object-cover" />
+                </div>
+            </section>
+
+            <!-- Mobile Urgent care at home -->
+            <section class="urgent-care-at-home-section py-4 bg-white">
+                <div class="pb-3 px-3">
+                    <h2 class="font-medium">Other services</h2>
+                </div>
+
+                <swiper [config]="other_services_mobile" class="px-7">
+                    <ng-template swiperSlide>
+                        <div class="other-service-card-mobile bg-gray-100 rounded-md">
+                            <div style="display: flex; justify-content: center">
+                                <img src="assets/images/website-images/other-service-1.png" alt="Banner 4"
+                                    style="width: 100%" class="rounded-md" />
+                            </div>
+                        </div>
+
+                        <div class="py-2">
+                            <p class="font-medium" style="font-size: 12px">
+                                Doctor Consultation
+                            </p>
+                        </div>
+                    </ng-template>
+
+                    <ng-template swiperSlide>
+                        <div class="other-service-card-mobile bg-gray-100 rounded-md">
+                            <div style="display: flex; justify-content: center">
+                                <img src="assets/images/website-images/other-service-2.png" alt="Banner 4"
+                                    style="width: 100%" class="rounded-md" />
+                            </div>
+                        </div>
+
+                        <div class="py-2">
+                            <p class="font-medium" style="font-size: 12px">VMEDO Ambulance</p>
+                        </div>
+                    </ng-template>
+
+                    <ng-template swiperSlide>
+                        <div class="other-service-card-mobile bg-gray-100 rounded-md">
+                            <div style="display: flex; justify-content: center">
+                                <img src="assets/images/website-images/other-service-3.png" alt="Banner 4"
+                                    style="width: 100%" class="rounded-md" />
+                            </div>
+                        </div>
+
+                        <div class="py-2">
+                            <p class="font-medium" style="font-size: 12px">
+                                Lab tests and scans
+                            </p>
+                        </div>
+                    </ng-template>
+
+                    <ng-template swiperSlide>
+                        <div class="other-service-card-mobile bg-gray-100 rounded-md">
+                            <div style="display: flex; justify-content: center">
+                                <img src="assets/images/website-images/other-service-4.png" alt="Banner 4"
+                                    style="width: 100%" class="rounded-md" />
+                            </div>
+                        </div>
+
+                        <div class="py-2">
+                            <p class="font-medium" style="font-size: 12px">
+                                Hospital admission
+                            </p>
+                        </div>
+                    </ng-template>
+                </swiper>
+            </section>
+
+
+            <!-- Mobile review section -->
+            <section class="what-people-say-about-us-mobile-section px-3 py-4 bg-white">
+                <div class="pb-3">
+                    <h2 class="font-medium">What people say about us</h2>
+                </div>
+
+                <swiper [config]="vmedo_review_mobile">
+                    <ng-template swiperSlide>
+                        <div class="what-people-say-about-us-card bg-white rounded-3xl shadow-md p-2 custom-hover">
+                            <div class="flex justify-center items-center py-2" style="height: 40%">
+                                <img src="assets\images\new_images\review-1.jpg" alt="Person Image"
+                                    style="border-radius: 50%; height: 100%" />
+                            </div>
+                            <div class="overflow-auto py-2" style="height: 45%">
+                                <p class="h-full p-2">
+                                    "VMEDO is a lifesaver! With their seamless technology
+                                    platform, I can access emergency medical services instantly.
+                                    It's a must-have for peace of mind during any medical crisis."
+                                </p>
+                            </div>
+                            <div class="h-20 flex justify-center items-center" style="height: 15%">
+                                <p class="font-medium text-red-900">Arjun kumar</p>
+                            </div>
+                        </div>
+                    </ng-template>
+
+                    <ng-template swiperSlide>
+                        <div class="what-people-say-about-us-card bg-white rounded-3xl shadow-md p-2">
+                            <div class="flex justify-center items-center py-2" style="height: 40%">
+                                <img src="assets\images\new_images\review-2.jpg" alt="Person Image"
+                                    style="border-radius: 50%; height: 100%" />
+                            </div>
+                            <div class="overflow-auto py-2" style="height: 45%">
+                                <p class="h-full p-2">
+                                    "VMEDO is a game-changer in emergency healthcare. Their
+                                    platform simplifies access to vital services like doctor
+                                    consultations and ambulance bookings, ensuring timely help
+                                    during critical situations. Highly recommended!"
+                                </p>
+                            </div>
+                            <div class="h-20 flex justify-center items-center" style="height: 15%">
+                                <p class="font-medium text-red-900">Vikram</p>
+                            </div>
+                        </div>
+                    </ng-template>
+
+                    <ng-template swiperSlide>
+                        <div class="what-people-say-about-us-card bg-white rounded-3xl shadow-md p-2">
+                            <div class="flex justify-center items-center py-2" style="height: 40%">
+                                <img src="assets\images\new_images\review-3.jpg" alt="Person Image"
+                                    style="border-radius: 50%; height: 100%" />
+                            </div>
+                            <div class="overflow-auto py-2" style="height: 45%">
+                                <p class="h-full p-2">
+                                    "Impressed with VMEDO's dedication to emergency care. Their
+                                    platform connects me with doctors, ambulances, and hospitals
+                                    swiftly. A reliable solution for quick and affordable medical
+                                    assistance."
+                                </p>
+                            </div>
+                            <div class="h-20 flex justify-center items-center" style="height: 15%">
+                                <p class="font-medium text-red-900">Suman Kalyani</p>
+                            </div>
+                        </div>
+                    </ng-template>
+                </swiper>
+            </section>
+
+        </div>
+
+        <!-- Mobile footer section -->
+    <footer class="mobile-footer-section bg-gray-800 text-white py-8 relative bottom-0 left-0 w-full mb-12">
+        <div class="container mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <h3 class="text-lg font-semibold mb-3">Follow us on</h3>
+              <div class="flex space-x-4">
+                <a href="https://www.facebook.com/vmedohealthcare" class="text-white hover:text-gray-400 text-3xl mr-1"><i class="fab fa-facebook"></i></a>
+                <a href="https://twitter.com/vmedoapp" class="text-white hover:text-gray-400 text-3xl mr-1"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/vmedo_healthcare/" class="text-white hover:text-gray-400 text-3xl mr-1"><i class="fab fa-instagram"></i></a>
+                <a href="https://in.linkedin.com/company/vmedo" class="text-white hover:text-gray-400 text-3xl mr-1"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.youtube.com/channel/UClEydLiJCRonhXN7vMf4ikg" class="text-white hover:text-gray-400 text-3xl mr-1"><i class="fab fa-youtube"></i></a>
+              </div>
+            </div>
+  
+            <div class="py-2">
+              <h3 class="text-lg font-semibold mb-3">About Company</h3>
+              <p>
+                VMEDO is a digital healthcare platform, on a mission to make quality healthcare accessible and affordable to all..
+              </p>
+  
+              <div>
+                <button>
+                  <p class="text-red-600 font-medium" [routerLink]="'/info/aboutus'">
+                    Read More..</p>
+                </button>
+              </div>
+            </div>
+  
+            <!-- First row - First column (About Company) -->
+  
+            <!-- First row - Second column (Links) -->
+            <div class="grid grid-rows-7 gap-0">
+              <h3 class="text-lg font-semibold mb-3">Quick Links</h3>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/services/emergency-online-doctor-consultation'">
+                    Online Doctor Consultation</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/services/urgent-medical-care-at-home'">
+                    Urgent care at home</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/services/diagnostics-at-home'">
+                    Diagnostics at home</a>
+                </div>
+  
+              </div>
+  
+  
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/services/ambulance-service-india'">
+                    VMEDO Ambulance</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a href="https://store.vmedo.com" class="hover:text-gray-400">
+                    VMEDO Store</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/info/occupational-health-services'">
+                    For Corporates</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a href="https://vmedo.com/first-aid-training/index.html" class="hover:text-gray-400">
+                    First Aid Training</a>
+                </div>
+  
+              </div>
+  
+            </div>
+            <!-- First row - Third column (Links) -->
+            <div class="grid grid-rows-7 gap-0 py-2">
+              <h3 class="text-lg font-semibold mb-3">More</h3>
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a href="https://vmedo.com/blog" class="hover:text-gray-400">
+                      Blog</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a href="https://academy.vmedo.com" class="hover:text-gray-400">
+                      VMEDO Academy</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a class="hover:text-gray-400" [routerLink]="'/hospitals'">
+                      Emergency Hospital Admission</a> </p>
+                </div>
+  
+              </div>
+  
+              
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a class="hover:text-gray-400" [routerLink]="'/info/aboutus'">
+                      About us</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a href="https://vmedo.com/blog/career-jobs-at-vmedo/" class="hover:text-gray-400">
+                      Career</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a class="hover:text-gray-400" [routerLink]="'/info/partner-with-us'">
+                      Partner with us</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a class="hover:text-gray-400" [routerLink]="'/info/contact-us'">
+                      Contact us</a> </p>
+                </div>
+  
+              </div>
+            </div>
+          </div>
+  
+          <div class="flex justify-center mt-8">
+            <div>
+              <h2 class="text-center">"we work to save lives"</h2>
+            </div>
+          </div>
+  
+          <div class="text-center mt-8 mb-8 border-t border-gray-700 pt-8">
+            <!-- Second row - First column (Copyright) -->
+            <div>
+              <p>
+                &copy; Arera Healthcare and Technologies Pvt Ltd
+                <br />
+                All rights reserved.
+              </p>
+            </div>
+            <!-- Second row - Second column (Social Media Icons) -->
+            <div class="mt-3">
+              <div class="flex flex-row justify-center">
+  
+                <div>
+                  <h3 class="text-sm">
+                    <a href="https://vmedo.com/vmedo-privacy.html" class="hover:text-gray-400">
+                      Privacy policy</a>
+                  </h3>
+                </div>
+  
+                <div class="px-4">
+                  <h3 class="text-sm">
+                    <a href="https://vmedo.com/vmedo-terms.html" class="hover:text-gray-400">
+                      Terms & Conditions</a>
+  
+                  </h3>
+                </div>
+                
+                <div>
+                  <h3 class="text-sm">
+                    <a href="https://vmedo.com/sitemap.xml" class="hover:text-gray-400">
+                      Sitemap</a>
+                  </h3>
+                </div>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+
+    </div>
+
+    <!-- Mobile widget section -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white py-2.5 px-2 flex justify-around rounded-xl shadow-lg z-10">
+        <div class="flex flex-col items-center">
+            <span> <a [href]="'tel:' + phone">
+            <button style="padding:.7rem 5rem;background:#dc2626;color:#fff;font-weight:600;border-radius:.375rem;border:1px solid transparent;transition:all .3s ease-in-out;" onmouseover="this.style.borderColor='#dc2626';this.style.background='#fff';this.style.color='#dc2626';" onmouseout="this.style.borderColor='transparent';this.style.background='#dc2626';this.style.color='#fff';">
+               Call now 
+            </button>
+        </a></span>
+
+        </div>
+
+        <!-- <div class="flex flex-col items-center" (click)="selectIcon(0)" [ngClass]="{
+        'text-red-500': selectedIndex === 0,
+        'text-black': selectedIndex !== 0
+      }">
+            <i class="fas fa-user text-lg"></i>
+            <p class="text-xs pt-1" style="font-size: 11px">Profile</p>
+        </div>
+       
+        <div class="flex flex-col items-center" (click)="selectIcon(1)" [ngClass]="{
+        'text-red-500': selectedIndex === 1,
+        'text-black': selectedIndex !== 1
+      }" [routerLink]="'/home'">
+            <i class="fas fa-home text-lg"></i>
+            <p class="text-xs pt-1" style="font-size: 11px">Home</p>
+        </div>
+       
+        <div class="flex flex-col items-center" (click)="selectIcon(2)" [ngClass]="{
+        'text-red-500': selectedIndex === 2,
+        'text-black': selectedIndex !== 2
+      }">
+            <i class="fas fa-store text-lg"></i>
+            <p class="text-xs pt-1" style="font-size: 11px">Store</p>
+        </div> -->
+        <!-- More -->
+        <!-- <div class="flex flex-col items-center" (click)="selectIcon(3)"
+      [ngClass]="{'text-red-500': selectedIndex === 3, 'text-black': selectedIndex !== 3}">
+      <i class="fas fa-ellipsis-h text-lg"></i>
+      <p class="text-xs" style="font-size: 11px;">More</p>
+    </div> -->
+
+        <!-- <div class="flex flex-col items-center" (click)="togglePopup()">
+            <i class="fas fa-ellipsis-h text-lg text-red-500"></i>
+            <p class="text-sm text-red-700 font-bold" style="font-size: 11px">More</p>
+        </div> -->
+    </div>
+
+    <!-- Mobile VMEDO services popup section -->
+    <div *ngIf="showPopup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10"
+        (click)="togglePopup()">
+        <!-- Card content here -->
+        <div class="vmedo-more-card-mobile bg-white-500 rounded-lg shadow-md items-center overflow-hidden"
+            (click)="$event.stopPropagation()">
+            <div class="text-center py-4">
+                <h3 class="font-medium text-red-700">VMEDO Services</h3>
+            </div>
+
+            <!-- Grid container with 3 rows and 3 columns -->
+            <div class="grid grid-cols-3 gap-4 px-4">
+                <!-- Grid items -->
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    [routerLink]="'/services/emergency-online-doctor-consultation'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-1.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">
+                            Instant <br />
+                            doctor consultation
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    [routerLink]="'/services/ambulance-service-india'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-2.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">
+                            Book Emergency Ambulance
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    [routerLink]="'/services/urgent-medical-care-at-home'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-4.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">
+                            Urgent medical care at home
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    [routerLink]="'/services/labs'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-8.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">
+                            Lab tests and scans
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    onclick="window.location.href='https://store.vmedo.com'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-1.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">
+                            Healthcare products
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    [routerLink]="'/hospitals'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-3.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">
+                            Hospital admission
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    onclick="window.location.href='https://academy.vmedo.com'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-6.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">VMEDO Academy</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    [routerLink]="'/services/find-blood-donor'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-7.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">Find blood donor</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    [routerLink]="'/info/occupational-health-services'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-1.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">VMEDO-Corporate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<ng-template #desktopContent>
+    <div class="h-screen overflow-y-auto" style="margin: 0px">
+
+        <!-- Desktop navigation section -->
+        <nav class="bg-white flex justify-between items-center p-3">
+            <!-- Left section with company logo -->
+            <div class="flex items-center">
+                <img src="assets/img/vmedologo.png" alt="Company Logo" class="h-8 w-auto mr-4" [routerLink]="'/home'" style="height: 50px;"/>
+            </div>
+
+            <!-- Middle section with navigation menus -->
+            <ul class="flex space-x-6 mr-5">
+                
+                <li>
+                    <div class="relative">
+                        <a href="#"
+                            class="navigation-menu font-medium hover:font-bold hover:no-underline transition duration-200">
+                            Healthcare-services</a>
+                        <div class="dropdown-menu">
+                            <a class="block px-4 py-2 hover:bg-gray-200"
+                                [routerLink]="'/services/emergency-online-doctor-consultation'">Instant doctor
+                                consultation</a>
+                            <a class="block px-4 py-2 hover:bg-gray-200"
+                                [routerLink]="'/services/ambulance-service-india'">Book nearby Ambulance</a>
+                            <a class="block px-4 py-2 hover:bg-gray-200" [routerLink]="'/hospitals'">Hospital
+                                admission</a>
+                            <a class="block px-4 py-2 hover:bg-gray-200"
+                                [routerLink]="'/services/urgent-medical-care-at-home'">Urgent medical care at home</a>
+                            <a class="block px-4 py-2 hover:bg-gray-200" [routerLink]="'/services/labs'">Lab tests and
+                                scans</a>
+                            <a class="block px-4 py-2 hover:bg-gray-200"
+                                onclick="window.location.href='https://store.vmedo.com/'">Healthcare products</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="relative">
+                        <a
+                            class="navigation-menu font-medium hover:text-red-700 hover:font-bold hover:no-underline transition duration-200">Info</a>
+                        <div class="dropdown-menu">
+                            <a class="block px-4 py-2 hover:bg-gray-200" [routerLink]="'/info/aboutus'">About us</a>
+                            <a class="block px-4 py-2 hover:bg-gray-200" [routerLink]="'/info/contact-us'">Contact
+                                us</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="relative">
+                        <a
+                            class="navigation-menu font-medium hover:text-red-700 hover:font-bold hover:no-underline transition duration-200">More</a>
+                        <div class="dropdown-menu">
+                            <a class="block px-4 py-2 hover:bg-gray-200"
+                                [routerLink]="'/services/find-blood-donor'">Find Blood Donor</a>
+                            <a class="block px-4 py-2 hover:bg-gray-200"
+                                [routerLink]="'/info/occupational-health-services'">VMEDO for Corporates</a>
+                            <a class="block px-4 py-2 hover:bg-gray-200" [routerLink]="'/info/partner-with-us'">Partner
+                                with us</a>
+                            <a class="block px-4 py-2 hover:bg-gray-200"
+                                onclick="window.location.href='https://vmedo.com/blog/career-jobs-at-vmedo/'">VMEDO
+                                Careers</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a class="navigation-menu font-medium hover:text-red-700 hover:font-bold hover:no-underline transition duration-200"
+                        [routerLink]="'/info/occupational-health-services'">VMEDO for Corporates</a>
+                </li>
+            </ul>
+
+            <!-- Right section with login -->
+            <div>
+                <button class="px-4 py-2 bg-red-700 text-white font-semibold rounded-md hover:bg-red-600">
+                    Login
+                </button>
+            </div>
+        </nav>
+
+        <div class="home-container">
+
+            <!-- Desktop academy section -->
+            <section class="vmedo-academy-section-desktop bg-white py-8 px-8">
+                <!-- Second section -->
+                <div class="container mx-auto flex flex-col md:flex-row items-center px-5">
+                    <div class="text-content md:order-1 md:w-3/4 md:pr-10">
+                        <h2 class="text-3xl font-bold mb-4">
+                            Urgent lab test at home
+                        </h2>
+                        <!-- Adjust heading -->
+                        <p class="text-lg mb-4">
+                            Free sample pickup within 60 minutes
+                            Get a free doctor consultation
+                            Report within 6 hours
+                            Available from 6:00am to 10:00pm
+                        </p>
+
+                        <!-- Adjust subheading -->
+                        <button style="
+                padding: 0.5rem 1rem;
+                background-color: #dc2626;
+                color: #fff;
+                font-weight: 600;
+                border-radius: 0.375rem;
+                border: 1px solid transparent;
+                transition: all 0.3s ease-in-out;
+              " onmouseover="this.style.borderColor = '#dc2626'; this.style.backgroundColor = '#fff'; this.style.color = '#dc2626';"
+                            onmouseout="this.style.borderColor = 'transparent'; this.style.backgroundColor = '#dc2626'; this.style.color = '#fff';">
+                            Call Helpline
+                        </button>
+                    </div>
+                    <div class="image-container md:order-2 md:w-1/4 md:pl-10">
+                        <img src="assets/images/website-images/care_at_home_3.png" alt="Second Image"
+                            class="w-full h-auto rounded-full" />
+                        <!-- Adjust image -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Desktop about us section -->
+            <section class="vmedo-about-us-section-desktop py-8 px-8">
+                <div
+                    class="about-us-section-swiper-container2 bg-red-50 rounded-lg p-6 grid grid-cols-2 md:grid-cols-2 gap-6">
+                    <!-- Card 1 -->
+                    <div class="bg-white rounded-lg p-4 text-center">
+                        <h2 class="text-lg font-semibold mb-2 text-red-700">100+</h2>
+                        <p class="text-sm text-gray-600 font-medium">Hospitals
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white rounded-lg p-4 text-center">
+                        <h2 class="text-lg font-semibold mb-2 text-red-700">500+</h2>
+                        <p class="text-sm text-gray-600 font-medium">Admissions</p>
+                    </div>
+
+
+                </div>
+            </section>
+
+            <section class="why-vmedo-section py-8 px-8">
+                <div class="py-4 px-5">
+                    <h2 class="font-medium">Why VMEDO?</h2>
+                </div>
+
+                <div class="px-7">
+
+                    <div class="px-7">
+                        <div class="font-medium text-red-700">
+                            <h3>Why choose VMEDO for home lab tests?</h3>
+                        </div>
+
+                        <div class="py-2">
+                            <p>VMEDO offers lab tests at your convenience, saving you time and effort by conducting tests in the comfort of your home.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="px-7 mt-4">
+
+                    <div class="px-7">
+                        <div class="font-medium text-red-700">
+                            <h3> How reliable are VMEDO's home lab tests?</h3>
+                        </div>
+
+                        <div class="py-2">
+                            <p>VMEDO maintains high standards of quality and accuracy, employing certified professionals and partnering with accredited labs for precise results.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="px-7 mt-4">
+
+                    <div class="px-7">
+                        <div class="font-medium text-red-700">
+                            <h3>What makes VMEDO stand out in home lab testing?</h3>
+                        </div>
+
+                        <div class="py-2">
+                            <p>VMEDO provides personalized attention throughout the testing process, ensuring clear communication and support for a seamless experience tailored to your needs.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Desktop lab services section -->
+            <section class="our-lab-services-section-desktop py-8 px-8">
+                <div class="py-4 px-5">
+                    <h2 class="font-medium">How it works?</h2>
+                </div>
+
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <!-- First card -->
+
+                    <div class="bg-white rounded-lg p-4">
+                        <div class="flex flex-col items-center">
+                            <!-- Image -->
+                            <img src="assets\images\new_images\customer-service (1).png" style="width: 40%" alt="Image"
+                                class="w-full h-auto rounded-md">
+                            <!-- Content -->
+                            <div class="mt-4 text-center font-medium">
+                                <p>Call VMEDO Helpline</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Second card -->
+                    <div class="bg-white rounded-lg p-4">
+                        <div class="flex flex-col items-center">
+                            <!-- Image -->
+                            <img src="assets\images\new_images\hospital-information.png" style="width: 40%" alt="Image"
+                                class="w-full h-auto rounded-md">
+                            <!-- Content -->
+                            <div class="mt-4 text-center font-medium">
+                                <p>Get Information about the nearest hospitals</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Third card -->
+                    <div class="bg-white rounded-lg  p-4">
+                        <div class="flex flex-col items-center">
+                            <!-- Image -->
+                            <img src="assets\images\new_images\choose-hospital.png" style="width: 40%" alt="Image"
+                                class="w-full h-auto rounded-md">
+                            <!-- Content -->
+                            <div class="mt-4 text-center font-medium">
+                                <p>Choose the right hospital</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fourth card -->
+                    <div class="bg-white rounded-lg  p-4">
+                        <div class="flex flex-col items-center">
+                            <!-- Image -->
+                            <img src="assets\images\new_images\hospital-admission.png" style="width: 40%" alt="Image"
+                                class="w-full h-auto rounded-md">
+                            <!-- Content -->
+                            <div class="mt-4 text-center font-medium">
+                                <p>Get Emergency hospital admission (Hospitals that are partnered)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </section>
+
+             <!-- Mobile tab tests section -->
+             <section class="vmedo-labs-desktop-section py-8 px-8">
+
+                <div class="py-4 px-5">
+                    <h2 class="font-medium">Our Lab services</h2>
+                </div>
+
+
+                <!-- Tabs -->
+                <div class="flex justify-around  border-b border-gray-200">
+                  <button class="tab" [class.active]="selectedTab === 1" (click)="selectTab(1)">Checkups</button>
+                  <button class="tab" [class.active]="selectedTab === 2" (click)="selectTab(2)">Labtests</button>
+                  <button class="tab" [class.active]="selectedTab === 3" (click)="selectTab(3)">Scans</button>
+                </div>
+              
+                <!-- Cards -->
+                <div class="card-container overflow-y-auto max-h-120 px-12">
+                  <!-- Display cards based on selected tab -->
+                  <ng-container *ngIf="selectedTab === 1">
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">Full Body Checkup - Essential</p>
+                        </div>
+                        <div class="py-1">
+                            <p>10 tests</p>
+                        </div>
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">Full Body Checkup - Advanced</p>
+                        </div>
+                        <div class="py-1">
+                            <p>14 tests</p>
+                        </div>
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">Full Body Checkup - Comprehensive</p>
+                        </div>
+                        <div class="py-1">
+                            <p>22 tests</p>
+                        </div>
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">STD Test Package - Essential</p>
+                        </div>
+                        <div class="py-1">
+                            <p>4 tests</p>
+                        </div>
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">Vitamin package</p>
+                        </div>
+                        <div class="py-1">
+                            <p>2 tests</p>
+                        </div>
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">Women Health Checkup - Comprehensive</p>
+                        </div>
+                        <div class="py-1">
+                            <p>14 tests</p>
+                        </div>
+                    </div>
+                    <!-- Add more cards as needed -->
+                  </ng-container>
+                  <ng-container *ngIf="selectedTab === 2">
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">Complete Blood Count (CBC)</p>
+                        </div>
+                        <div class="py-1">
+                            <p>24 tests</p>
+                        </div>
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">Fasting Blood Sugar (FBS)</p>
+                        </div>
+                        <div class="py-1">
+                            <p>10 tests</p>
+                        </div>
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">Glycosylated Haemoglobin (HbA1c)</p>
+                        </div>
+                        <div class="py-1">
+                            <p>10 tests</p>
+                        </div>
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">Full Body Checkup - Essential</p>
+                        </div>
+                        <div class="py-1">
+                            <p>10 tests</p>
+                        </div>
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">Full Body Checkup - Essential</p>
+                        </div>
+                        <div class="py-1">
+                            <p>10 tests</p>
+                        </div>
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">Full Body Checkup - Essential</p>
+                        </div>
+                        <div class="py-1">
+                            <p>10 tests</p>
+                        </div>
+                    </div>
+                    <!-- Add more cards as needed -->
+                  </ng-container>
+                  <ng-container *ngIf="selectedTab === 3">
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">CT Scan</p>
+                        </div>
+                        
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">X-ray scan</p>
+                        </div>
+                        
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">MRI Scan</p>
+                        </div>
+                        
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">Ultrasound Scan</p>
+                        </div>
+                        
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">EEG Scan</p>
+                        </div>
+                        
+                    </div>
+
+                    <div class="card mt-2 rounded-md shadow-md">
+                        <div class="py-1">
+                            <p class="text-red-700">ECG Scan</p>
+                        </div>
+                        
+                    </div>
+                    <!-- Add more cards as needed -->
+                  </ng-container>
+                </div>
+              </section>
+              
+
+            <section class="Ambulance-banner-section py-8 flex justify-center">
+                <div class="ambulance-banner-card rounded-3xl bg-gray-200">
+                    <img src="assets/images/website-images/homepage-banner-1.png" alt="Image Description"
+                        class="w-full h-full rounded-3xl object-cover" />
+                </div>
+            </section>
+
+            <!-- Desktop lab services section -->
+            <section class="care-at-home-section py-8 px-8">
+                <h2 class="font-medium mb-8 pl-8">Our other services</h2>
+
+                <div class="px-4">
+                    <swiper class="px-6" [config]="our_other_services_dektop">
+                        <!-- <ng-template swiperSlide>
+                      <div class="bg-gray-200 care-at-home-card rounded-md mx-auto overflow-hidden">
+                        <img src="assets/images/website-images/care_at_home_1.png" alt="Image Description"
+                          class="w-full h-full rounded-md object-cover  image-hover" />
+                      </div>
+                      <p class="mt-3 text-center text-base font-medium px-3">ECG at home</p>
+                    </ng-template> -->
+
+                        <ng-template swiperSlide>
+                            <div class="bg-gray-200 other-services-card-desktop rounded-md mx-auto overflow-hidden">
+                                <img src="assets/images/website-images/other-service-1.png" alt="Image Description"
+                                    class="w-full h-full rounded-md object-cover image-hover" />
+                            </div>
+                            <p class="mt-2 text-center text-base font-medium px-3">
+                                Doctor consultation
+                            </p>
+                        </ng-template>
+                        <ng-template swiperSlide>
+                            <div class="bg-gray-200 other-services-card-desktop rounded-md mx-auto overflow-hidden">
+                                <img src="assets/images/website-images/other-service-2.png" alt="Image Description"
+                                    class="w-full h-full rounded-md object-cover image-hover" />
+                            </div>
+                            <p class="mt-2 text-center text-base font-medium px-3">
+                                VMEDO Ambulance
+                            </p>
+                        </ng-template>
+                        <ng-template swiperSlide>
+                            <div class="bg-gray-200 other-services-card-desktop rounded-md mx-auto overflow-hidden">
+                                <img src="assets/images/website-images/other-service-3.png" alt="Image Description"
+                                    class="w-full h-full rounded-md object-cover image-hover" />
+                            </div>
+                            <p class="mt-2 text-center text-base font-medium px-3">
+                                Lab tests and scans
+                            </p>
+                        </ng-template>
+                        <ng-template swiperSlide>
+                            <div class="bg-gray-200 other-services-card-desktop rounded-md mx-auto overflow-hidden">
+                                <img src="assets/images/website-images/other-service-4.png" alt="Image Description"
+                                    class="w-full h-full rounded-md object-cover image-hover" />
+                            </div>
+                            <p class="mt-2 text-center text-base font-medium px-3">
+                                Emergency hospital admission
+                            </p>
+                        </ng-template>
+
+                        <ng-template swiperSlide>
+                            <div class="bg-gray-200 other-services-card-desktop rounded-md mx-auto overflow-hidden">
+                                <img src="assets/images/new_images/service-6.png" alt="Image Description"
+                                    class="w-full h-full rounded-md object-cover image-hover" />
+                            </div>
+                            <p class="mt-2 text-center text-base font-medium px-3">
+                                Emergency hospital admission
+                            </p>
+                        </ng-template>
+
+
+                    </swiper>
+                </div>
+            </section>
+
+            <!-- Desktop review section -->
+            <section class="what-people-say-about-us-section-desktop py-8 px-8">
+                <div class="py-4 px-5">
+                    <h2 class="font-medium">What people say about us</h2>
+                </div>
+
+                <swiper [config]="vmedo_review_desktop">
+                    <ng-template swiperSlide>
+                        <div class="what-people-say-about-us-card bg-white rounded-lg shadow-md p-2">
+                            <div class="flex justify-center items-center" style="height: 40%">
+                                <img src="assets/img/Lakshmish_review.jpeg" alt="Person Image"
+                                    style="border-radius: 50%; height: 100%; width: 63%" />
+                            </div>
+                            <div class="overflow-auto pt-3" style="height: 45%">
+                                <p class="h-full">
+                                    "I was able to save a person’s life during my Trekking Event with the help of VMEDO.
+                                    I feel more confident being trained in First aid from VMEDO and relaxed for the fact
+                                    that VMEDO is there for my help in case of Emergency"
+                                </p>
+                            </div>
+                            <div class="h-20 flex justify-center items-center" style="height: 15%">
+                                <p class="font-medium text-red-900">Lakshmish gowda</p>
+                            </div>
+                        </div>
+                    </ng-template>
+
+                    <ng-template swiperSlide>
+                        <div class="what-people-say-about-us-card bg-white rounded-lg shadow-md p-2">
+                            <div class="flex justify-center items-center" style="height: 40%">
+                                <img src="assets/img/Arvind_review.jpeg" alt="Person Image"
+                                    style="border-radius: 50%; height: 100%; width: 63%" />
+                            </div>
+                            <div class="overflow-auto pt-3" style="height: 45%">
+                                <p class="h-full">
+                                    "As a member of VMEDO I never thought I would use it, But just within 6 Months I had
+                                    to take the help of VMEDO to save my Aunt’s life. I truly want to thank the entire
+                                    team for saving my family member, and I recommend everyone to become a VMEDO member"
+                                </p>
+                            </div>
+                            <div class="h-20 flex justify-center items-center" style="height: 15%">
+                                <p class="font-medium text-red-900">Arvind LR</p>
+                            </div>
+                        </div>
+                    </ng-template>
+
+                    <ng-template swiperSlide>
+                        <div class="what-people-say-about-us-card bg-white rounded-lg shadow-md p-2">
+                            <div class="flex justify-center items-center" style="height: 40%">
+                                <img src="assets/img/Ravi_review.jpeg" alt="Person Image"
+                                    style="border-radius: 50%; height: 100%; width: 63%" />
+                            </div>
+                            <div class="overflow-auto pt-3" style="height: 45%">
+                                <p class="h-full">
+                                    "VMEDO team arranged an ICU bed in a hospital when we were struggling to find an ICU
+                                    bed for my Dad, I feel blessed to be a member of VMEDO. God bless them!"
+                                </p>
+                            </div>
+                            <div class="h-20 flex justify-center items-center" style="height: 15%">
+                                <p class="font-medium text-red-900">Ravi</p>
+                            </div>
+                        </div>
+                    </ng-template>
+
+                    <ng-template swiperSlide>
+                        <div class="what-people-say-about-us-card bg-white rounded-lg shadow-md p-2">
+                            <div class="flex justify-center items-center" style="height: 40%">
+                                <img src="assets/img/Prashanth_review.jpeg" alt="Person Image"
+                                    style="border-radius: 50%; height: 100%; width: 63%" />
+                            </div>
+                            <div class="overflow-auto pt-3" style="height: 45%">
+                                <p class="h-full">
+                                    "VMEDO was able to send an Ambulance within 5 min when one of our member met with a
+                                    serious injury. We are happy to be associated with VMEDO as our Emergency response
+                                    partner"
+                                </p>
+                            </div>
+                            <div class="h-20 flex justify-center items-center" style="height: 15%">
+                                <p class="font-medium text-red-900">Prashanth</p>
+                            </div>
+                        </div>
+                    </ng-template>
+
+                </swiper>
+
+            </section>
+
+
+           <!-- Desktop footer section -->
+    <footer class="desktop-footer-section bg-gray-800 text-white py-8 relative bottom-0 left-0 w-full">
+        <div class="container mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- First row - First column (About Company) -->
+            <div>
+              <h3 class="text-lg font-semibold mb-4">About Company</h3>
+  
+              <div style="margin-top: -6%;">
+                <div class="py-2">
+                  <img src="assets/img/logo-white.png" alt="Logo" class="w-36" [routerLink]="'/home'" />
+                </div>
+                <p class="text-sm">
+                  VMEDO is a digital healthcare platform, on a mission to make quality healthcare accessible and affordable to all..
+                </p>
+  
+                <div>
+                  <button>
+                    <p class="hover:text-gray-400 text-red-700 font-medium" [routerLink]="'/info/aboutus'">
+                      Read More..</p>
+                  </button>
+                </div>
+              </div>
+            </div>
+  
+            
+            <!-- First row - Second column (Links) -->
+            <div class="grid grid-rows-7 gap-0">
+              <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/services/emergency-online-doctor-consultation'">
+                    Online Doctor Consultation</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/services/urgent-medical-care-at-home'">
+                    Urgent care at home</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/services/diagnostics-at-home'">
+                    Diagnostics at home</a>
+                </div>
+  
+              </div>
+  
+  
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/services/ambulance-service-india'">
+                    VMEDO Ambulance</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a href="https://store.vmedo.com" class="hover:text-gray-400">
+                    VMEDO Store</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/info/occupational-health-services'">
+                    For Corporates</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a href="https://vmedo.com/first-aid-training/index.html" class="hover:text-gray-400">
+                    First Aid Training</a>
+                </div>
+  
+              </div>
+  
+            </div>
+  
+            <!-- First row - Third column (Links) -->
+            <div class="grid grid-rows-7 gap-0">
+              <h3 class="text-lg font-semibold mb-4">More</h3>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a href="https://vmedo.com/blog" class="hover:text-gray-400">
+                      Blog</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a href="https://academy.vmedo.com" class="hover:text-gray-400">
+                      VMEDO Academy</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a class="hover:text-gray-400" [routerLink]="'/hospitals'">
+                      Emergency Hospital Admission</a> </p>
+                </div>
+  
+              </div>
+  
+              
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a class="hover:text-gray-400" [routerLink]="'/info/aboutus'">
+                      About us</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a href="https://vmedo.com/blog/career-jobs-at-vmedo/" class="hover:text-gray-400">
+                      Career</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a class="hover:text-gray-400" [routerLink]="'/info/partner-with-us'">
+                      Partner with us</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a class="hover:text-gray-400" [routerLink]="'/info/contact-us'">
+                      Contact us</a> </p>
+                </div>
+  
+              </div>
+  
+            </div>
+  
+            <!-- First row - Forth column (Links) -->
+            <div class="grid grid-rows-7 gap-0">
+              <h3 class="text-lg font-semibold">Follow us on</h3>
+              <div class="flex space-x-4">
+                <a href="https://www.facebook.com/vmedohealthcare" class="text-white hover:text-gray-400 text-2xl mr-3"><i
+                    class="fab fa-facebook"></i></a>
+                <a href="https://twitter.com/vmedoapp" class="text-white hover:text-gray-400 text-2xl mr-3"><i
+                    class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/vmedo_healthcare/" class="text-white hover:text-gray-400 text-2xl mr-3"><i
+                    class="fab fa-instagram"></i></a>
+                <a href="https://in.linkedin.com/company/vmedo" class="text-white hover:text-gray-400 text-2xl mr-3"><i
+                    class="fab fa-linkedin"></i></a>
+                <a href="https://www.youtube.com/channel/UClEydLiJCRonhXN7vMf4ikg"
+                  class="text-white hover:text-gray-400 text-2xl mr-3"><i class="fab fa-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+  
+          <div class="flex justify-center mt-8">
+            <div>
+              <h2 class="text-center">"we work to save lives"</h2>
+            </div>
+          </div>
+  
+          <div class="justify-between text-center mt-8 border-t border-gray-700 pt-8">
+            <!-- Second row - First column (Copyright) -->
+            <div>
+              <p>
+                &copy; Copyrights Arera Healthcare and Technologies Pvt Ltd 2024.
+                All rights reserved.
+              </p>
+            </div>
+  
+            <!-- Second row - Second column (Social Media Icons) -->
+            <div class="py-2">
+              <div class="flex flex-row justify-center">
+                <div>
+                  <h3 class="text-sm">
+                    <a href="https://vmedo.com/vmedo-terms.html" class="hover:text-gray-400">
+                      Terms & Conditions</a>
+  
+                  </h3>
+                </div>
+                <div class="px-4">
+                  <h3 class="text-sm">
+                    <a href="https://vmedo.com/vmedo-privacy.html" class="hover:text-gray-400">
+                      Privacy policy</a>
+                  </h3>
+                </div>
+                <div>
+                  <h3 class="text-sm">
+                    <a href="https://vmedo.com/sitemap.xml" class="hover:text-gray-400">
+                      Sitemap</a>
+                  </h3>
+                </div>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+        </div>
+
+    </div>
+</ng-template>

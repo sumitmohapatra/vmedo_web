@@ -1,0 +1,23 @@
+.footer{
+    background: #ce2424;
+    color: #ffffff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+}
+
+.footer .row > div:last-child{
+    display: flex;
+    display: inline-grid;
+    display: -ms-inline-grid;
+    display: -moz-inline-grid;
+    align-items: center;
+    justify-content: right;
+    /* flex-direction: column; */
+}
+
+.footer .row > div:last-child span{
+    color: #eb9b9b;
+}

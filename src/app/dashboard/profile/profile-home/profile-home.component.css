@@ -1,0 +1,481 @@
+.body{
+  height: calc(100% - 115px);
+  overflow: auto;
+}
+
+.navbar a.navbar-brand{
+  color: #ffffff;
+  font-weight: 700;
+  margin-left: 34px;
+}
+
+.premium-text{
+  margin-left: 25%;
+}
+
+.family-package {
+  background: linear-gradient(to bottom, #ffd700, #ffb400);
+  color: rgb(124, 84, 9);
+
+}
+
+.cardsDesign{
+
+  height: 60px;
+  background-color: #ffffff;
+  color: black;
+  border: 2px solid #ffffff;
+  border-radius: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);
+
+}
+ 
+@media screen and (max-width: 767px) and (min-width: 377px)
+{
+
+ 
+
+
+    .premium-text{
+      margin-left: 0%;
+      
+    }
+
+    
+
+    .navbar{
+      background: #ffffff !important;
+  }
+  .navbar-brand{
+      color: #ce2424 !important; margin-bottom: -3px;
+  }
+
+  .profile-body{
+    height: calc(100% - 115px);
+    overflow: auto;
+
+}
+
+  #boxPosition{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 11%;
+  }
+
+
+    .navbar{
+        background: #ffffff !important;
+    }
+    .navbar-brand{
+        color: #ce2424 !important; margin-bottom: -3px;
+    }
+  
+    .widget-menu,
+    .widget-menu > div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 60px;
+        background: #ffffff;
+        font-size: 12px;
+    }
+  
+    .widget-menu > div > svg{
+        height: 20px;
+        width: 20px;
+        fill: #666666;
+        outline: none;
+    }
+  
+    .widget-menu > div:last-child > svg{
+        transform: rotate(-90deg);
+    }
+  
+    .widget-menu > div > svg:hover{
+        fill: #ce2424;
+    }
+
+  }
+
+  @media (min-width: 768px) {
+
+    .text-style{
+      font-weight: 500;
+      font-size: 16px;
+    }
+    
+    .widget-menu,
+    .widget-menu > div{
+        display: none !important;
+    }
+
+    #boxPosition{
+      width: 30%;
+      text-align: center;
+      margin-top: 4%;
+    }
+  }
+
+  @media screen and (max-width: 376px) and (min-width: 280px)
+{
+
+
+
+  .cardsDesign{
+
+    height: 60px;
+    background-color: #ffffff;
+    color: black;
+    border: 2px solid #ffffff;
+    border-radius: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);
+  
+  }
+.date-one{
+  position: relative;
+  left: -40px;
+}
+  
+  .premium-text{
+    margin-left: -10%;
+    margin-top: -75px;
+    /* margin-top: 45%; */
+  }
+
+  .navbar{
+    background: #ffffff !important;
+}
+.navbar-brand{
+    color: #ce2424 !important; margin-bottom: -3px;
+}
+
+.profile-body{
+  height: calc(100% - 115px);
+  overflow: auto;
+
+}
+
+#boxPosition{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 11%;
+}
+
+
+  .navbar{
+      background: #ffffff !important;
+  }
+  .navbar-brand{
+      color: #ce2424 !important; margin-bottom: -3px;
+  }
+
+  .widget-menu,
+  .widget-menu > div{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 60px;
+      background: #ffffff;
+      font-size: 12px;
+  }
+
+  .widget-menu > div > svg{
+      height: 20px;
+      width: 20px;
+      fill: #666666;
+      outline: none;
+  }
+
+  .widget-menu > div:last-child > svg{
+      transform: rotate(-90deg);
+  }
+
+  .widget-menu > div > svg:hover{
+      fill: #ce2424;
+  }
+
+}
+
+.img2{
+  height: 130px;
+  width: 130px;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 5px solid rgb(233,229,229);
+  background-size: cover;
+  background-position: center center;
+  margin-bottom: 10px;
+}
+
+
+a.change-password{
+  /* text-decoration: underline; */
+  color: #ce2424;
+  /* font-size: 12px; */
+  cursor: pointer;
+  border: 1px solid #ce2424;
+  border-radius: 7px;
+  background: #fff;
+  padding: 3px 10px;
+}
+
+a.change-password svg{
+  height: 15px;
+  width: 15px;
+  fill: #ce2424;
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 767px) and (min-width: 370px){
+  .premium{
+    position: relative;
+    top: -50px;
+    left: 25px;
+  
+  }
+  .text-style{
+    font-weight: 500;
+    font-size: 17px;
+    margin-left: 25px;
+  }
+  .imagestyleone{
+    margin-top: 5px;
+    height: 35px;
+    width: 35px;
+  }
+
+  #premium-button-style
+  {
+    margin-top: -14%;
+  }
+  
+  .imagestyleoneone{
+    margin-top: 5px;
+    height: 35px;
+    width: 35px;
+  }
+  .imagestyle{
+    height: 20px;
+    width: 20px;
+    margin-top: 15px;
+  }
+  .premium-name-1{
+    text-align: initial;
+    font-weight: 500;
+  }
+  .premium-icon{
+    height: 30px;
+    width: 30px;
+    margin-top: -18px;
+  }
+  .imagestyletwo{
+    height: 20px;
+    width: 20px;
+    margin-top: -5px;
+  }
+  .upgrade-premium-button{
+    font-size: 17 px;
+    padding: 3%;
+    background: linear-gradient(to bottom, #ffd700, #ffb400);
+    color: rgb(124, 84, 9);
+  }
+  
+}
+
+@media screen and (max-width: 369px) and (min-width: 280px){
+
+
+  .premium{
+    margin-top: 1px;
+    margin-left: 25px;
+  }
+  .imagestyleoneone{
+    margin-top: 5px;
+    height: 40px;
+    width: 40px;
+  }
+
+  #premium-button-style
+  {
+    margin-top: -14%;
+  }
+  
+  .text-style{
+    font-weight: 500;
+    font-size: 12px;
+    margin-left: 30px;
+  }
+  .photo .img2{
+    height: 90px;
+    width: 90px;
+    margin: 0%;
+    padding: 0%;
+  }
+  .img-upload-one{
+    height: 90px;
+    width: 90px;
+    margin: 0%;
+    padding: 0%;
+  }
+  .imagestyleone{
+    height: 40px;
+    width: 40px;
+  }
+  .imagestyle{
+    margin-top: -20px;
+  }
+  .imagestyle{
+    height: 20px;
+    width: 20px;
+   margin-top: 10px;
+  }
+  .premium{
+    margin-top: -10px;
+  }
+  .premium-name-1{
+    text-align: initial;
+    font-weight: 500;
+    font-size: 12px;
+  }
+  .premium-text-one{
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  .premium-icon{
+    height: 30px;
+    width: 30px;
+    margin-top: -10px;
+  }
+  .imagestyletwo{
+    height: 20px;
+    width: 20px;
+    margin-top: -5px;
+  }
+  .upgrade-premium-button{
+    font-size: 15px;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    background: linear-gradient(to bottom, #ffd700, #ffb400);
+    color: rgb(124, 84, 9);
+  }
+  .date{
+    margin-left: 70px;
+  }
+}
+/* 
+.text-style{
+  font-size: 17px;
+} */
+@media screen and (min-width: 767px) {
+
+  #premium-button-style
+  {
+    margin-top: -11%;
+  }
+  .premium-button{
+    color: gold;
+  }
+  .imagestyleone{
+    height: 45px;
+    width: 45px;
+    margin-top: 2px;
+  }
+  .imagestyleoneone{
+    margin-top: 2px;
+    height: 45px;
+    width: 45px;
+  }
+  .cardsDesign{
+
+    height: 70px;
+    background-color: #ffffff;
+    color: black;
+    border: 2px solid #ffffff;
+    border-radius: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);
+  
+  }
+  .imagestyle{
+    height: 20px;
+    width: 20px;
+    margin-top: 15px;
+  }
+  .imagestyletwo{
+    height: 20px;
+    width: 20px;
+    margin-top: -1px;
+  }
+  .premium-name-1{
+    text-align: initial;
+    font-weight: 500;
+  }
+  .premium-icon{
+    height: 30px;
+    width: 30px;
+    margin-top: -12px;
+  }
+  .upgrade-premium-button{
+    font-size: 19px;
+    padding: 3%;
+    background: linear-gradient(to bottom, #ffd700, #ffb400);
+    color: rgb(124, 84, 9);
+  }
+ .premium-text-one{
+  text-wrap: nowrap;
+  margin-left: 55px;
+  margin-top: -5px;
+ }
+ .premium-name{
+  margin-top: -20px;
+ }
+ .premium-icon{
+  margin-top: -43px;
+ }
+ .premium-package{
+  margin-left: 40px;
+  margin-top: -10px;
+ }
+ .date-premium{
+  margin-left: 40px;
+ }
+ .date-premium-one{
+  margin-left: 40px;
+ }
+}
+.highlighted-icon {
+  color: red; /* You can adjust the style as needed */
+}
+
+ .img2{
+  object-fit: fill;
+}
+
+@media screen and (min-width: 767px){
+  .premium-icon{
+    margin-left: -19px;
+    margin-top: -75px;
+  }
+  .premium-name{
+    position: relative;
+    top: -35px;
+    left: -20px;
+  }
+  .date-premium-one{
+    text-wrap: nowrap;
+  }
+}

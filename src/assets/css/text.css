@@ -1,0 +1,42 @@
+
+.text-control{
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+}
+
+.text-control svg{
+    height: 15px !important;
+    width: 15px !important;
+    fill: #ce2424 !important;
+    position: absolute !important;
+    z-index: 1001 !important;
+    margin-left: 10px !important;
+}
+
+.text-control svg:last-child{
+    display: none !important;
+}
+
+.text-control svg.dropdown{
+    right: 10px;
+    cursor: pointer;
+}
+
+.text-control.error svg:last-child{
+    right: 30px !important;
+    cursor: pointer !important;
+    display: block !important;
+}
+
+.text-control input[type=text],
+.text-control input[type=password],
+.text-control textarea{
+    z-index: 1000 !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+    padding-top: 14px !important;
+    color: #ce2424 !important;
+    color: #000000 !important;
+    border-radius: 3px !important;
+}

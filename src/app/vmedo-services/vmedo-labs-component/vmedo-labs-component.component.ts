@@ -1,0 +1,140 @@
+import { DOCUMENT } from '@angular/common';
+import { Component, HostListener, Inject } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
+import { CommonService } from 'src/app/service/common.service';
+
+import SwiperCore, {
+  SwiperOptions,
+  Navigation,
+  Pagination,
+  Scrollbar,
+  Autoplay,
+  EffectFade,
+} from 'swiper';
+
+// install Swiper modules
+SwiperCore.use([Navigation, Pagination, Scrollbar, Autoplay, EffectFade]);
+
+declare var gtag: Function;
+
+@Component({
+  selector: 'app-vmedo-labs-component',
+  templateUrl: './vmedo-labs-component.component.html',
+  styleUrls: ['./vmedo-labs-component.component.css']
+})
+export class VmedoLabsComponentComponent {
+
+  isSideMenuOpen2 = false;
+  isOpen2 = false;
+
+  toggleServices2() {
+    this.isOpen2= !this.isOpen2;
+  }
+
+  selectedTab: number = 1;
+  phone:any;
+
+  
+  selectTab(tabNumber: number): void {
+    this.selectedTab = tabNumber;
+  }
+
+
+  private window: any;
+
+  isSideMenuOpen: boolean = false;
+
+  toggleSideMenu(): void {
+    this.isSideMenuOpen = !this.isSideMenuOpen;
+  }
+
+   //Services popup
+   showPopup: boolean = false;
+
+   togglePopup(): void {
+     this.showPopup = !this.showPopup;
+   }
+
+
+     //mobile widget icons
+  selectedIndex: number = -1; // Initialize selectedIndex to -1, indicating no icon is selected
+
+  selectIcon(index: number) {
+    this.selectedIndex = index; // Set the selectedIndex to the clicked icon index
+  }
+
+  isMobile: boolean = false;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkIfMobile();
+  }
+
+  private checkIfMobile() {
+    this.isMobile = window.innerWidth <= 768; // Adjust as needed
+  }
+
+  vmedo_review_desktop: SwiperOptions = {
+    slidesPerView: 4,
+  };
+
+    /**
+   * CONSTRUCTOR
+   * @param common
+   * @param route
+   * @param app
+   */
+
+    constructor(
+      @Inject(DOCUMENT) private document: Document,
+      public common: CommonService,
+      private router: Router,
+      public app: AppComponent,
+      private titleService: Title,
+      private metaTagService: Meta
+    ) {
+      this.checkIfMobile();
+      this.window = this.document.defaultView;
+      this.common.modal.CloseAllModal();
+  
+      gtag('event', 'page_view', {
+        send_to: 'G-9VRNKZ96W9',
+        page_title: 'Home page',
+        page_location: window.location.href,
+        page_path: window.location.pathname,
+      });
+    }
+
+    ngOnInit(): void {
+
+
+  
+      this.phone=9343180000;
+  
+      this.titleService.setTitle("Medical Emergency Helpline India | 24*7 Doctor, Ambulance and Hospital admission support");
+  
+      this.metaTagService.addTags([
+        { name: 'description', content: 'Contact 24x7 medical emergency helpline india and get hospital admission, ambulance booking and online doctor consultation'
+       },
+       { name: 'author', content: 'Medical Emergency Helpline India | 24*7 Doctor, Ambulance and Hospital admission support'},
+      ]);
+   
+    }
+
+    vmedo_review_mobile: SwiperOptions = {
+      slidesPerView: 1.2,
+      pagination: true
+    };
+
+    other_services_mobile: SwiperOptions = {
+      slidesPerView: 2.4,
+      pagination: false,
+    };
+
+    our_other_services_dektop: SwiperOptions = {
+      slidesPerView: 5,
+      spaceBetween: 14,
+    };
+}

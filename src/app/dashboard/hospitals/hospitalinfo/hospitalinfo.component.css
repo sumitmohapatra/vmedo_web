@@ -1,0 +1,746 @@
+.body{
+    height: calc(100% - 165px);
+    overflow: auto;
+}
+
+.register,
+.register > div{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.register button{
+    background: #ce2424;
+    border: 1px solid #ce2424;
+    color: #ffffff;
+}
+
+.register button:disabled,
+.register button[disabled]{
+    color: #ce2424 !important;
+    background: #ffffff !important;
+}
+
+.register button:last-child{
+    margin-left: 5px;
+}
+ .register button svg{
+    fill: #ffffff;
+    height: 15px;
+    width: 15px;
+}
+.register button:hover svg,
+.register button:disabled svg,
+.register button[disabled] svg{
+   fill: #ce2424;
+}
+.register button:hover{
+    background: #ffffff;
+    color: #ce2424;
+}
+
+.hospitals .row.title{
+    font-size: 20px;
+    margin: 20px 0;
+}
+
+.navbar .back{
+    /* width: 100px; */
+    padding: 2px 5px;
+    margin: 7px 5px 0 0;
+    background: #ffffff;
+    border: 2px solid #af1e1e;
+    float: right;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar .back:hover{
+    border: 2px solid #ffffff;
+    background: #ce2424;
+}
+
+.navbar .back svg{
+    height: 20px;
+    width: 20px;
+    /* position: absolute;
+    right: 60px; */
+    fill: #ce2424;
+    /* fill: rgb(0,0,0,0.5); */
+    /* border: 2px solid rgb(0,0,0,0.5); */
+}
+
+.navbar .back:hover svg{
+    fill: #ffffff;
+}
+
+.hospitals .row.title > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ce2424;
+}
+
+.hospitals .row.title > div > div{
+    /* border: 2px solid #ce2424; */
+    background-color: #ffffff;
+    border-radius: 50px;
+    /* height: 80px;
+    width: 80px; */
+    /* padding: 20px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hospitals .row.title > div > div > svg{
+    height: 40px;
+    width: 40px;
+    fill: #ce2424;
+}
+
+.hospitals .row.controls{
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.hospitals .row.controls > div{    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hospitals .row.controls button{
+    min-width: 80px;
+    border: 1px solid #ce2424;
+    color: #ce2424;
+}
+
+.hospitals .row.controls button{
+    margin-right: 5px;
+}
+
+.hospitals .row.controls button:last-child{
+    margin-right: 0;
+}
+
+.hospitals .row.controls a.register{
+    text-decoration: underline;
+    margin-top: 20px;
+    color: #ce2424;
+    cursor: pointer;
+}
+
+.hospitals .row.controls a.register:hover{
+    color: #e75454;
+}
+
+.hospitals .row.controls button:hover,
+.hospitals .row.controls button:focus,
+.hospitals .row.controls button:active{
+    background: #ce2424;
+    color: #ffffff;
+}
+
+input[type=text],
+input[type=password]{
+   border: none;
+   outline: none;
+   margin: 5px 0;
+   width: 100%;
+   color: #212529;
+   background: #f1f1f1;
+   padding: 10px;
+   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.192);
+   /* transform: translateZ(0);
+   -webkit-transform: translateZ(0);*/
+   z-index: 1; 
+}
+
+input[type=text]:hover,
+input[type=text]:focus,
+input[type=text]:active,
+input[type=password]:hover,
+input[type=password]:focus,
+input[type=password]:active{
+   background: #ececec;
+   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.199);
+}
+
+.hospitals .panel {
+    /* margin: 0; */
+    padding: 10px;
+}
+
+.hospitals .panel .card{
+    background: #ffffff;
+    box-shadow: 0 1px 3px #cccccc;
+    border-radius: 5px;
+    font-size: 13px;
+    padding: 10px;
+    /* min-height: 100px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.hospitals .panel .card > .row{
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.hospitals .panel .card > .row .search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hospitals .panel .card > .row .search button{
+    border: 1px solid #ce2424;
+    color: #ce2424;
+    margin-left: 5px;
+    padding: 8px 13px;
+}
+
+.hospitals .panel .card > .row .search button svg{
+    fill: #ce2424;
+}
+
+.hospitals .panel .card > .row .search button:hover,
+.hospitals .panel .card > .row .search button:focus,
+.hospitals .panel .card > .row .search button:active{
+    background: #ce2424;
+    color: #ffffff;
+}
+
+.hospitals .panel .card > .row .search svg{
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.hospitals .panel .card > .row .search button:hover svg,
+.hospitals .panel .card > .row .search button:focus svg,
+.hospitals .panel .card > .row .search button:active svg{
+    fill: #ffffff;
+}
+
+.hospitals .panel{
+    padding-top: 0;
+}
+
+.hospitals .panel:first-child{
+    padding-top: 10px;
+}
+.hospitals .panel:first-child .card {
+    /* padding: 5px 10px; */
+}
+
+.hospitals .panel:first-child .card > .row{
+    padding-bottom: 0;
+}
+
+.hospitals .panel:first-child .card > .row .search{
+    padding: 0;
+}
+
+.hospitals .details,
+.hospitals .details > .row,
+.hospitals .details > .row > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #212529;
+}
+.hospitals .details > .row{
+    padding-bottom: 0 !important;
+}
+.hospitals .details > .row > div{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.hospitals .details svg{
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    fill: #212529;
+}
+
+.hospitals .details > .row > div:last-child{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 13px;
+}
+
+.hospitals .details > .row > div:last-child >  div{
+    padding: 2px 0;
+}
+
+.hospitals .details > .row > div:last-child .name{
+    font-size: 15px;
+}
+
+.hospitals .details > .row > div:last-child .time,
+.hospitals .details > .row > div:last-child .emergency{
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.hospitals .details > .row > div:last-child .enquiry button{
+    border: 1px solid #ce2424;
+    background: #ce2424;
+    color: #ffffff;
+}
+
+.hospitals .details > .row > div:last-child .enquiry button:last-child{
+    margin-left: 5px;
+}
+
+.hospitals .details > .row > div:last-child .enquiry button:last-child svg{
+    position: relative;
+}
+
+.hospitals .details > .row > div:last-child .enquiry button svg{
+    height: 15px;
+    width: 15px;
+    fill: #ffffff;
+}
+
+.hospitals .details > .row > div:last-child .enquiry button:hover,
+.hospitals .details > .row > div:last-child .enquiry button:focus,
+.hospitals .details > .row > div:last-child .enquiry button:active{
+    color: #ce2424;
+    background: #ffffff;
+}
+
+.hospitals .details > .row > div:last-child .enquiry button:hover svg,
+.hospitals .details > .row > div:last-child .enquiry button:focus svg,
+.hospitals .details > .row > div:last-child .enquiry button:active svg{
+    fill: #ce2424;
+}
+
+.hospitals .info{
+    min-height: auto !important;
+    height: auto !important;
+    align-items: flex-start !important;
+}
+
+
+.hospitals .review > div{
+    border-bottom: 1px solid #dddddd;
+}
+
+.hospitals .review > div:not(:first-child) {
+    margin-top: 10px;
+}
+
+.hospitals .review > div:last-child{
+    border-bottom: none;
+}
+
+.hospitals .review .user-icon{
+    border-radius: 50%;
+    border: 2px solid #aaaaaa;
+    padding: 5px;
+    margin-left: -15px;
+}
+
+.hospitals .review .user-icon svg{
+    height: 20px;
+    width: 20px;
+    fill: #aaaaaa;
+}
+
+.hospitals .review .user-name{
+    font-weight: 600;
+    color: #212529;
+}
+
+.hospitals .review .user-rating{
+    margin-top: -5px;
+    margin-left: -2px;
+}
+
+::ng-deep .hospitals .info .nav-tabs{
+    width: 100%;
+}
+
+.hospitals > div > div.row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-150{
+    top: 135px !important;
+}
+
+
+.star {
+    font-size: 1.5rem;
+    font-size: 40px;
+    color: #b0c4de;
+  }
+  .filled {
+    color: #10a80b;
+  }
+
+  .user-review-edit{
+    height: 15px; 
+    width: 15px; 
+    margin-left: 10px; 
+    margin-top: 2px; 
+    fill: #212529; 
+    cursor: pointer;
+  }
+
+  .user-review{
+    padding: 0px 15px !important;
+  }
+
+  .user-review > div{
+    color: #212529; 
+    text-align: left; 
+    padding: 5px 0px !important; 
+    font-size: 12px;
+  }
+
+  .user-review > div > .review{
+    max-height: 58px; 
+    overflow: hidden;
+  }
+
+  .user-review > div > .review-more{
+    display: flex; 
+    justify-content: flex-end;
+  }
+
+  .user-review > div > .review-more > span{
+    margin-left: 10px; 
+    border: 1px solid rgb(185, 185, 185); 
+    background: #cccccc; 
+    border-radius: 3px; 
+    padding: 0 5px;
+  }
+
+  .user-review > div > .review-more > span:hover{
+      background: #b9b9b9;
+  }
+
+  .admin-review{
+    padding: 0 15px !important;
+  }
+
+  .admin-review > div{
+    color: #212529; 
+    text-align: left; 
+    padding: 10px !important; 
+    border: 1px solid #cccccc; 
+    border-left: 2px solid #cccccc;
+    font-size: 12px;
+    background: #f1f1f1;
+  }
+
+  .admin-review > div h5{
+    font-size: 13px; 
+    font-weight: bold; 
+    display: flex; 
+    align-items: center;
+  }
+
+  .admin-review > div h5 > svg{
+    height: 12px; width: 12px; margin-right: 5px;
+  }
+
+  .admin-review > div > .review{
+    max-height: 58px; 
+    overflow: hidden; 
+  }
+
+  .admin-review > div > .review-more{
+    display: flex; 
+    justify-content: flex-end;
+  }
+
+  .admin-review > div > .review-more > span{
+    margin-left: 10px;
+    border: 1px solid rgb(185, 185, 185); 
+    background: #cccccc; 
+    border-radius: 3px; 
+    padding: 0 5px;
+  }
+
+  .admin-review > div > .review-more > span:hover{
+      background: #b9b9b9;
+  }
+
+
+
+.rating{
+    font-size: 12px;
+}
+
+.rating > label{
+    margin: 0;
+}
+
+.rating > label:first-child{
+    border:1px solid #10a80b;
+    color: #10a80b;
+    padding: 2px 5px;
+    border-radius: 10px;
+    margin-right: 5px;
+    width: 37px;
+    padding: 0px 5px;
+
+}
+
+.rating > label:first-child > svg{
+    height: 12px;
+    width: 12px;
+    fill: #10a80b;
+    margin: 0 5px;
+    margin-top: 2px;
+}
+
+.details1{
+    display: flex;
+}
+
+.details1 svg{
+    height: 12px !important;
+    width: 12px !important;
+    margin-right: 10px;
+}
+
+.details1 span{
+    margin-left: 15px;
+}
+
+.call-now{
+    background: #38d61d !important;
+    border: 1px solid #238112 !important;
+}
+.enquiry-now,
+.call-now,
+.review-now{
+    color: #000000 !important;
+    display: flex;
+}
+.enquiry-now > svg,
+.call-now > svg,
+.review-now > svg{
+    fill: #000000 !important;
+    margin-right: 5px;
+}
+
+
+
+.modal-body{
+    background: #f1f1f1;
+}
+.modal-body .row.title > div > div{
+    border: none !important;
+    box-shadow: 1px 2px 3px #cccccc !important;
+    border-radius: 50px !important;
+}
+.modal-body .card{
+    box-shadow: 1px 2px 3px #cccccc !important;
+    border-radius: 10px;
+}
+
+.modal-body input[type=text],
+.modal-body input[type=password],
+.modal-body textarea{
+    background: #ffffff !important;
+    box-shadow: none !important;
+}
+
+.modal-body .logo label{
+    height: 15px;
+    width: 15px;
+    padding: 5px;
+    margin: 0;
+    box-shadow: 1px 2px 3px #cccccc !important;
+    border-radius: 10px;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.modal-body .logo label > svg{
+    height: 15px;
+    width: 15px;
+    fill: #000000;
+}
+
+@media (max-width: 767px) {
+    .navbar{
+        background: #ffffff !important;
+    }
+    .navbar-brand{
+        color: #ce2424 !important; margin-bottom: -3px;
+    }
+
+    .review .user-icon{
+        margin-left: 5px !important;
+        margin-top: -10px;
+    }
+
+    .review .review-body{
+        margin-left: -10px !important;
+    }
+
+    ngb-carousel .picsum-img-wrapper {
+        position: relative;
+        height: 150px;
+        width: 100%;
+        padding-top: 30%; /* Keep ratio for 900x500 images */
+    }
+
+    ngb-carousel .picsum-img-wrapper > img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: 150px;
+        width: 100%;
+    } 
+
+    .widget-menu,   
+    .widget-menu > div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 60px;
+        background: #ffffff;
+        font-size: 12px;
+    }
+
+    .widget-menu > div > svg{
+        height: 20px;
+        width: 20px;
+        fill: #666666;
+        outline: none;
+    }
+
+    .widget-menu > div:last-child > svg{
+        transform: rotate(-90deg);
+    }
+
+    .widget-menu > div > svg:hover{
+        fill: #ce2424;
+    }
+
+    .footer{
+        display: none !important;
+    }
+  }
+
+  
+@media (min-width: 768px) {
+    .review .user-icon{
+        margin-left: -40px !important;
+        margin-top: -10px;
+    }
+    
+    .review .review-body{
+        margin-left: -55px !important;
+    }
+
+    ngb-carousel .picsum-img-wrapper {
+        position: relative;
+        height: 350px;
+        width: 100%;
+        padding-top: 30%; /* Keep ratio for 900x500 images */
+    }
+
+    ngb-carousel .picsum-img-wrapper > img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: 350px;
+        width: 100%;
+    } 
+    
+    .widget-menu,    
+    .widget-menu > div{
+        display: none !important;
+    }
+
+    .footer{
+        display: flex;
+    }
+}
+
+.svg-disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    fill: #cccccc !important;
+}
+
+.specialization-ul{
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+    align-items: center;
+    justify-content: center;
+    height: 20px;height: 50px;
+    border-bottom: none;
+}
+
+.specialization-li{
+    display: table-cell;
+    border-right: 1px solid #cccccc;
+    text-align: center;
+    /* justify-content: center; */
+    /* align-items: center; */
+    display: flex;
+    height: 17px;
+    padding: 0 5px;
+}
+.specialization-li:last-child{
+    border-right: none;
+}
+
+.specialization{
+    padding: .5rem 10px; 
+    background: none !important; 
+    border: none !important; 
+    font-size: 12px; 
+    text-decoration: underline;
+    color: #333;
+    padding: 2px 5px !important;
+    margin-bottom: 10px;
+    height: 22px;
+    border-radius: 10px;
+    display: table-cell;
+    /* margin-right: 10px; */
+}
+/* .specialization-li:last-child .specialization{
+    margin-right: 0;
+} */
+
+
+.specialization:hover,
+.specialization:focus,
+.specialization:active,
+.selected-specialization{
+    color: #ce2424 !important;
+    border: 1px solid #ce2424 !important;
+    padding: 2px 5px !important;
+    text-decoration: none;
+}

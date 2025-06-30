@@ -1,0 +1,106 @@
+.c-login{
+  
+     /* Green */
+    border-color: #ce2424;
+    color: #ce2424;
+    background-color: #fff176;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    cursor: pointer;
+
+}
+.btn-new {
+  border-color: #ce2424;
+  background-color: #e35c5c;
+  border: none;
+  color: white;
+  padding: 5px 15px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.c-login1{
+  background-color: #8dff76; /* Green */
+    border: none;
+    color: #ce2424;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+}
+
+.register-modal .text-control input[type=text],
+.register-modal .text-control input[type=password]{
+    padding-right: 10px !important;
+    font-size: 12px;
+}
+
+.register-modal .controls button{
+    background: #ce2424 !important;
+    color: #ffffff !important;
+}
+
+
+
+.ngx-toastr,
+.toast-success,
+.toast-error,
+.toast-info,
+.toast-warning,
+::ng-deep .ngx-toastr,
+::ng-deep .toast-success,
+::ng-deep .toast-error,
+::ng-deep .toast-info,
+::ng-deep .toast-warning{
+    font-size: 14px !important;
+    padding: 16px 10px 10px 50px !important;
+}
+
+  .toast-success,
+  ::ng-deep .toast-success {
+    border: 1px solid #51A351 !important;
+    color: #51A351 !important;
+    background-color: #ffffff !important;
+    background-size: 15px 15px;
+    background-image: url(./../assets/icon/svg/checkmark-outline.svg);
+    background-repeat: no-repeat;
+  }
+
+  .toast-error,
+  ::ng-deep .toast-error {
+    border: 1px solid #ce2424 !important;
+    color: #ce2424 !important;
+    background-color: #ffffff !important;
+    background-size: 15px 15px;
+    background-image: url(./../assets/icon/svg/close-outline.svg);
+    background-repeat: no-repeat;
+  }
+
+  .toast-info,
+  ::ng-deep .toast-info {
+    border: 1px solid #2F96B4 !important;
+    color: #2F96B4 !important;
+    background-color: #ffffff !important;
+    background-size: 15px 15px;
+    background-image: url(./../assets/icon/svg/info-outline.svg);
+    background-repeat: no-repeat;
+  }
+
+  .toast-warning,
+  ::ng-deep .toast-warning {
+    border: 1px solid #F89406 !important;
+    color: #F89406 !important;
+    background-color: #ffffff !important;
+    background-size: 15px 15px;
+    background-image: url(./../assets/icon/svg/warning-outline.svg);
+    background-repeat: no-repeat;
+  }
+
+  @media screen and (max-width: 369px) and (min-width: 280px){
+    .c-login{
+      white-space: nowrap;
+    }
+  }

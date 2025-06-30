@@ -1,0 +1,17 @@
+.swiper-button-next,
+.swiper-button-prev {
+  color: rgb(167, 24, 24) !important; /* Apply styles globally */
+  margin: -1%;
+}
+
+.swiper-pagination {
+    color:  rgb(167, 24, 24) !important; /* Change pagination color to red */
+  }
+
+  .swiper-pagination-bullet {
+    background-color: red; /* Change pagination indicator color to red */
+  }
+  
+  .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+    background-color: #a92727;
+}

@@ -1,0 +1,1181 @@
+.body{
+    height: calc(100% - 165px);
+    /* height: calc(100vh - 115px); */
+    overflow: auto;
+
+}
+
+.foot-social{
+  position: relative;
+  left: -130px;
+}
+.register,
+.register > div{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.register button{
+    background: #ce2424;
+    border: 1px solid #ce2424;
+    color: #ffffff;
+}
+.register button:last-child{
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+ .register button svg{
+    fill: #ffffff;
+    height: 15px;
+    width: 15px;
+}
+.register button:hover svg{
+   fill: #ce2424;
+}
+.register button:hover{
+    background: #ffffff;
+    color: #ce2424;
+}
+
+.emergencyid .row.title{
+    font-size: 20px;
+    margin: 20px 0;
+}
+
+.navbar .back{
+    /* width: 100px; */
+    padding: 2px 5px;
+    margin: 7px 5px 0 0;
+    background: #ffffff;
+    border: 2px solid #af1e1e;
+    float: right;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar .back:hover{
+    border: 2px solid #ffffff;
+    background: #ce2424;
+}
+
+.navbar .back svg{
+    height: 20px;
+    width: 20px;
+    /* position: absolute;
+    right: 60px; */
+    fill: #ce2424;
+    /* fill: rgb(0,0,0,0.5); */
+    /* border: 2px solid rgb(0,0,0,0.5); */
+}
+
+.navbar .back:hover svg{
+    fill: #ffffff;
+}
+
+.emergencyid .row.title > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ce2424;
+}
+
+.emergencyid .row.title > div > div{
+    /* border: 2px solid #ce2424; */
+    background-color: #ffffff;
+    border-radius: 50px;
+    /* height: 80px;
+    width: 80px; */
+    /* padding: 20px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.emergencyid .row.title > div > div > svg{
+    height: 40px;
+    width: 40px;
+    fill: #ce2424;
+}
+
+.emergencyid .row.controls{
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.emergencyid .row.controls > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.emergencyid .row.controls button{
+    min-width: 80px;
+    border: 1px solid #ce2424;
+    color: #ce2424;
+}
+
+.emergencyid .row.controls button{
+    margin-right: 5px;
+}
+
+.emergencyid .row.controls button:last-child{
+    margin-right: 0;
+}
+
+.emergencyid .row.controls a.register{
+    text-decoration: underline;
+    margin-top: 20px;
+    color: #ce2424;
+    cursor: pointer;
+}
+
+.emergencyid .row.controls a.register:hover{
+    color: #e75454;
+}
+
+.emergencyid .row.controls button:hover,
+.emergencyid .row.controls button:focus,
+.emergencyid .row.controls button:active{
+    background: #ce2424;
+    color: #ffffff;
+}
+
+input[type=text],
+input[type=password]{
+   border: none;
+   outline: none;
+   margin: 5px 0;
+   width: 100%;
+   color: #000000;
+   background: #f1f1f1;
+   padding: 10px;
+   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.192);
+   /* transform: translateZ(0);
+   -webkit-transform: translateZ(0);*/
+   z-index: 1;
+}
+
+input[type=text]:hover,
+input[type=text]:focus,
+input[type=text]:active,
+input[type=password]:hover,
+input[type=password]:focus,
+input[type=password]:active{
+   background: #ececec;
+   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.199);
+}
+
+.emergencyid .panel {
+    /* margin: 0; */
+    padding: 10px;
+}
+
+.emergencyid .panel .card{
+    background: #ffffff;
+    box-shadow: 0 1px 3px #cccccc;
+    border-radius: 5px;
+    font-size: 13px;
+    padding: 10px;
+    /* min-height: 100px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.emergencyid .panel .card > .row{
+    width: 100%;
+    padding: 10px;
+    padding-bottom: 10px;
+}
+
+.emergencyid .panel .card > .row .search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.emergencyid .panel .card > .row .search button{
+    border: 1px solid #ce2424;
+    color: #ce2424;
+    margin-left: 5px;
+    padding: 8px 13px;
+}
+
+.emergencyid .panel .card > .row .search button svg{
+    fill: #ce2424;
+}
+
+.emergencyid .panel .card > .row .search button:hover,
+.emergencyid .panel .card > .row .search button:focus,
+.emergencyid .panel .card > .row .search button:active{
+    background: #ce2424;
+    color: #ffffff;
+}
+
+.emergencyid .panel .card > .row .search svg{
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.emergencyid .panel .card > .row .search button:hover svg,
+.emergencyid .panel .card > .row .search button:focus svg,
+.emergencyid .panel .card > .row .search button:active svg{
+    fill: #ffffff;
+}
+
+.emergencyid .panel{
+    padding-top: 0;
+}
+
+.emergencyid .panel:first-child{
+    padding-top: 10px;
+}
+.emergencyid .panel:first-child .card {
+    /* padding: 5px 10px; */
+}
+
+.emergencyid .panel:first-child .card > .row{
+    padding-bottom: 0;
+}
+
+.emergencyid .panel:first-child .card > .row .search{
+    padding: 0;
+}
+
+.emergencyid .details,
+.emergencyid .details > .row,
+.emergencyid .details > .row > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+}
+.emergencyid .details > .row{
+    padding-bottom: 0 !important;
+}
+.emergencyid .details > .row > div{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.emergencyid .details svg{
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    fill: #666666;
+}
+
+.emergencyid .details > .row > div:last-child{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 13px;
+}
+
+.emergencyid .details > .row > div:last-child >  div{
+    padding: 2px 0;
+}
+
+.emergencyid .details > .row > div:last-child .name{
+    font-size: 15px;
+}
+
+.emergencyid .details > .row > div:last-child .time,
+.emergencyid .details > .row > div:last-child .emergency{
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.emergencyid .details > .row > div:last-child .enquiry button{
+    border: 1px solid #ce2424;
+    background: #ce2424;
+    color: #ffffff;
+}
+
+.emergencyid .details > .row > div:last-child .enquiry button:last-child{
+    margin-left: 5px;
+}
+
+.emergencyid .details > .row > div:last-child .enquiry button:last-child svg{
+    position: relative;
+}
+
+.emergencyid .details > .row > div:last-child .enquiry button svg{
+    height: 15px;
+    width: 15px;
+    fill: #ffffff;
+}
+
+.emergencyid .details > .row > div:last-child .enquiry button:hover,
+.emergencyid .details > .row > div:last-child .enquiry button:focus,
+.emergencyid .details > .row > div:last-child .enquiry button:active{
+    color: #ce2424;
+    background: #ffffff;
+}
+
+.emergencyid .details > .row > div:last-child .enquiry button:hover svg,
+.emergencyid .details > .row > div:last-child .enquiry button:focus svg,
+.emergencyid .details > .row > div:last-child .enquiry button:active svg{
+    fill: #ce2424;
+}
+
+.emergencyid .info{
+    min-height: auto !important;
+    height: auto !important;
+    align-items: flex-start !important;
+}
+
+::ng-deep .emergencyid .info .nav-tabs{
+    width: 100%;
+}
+
+.create{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0;
+}
+
+.create > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    width: 70px;
+    border: 2px solid #ce2424;
+    border-radius: 50px;
+}
+
+.create > div:last-child{
+    width: 100%;
+    border: none;
+}
+
+.create > div:last-child > input[type=text]{
+    /* width: calc(100% - 155px); */
+    width: calc(100% - 50px);
+    margin-right: 5px;
+}
+
+.create > div:last-child > button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+}
+
+.create > div:last-child button.search2{
+    margin-right: 5px !important;
+    height: 40px;
+    width: 40px;
+}
+
+.create > div:last-child button.add svg{
+    margin-right: 5px !important;
+}
+
+.create > div:last-child > button > svg{
+    margin-right: 0;
+}
+
+.create > div > svg{
+    height: 30px;
+    width: 30px;
+    fill: #ce2424;
+}
+
+.create span{
+    font-size: 15px;
+    color: #ce2424;
+}
+
+.create button{
+    /* position: absolute;
+    right: 0; */
+}
+
+.create button svg{
+    height: 15px;
+    width: 15px;
+    margin-right: 5px;
+    color: #666666;
+}
+
+.create button:hover svg{
+    fill: #ffffff;
+}
+
+.emergencyid .details .row > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.emergencyid .details .row > div:nth-child(2){
+    align-items: flex-start;
+}
+
+.emergencyid .details .row > div:last-child button{
+    color: #ce2424;
+    border-color: #ce2424;
+    width: 115px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.emergencyid .details .row > div:last-child button:last-child{
+    margin-bottom: 0;
+}
+
+.emergencyid .details .row > div:last-child button > div{
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.emergencyid .details .row > div:last-child button:focus,
+.emergencyid .details .row > div:last-child button:hover,
+.emergencyid .details .row > div:last-child button:active{
+    background: #ce2424;
+    color: #ffffff;
+}
+
+.emergencyid .details .row > div:last-child button svg{
+    height: 15px;
+    width: 15px;
+    margin-right: 5px;
+    fill: #ce2424;
+}
+
+.emergencyid .details .row > div:last-child button:focus svg,
+.emergencyid .details .row > div:last-child button:hover svg,
+.emergencyid .details .row > div:last-child button:active svg{
+    fill: #fff;
+}
+.createID{
+    font-size: 14px;
+}
+.createID div p{
+    margin: 5px 0;
+    padding: 5px 10px;
+    border: 1px solid #ce2424;
+    border-radius: 3px;
+    color: #ce2424;
+    color: #ffffff;
+    background: #ce2424;
+}
+.createID div p:focus,
+.createID div p:hover,
+.createID div p:active{
+    color: #ffffff;
+    background: #ce2424;
+}
+
+.createID div.organdonor{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.createID div.organdonor p{
+    margin: 5px 0;
+    padding: 5px 10px;
+    background: #ffffff;
+    border: 1px solid #ce2424;
+    border-radius: 3px;
+    color: #ce2424;
+}
+.createID div.organdonor p:focus,
+.createID div.organdonor p:hover,
+.createID div.organdonor p:active{
+    color: #ce2424;
+    background: #ffffff;
+}
+
+.createID div.organdonor label{
+    margin: 0 0 0 5px;
+}
+
+.createID div.photo{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.createID div.photo > .row{
+    width: 100%;
+}
+
+.createID div.photo > .row div{
+    margin: 10px 0 0 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.createID div.photo .row div > svg{
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+    fill: #ce2424;
+}
+
+.createID div.photo .row div > input[type=file]{
+    display: none;
+}
+
+.createID div.photo .row div > label{
+    margin: 0;
+    padding: 5px 10px;
+    border: 1px solid #ce2424;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #ce2424;
+    width: calc(100% - 60px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.createID div.photo .row div > label:hover,
+.createID div.photo .row div > label:focus,
+.createID div.photo .row div > label:active{
+    color: #ffffff;
+}
+
+.createID div.photo .row div > label > svg{
+    height: 20px;
+    width: 20px;
+}
+
+.createID div.controls{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.createID div.controls button:last-child{
+    margin-left: 5px;
+}
+
+.emergencyid > div > div.row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.error-line, .modal-body span.error-line{
+    top: 30px;
+    right: 5px;
+}
+
+.pos-rel{
+    position: relative;
+}
+.emergencyid .card.details{
+    margin-bottom: 10px;
+}
+
+
+
+
+.emergencyid.photo{
+    margin: 20px 0 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.emergencyid.photo > div{
+    height: 100px;
+    width: 100px;
+    padding: 20px;
+    background: #ffffff;
+    border: 2px solid #ce2424;
+    border-radius: 50px;
+    overflow:hidden;
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.emergencyid.photo > span,
+.emergencyid.photo > span > label{
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.emergencyid.photo > span > label{
+    flex-direction: row;
+    padding: 5px 0;
+}
+
+.emergencyid.photo > span > label:hover,
+.emergencyid.photo > span > label:active,
+.emergencyid.photo > span > label:focus{
+    color: #d45757;
+}
+
+.emergencyid.photo > span > label > svg{
+    height: 15px;
+    width: 15px;
+    fill: #ce2424;
+    margin-right: 10px;
+}
+
+.emergencyid.photo > span > label > span{
+    color: #ce2424;
+}
+
+.emergencyid.photo > div > label{
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.emergencyid.photo > div > label > svg{
+    height: 40px;
+    width: 40px;
+    fill: #ce2424;
+    margin-top: 10px;
+}
+
+.emergencyid.photo > div > label > span{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    overflow: hidden;
+    width: 100px;
+    white-space: nowrap;
+    color: #ce2424;
+}
+
+.emergencyid.photo > div > img.img2{
+    cursor: pointer;
+    height: 96px;
+    width: 96px;
+    border-radius: 50px;
+    position: absolute;
+}
+
+
+#download {
+    display: none;
+  }
+
+  .searchedCard{
+      /* padding: 15px; */
+      /* box-shadow: 0 1px 3px #cccccc; */
+  }
+
+  .searchedCard .img-container .img-wrapper{
+      padding: 5px;
+      height: auto;
+      width: 100%;
+      background: #ececec;
+      border: 1px solid #e0e0e0;
+      border-radius: 5px;
+      min-width: 120px;
+      width: 120px;
+      border-radius: 50%;
+      height: 120px;
+  }
+
+  .searchedCard .img-container{
+    /* padding: 20px 0 !important; */
+    padding: 5px;
+    background: #ffffff;
+    border-radius: 50%;
+    box-shadow: 1px 2px 3px #cccccc;
+  }
+
+  .searchedCard .img-wrapper{
+      padding: 0 !important;
+  }
+
+  .searchedCard .img-container .img-wrapper img{
+    height: auto;
+    width: 100%;
+    max-width: 120px;
+    min-width: 120px;
+    width: 120px;
+    border-radius: 50%;
+    height: 120px;
+  }
+
+  .searchedCard .personal-details{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-items: center;
+      color: #000000;
+      padding: 5px 0 0 0 !important;
+      /* margin-left: 20px; */
+  }
+
+  .searchedCard .personal-details > div{
+    display: flex;
+    align-items: flex-start;
+    justify-items: center;
+    /* padding: 2px; */
+  }
+
+  .searchedCard .personal-details > div:first-child{
+    /* margin-bottom: 10px; */
+  }
+
+  .searchedCard .personal-details .name{
+    font-weight: 600;
+    color: #ce2424;
+    color: #000000;
+    font-size: 15px;
+    /* margin-bottom: 15px; */
+    text-transform: uppercase;
+    /* min-width: 300px; */
+  }
+
+  .searchedCard .title{
+      /* font-weight: 600;
+      color: #ce2424; */
+      color: #000000;
+  }
+
+  .searchedCard .personal-details > div > div{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    min-width: 120px;
+    width: 120px;
+    border-radius: 50%;
+    height: 120px;
+  }
+
+  .searchedCard .personal-details svg{
+      height: 13px;
+      width: 13px;
+      fill: #ce2424;
+      margin-right: 5px;
+      margin-top: 4px;
+  }
+
+
+  .searchedCard .primary-contact{
+    /* border: 2px solid #ce2424; */
+    border-radius: 5px;
+    padding: 10px !important;
+    margin: 25px 0 0 0;
+    max-width: 100%;
+  }
+
+  .searchedCard .secondary-contact{
+      margin-top: 20px;
+  }
+
+  .searchedCard .primary-contact > span{
+    color: #ffffff;
+    /* padding: 0 5px;
+    border: 1px solid #ce2424;
+    background: #ce2424;
+    border-radius: 3px; */
+    color: #ce2424;
+    margin: -25px 0 0 0;
+    position: absolute;text-decoration: underline;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+
+
+
+@media (max-width: 767px) {
+
+    .mobicreateemid{
+        margin-top: 6%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 9%;
+    }
+
+    .mobiaccessemid{
+
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .mobicreateemid2{
+
+        margin-top: 0%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 6%;
+
+    }
+
+    .mobipeoplereview
+    {
+        margin-bottom: 10%;
+    }
+
+
+    .navbar{
+        background: #ffffff !important;
+    }
+    .navbar-brand{
+        color: #ce2424 !important; margin-bottom: -3px;
+    }
+
+    .emergencyid .search button{
+        /* width: 91% !important; */
+        display: none;
+    }
+
+    .emergencyid .search.search-md button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* width: 100% !important; */
+    }
+
+    .widget-menu,
+    .widget-menu > div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 60px;
+        background: #ffffff;
+        font-size: 12px;
+    }
+
+    .widget-menu > div > svg{
+        height: 20px;
+        width: 20px;
+        fill: #666666;
+        outline: none;
+    }
+    .widget-menu>div>div>svg {
+        height: 20px;
+        width: 20px;
+        fill: #666666;
+        outline: none;
+      }
+      .widget-menu{
+
+
+        width: 100%;
+      
+        position: fixed;
+        bottom: 0px;
+        margin: 0%;
+          }
+
+    .widget-menu > div:last-child > svg{
+        transform: rotate(-90deg);
+    }
+
+    .widget-menu > div > svg:hover{
+        fill: #ce2424;
+    }
+
+    .footer{
+        display: none !important;
+    }
+  }
+
+
+@media (min-width: 768px) {
+
+    .emergencyid .search button span{
+        display: none;
+    }
+
+    .emergencyid .search button{
+        margin-right: -50px;
+        display: flex;
+    }
+
+    .emergencyid .search.search-md button{
+        display: none;
+    }
+
+    .emergencyid .search2{
+        position: absolute;
+        right: -10px;
+        height: 55px;
+        width: 55px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: -5px;
+    }
+
+    .widget-menu,
+    .widget-menu > div{
+        display: none !important;
+    }
+
+    .footer{
+        display: flex;
+    }
+
+}
+
+.emergencyid .panel .card{
+    box-shadow: 1px 2px 3px #cccccc !important;
+    border-radius: 10px;
+    border-radius: 5px;
+    padding: 0;
+    margin: 5px 0
+}
+
+.emergencyid .panel .card input[type=text],
+.emergencyid .panel .card input[type=password],
+.emergencyid .panel .card textarea{
+    background: #ffffff !important;
+    box-shadow: none !important;
+}
+
+
+
+.modal-body{
+    background: #f1f1f1;
+}
+.modal-body .row.title > div > div{
+    border: none !important;
+    box-shadow: 1px 2px 3px #cccccc !important;
+    border-radius: 50px !important;
+}
+.modal-body .card{
+    box-shadow: 1px 2px 3px #cccccc !important;
+    border-radius: 10px;
+}
+
+.modal-body input[type=text],
+.modal-body input[type=password],
+.modal-body textarea{
+    background: #ffffff !important;
+    box-shadow: none !important;
+}
+
+.modal-body .logo label{
+    height: 15px;
+    width: 15px;
+    padding: 5px;
+    margin: 0;
+    box-shadow: 1px 2px 3px #cccccc !important;
+    border-radius: 10px;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.modal-body .logo label > svg{
+    height: 15px;
+    width: 15px;
+    fill: #000000;
+}
+
+.call-now{
+    background: #00FF01;
+    padding: 5px 10px;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 12%;
+}
+
+.call-now > svg{
+    height: 15px;
+    width: 15px;
+    fill: #000000;
+}
+
+
+
+
+.create-emid,
+.create-emid:hover,
+.create-emid:active,
+.create-emid:focus{
+    background: #30fb2f !important;
+    /* border: 1px solid green; */
+    color: #000 !important;
+    box-shadow: 1px 2px 3px #ccc !important;
+    width: 280px;
+    border: none !important;
+}
+
+.create-emid > svg{
+    height: 25px !important;
+    width: 25px !important;
+    margin-right: 5px;
+}
+
+#serve{
+
+    background: #fff !important; /* Old browsers */
+    background-image: linear-gradient(to right, #333232, #473131, #592e2e, #6a2a2a, #7a2525, #882222, #951e1e, #a21819, #b11517, #c11113, #d00c0e, #df0606) !important;
+    padding: 15px 0px;
+    }
+
+    .main-footer {
+      background: #1e2127;
+      width: 100%;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      display: block;
+      float: left;
+      border-bottom: 1px solid #181a1f;
+    }
+    .main-footer h4::after {
+      width: 70px;
+      height: 1px;
+      background: #DF0606;
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0px;
+    }
+    .main-footer h4 {
+      color: #fff;
+      font-size: 18px;
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #565d68;
+      font-weight: 400;
+      margin-top: 0px;
+      position: relative;
+      text-align:left;
+    }
+    .mcare-foot-about p {
+      font-size: 14px;
+      padding-top: 25px;
+      line-height: 1.5em;
+      padding-left: 0px !important;
+    }
+    .main-footer p {
+      position: relative;
+      padding-bottom: 10px;
+      padding-left: 35px;
+      font-size: 14px;
+    }
+    .main-footer ul, ol {
+      padding-left: 0px;
+    }
+    .main-footer .about-vmedo {
+      color: #fff;
+      text-align: justify;
+      margin-top: -1em;
+    }
+    .main-footer ul li {
+      list-style-type: none;
+      text-align: left;
+    }
+    .main-footer ul.lst li a {
+      padding: 5px;
+      text-decoration: none;
+    }
+    .main-footer ul.lst li a, ul.lst li a i {
+      color: #ececec;
+    }
+    .main-footer i.fa.fa-chevron-right {
+      color: red;
+      padding: 10px;
+    }
+    .main-footer a.follow-us-text {
+      color: white;
+    }
+    .main-footer .follow-us {
+      margin-top: 0px;
+      text-align:left;
+    }
+    .main-footer .foot-social {
+      list-style-type: none;
+      text-align: left;
+      padding-top: 1em;
+      margin-left: 35%;
+    }
+    .main-footer .foot-social li {
+      display: inline-block;
+    }
+    .main-footer .foot-social li a {
+      color: white;
+      font-size: 18px;
+      padding: 0 8px;
+      transition: .3s;
+    }
+    .know {
+      background: #424853;
+      border: none;
+      box-shadow: none;
+      border-radius: 3px;
+      color: #fff;
+      font-size: 13px;
+      padding: 9px 9px;
+      float: left;
+      outline: none;
+      transition: .5s;
+      text-align: center;
+    }
+    .know:hover {
+      background: #DF0606;
+      color: #fff;
+      transition: .5s;
+      text-decoration: none;
+    }
+    .main-footer ul.lst li a {
+      padding: 5px;
+      text-decoration: none;
+    }
+    .main-footer ul.lst li a, ul.lst li a i {
+      color: #ececec;
+    }
+    .main-footer a.follow-us-text {
+      color: white;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1190px){
+    .main-footer i.fa.fa-chevron-right {
+      color: red;
+      padding: 4px;
+      font-size: 13px;
+    }
+    .main-footer ul.lst li a {
+      padding: 0px;
+      text-decoration: none;
+      font-size: 14px;
+
+    }
+    .main-footer ul.lst li a {
+      padding: 0px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+  }
+

@@ -1,0 +1,260 @@
+<div class="container-fluid" style="height: calc(100% + 5px);">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-lg-12" id="navigation">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand">
+            <svg class="logo logo-md" style="height: 20px; width: 100px;">
+              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo"></use>
+            </svg>
+            <svg [routerLink]="'/home'" class="logo logo-sm" style="height: 30px; width: 100px;">
+              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo-white"></use>
+            </svg>
+          </a>
+          <div *ngIf="common.auth_token !== undefined && common.auth_token !== null"
+            class="profile-icon back pull-right btn btn-sm btn-outline-secondary" [routerLink]="'/dashboard/profile/1'"
+            placement="bottom" ngbTooltip="Profile" style="margin-right: 40px;">
+            <svg class="">
+              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user-solid-circle"></use>
+            </svg>
+          </div>
+          <div class="back pull-right btn btn-sm btn-outline-secondary" [routerLink]="'/home'" placement="bottom"
+            ngbTooltip="Back">
+            <svg class="">
+              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-back"></use>
+            </svg>
+          </div>
+        </nav>
+      </div>
+    </div>
+  
+  
+    <div class=" profile-body">
+  
+  
+      <div class="container" id="boxPosition">
+  
+        
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 photo" style="margin-top: -20px;">
+            <div>
+              <img [src]="profileImage[0].src" [alt]="profileImage[0].caption" class="img2" for="img-upload"
+                *ngIf="profileImage.length > 0 && profileImage[0].src !== undefined" [routerLink]="'/dashboard/profile/1'">
+              <label class="img-upload" *ngIf="profileImage.length === 0">
+                <svg>
+                  <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-profile">
+                  </use>
+                </svg>
+              </label>
+            </div>
+            
+          
+           
+          </div>
+        </div>
+        <div class="mt-2" style="text-align: center;">
+          <h5 style="font-weight: 600;">{{txtName}}</h5>
+        </div>
+        
+        <div  class="premium-button" style="display: flex;text-align: center;justify-content: center;">
+          <div style="color: black;" type="button">Card Type - Corporate</div>
+         
+        </div>
+        
+  
+  
+  
+        <div class="mt-3">
+      
+  
+          <mat-card class="cardsDesign" [routerLink]="'/dashboard/corporate/1'">
+  
+            <div class="row" style="width: 100%;">
+
+              <div class="col-2">
+                <img class="imagestyleone" src="assets\Profile-home\user-profile.png" 
+                  onerror="" alt="User Image">
+              </div>
+  
+              <div class="col-8 mt-2" style="display: flex; align-items:center;justify-content: center;text-align: center;">
+  
+                <mat-card-content> <span class="text-style"> My profile </span></mat-card-content>
+  
+              </div>
+  
+              <div class="col-2">
+                <img class="imagestyle" src="assets\new-home\skip-track.png" 
+                  onerror="" alt="User Image">
+              </div>
+  
+  
+            </div>
+  
+          </mat-card>
+  
+        </div>
+  
+        <div class="mt-4">
+  
+  
+          <mat-card class="cardsDesign" [routerLink]="'/dashboard/corporate/2'">
+  
+            <div class="row" style="width: 100%;">
+
+              <div class="col-2">
+                <img class="imagestyleoneone" src="assets\Profile-home\emergency-card.png" 
+                  onerror="" alt="User Image">
+              </div>
+  
+              <div class="col-8" style="display: flex; align-items:center;justify-content: center;text-align: center;margin-top: 10px;">
+  
+                <mat-card-content> <span class="text-style" style="text-wrap: nowrap;">Emergency cards </span>
+                </mat-card-content>
+  
+              </div>
+  
+              <div class="col-2">
+                <img class="imagestyle" src="assets\new-home\skip-track.png" 
+                  onerror="" alt="User Image">
+              </div>
+  
+  
+            </div>
+  
+          </mat-card>
+  
+        </div>
+  
+        <div class="mt-4">
+  
+          <mat-card class="cardsDesign" [routerLink]="'/dashboard/corporate/3'">
+  
+            <div class="row" style="width: 100%;">
+
+              <div class="col-2">
+                <img class="imagestyleone" src="assets\Profile-home\blood-donation.png"
+                   onerror="" alt="User Image">
+              </div>
+  
+              <div class="col-8" style="display: flex; align-items:center;justify-content: center;text-align: center;margin-top: 10px;">
+  
+                <mat-card-content> <span class="text-style">Blood donations</span>
+                </mat-card-content>
+  
+              </div>
+              <div class="col-2">
+                <img class="imagestyle" src="assets\new-home\skip-track.png" 
+                  onerror="" alt="User Image">
+              </div>
+  
+            </div>
+  
+          </mat-card>
+  
+        </div>
+  
+  
+  
+  
+  
+  
+      </div>
+  
+      <div class="mt-2 col-md-12 col-sm-12 ml-2">
+  
+        <div *ngIf="txtisPaidMember" style="margin-top: 2rem;">
+  
+          <div class="row premium-text">
+  
+            <div class="row premium">
+  
+              <div class="col-3 premium-icon" style="text-align: right;padding: 0px;">
+                <img class="imagestyle" routerLink="" routerLinkActive="active" src="assets\images\new_images\premium.png"
+                  style="height: 30px;width: 30px;" onerror="" alt="User Image">
+              </div>
+  
+              <div class="col premium-name">
+  
+                <div class="row premium-name">
+  
+                  <h6 style="text-align: initial;font-weight: 500;text-wrap: nowrap;margin-top: -5px;">PREMIUM MEMBER</h6>
+                </div>
+                
+              
+  
+              </div>
+  
+  
+  
+  
+            </div>
+  
+  
+  
+          </div>
+  
+        </div>
+  
+      </div>
+    </div>
+  
+  
+  
+    <div class="row widget-menu">
+      <div class="col-4 col-md-4 col-sm-4 col-lg-4"
+      [ngClass]="{ 'highlighted-icon': isCurrentRoute('/dashboard/corporate') }">
+
+        
+        <svg [routerLink]="getDashboardLink()" >
+          <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-user-1"></use>
+        </svg>
+        <div [routerLink]="getDashboardLink()">
+          {{ common.auth_token ? 'Profile' : 'Login' }}
+        </div>
+  
+      </div>
+      <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+        <svg [routerLink]="'/home'">
+          <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-home"></use>
+        </svg>
+        Home
+      </div>
+      <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+        <svg [routerLink]="'/services/more'">
+          <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-navigation-more"></use>
+        </svg>
+        More
+      </div>
+    </div>
+  
+  
+  
+  
+    <ng-template #premiumFeatures let-modal>
+      <div class="modal-body" style="max-height: calc(100vh - 15px); overflow: auto; font-size: 12px;">
+        <div class="row logo">
+          <!-- <span>VMEDO</span> -->
+          <label (click)="modal.close('Cancel');">
+            <svg>
+              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-cross"></use>
+            </svg>
+          </label>
+        </div>
+        <div class="row title">
+          <div class="col-12 col-sm-12 col-md-12 col-xl-12" style="font-size: 14px;">
+  
+            <span class="mb-2">Premium Benefits</span>
+  
+            <div style="padding: 0px;">
+  
+              <img src="assets\images\new_images\Subscription Plans 2.png" style="width: 100%;" loading="lazy" alt=""
+                class="image">
+  
+            </div>
+  
+          </div>
+        </div>
+  
+      </div>
+    </ng-template>
+  
+  </div>

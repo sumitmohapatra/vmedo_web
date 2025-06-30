@@ -1,0 +1,550 @@
+.body{
+    height: calc(100% - 115px);
+    overflow: auto;
+}
+
+.register,
+.register > div{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.register button{
+    background: #ce2424;
+    border: 1px solid #ce2424;
+    color: #ffffff;
+}
+.register button:last-child{
+    margin-left: 5px;
+}
+ .register button svg{
+    fill: #ffffff;
+    height: 15px;
+    width: 15px;
+}
+.register button:hover svg{
+   fill: #ce2424;
+}
+.register button:hover{
+    background: #ffffff;
+    color: #ce2424;
+}
+.register-hospital .create{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0;
+}
+
+.register-hospital .create > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    width: 70px;
+    border: 2px solid #ce2424;
+    border-radius: 50px;
+}
+
+.register-hospital .create > div:last-child{
+    width: 100%;
+    border: none;
+}
+
+.register-hospital .create > div:last-child > input[type=text]{
+    width: calc(100% - 155px);
+    margin-right: 5px;
+}
+
+.register-hospital .create > div:last-child > button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+}
+
+.register-hospital .create > div:last-child button.search2{
+    margin-right: 5px !important;    
+    height: 40px;
+    width: 40px;
+}
+
+.register-hospital .create > div:last-child button.add svg{
+    margin-right: 5px !important;  
+}
+
+.register-hospital .create > div:last-child > button > svg{
+    margin-right: 0;
+}
+
+.register-hospital .create > div > svg{
+    height: 30px;
+    width: 30px;
+    fill: #ce2424;
+}
+
+.register-hospital .create span{
+    font-size: 15px;
+    color: #ce2424;
+    margin: 10px 0;
+}
+
+.register-hospital .row.title{
+    font-size: 20px;
+    margin: 20px 0;
+}
+
+.register-hospital .row.title > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ce2424;
+}
+
+.register-hospital .row.title > div > div{
+    /* border: 2px solid #ce2424; */
+    background-color: #ffffff;
+    border-radius: 50px;
+    /* height: 80px;
+    width: 80px; */
+    /* padding: 20px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-hospital .row.title > div > div > svg{
+    height: 40px;
+    width: 40px;
+    fill: #ce2424;
+}
+
+.register-hospital .row.controls{
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.register-hospital .row.controls > div{    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-hospital .row.controls button{
+    min-width: 80px;
+    border: 1px solid #ce2424;
+    color: #ce2424;
+}
+
+.register-hospital .row.controls button{
+    margin-right: 5px;
+}
+
+.register-hospital .row.controls button:disabled,
+.register-hospital .row.controls button[disabled]{
+    color: #ce2424 !important;
+    background: #ffffff !important;
+}
+
+.register-hospital .row.controls button:last-child{
+    margin-right: 0;
+}
+
+.register-hospital .row.controls a.register{
+    text-decoration: underline;
+    margin-top: 20px;
+    color: #ce2424;
+    cursor: pointer;
+}
+
+.register-hospital .row.controls a.register:hover{
+    color: #e75454;
+}
+
+.register-hospital .row.controls button:hover,
+.register-hospital .row.controls button:focus,
+.register-hospital .row.controls button:active{
+    background: #ce2424;
+    color: #ffffff;
+}
+
+input[type=text],
+input[type=password]{
+   border: none;
+   outline: none;
+   margin: 5px 0;
+   width: 100%;
+   color: #666666;
+   background: #f1f1f1;
+   padding: 10px;
+   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.192);
+   /* transform: translateZ(0);
+   -webkit-transform: translateZ(0);*/
+   z-index: 1; 
+}
+
+input[type=text]:hover,
+input[type=text]:focus,
+input[type=text]:active,
+input[type=password]:hover,
+input[type=password]:focus,
+input[type=password]:active{
+   background: #ececec;
+   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.199);
+}
+
+.register-hospital .panel {
+    /* margin: 0; */
+    padding: 10px;
+}
+
+.register-hospital .panel .card{
+    background: #ffffff;
+    box-shadow: 0 1px 3px #cccccc;
+    border-radius: 5px;
+    font-size: 13px;
+    padding: 10px;
+    /* min-height: 100px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.register-hospital .panel .card > .row{
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.register-hospital .panel .card > .row .search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-hospital .panel .card > .row .search button{
+    border: 1px solid #ce2424;
+    color: #ce2424;
+    margin-left: 5px;
+    padding: 8px 13px;
+}
+
+.register-hospital .panel .card > .row .search button svg{
+    fill: #ce2424;
+}
+
+.register-hospital .panel .card > .row .search button:hover,
+.register-hospital .panel .card > .row .search button:focus,
+.register-hospital .panel .card > .row .search button:active{
+    background: #ce2424;
+    color: #ffffff;
+}
+
+.register-hospital .panel .card > .row .search svg{
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.register-hospital .panel .card > .row .search button:hover svg,
+.register-hospital .panel .card > .row .search button:focus svg,
+.register-hospital .panel .card > .row .search button:active svg{
+    fill: #ffffff;
+}
+
+.register-hospital div.photo{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-hospital div.photo > div.row{
+    width: 100%;
+}
+
+.register-hospital div.photo > div.row svg{
+    height: 58px;
+    width: 58px;
+    margin-right: 10px;
+    fill: #ce2424;
+}
+
+.register-hospital div.photo > div.row img{
+    height: 58px;
+    width: 58px;
+    padding: 2px;
+    margin-right: 10px;
+    border: 3px solid #ce2424;
+    border-radius: 5px;
+}
+
+.register-hospital div.photo > div.row img.img2{
+    height: 52px;
+    width: 63px;
+    margin-bottom: 7px;
+    cursor: pointer;
+}
+
+.register-hospital div.photo > div.row label{
+    margin: 5px 0;
+}
+
+.register-hospital div.photo > div.row input[type=file]{
+    display: none;
+}
+
+.register-hospital div.photo > div.row label.rd-button{
+    margin: 0;
+    padding: 5px 10px;
+    border: 1px solid #ce2424;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #ce2424;
+    width: calc(100% - 60px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.register-hospital div.photo > div.row label.rd-button.img-upload{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto !important;
+}
+
+.register-hospital div.photo > div.row label.rd-button.img-upload > svg{
+    margin: 0;
+}
+
+.register-hospital div.photo > div.row label.rd-button:hover,
+.register-hospital div.photo > div.row label.rd-button:focus,
+.register-hospital div.photo > div.row label.rd-button:active{
+    color: #ffffff;
+}
+
+.register-hospital div.photo > div.row label.rd-button > svg{
+    height: 20px;
+    width: 20px;
+}
+
+.register-hospital div.photo > div.row label.rd-button:hover > svg,
+.register-hospital div.photo > div.row label.rd-button:focus > svg,
+.register-hospital div.photo > div.row label.rd-button:active > svg{
+    fill: #ffffff;
+}
+
+.register-hospital .panel{
+    padding-top: 0;
+}
+
+.register-hospital .panel:first-child{
+    padding-top: 10px;
+}
+.register-hospital .panel:first-child .card {
+    /* padding: 5px 10px; */
+}
+
+.register-hospital .panel:first-child .card > .row{
+    padding-bottom: 0;
+}
+.padding-top-0{
+    padding-top: 0 !important;
+}
+
+.register-hospital .panel:first-child .card > .row .search{
+    padding: 0 10px;
+}
+
+.register-hospital .panel:first-child .card > .row .search:last-child{
+    padding-top: 0 !important;
+}
+
+.register-hospital .card{
+    /* padding-bottom: 20px !important; */
+    /* padding-left: 10px !important; */
+    margin: 5px 0 !important;
+}
+
+.register-hospital .card > .row{
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-hospital .card > .row > div{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.register-hospital .card > .row > div.head{
+    font-size: 17px;
+    color: #ce2424;
+}
+
+.register-hospital .card > .row > div.head > svg{
+    height: 15px;
+    width: 15px;
+    margin-right: 5px;
+    fill: #ce2424;
+}
+
+.register-hospital .card .contact > div:last-child button{
+    border-color: #ce2424;
+    background: #ce2424;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    /* width: 100%; */
+}
+
+.register-hospital .card .contact > div:last-child button:hover,
+.register-hospital .card .contact > div:last-child button:focus,
+.register-hospital .card .contact > div:last-child button:active{
+    background: #ffffff;
+    color: #ce2424;
+}
+
+.register-hospital .card .contact > div:last-child button svg{
+    height: 15px;
+    width: 15px;
+    /* margin-right: 5px; */
+    fill: #ffffff;
+}
+
+.register-hospital .card .contact > div:last-child button:hover svg,
+.register-hospital .card .contact > div:last-child button:focus svg,
+.register-hospital .card .contact > div:last-child button:active svg{
+    fill: #ce2424;
+}
+
+.register-hospital > div > div.row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.register-hospital input[type=checkbox].agree + div:before{
+    color: #ce2424 !important;
+    border: 2px solid #ce2424 !important;
+}
+
+
+.register-hospital input[type=checkbox].agree:checked + div:before{
+    background: #ce2424 !important;
+}
+
+.text-control svg:last-child{
+    right: 10px !important;
+}
+
+@media (max-width: 767px) {
+
+
+    .navbar{
+        background: #ffffff !important;
+    }
+    .navbar-brand{
+        color: #ce2424 !important; margin-bottom: -3px;
+    }
+    
+    .widget-menu,   
+    .widget-menu > div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 60px;
+        background: #ffffff;
+        font-size: 12px;
+    }
+
+    .widget-menu > div > svg{
+        height: 20px;
+        width: 20px;
+        fill: #666666;
+        outline: none;
+    }
+
+    .widget-menu > div:last-child > svg{
+        transform: rotate(-90deg);
+    }
+
+    .widget-menu > div > svg:hover{
+        fill: #ce2424;
+    }
+
+    .footer{
+        display: none !important;
+    }
+  }
+
+  
+@media (min-width: 768px) {
+    
+    .widget-menu,    
+    .widget-menu > div{
+        display: none !important;
+    }
+
+    .footer{
+        display: flex;
+    }
+}
+
+
+
+.text-control{
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+}
+
+.text-control svg{
+    height: 15px !important;
+    width: 15px !important;
+    fill: #ce2424 !important;
+    position: absolute !important;
+    z-index: 1001 !important;
+    margin-left: 10px !important;
+}
+
+.text-control svg:last-child{
+    display: none !important;
+}
+
+.text-control svg.dropdown{
+    right: 10px;
+    cursor: pointer;
+}
+
+.text-control.error svg:last-child{
+    right: 30px !important;
+    cursor: pointer !important;
+    display: block !important;
+}
+
+.text-control input[type=text],
+.text-control input[type=password],
+.text-control textarea{
+    z-index: 1000 !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+    padding-top: 14px !important;
+    color: #ce2424 !important;
+    color: #000000 !important;
+    border-radius: 3px !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+}

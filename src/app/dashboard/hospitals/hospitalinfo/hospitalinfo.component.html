@@ -1,0 +1,476 @@
+<div class="container-fluid" style="height: calc(100% + 5px);">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-lg-12" id="navigation">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand">
+                    <svg class="logo logo-md">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo"></use>
+                    </svg>
+                    <svg [routerLink]="'/home'" class="logo logo-sm">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo-white"></use>
+                    </svg>
+                </a>
+                <div *ngIf="common.auth_token !== undefined && common.auth_token !== null"
+                    class="back pull-right btn btn-sm btn-outline-secondary profile-icon"
+                    [routerLink]="'/dashboard/profile/1'" placement="bottom" ngbTooltip="Profile"
+                    style="margin-right: 40px;">
+                    <svg class="">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user-solid-circle"></use>
+                    </svg>
+                </div>
+                <div class="back pull-right btn btn-sm btn-outline-secondary" [routerLink]="'/dashboard/hospitals'"
+                    placement="bottom" ngbTooltip="Back">
+                    <svg class="">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-back"></use>
+                    </svg>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="row body hospitals">
+        <ng-container *ngIf="!isLoading; else elseTemplate">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12" *ngIf="entity">
+                <div class="row panel">
+                    <div class="col-12 col-sm-6 col-md-6 col-xl-6 card">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-lg-12 img-carousel" id="carousel">
+                                <img src="./../../../../assets/img/no-image.jpg" style="height: 200px; width: 100%;"
+                                    *ngIf="bannerImages.length === 0">
+                                <ngb-carousel #carousel [interval]="5000" [pauseOnHover]="pauseOnHover"
+                                    [pauseOnFocus]="pauseOnFocus" (slide)="OnSlide($event)"
+                                    *ngIf="bannerImages.length > 0">
+                                    <ng-template ngbSlide *ngFor="let img of bannerImages; index as i">
+                                        <!-- <div class="carousel-caption">
+                                                <h3>My slide {{i + 1}} title</h3>
+                                            </div> -->
+                                        <a rel="nofollow noopener noreferrer">
+                                            <div class="picsum-img-wrapper">
+                                                <img [src]="img" alt="My image {{i + 1}} description">
+                                            </div>
+                                        </a>
+                                    </ng-template>
+                                </ngb-carousel>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row panel">
+                    <div class="col-12 col-sm-6 col-md-6 col-xl-6 card details">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-xl-12"
+                                style="align-items: flex-start !important; justify-content: flex-start !important;">
+                                <b>{{entity.hospitalName}}</b>
+                            </div>
+                            <div class="col-3 col-sm-3 col-md-3 col-xl-3 no-padding align-v-center align-h-right user-rating rating"
+                                style="align-items: flex-end !important; justify-content: flex-end !important;
+                                    position: absolute; right: 10px; top: 10px;">
+                                <!-- <ngb-rating [(rate)]="hospitalRating" [max]="5" [readonly]="true">
+                                        <ng-template let-fill="fill" let-index="index">
+                                          <span class="star" style="font-size: 20px;" [class.filled]="fill === 100">&#9733;</span>
+                                        </ng-template>
+                                    </ngb-rating> -->
+
+                                <label style="height: 19px; margin-right: 15px;">
+                                    {{entity.hRating}}
+                                    <svg>
+                                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-star"></use>
+                                    </svg>
+                                </label>
+                                <label style="font-size: 10px; margin-top: 2px; text-align: center;">Avg
+                                    rating<br>({{entity.ratingcount}} reviews)</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-xl-12 details1">
+                                <svg>
+                                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-location"></use>
+                                </svg>
+                                <span>{{entity.hAddress}}, {{entity.hPincode}} </span>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-xl-12 details1">
+                                <svg>
+                                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-check"></use>
+                                </svg>
+                                <span>{{entity.emergencyHandelStatus === true ? 'Currently Accepting Emergencies' :
+                                    'Currently Not Accepting Emergencies'}} </span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row panel">
+                    <div class="col-12 col-sm-6 col-md-6 col-xl-6 info no-padding">
+                        <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs specialization-ul">
+                            <li [ngbNavItem]="1" class="specialization-li">
+                                <a ngbNavLink *ngIf="entity.bedlist && entity.bedlist.length === 0"
+                                    style="padding: .5rem 10px;" class="specialization"
+                                    [ngClass]="{'selected-specialization': active === 1}">Emergency Handled</a>
+                                <a ngbNavLink *ngIf="entity.bedlist && entity.bedlist.length > 0"
+                                    style="padding: .5rem 10px;" class="specialization"
+                                    [ngClass]="{'selected-specialization': active === 1}">Emergency</a>
+                                <ng-template ngbNavContent>
+                                    <ol style="padding: 0; padding-left: 15px;">
+                                        <li *ngFor="let item of entity3">{{item.eName}}</li>
+                                    </ol>
+                                </ng-template>
+                            </li>
+                            <li [ngbNavItem]="2" class="specialization-li">
+                                <a ngbNavLink style="padding: .5rem 10px;" class="specialization"
+                                    [ngClass]="{'selected-specialization': active === 2}">Specializations</a>
+                                <ng-template ngbNavContent>
+                                    <ol style="padding: 0; padding-left: 15px;">
+                                        <li *ngFor="let item of entity2">{{item.eName}}</li>
+                                    </ol>
+                                </ng-template>
+                            </li>
+                            <li [ngbNavItem]="3" *ngIf="entity.bedlist && entity.bedlist.length > 0"
+                                class="specialization-li">
+                                <a ngbNavLink style="padding: .5rem 10px;" class="specialization"
+                                    [ngClass]="{'selected-specialization': active === 3}">Beds</a>
+                                <ng-template ngbNavContent>
+                                    <ol style="padding: 0; padding-left: 15px;">
+                                        <li *ngFor="let item of entity.bedlist">{{item.bedType}} -
+                                            ({{item.bedAvalibale}} beds available out of {{item.totalBedAvalibale}}
+                                            beds)</li>
+                                    </ol>
+                                </ng-template>
+                            </li>
+                            <li [ngbNavItem]="4" *ngIf="hospitalReviews && hospitalReviews.length > 0"
+                                class="specialization-li">
+                                <a ngbNavLink style="padding: .5rem 10px;" class="specialization"
+                                    [ngClass]="{'selected-specialization': active === 4}">Ratings</a>
+                                <ng-template ngbNavContent>
+                                    <div class="col-12 col-sm-12 col-md-12 col-xl-12 review">
+                                        <div class="row no-padding" *ngFor="let hospitalReview of hospitalReviews">
+                                            <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding">
+                                                <div class="row">
+                                                    <div
+                                                        class="col-2 col-sm-2 col-md-2 col-xl-2 align-center no-padding">
+                                                        <div class="user-icon">
+                                                            <svg>
+                                                                <use
+                                                                    xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user">
+                                                                </use>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="col-6 col-sm-6 col-md-6 col-xl-6 align-v-center align-h-left">
+                                                        <div class="row review-body" style="margin-left: -50px;">
+                                                            <div
+                                                                class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding align-v-center align-h-left user-name">
+                                                                {{hospitalReview.username}}</div>
+                                                            <div
+                                                                class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding align-v-center align-h-left user-rating">
+                                                                <ngb-rating [(rate)]="hospitalReview.hRating" [max]="5"
+                                                                    [readonly]="true">
+                                                                    <ng-template let-fill="fill" let-index="index">
+                                                                        <span class="star" style="font-size: 20px;"
+                                                                            [class.filled]="fill === 100">&#9733;</span>
+                                                                    </ng-template>
+                                                                </ngb-rating>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-4 col-sm-4 col-md-4 col-xl-4 align-v-bottom align-h-right"
+                                                        style="padding-left: 0;">
+                                                        {{hospitalReview.review_dt === 1 ? 'Today' :
+                                                        (hospitalReview.review_dt - 1)+' days ago'}}
+                                                        <!-- [class.svg-disabled]="!this.common.userInfo || this.common.userInfo.uname !== hospitalReview.username" -->
+                                                        <svg (click)="OnEditReview(hospitalReview, hospitalReview.username)"
+                                                            class="user-review-edit" *ngIf="!this.common.userInfo">
+                                                            <use
+                                                                xlink:href="./assets/icon/svg/symbol-defs.svg#icon-pencil">
+                                                            </use>
+                                                            <title>Edit</title>
+                                                        </svg>
+                                                        <svg (click)="OnEditReview(hospitalReview, hospitalReview.username)"
+                                                            class="user-review-edit"
+                                                            *ngIf="this.common.userInfo && this.common.userInfo.uname === hospitalReview.username">
+                                                            <use
+                                                                xlink:href="./assets/icon/svg/symbol-defs.svg#icon-pencil">
+                                                            </use>
+                                                            <title>Edit</title>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-12 col-md-12 col-xl-12 user-review">
+                                                        <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                                                            <div class="review" id="{{hospitalReview.id}}">
+                                                                {{hospitalReview.dReview}}
+                                                            </div>
+                                                            <div class="review-more"
+                                                                *ngIf="IsHavingMoreLines(hospitalReview.id)">
+                                                                <span (click)="OnClickViewMore(hospitalReview.id)">More
+                                                                    ...</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row" *ngIf="hospitalReview.hReplay">
+                                                    <div class="col-12 col-sm-12 col-md-12 col-xl-12 admin-review">
+                                                        <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                                                            <div>
+                                                                <h5>
+                                                                    <svg>
+                                                                        <use
+                                                                            xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user-tie">
+                                                                        </use>
+                                                                    </svg>
+                                                                    Response from admin
+                                                                </h5>
+                                                            </div>
+                                                            <div class="review" id="R{{hospitalReview.id}}">
+                                                                {{hospitalReview.hReplay}}
+                                                            </div>
+                                                            <div class="review-more"
+                                                                *ngIf="IsHavingMoreLines('R'+hospitalReview.id)">
+                                                                <span
+                                                                    (click)="OnClickViewMore('R'+hospitalReview.id)">More
+                                                                    ...</span>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </li>
+                        </ul>
+                        <div [ngbNavOutlet]="nav" class="mt-2 card" style="align-items: flex-start;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </ng-container>
+        <ng-template #elseTemplate>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="row panel">
+                    <div class="col-12 col-sm-6 col-md-6 col-xl-6 card">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-lg-12 img-carousel" id="carousel">
+                                <ngx-skeleton-loader
+                                    [theme]="{ height: '150px', 'margin-bottom': '-5px'}"></ngx-skeleton-loader>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row panel">
+                    <div class="col-12 col-sm-6 col-md-6 col-xl-6 card details no-flex">
+                        <ngx-skeleton-loader [theme]="{ height: '30px', 'margin-bottom': '-5px'}"></ngx-skeleton-loader>
+                    </div>
+                </div>
+                <div class="row panel">
+                    <div class="col-12 col-sm-6 col-md-6 col-xl-6 card info no-flex">
+                        <ngx-skeleton-loader
+                            [theme]="{ height: '100px', 'margin-bottom': '-5px'}"></ngx-skeleton-loader>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+    <div class="row register">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <button type="button" class="btn btn-sm btn-outline-secondary enquiry-now" style="margin-right: 5px;"
+                *ngIf="!isLoading" [disabled]="!entity" (click)="OpenEnquiryModal(enquiryModal)">
+                <svg class="">
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-contact-2"></use>
+                </svg>
+                Enquiry Now
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-secondary call-now" *ngIf="!isLoading"
+                [disabled]="!entity" (click)="OnClickEnquiryCall()">
+                <svg class="">
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-phone"></use>
+                </svg>
+                Call
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-secondary review-now" *ngIf="!isLoading"
+                [disabled]="!entity || maxReviewOnHospital <= hospitalReviewsByCurrentUser.length"
+                (click)="OpenReviewModal()">
+                <svg class="">
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-star"></use>
+                </svg>
+                Review
+            </button>
+
+        </div>
+    </div>
+
+    <div class="row widget-menu">
+        <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+            <svg (click)="app.OnOpenLoginForm('dashboard/profile/1')">
+                <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-user-1"></use>
+            </svg>
+            <div>
+                {{ common.auth_token ? 'Profile' : 'Login' }}
+            </div>
+
+
+        </div>
+        <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+            <svg [routerLink]="'/home'">
+                <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-home"></use>
+            </svg>
+            Home
+        </div>
+        <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+            <svg [routerLink]="'/services/more'">
+                <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-navigation-more"></use>
+            </svg>
+            More
+        </div>
+    </div>
+
+    <div class="row footer">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="row">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6">&copy; Copyrights Arera Healthcare and Technologies Pvt
+                    Ltd 2022. All rights reserved.</div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6">.&nbsp;<span>.</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #enquiryModal let-modal>
+    <div class="modal-body">
+        <div class="row logo">
+            <!-- <span>VMEDO</span> -->
+            <label (click)="modal.close('Cancel');">
+                <svg>
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-cross"></use>
+                </svg>
+            </label>
+        </div>
+        <div class="row title">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                <div class="card">
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-contact"></use>
+                    </svg>
+                </div>
+                <!-- <span style="margin-top: 10px; color: #000000;">Enquiry</span> -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblPatientName !== undefined}">
+                <div class="text-control">
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user"></use>
+                    </svg>
+                    <input type="text" placeholder="Patient name" [(ngModel)]="txtPatientName"
+                        (ngModelChange)="OnTextChanged('txtPatientName', $event)">
+                    <span class="error-line" placement="bottom"
+                        ngbTooltip="{{lblPatientName}}">{{lblPatientName}}</span>
+                    <!-- <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-warning"></use>
+                        <title>{{lblPatientName}}</title>
+                    </svg> -->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblPatientAge !== undefined}">
+                <div class="text-control">
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-badge"></use>
+                    </svg>
+
+                    <input type="text" placeholder="Patient age" [(ngModel)]="txtPatientAge"
+                        (ngModelChange)="OnTextChanged('txtPatientAge', $event)"
+                        (keypress)="common.AllowOnlyNumbers($event)">
+                    <span class="error-line" placement="bottom" ngbTooltip="{{lblPatientAge}}">{{lblPatientAge}}</span>
+                    <!-- <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-warning"></use>
+                        <title>{{lblPatientAge}}</title>
+                    </svg> -->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 card"
+                [ngClass]="{'error': lblEnquiryReason !== undefined}">
+                <div class="text-control">
+                    <svg style="top: 23px">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-chat-bubble-dots"></use>
+                    </svg>
+                    <textarea rows="5" cols="5" placeholder="Reason for enquiry" [(ngModel)]="txtEnquiryReason"
+                        (ngModelChange)="OnTextChanged('txtEnquiryReason', $event)"></textarea>
+                    <span class="error-line top-150" placement="top"
+                        ngbTooltip="{{lblEnquiryReason}}">{{lblEnquiryReason}}</span>
+                    <!-- <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-warning"></use>
+                        <title>{{lblEnquiryReason}}</title>
+                    </svg> -->
+                </div>
+
+            </div>
+        </div>
+        <div class="row controls">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 register">
+                <button type="button" class="btn btn-sm btn-outline-secondary"
+                    (click)="OnClickEnquiry();">Submit</button>
+                <!-- <button type="button" class="btn btn-sm btn-outline-secondary" (click)="modal.close('Cancel');">Cancel</button> -->
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #reviewModal let-modal>
+    <div class="modal-body">
+        <div class="row logo">
+            <!-- <span>VMEDO</span> -->
+            <label (click)="modal.close('Cancel');">
+                <svg>
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-cross"></use>
+                </svg>
+            </label>
+        </div>
+        <div class="row title">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                <div class="card">
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-star-full1"></use>
+                        <title>Review</title>
+                    </svg>
+                </div>
+                <!-- <span style="margin-top: 10px; color: #000000;">Review</span> -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 card">
+                <div class="text-control">
+                    <svg style="top: 23px">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-chat-bubble-dots"></use>
+                    </svg>
+                    <textarea rows="5" cols="5" placeholder="Comments" [(ngModel)]="txtComment"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 card no-padding align-h-left align-v-center"
+                style="align-items: flex-start !important; padding-left: 20px !important;">
+                <!-- <label style="margin-bottom: 0; color: #777777; padding: 0 20px 0 10px;">Rating</label> -->
+                <ngb-rating [(rate)]="txtRating" [max]="5">
+                    <ng-template let-fill="fill" let-index="index">
+                        <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                    </ng-template>
+                </ngb-rating>
+            </div>
+        </div>
+        <div class="row controls">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 register">
+                <button type="button" class="btn btn-sm btn-outline-secondary"
+                    (click)="OnClickReview();">Submit</button>
+                <!-- <button type="button" class="btn btn-sm btn-outline-secondary" (click)="modal.close('Cancel');">Cancel</button> -->
+            </div>
+        </div>
+    </div>
+</ng-template>

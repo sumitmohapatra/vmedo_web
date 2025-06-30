@@ -1,0 +1,301 @@
+.modal-body .logo label{
+    height: 15px;
+    width: 15px;
+    padding: 5px;
+    margin: 0;
+    box-shadow: 1px 2px 3px #cccccc !important;
+    border-radius: 10px;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.modal-body .logo label > svg{
+    height: 15px;
+    width: 15px;
+    fill: #000000;
+}
+
+.modal-body{
+    background: #f1f1f1;
+}
+.modal-body .row.title > div > div{
+    border: none !important;
+    /* box-shadow: 1px 2px 3px #cccccc !important; */
+    /* border-radius: 50px !important; */
+}
+.modal-body .card{
+    box-shadow: 1px 2px 3px #cccccc !important;
+    border-radius: 10px;
+    margin: 5px 0 !important;
+    padding: 0 10px;
+}
+
+.modal-body input[type=text],
+.modal-body input[type=password],
+.modal-body textarea{
+    background: #ffffff !important;
+    box-shadow: none !important;
+}
+
+.modal-body .logo label{
+    height: 15px;
+    width: 15px;
+    padding: 5px;
+    margin: 0;
+    box-shadow: 1px 2px 3px #cccccc !important;
+    border-radius: 10px;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.modal-body .logo label > svg{
+    height: 15px;
+    width: 15px;
+    fill: #000000;
+}
+
+.modal-body .row.controls{
+    margin: 10px 0;
+}
+
+.modal-body .row.controls button{
+    min-width: 80px;
+    border: 1px solid #ce2424;
+    color: #ce2424;
+    cursor: pointer;
+}
+
+.modal-body .row.controls button{
+    margin-right: 5px;
+}
+
+.modal-body .row.controls button:last-child{
+    margin-right: 0;
+}
+
+.modal-body .row.controls a.register{
+    text-decoration: underline;
+    margin-top: 20px;
+    color: #ce2424;
+    cursor: pointer;
+}
+
+.modal-body .row.controls a.register:hover{
+    color: #e75454;
+}
+
+.modal-body .row.controls button:hover,
+.modal-body .row.controls button:focus,
+.modal-body .row.controls button:active{
+    background: #ce2424;
+    color: #ffffff;
+}
+
+
+.modal-body .contact button{
+    background: #ce2424;
+    border: 1px solid #ce2424;
+    color: #ffffff;
+}
+
+.modal-body .contact button:disabled,
+.modal-body .contact button[disabled]{
+    color: #ce2424 !important;
+    background: #ffffff !important;
+}
+
+.modal-body .contact button:last-child{
+    margin-left: 5px;
+}
+ .modal-body .contact button svg{
+    fill: #ffffff;
+    height: 15px;
+    width: 15px;
+}
+.modal-body .contact button:hover svg,
+.modal-body .contact button:disabled svg,
+.modal-body .contact button[disabled] svg{
+   fill: #ce2424;
+}
+.modal-body .contact button:hover{
+    background: #ffffff;
+    color: #ce2424;
+}
+
+.modal-body .contact{
+    margin-top: 15px;
+}
+
+.modal-body .contact > div{
+    flex-direction: column;
+}
+
+.modal-body .contact > div > div.row{
+    width: 100%;
+}
+
+.modal-body .contact > div > div.row > div{
+    border: 1px solid #ce2424;
+    border-radius: 5px;
+    padding: 5px 10px;
+    justify-content: flex-start;
+}
+
+.modal-body .contact > div > div.row > div:first-child{
+    margin-bottom: 10px;
+}
+
+.modal-body .contact > div > div.row > div > span{
+    position: absolute;
+    font-size: 11px;
+    color: #ce2424;
+    background: #ffffff;
+    margin-top: -50px;
+    padding: 0 10px;
+}
+
+.modal-body .contact > div > div.row > div > div{
+    padding: 10px 10px 5px 10px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.modal-body .contact > div > div.row > div > div > a,
+.modal-body .contact > div > div.row > div > div > a:hover{
+    text-decoration: none;
+    cursor: default;
+    color:#666666;
+}
+
+.modal-body .contact > div > div.row > div > div > a{
+    position: absolute;
+    right: 6px;
+    margin-top: -12px;
+    margin-top: -8px;
+}
+
+.modal-open .modal{
+    z-index: 9999;
+}
+
+.modal-dialog {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
+    min-height: calc(100vh - 60px);
+  }
+  @media (max-width: 767px) {
+    .modal-dialog {
+      min-height: calc(100vh - 20px);
+    }
+
+    .profile-icon{
+        display: none !important;
+    }
+  }
+
+  .modal-body .row{
+      padding: 5px 0;
+  }
+
+  .modal-body .row,
+  .modal-body .row > div{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+  } 
+
+  .modal-body .row.logo{
+      justify-content: left;
+      font-size: 17px;
+  }
+
+  .modal-body .row.logo > span{
+    font-weight: bold;
+    color: #ce2424;
+  } 
+
+  .modal-body .row.title{
+    font-size: 20px;
+    /* margin: 20px 0; */
+}
+
+.modal-body .row.title > div{
+    display: flex;
+    flex-direction: column;
+    color: #ce2424;
+}
+
+.modal-body .row.title > div > div{
+    border: 2px solid #ce2424;
+    border-radius: 50px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-body .row.title > div > div > svg{
+    height: 40px;
+    width: 40px;
+    fill: #ce2424;
+}
+
+.modal-body .row.title .success{
+    border: 2px solid #67db71;
+}
+
+.modal-body .row.title .success svg{
+    fill:#67db71;
+}
+
+.modal-body .row.title .failed{
+    border: 2px solid #cf5454;
+}
+
+.modal-body .row.title .failed svg{
+    fill:#cf5454;
+}
+
+.modal-body .row.title .info{
+    border: 2px solid #60baee;
+}
+
+.modal-body .row.title .info svg{
+    fill:#60baee;
+}
+
+.modal-body .row.title .warn{
+    border: 2px solid #f1e75b;
+}
+
+.modal-body .row.title .warn svg{
+    fill:#f1e75b;
+}
+
+.modal-body .row.message > div{
+    /* max-height: 30px;
+    overflow: hidden; */
+    font-size: 13px;
+    text-align: center;
+}
+
+.error-line,
+.modal-body span.error-line{
+    font-size: 11px;
+    color: #ce2424;
+    position: absolute;
+    top: 50px;
+    right: 25px;
+    z-index: 9999;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 85%;
+}

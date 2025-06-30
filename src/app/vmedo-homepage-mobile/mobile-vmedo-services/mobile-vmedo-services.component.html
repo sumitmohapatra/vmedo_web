@@ -1,0 +1,127 @@
+<div *ngIf="showPopup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10"
+    (click)="togglePopup()">
+    <!-- Card content here -->
+    <div class="vmedo-more-card-mobile bg-white-500 rounded-lg shadow-md items-center overflow-hidden"
+      (click)="$event.stopPropagation()">
+      <div class="text-center py-4">
+        <h3 class="font-medium text-red-700">VMEDO Services</h3>
+      </div>
+    
+      <!-- Grid container with 3 rows and 3 columns -->
+      <div class="grid grid-cols-3 gap-4 px-4">
+        <!-- Grid items -->
+    
+        <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+          [routerLink]="'/services/emergency-online-doctor-consultation'">
+          <div class="h-14">
+            <img src="assets\images\new_images\service-mobile-1.png" alt="Image" class="max-h-full max-w-full" />
+          </div>
+    
+          <div class="text-center">
+            <p class="font-medium" style="font-size: 10px">
+              Instant <br />
+              doctor consultation
+            </p>
+          </div>
+        </div>
+    
+        <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+          [routerLink]="'/services/ambulance-service-india'">
+          <div class="h-14">
+            <img src="assets\images\new_images\service-mobile-2.png" alt="Image" class="max-h-full max-w-full" />
+          </div>
+    
+          <div class="text-center">
+            <p class="font-medium" style="font-size: 10px">
+              Book Emergency Ambulance
+            </p>
+          </div>
+        </div>
+    
+        <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+          [routerLink]="'/services/urgent-medical-care-at-home'">
+          <div class="h-14">
+            <img src="assets\images\new_images\service-mobile-4.png" alt="Image" class="max-h-full max-w-full" />
+          </div>
+    
+          <div class="text-center">
+            <p class="font-medium" style="font-size: 10px">
+              Urgent medical care at home
+            </p>
+          </div>
+        </div>
+    
+        <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+          [routerLink]="'/services/labs'">
+          <div class="h-14">
+            <img src="assets\images\new_images\service-mobile-8.png" alt="Image" class="max-h-full max-w-full" />
+          </div>
+    
+          <div class="text-center">
+            <p class="font-medium" style="font-size: 10px">
+              Lab tests and scans
+            </p>
+          </div>
+        </div>
+    
+        <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+          onclick="window.location.href='https://store.vmedo.com'">
+          <div class="h-14">
+            <img src="assets\images\new_images\service-mobile-1.png" alt="Image" class="max-h-full max-w-full" />
+          </div>
+    
+          <div class="text-center">
+            <p class="font-medium" style="font-size: 10px">
+              Healthcare products
+            </p>
+          </div>
+        </div>
+    
+        <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+          [routerLink]="'/hospitals'">
+          <div class="h-14">
+            <img src="assets\images\new_images\service-mobile-3.png" alt="Image" class="max-h-full max-w-full" />
+          </div>
+    
+          <div class="text-center">
+            <p class="font-medium" style="font-size: 10px">
+              Hospital admission
+            </p>
+          </div>
+        </div>
+    
+        <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+          onclick="window.location.href='https://academy.vmedo.com'">
+          <div class="h-14">
+            <img src="assets\images\new_images\service-mobile-6.png" alt="Image" class="max-h-full max-w-full" />
+          </div>
+    
+          <div class="text-center">
+            <p class="font-medium" style="font-size: 10px">VMEDO Academy</p>
+          </div>
+        </div>
+    
+        <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+          [routerLink]="'/services/find-blood-donor'">
+          <div class="h-14">
+            <img src="assets\images\new_images\service-mobile-7.png" alt="Image" class="max-h-full max-w-full" />
+          </div>
+    
+          <div class="text-center">
+            <p class="font-medium" style="font-size: 10px">Find blood donor</p>
+          </div>
+        </div>
+    
+        <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+          [routerLink]="'/info/occupational-health-services'">
+          <div class="h-14">
+            <img src="assets\images\new_images\service-mobile-1.png" alt="Image" class="max-h-full max-w-full" />
+          </div>
+    
+          <div class="text-center">
+            <p class="font-medium" style="font-size: 10px">VMEDO-Corporate</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>

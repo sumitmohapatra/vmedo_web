@@ -1,0 +1,274 @@
+<div class="container-fluid"
+    style="height: calc(100% + 5px);overflow: auto; overflow-x: hidden; background-color: #ffffff;">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-lg-12" id="navigation">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand">
+                    <svg class="logo logo-md">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo"></use>
+                    </svg>
+                    <svg [routerLink]="'/home'" class="logo logo-sm">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo-white"></use>
+                    </svg>
+                </a>
+                <div *ngIf="common.auth_token !== undefined && common.auth_token !== null"
+                    class="back pull-right btn btn-sm btn-outline-secondary profile-icon"
+                    [routerLink]="'/dashboard/profile/1'" placement="bottom" ngbTooltip="Profile"
+                    style="margin-right: 40px;">
+                    <svg class="">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user-solid-circle"></use>
+                    </svg>
+                </div>
+                <div class="back pull-right btn btn-sm btn-outline-secondary" [routerLink]="'/home'" placement="bottom"
+                    ngbTooltip="Back">
+                    <svg class="">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-back"></use>
+                    </svg>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+
+    <div class="row items-body">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="row item-links">
+
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                    <mat-card class="card01">
+                        <div class="card1">
+                            <div class="more-image" (click)="OnClickBloodDonor()">
+                                <img class="img-card" src="assets\images\new_images\blood-donation.png" alt="">
+                            </div>
+
+                            <label class="label3" (click)="OnClickBloodDonor()">Find Blood Donor</label>
+                        </div>
+                    </mat-card>
+                </div>
+
+
+                <!-- <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                    <mat-card class="card01">
+                        <div class="card1">
+                            <svg class="svg">
+                                <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-whatsapp"></use>
+                            </svg>
+                            
+                            <label class="label1" (click)="common.RedirectToUrl(links.pages.social.whatsapp)">Whatsapp
+                                "Hi" to get Emergency assistance</label>
+                        </div>
+                    </mat-card>
+                </div> -->
+
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                    <mat-card class="card01">
+                        <div class="card1">
+                            <svg (click)="OnClickCorporates()" class="svg">
+                                <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-hospital"></use>
+                            </svg>
+                            <label class="label2" (click)="OnClickCorporates()">VMEDO for Corporates</label>
+                        </div>
+                    </mat-card>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                    <mat-card class="card01">
+                        <div class="card1">
+                            <div class="more-image" (click)="OnClickPartnerWithUs()">
+                                <img class="img-card" src="assets\images\new_images\partner-with-us.png" alt="">
+                            </div>
+
+                            <label class="label3" (click)="OnClickPartnerWithUs()">Partner with us</label>
+                        </div>
+                    </mat-card>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                    <mat-card class="card01">
+                        <div class="card1">
+
+                            <div class="card1">
+                                <div class="more-image" (click)="OnClickAbouts()">
+                                    <img class="img-card" src="assets\images\new_images\about-us.png" alt="">
+                                </div>
+
+                                <label class="label4" (click)="OnClickAbouts()">About VMEDO</label>
+                            </div>
+
+                        </div>
+                    </mat-card>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                    <mat-card class="card01">
+                        <div class="card1">
+
+                            <div class="more-image" (click)=" OnClickContactUs()">
+                                <img class="img-card" src="assets\images\new_images\contact-us.png" alt="">
+                            </div>
+
+                            <label class="label5" (click)=" OnClickContactUs()">Contact Us</label>
+                        </div>
+                    </mat-card>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                    <mat-card class="card01">
+                        <div class="card1">
+
+                            <div class="more-image" (click)="common.RedirectToUrl(links.pages.more.jobs)">
+                                <img class="img-card" src="assets\images\new_images\jobs.png" alt="">
+                            </div>
+
+                            <label class="label6" (click)="common.RedirectToUrl(links.pages.more.jobs)">Jobs @
+                                VMEDO</label>
+                        </div>
+                    </mat-card>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 logout" *ngIf="this.common.auth_token">
+                    <mat-card class="logout-card" (click)="OnClickLogout()">
+
+
+                        <div class="row">
+
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+
+                                <div class="more-image">
+                                    <img class="img-card" src="assets\images\new_images\logout.png" alt="">
+
+                                    <label class="ml-3" style="font-weight: 400;">Logout</label>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </mat-card>
+                </div>
+
+
+            </div>
+
+            <div class="row social-links">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                    <label class="ml-4">Follow us on :</label>
+                    <ul>
+                        <li>
+                            <svg (click)="common.RedirectToUrl(links.pages.social.linkedin)">
+                                <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-linkedin"></use>
+                            </svg>
+                        </li>
+                        <li>
+                            <svg (click)="common.RedirectToUrl(links.pages.social.youtube)">
+                                <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-youtube"></use>
+                            </svg>
+                        </li>
+                        <li>
+                            <svg (click)="common.RedirectToUrl(links.pages.social.facebook)">
+                                <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-facebook"></use>
+                            </svg>
+                        </li>
+                        <li>
+                            <svg (click)="common.RedirectToUrl(links.pages.social.instagram)">
+                                <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-instagram"></use>
+                            </svg>
+                        </li>
+                        <li>
+                            <svg (click)="common.RedirectToUrl(links.pages.social.twitter)">
+                                <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-twitter"></use>
+                            </svg>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row other-links mb-5">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                    <label>Other Links :</label>
+
+                    <div class="row mb-4">
+
+                        <div class="row">
+                            <div class="col-5">
+                                <label (click)="common.RedirectToUrl(links.pages.more.hospitallogin)"
+                                    style="color: rgb(27, 107, 160); font-size: 12px;"> -> Hospital Login</label>
+                            </div>
+
+                            <div class="col">
+                                <label (click)="common.RedirectToUrl(links.pages.more.vmedopartnerapp)"
+                                    style="color: rgb(27, 107, 160); font-size: 12px;"> -> Ambulance Partner App</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-5">
+                                <label (click)="common.RedirectToUrl(links.pages.more.blogs)"
+                                    style="color: rgb(27, 107, 160); font-size: 12px;text-align: left;"> ->
+                                    Blogs</label>
+
+                            </div>
+
+                            <div class="col">
+                                <label (click)="common.RedirectToUrl(links.pages.more.termsandcondition)"
+                                    style="color: rgb(27, 107, 160); font-size: 12px;"> -> Terms & Conditions</label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row widget-menu">
+        <div class="col-4 col-md-4 col-sm-4 col-lg-4" 
+        >
+          <!-- <svg (click)="app.OnOpenLoginForm('dashboard/profile/1')">
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-user-1"></use>
+          </svg> -->
+          <div *ngIf="!common.auth_token">
+            <svg (click)="app.OnOpenLoginForm('')" [routerLink]="getDashboardLink()" >
+              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-key1"></use>
+            </svg>
+          </div>
+         
+          <div *ngIf="common.auth_token">
+            <svg  [routerLink]="getDashboardLink()" >
+              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-user-1"></use>
+            </svg>
+          </div>
+          
+      
+          <!-- Profile -->
+      
+          <div>
+            {{ common.auth_token ? 'Profile' : 'Login' }}
+          </div>
+      
+        </div>
+        <div class="col-4 col-md-4 col-sm-4 col-lg-4"
+        >
+      <svg [routerLink]="'/home'">
+       <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-home"></use>
+      </svg>
+      Home
+      </div>
+        <div class="col-4 col-md-4 col-sm-4 col-lg-4"
+        [ngClass]="{ 'highlighted-icon': isCurrentRoute('/services/more') }">
+          <svg [routerLink]="'/services/more'">
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-navigation-more"></use>
+          </svg>
+          More
+        </div>
+      </div>
+    <div class="row footer">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="row">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6">&copy; Copyrights Arera Healthcare and Technologies Pvt
+                    Ltd 2022. All rights reserved.</div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6">.&nbsp;<span>.</span></div>
+            </div>
+        </div>
+    </div>
+</div>

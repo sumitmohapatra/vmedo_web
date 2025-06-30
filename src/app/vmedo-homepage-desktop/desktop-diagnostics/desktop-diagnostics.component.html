@@ -1,0 +1,62 @@
+<section class="diagnostics-at-home-section py-10 px-8">
+    <h2 class="text-3xl mb-8 pl-8 font-medium">Diagnostics at home</h2>
+
+    <div class="px-4">
+      <swiper class="px-6" [config]="diagnostics_at_home_dektop">
+        <ng-template swiperSlide>
+          <div class="bg-gray-200 care-at-home-card rounded-md mx-auto overflow-hidden"
+            [routerLink]="'/services/diagnostics-at-home'">
+            <img src="assets/images/website-images/care_at_home_7.jpg" alt="Image Description"
+              class="w-full h-full rounded-md object-cover image-hover" />
+          </div>
+          <p class="mt-4 text-center text-base font-medium px-3">
+            ECG at home
+          </p>
+        </ng-template>
+
+        <ng-template swiperSlide>
+          <div class="bg-gray-200 care-at-home-card rounded-md mx-auto overflow-hidden"
+            [routerLink]="'/services/diagnostics-at-home'">
+            <img src="assets/images/website-images/diagnostics_at_home_1.png" alt="Image Description"
+              class="w-full h-full rounded-md object-cover image-hover" />
+          </div>
+          <p class="mt-4 text-center text-base font-medium px-3">
+            PFT at home
+          </p>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="bg-gray-200 care-at-home-card rounded-md mx-auto overflow-hidden"
+            [routerLink]="'/services/diagnostics-at-home'">
+            <img src="assets/images/website-images/diagnostics_at_home_2.jpg" alt="Image Description"
+              class="w-full h-full rounded-md object-cover image-hover" />
+          </div>
+          <p class="mt-4 text-center text-base font-medium px-3">
+            Blood Test at home
+          </p>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="bg-gray-200 care-at-home-card rounded-md mx-auto overflow-hidden"
+            [routerLink]="'/services/diagnostics-at-home'">
+            <img src="assets/images/website-images/diagnostics_at_home_3.jpg" alt="Image Description"
+              class="w-full h-full rounded-md object-cover image-hover" />
+          </div>
+          <p class="mt-4 text-center text-base font-medium px-3">
+            Full body checkup
+          </p>
+        </ng-template>
+
+        <ng-template swiperSlide>
+          <div class="bg-gray-200 care-at-home-card rounded-md mx-auto overflow-hidden"
+            [routerLink]="'/services/diagnostics-at-home'">
+            <img src="assets/images/website-images/diagnostics_at_home_8.jpeg" alt="Image Description"
+              class="w-full h-full rounded-md object-cover image-hover" />
+          </div>
+          <p class="mt-4 text-center text-base font-medium px-3">
+            Audiometry test at home
+          </p>
+        </ng-template>
+
+
+      </swiper>
+    </div>
+  </section>

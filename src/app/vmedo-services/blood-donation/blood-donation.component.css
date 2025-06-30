@@ -1,0 +1,1389 @@
+
+
+.search-button{
+    border-radius: 25px;
+    position: relative;
+    left: 250px;
+    margin: 15px;
+  }
+  .blooddonation .create{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 0;
+  }
+  
+  .blooddonation .create > div{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 70px;
+      width: 70px;
+      border: 2px solid #ce2424;
+      border-radius: 50px;
+  }
+  
+  .blooddonation .create > div:last-child{
+      width: 100%;
+      border: none;
+  }
+  
+  .blooddonation .create > div:last-child > input[type=text]{
+      width: calc(100% - 155px);
+      margin-right: 5px;
+  
+  }
+  
+  .blooddonation .create > div:last-child > button{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+  }
+  
+  .blooddonation .create > div:last-child button.search2{
+      margin-right: 5px !important;
+      height: 40px;
+      width: 40px;
+  }
+  
+  .blooddonation .create > div:last-child button.add svg{
+      margin-right: 5px !important;
+  }
+  
+  .blooddonation .create > div:last-child > button > svg{
+      margin-right: 0;
+  }
+  
+  .blooddonation .create > div > svg{
+      height: 30px;
+      width: 30px;
+      fill: #ce2424;
+  }
+  
+  .blooddonation .create span{
+      font-size: 15px;
+      color: #ce2424;
+  }
+  
+  .blooddonation .row.title{
+      font-size: 20px;
+      margin: 20px 0;
+  }
+  
+  .blooddonation .row.title > div{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #ce2424;
+  }
+  
+  .blooddonation .row.title > div > div{
+      /* border: 2px solid #ce2424; */
+      background-color: #ffffff;
+      border-radius: 50px;
+      /* height: 80px;
+      width: 80px; */
+      /* padding: 20px; */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .blooddonation .row.title > div > div > svg{
+      height: 40px;
+      width: 40px;
+      fill: #ce2424;
+  }
+  
+  .blooddonation .row.controls{
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+  }
+  
+  .blooddonation .row.controls > div{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .blooddonation .row.controls button{
+  
+      border: 1px solid #ce2424;
+      color: #ce2424;
+  }
+  
+  .blooddonation .row.controls button{
+      margin-right: 5px;
+  }
+  
+  .blooddonation .row.controls button:last-child{
+      margin-right: 0;
+  }
+  
+  .blooddonation .row.controls a.register{
+      text-decoration: underline;
+      margin-top: 20px;
+      color: #ce2424;
+      cursor: pointer;
+  }
+  
+  .blooddonation .row.controls a.register:hover{
+      color: #e75454;
+  }
+  
+  .blooddonation .row.controls button:hover,
+  .blooddonation .row.controls button:focus,
+  .blooddonation .row.controls button:active{
+      background: #ce2424;
+      color: #ffffff;
+  }
+  
+  input[type=text],
+  input[type=password]{
+  
+     margin: 5px 0;
+     width: 100%;
+     color: #0f0e0e;
+     background: #ffffff;
+     padding: 10px;
+     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.192);
+     /* transform: translateZ(0);
+     -webkit-transform: translateZ(0);*/
+  
+      margin-left: 10px;
+      margin-right: 10px;
+  }
+  textarea{
+    background: #ffffff;
+      margin-left: 10px;
+      margin-right: 10px;
+  }
+  
+  input[type=text]:hover,
+  input[type=text]:focus,
+  input[type=text]:active,
+  input[type=password]:hover,
+  input[type=password]:focus,
+  input[type=password]:active{
+     background: #ffffff;
+     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.199);
+  
+  }
+  
+  .blooddonation .panel {
+      /* margin: 0; */
+      padding: 10px;
+  }
+  
+  .blooddonation .panel .card{
+      background: #ffffff;
+      box-shadow: 0 1px 3px #cccccc;
+      border-radius: 5px;
+      font-size: 13px;
+      padding: 10px;
+      /* min-height: 100px; */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+  }
+  
+  .blooddonation .panel .card > .row{
+      width: 100%;
+      padding-bottom: 10px;
+  }
+  
+  .blooddonation .panel .card > .row .search {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .blooddonation .panel .card > .row .search button{
+      border: 1px solid #ce2424;
+      color: #ce2424;
+      margin-left: 5px;
+      padding: 8px 13px;
+  }
+  
+  .blooddonation .panel .card > .row .search button svg{
+      fill: #ce2424;
+  }
+  
+  .blooddonation .panel .card > .row .search button:hover,
+  .blooddonation .panel .card > .row .search button:focus,
+  .blooddonation .panel .card > .row .search button:active{
+      background: #ce2424;
+      color: #ffffff;
+  }
+  
+  .blooddonation .panel .card > .row .search svg{
+      height: 20px;
+      width: 20px;
+      cursor: pointer;
+  }
+  
+  .blooddonation .panel .card > .row .search button:hover svg,
+  .blooddonation .panel .card > .row .search button:focus svg,
+  .blooddonation .panel .card > .row .search button:active svg{
+      fill: #ffffff;
+  }
+  /*
+  .blooddonation .dropdown-menu.show,
+  ::ng-deep .blooddonation .dropdown-menu.show{
+      max-height: 250px;
+      overflow: auto;
+  }
+  ::ng-deep .blooddonation .dropdown-menu.show .dropdown-item{
+      color: #666666;
+  }
+  
+  ::ng-deep .blooddonation .dropdown-menu.show .dropdown-item.active,
+  ::ng-deep .blooddonation .dropdown-menu.show .dropdown-item:hover,
+  ::ng-deep .blooddonation .dropdown-menu.show .dropdown-item:active,
+  ::ng-deep .blooddonation .dropdown-menu.show .dropdown-item:focus{
+      background: #e9ecef !important;
+  } */
+  
+  .blooddonation .panel{
+      padding-top: 0;
+  }
+  
+  .blooddonation .panel:first-child{
+      padding-top: 10px;
+  }
+  .blooddonation .panel:first-child .card {
+      /* padding: 5px 10px; */
+  }
+  
+  .blooddonation .panel:first-child .card > .row{
+      padding-bottom: 0;
+  }
+  .padding-top-0{
+      padding-top: 0 !important;
+  }
+  
+  .blooddonation .panel:first-child .card > .row .search{
+      padding: 0 10px;
+  }
+  
+  .blooddonation .panel:first-child .card > .row .search:last-child{
+      padding-top: 0 !important;
+  }
+  
+  .blooddonation .card{
+      /* padding-bottom: 20px !important; */
+      cursor: default !important;
+  }
+  
+  .blooddonation .card > .row{
+      padding: 10px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .blooddonation .card > .row > div{
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+  }
+  
+  .blooddonation .card > .row > div.head{
+      font-size: 17px;
+      color: #ce2424;
+  }
+  
+  .blooddonation .card > .row > div.head > svg{
+      height: 15px;
+      width: 15px;
+      margin-right: 5px;
+      fill: #ce2424;
+  }
+  
+  .blooddonation .card .contact{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 70px;
+  
+  }
+  
+  .blooddonation .card .contact > div,
+  .blooddonation .card .contact > div > .row{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* padding: 0 10px; */
+  }
+  
+  .blooddonation .card .contact > div{
+      padding: 0;
+  }
+  .blooddonation .card .contact > div > .row{
+      width: calc(100% - 20px);
+      /* padding: 10px; */
+      /* border: 1px solid #ce2424; */
+      border-radius: 3px;
+      background: #ffffff;
+      /* background: #fcf5f5; */
+  }
+  
+  .phone-call{
+      background: #ff637a !important;
+      border: 1px solid #da4e63 !important;
+      padding: 5px 10px !important;
+  }
+  
+  .phone-call > svg{
+      height: 20px !important;
+      width: 20px !important;
+  }
+  
+  .blooddonation .card .contact > div > .row > div:first-child,
+  .blooddonation .card .contact > div > .row > div:last-child{
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  .blooddonation .card .contact > div > .row > div:last-child{
+      justify-content: flex-end;
+  }
+  
+  .blooddonation .card .contact > div:nth-child(2){
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-direction: column;
+  }
+  
+  .blooddonation .card .contact > div:last-child button{
+      border-color: #ce2424;
+      background: #ce2424;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      /* width: 100%; */
+  }
+  
+  .blooddonation .card .contact > div:last-child button:hover,
+  .blooddonation .card .contact > div:last-child button:focus,
+  .blooddonation .card .contact > div:last-child button:active{
+      background: #ffffff;
+      color: #ce2424;
+  }
+  
+  .blooddonation .card .contact > div:last-child button svg{
+      height: 15px;
+      width: 15px;
+      /* margin-right: 5px; */
+      fill: #ffffff;
+  }
+  
+  .blooddonation .card .contact > div:last-child button:hover svg,
+  .blooddonation .card .contact > div:last-child button:focus svg,
+  .blooddonation .card .contact > div:last-child button:active svg{
+      fill: #ce2424;
+  }
+  /*
+  .blooddonation .dropdown-menu.show,
+  ::ng-deep .blooddonation .dropdown-menu.show{
+      width: calc(100% - 72px);
+  }
+  
+  .modal-body .bloodgroup .dropdown-menu.show,
+  .modal-body .location .dropdown-menu.show,
+  ::ng-deep .modal-body .bloodgroup .dropdown-menu.show,
+  ::ng-deep .modal-body .location .dropdown-menu.show{
+      width: calc(100% - 30px);
+  }
+  ::ng-deep .dropdown-menu.show .dropdown-item{
+      color: #666666;
+  }
+  
+  ::ng-deep .dropdown-menu.show .dropdown-item.active,
+  ::ng-deep .dropdown-menu.show .dropdown-item:hover,
+  ::ng-deep .dropdown-menu.show .dropdown-item:active,
+  ::ng-deep .dropdown-menu.show .dropdown-item:focus{
+      background: #e9ecef !important;
+  } */
+  
+  .blooddonation > div > div.row{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .skeleton-template{
+      min-height: 70px;
+  }
+  
+  .skeleton-template > div > div{
+      padding: 0 10px;
+  }
+  
+  
+  ::ng-deep .modal-content{
+      overflow: scroll;
+  }
+  /*
+  .dropdown-menu.show,
+  ::ng-deep .dropdown-menu.show{
+      max-height: 267px;
+      overflow: auto;
+  }
+  ::ng-deep .dropdown-menu.show .dropdown-item{
+      color: #666666;
+      font-size: 13px;
+  }
+  
+  ::ng-deep .dropdown-menu.show .dropdown-item.active,
+  ::ng-deep .dropdown-menu.show .dropdown-item:hover,
+  ::ng-deep .dropdown-menu.show .dropdown-item:active,
+  ::ng-deep .dropdown-menu.show .dropdown-item:focus{
+      background: #e9ecef !important;
+  } */
+  
+  /* ::ng-deep .text-control.cmbbox .dropdown-menu.show{
+      width: 100% !important;
+      max-width: 100% !important;
+  } */
+  
+  .details{
+      color: #000;
+      display: flex;
+      align-items: center;
+      padding: 2px  0;
+  }
+  
+  .details > svg{
+      height: 12px;
+      width: 12px;
+      fill: #ce2424;
+      margin-right: 10px;
+  }
+  
+  .details span span{
+      color: #ff637a;
+  }
+  
+  
+  @media (max-width: 767px) {
+      .navbar{
+          background: #ffffff !important;
+      }
+      .navbar-brand{
+          color: #ce2424 !important; margin-bottom: -3px;
+      }
+  
+      .blooddonation .search button{
+          width: 100%;
+          position: relative;
+  
+      }
+  
+      .widget-menu,
+      .widget-menu > div{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 60px;
+          background: #ffffff;
+          font-size: 12px;
+      }
+      .widget-menu>div>div>svg {
+        height: 20px;
+        width: 20px;
+        fill: #666666;
+        outline: none;
+      }
+      .widget-menu > div > svg{
+          height: 20px;
+          width: 20px;
+          fill: #666666;
+          outline: none;
+      }
+      
+  
+      .widget-menu > div:last-child > svg{
+          transform: rotate(-90deg);
+      }
+  
+      .widget-menu > div > svg:hover{
+          fill: #ce2424;
+      }
+  
+      .footer{
+          display: none !important;
+      }
+    }
+  
+  
+  @media (min-width: 768px) {
+  
+      .widget-menu,
+      .widget-menu > div{
+          display: none !important;
+      }
+  
+      .footer{
+          display: flex;
+      }
+  }
+  
+  
+  
+  .blooddonation .panel .card{
+      box-shadow: 1px 2px 3px #cccccc !important;
+      border-radius: 10px;
+      padding: 0;
+      margin: 5px 0
+  }
+  
+  .blooddonation .panel .card input[type=text],
+  .blooddonation .panel .card input[type=password],
+  .blooddonation .panel .card textarea{
+      background: #ffffff !important;
+      box-shadow: none !important;
+  
+  
+  }
+  
+  .register-as-donor,
+  .register-as-donor:hover,
+  .register-as-donor:active,
+  .register-as-donor:focus{
+      background: #30fb2f !important;
+      /* border: 1px solid green; */
+      color: #000 !important;
+      box-shadow: 1px 2px 3px #ccc !important;
+      width: 280px;
+      border: none !important;
+  }
+  
+  .register-as-donor > svg{
+      height: 25px !important;
+      width: 25px !important;
+      margin-right: 5px;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /* new css */
+  .results{
+    height: 360px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-top: 20px;
+  
+  }
+  .results-txt{
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-weight: 700;
+  
+  }
+  .home-container{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100%;
+  }
+  .blood-donor-panel{
+  
+  background-size: cover;
+  position: relative;
+  background-position: 1px;
+  background-repeat: no-repeat;
+  border-radius: 25px;
+  
+  }
+  
+  .nearby{
+  
+  
+    color: white;
+    font-size: 30px;
+    text-shadow: -1px 1px 0 #000,
+                  1px 1px 0 #000,
+                 1px -1px 0 #000,
+                -1px -1px 0 #000;
+                position: relative;
+                left: 170px;
+                top: 10px;
+  }
+  .results{
+    border-radius: 25px;
+    opacity: 0.9;
+    border: 1px #ce2424 ridge;
+    overflow-wrap: break-word;
+    position: relative;
+    right: 20px;
+    top: 20px;
+  }
+  .result-card{
+    margin: 5px;
+    border-radius: 25px;
+    border-style: ridge;
+  }
+  .blood-group1,.blood-group2,.text-area{
+    box-shadow: 1px 2px 3px red !important;
+  
+  
+  
+  
+  }
+  .image-2{
+    height: 50px;
+    position: relative;
+    top: 20px;
+  }
+  
+  
+  .blooddonor-information{
+    background-color: #ffffff;
+    margin: 10px;
+    box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);
+  }
+  .txt2{
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    text-align: center;
+  }
+  .txt1{
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    text-align: center;
+    font-size: 40px;
+  }
+  .txt3{
+    text-align: center;
+  }
+  .register-as-donor{
+    position: relative;
+    margin: 15px;
+    border-radius: 25px;
+    border-style: ridge;
+  }
+  hr{
+    border: 2px solid black;
+  }
+  .customer-review-header{
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 40px;
+    text-align: center;
+  }
+  
+  
+  
+  body {
+      margin: 0;
+      background-image: linear-gradient(90deg, #201A35, #0B0320);
+      color: #fff;
+      font-family: sans-serif;
+      display: flex;
+      align-items: center;
+      min-height: 100vh;
+  }
+  .slider {
+      width: 100%;
+  }
+  .slider input {
+      display: none;
+  }
+  .testimonials {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      min-height: 350px;
+      perspective: 1000px;
+      overflow: hidden;
+  }
+  .testimonials .item {
+      width: 450px;
+      padding: 30px;
+      border-radius: 5px;
+      background-color: #D5D3FA;
+      position: absolute;
+      top: 0;
+      box-sizing: border-box;
+      text-align: center;
+      transition: transform 0.4s;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      user-select: none;
+      cursor: pointer;
+  }
+  .testimonials .item img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 13px solid #D5D3FA;
+  }
+  .testimonials .item p {
+      color: black;
+  }
+  .testimonials .item h2 {
+      font-size: 14px;
+  }
+  .dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .dots label {
+      height: 5px;
+      width: 5px;
+      border-radius: 50%;
+      cursor: pointer;
+      background-color: #413B52;
+      margin: 7px;
+      transition-duration: 0.2s;
+  }
+  
+  #t-1:checked ~ .dots label[for="t-1"],
+  #t-2:checked ~ .dots label[for="t-2"],
+  #t-3:checked ~ .dots label[for="t-3"],
+  #t-4:checked ~ .dots label[for="t-4"],
+  #t-5:checked ~ .dots label[for="t-5"] {
+      transform: scale(2);
+      background-color: #fff;
+  }
+  #t-1:checked ~ .dots label[for="t-2"],
+  #t-2:checked ~ .dots label[for="t-1"],
+  #t-2:checked ~ .dots label[for="t-3"],
+  #t-3:checked ~ .dots label[for="t-2"],
+  #t-3:checked ~ .dots label[for="t-4"],
+  #t-4:checked ~ .dots label[for="t-3"],
+  #t-4:checked ~ .dots label[for="t-5"],
+  #t-5:checked ~ .dots label[for="t-4"] {
+      transform: scale(1.5);
+  }
+  #t-1:checked ~ .testimonials label[for="t-5"] {
+      transform: translate3d(1200px, 0, -360px) rotateY(-45deg);
+  }
+  #t-1:checked ~ .testimonials label[for="t-4"],
+  #t-2:checked ~ .testimonials label[for="t-5"] {
+      transform: translate3d(900px, 0, -270px) rotateY(-35deg);
+      z-index: 1;
+  }
+  #t-1:checked ~ .testimonials label[for="t-3"],
+  #t-2:checked ~ .testimonials label[for="t-4"],
+  #t-3:checked ~ .testimonials label[for="t-5"] {
+      transform: translate3d(600px, 0, -180px) rotateY(-25deg);
+      z-index: 2;
+  }
+  #t-1:checked ~ .testimonials label[for="t-2"],
+  #t-2:checked ~ .testimonials label[for="t-3"],
+  #t-3:checked ~ .testimonials label[for="t-4"],
+  #t-4:checked ~ .testimonials label[for="t-5"] {
+      transform: translate3d(300px, 0, -90px) rotateY(-15deg);
+      z-index: 3;
+  }
+  #t-2:checked ~ .testimonials label[for="t-1"],
+  #t-3:checked ~ .testimonials label[for="t-2"],
+  #t-4:checked ~ .testimonials label[for="t-3"],
+  #t-5:checked ~ .testimonials label[for="t-4"] {
+      transform: translate3d(-300px, 0, -90px) rotateY(15deg);
+      z-index: 3;
+  }
+  #t-3:checked ~ .testimonials label[for="t-1"],
+  #t-4:checked ~ .testimonials label[for="t-2"],
+  #t-5:checked ~ .testimonials label[for="t-3"] {
+      transform: translate3d(-600px, 0, -180px) rotateY(25deg);
+  }
+  #t-5:checked ~ .testimonials label[for="t-2"],
+  #t-4:checked ~ .testimonials label[for="t-1"] {
+      transform: translate3d(-900px, 0, -270px) rotateY(35deg);
+  }
+  #t-5:checked ~ .testimonials label[for="t-1"] {
+      transform: translate3d(-1200px, 0, -360px) rotateY(45deg);
+  }
+  #t-1:checked ~ .testimonials label[for="t-1"],
+  #t-2:checked ~ .testimonials label[for="t-2"],
+  #t-3:checked ~ .testimonials label[for="t-3"],
+  #t-4:checked ~ .testimonials label[for="t-4"],
+  #t-5:checked ~ .testimonials label[for="t-4"],
+  #t-5:checked ~ .testimonials label[for="t-5"] {
+      z-index: 4;
+  }
+  .customer-reviews{
+    background-color: #F4F4FF;
+    border-radius: 25px;
+    margin: 10px;
+  }
+  .srch{
+    margin: 10px;
+    border-radius: 15px;
+    position: relative;
+  
+  }
+  .nearbysrh{
+    margin-left: 50px;
+  }
+  @media screen and (max-width: 376px) and (min-width: 280px){
+    .nearbysrh{
+      margin-left: -5px;
+    }
+    .hospital-register-steps-img11{
+      margin-left: -50px;
+    }
+      .row-panel-1{
+        width: 100%;
+        margin-left: -10px;
+      }
+      .row-panel-2{
+        margin-left: 20px;
+      }
+      .results-txt1{
+        font-size: 20px;
+        font-family: Roboto, "Helvetica Neue", sans-serif;
+      }
+      .results{
+        margin-top: -10px;
+      }
+  .srch{
+    margin-left: -210px;
+  
+  }
+  
+  .blooddonor-information{
+    margin-top: 30px;
+  }
+      .hospital-register-steps-img{
+        height: 80px;
+        position: relative;
+        left: 110px;
+      }
+      .hospital-register-steps-img1{
+        height: 80px;
+        position: relative;
+        margin-left: -85px;
+            margin-top: 5px;
+      }
+      .hospital-register-steps-step{
+        font-size: 15px;
+        padding-top: 15px;
+        text-align: center;
+        padding-bottom: 15px;
+        position: relative;
+        margin-left: -80px;
+  
+      }
+      .hospital-register-steps{
+        margin-top: 30px;
+      }
+      .register-donor{
+        position: relative;
+        left: 5px;
+      }
+      .nearby{
+        font-size: 20px;
+        padding-left: 20px;
+      }
+      .panel-2{
+        position: relative;
+        left: 20px;
+       }
+  
+    }
+  
+    @media screen and (min-width: 999px){
+  .register-donor{
+    margin-left: 600px;
+  }
+    }
+  
+    @media screen and (max-width: 767px) and (min-width: 380px){
+      .results{
+        margin-top: -10px;
+      }
+      .hospital-register-steps-img11{
+        margin-left: -50px;
+      }
+      .nearbysrh{
+        position: relative;
+        left: -40px;
+      }
+      .nearby{
+        font-size: 20px;
+  
+      }
+      .register-donor{
+        margin-left: 5%;
+      }
+      .widget-menu{
+  
+  
+        width: 100%;
+  
+        position: fixed;
+        bottom: 0px;
+          }
+          .row-panel-1{
+            width: 100%;
+            margin-left: -10px;
+          }
+          .row-panel-2{
+            margin-left: 20px;
+          }
+          .results-txt1{
+            font-size: 20px;
+            font-family: Roboto, "Helvetica Neue", sans-serif;
+          }
+          .srch{
+            margin-left: -200px;
+          }
+          .hospital-register-steps-img{
+            height: 80px;
+            position: relative;
+            left: 110px;
+          }
+          .hospital-register-steps-img1{
+            height: 80px;
+            position: relative;
+            margin-left: -85px;
+            margin-top: 5px;
+          }
+          .hospital-register-steps-step{
+            font-size: 15px;
+            padding-top: 15px;
+            text-align: center;
+            padding-bottom: 15px;
+            position: relative;
+            margin-left: -80px;
+  
+          }
+          .hospital-register-steps{
+            margin-top: 30px;
+          }
+          .register-donor{
+            position: relative;
+            left: 5px;
+          }
+          .panel-2{
+           position: relative;
+           left: 20px;
+          }
+    }
+    .man{
+      margin-top: 10px;
+    }
+    .hospital-register-steps-img11{
+      height: 100px;
+      position: relative;
+      left: 150px;
+    }
+    .hospital-register-steps-img1{
+      height: 100px;
+      position: relative;
+      left: 180px;
+    }
+    @media screen and (min-width: 767px){
+      .hospital-register-steps-img01{
+        height: 100px;
+        width: 100px;
+        position: relative;
+        left: 170px;
+      }
+      .hospital-register-steps-img12{
+        height: 100px;
+        width: 100px;
+        position: relative;
+        left: 170px;
+      }
+      .hospital-register-steps-img13{
+        height: 100px;
+        width: 170px;
+        position: relative;
+        left: 150px;
+      }
+    }
+    
+   
+    .hospital-register-steps-step{
+      padding-left: 70px;
+      padding-right: 70px;
+      padding-top: 25px;
+      text-align: center;
+      padding-bottom: 25px;
+  
+      position: relative;
+      left: 40px;
+      font-family: Roboto, "Helvetica Neue", sans-serif;
+    }
+    .hospital-register-steps{
+      margin-top: 30px;
+    }
+ .hospital-register-steps-step1{
+  font-family: 'poppins';
+  text-align: center;
+  justify-content: center;
+  display: flex;
+ }
+  
+    @media screen and (max-width: 767px) and (min-width: 380px){
+      .widget-menu{
+  
+  
+        width: 100%;
+  
+        position: fixed;
+        bottom: 0px;
+          }
+          .search-button{
+            margin-left: 50px;
+          }
+          .hospital-register-steps-img01{
+            height: 100px;
+            width: 100px;
+            position: relative;
+            left: 160px;
+          }
+          .hospital-register-steps-img12{
+            height: 100px;
+            width: 100px;
+            position: relative;
+            left: 130px;
+          }
+          .hospital-register-steps-img13{
+            height: 90px;
+            width: 130px;
+            position: relative;
+            left: 120px;
+          }
+    }
+    @media screen and (max-width: 999px) and (min-width: 768px){
+      .search-button{
+        margin-left: -150px;
+      }
+      .hospital-register-steps-img1{
+        margin-left: -160px;
+      }
+      .hospital-register-steps-step{
+        white-space: nowrap;
+        margin-left: -150px;
+      }
+      .register-as-donor{
+        margin-left: 220px;
+      }
+    }
+  .home-container{
+    padding: 0px;
+  }
+  .logo{
+    padding-left: 10px;
+  }
+  @media screen and (max-width: 376px) and (min-width: 280px){
+    .hospital-register-steps-img01{
+      height: 100px;
+      width: 100px;
+      position: relative;
+      left: 140px;
+    }
+    .hospital-register-steps-img12{
+      height: 100px;
+      width: 100px;
+      position: relative;
+      left: 110px;
+    }
+    .hospital-register-steps-img13{
+      height: 90px;
+      width: 130px;
+      position: relative;
+      left: 100px;
+    }
+    .widget-menu{
+  
+  
+    width: 100%;
+  
+   position: fixed;
+    bottom: 0px;
+    margin: 0%;
+      }
+      .phone-call{
+        margin-left: -35px;
+        margin-top: 10px;
+      }
+      .nearby{
+        position: relative;
+        left: 25px;
+      }
+     .sub-footer{
+  height: 30%;
+     }
+     .search-button{
+      margin-left: 50px;
+    }
+    .testimonial-blood-img{
+      height: 80px;
+      margin-left: -70px;
+      margin-top: 10px;
+    }
+    .pop-image{
+      position: relative;
+      left: 110px;
+    }
+    .pop-image2{
+      position: relative;
+      left: 90px;
+    }
+    }
+    @media screen and (max-width: 767px) and (min-width: 380px){
+      .widget-menu{
+  
+        margin: 0%;
+        width: 100%;
+  
+        position: fixed;
+        bottom: 0px;
+          }
+          .phone-call{
+            margin-left: -35px;
+            margin-top: 10px;
+          }
+          .nearby{
+            position: relative;
+            left: 50px;
+          }
+          .testimonial-blood-img{
+            height: 70px;
+            margin-left: -70px;
+            margin-top: 10px;
+          }
+          .oo{
+            margin-top: 25px;
+          }
+          .section3{
+            margin: 5px;
+          }
+          .pop-image{
+            position: relative;
+            left: 130px;
+          }
+          .pop-image2{
+            position: relative;
+            left: 110px;
+          }
+    }
+    .main-footer {
+      background: #1e2127;
+      width: 100%;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      display: block;
+      float: left;
+      border-bottom: 1px solid #181a1f;
+    }
+    .main-footer h4::after {
+      width: 70px;
+      height: 1px;
+      background: #DF0606;
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0px;
+    }
+    .main-footer h4 {
+      color: #fff;
+      font-size: 18px;
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #565d68;
+      font-weight: 400;
+      margin-top: 0px;
+      position: relative;
+      text-align:left;
+    }
+    .mcare-foot-about p {
+      font-size: 14px;
+      padding-top: 25px;
+      line-height: 1.5em;
+      padding-left: 0px !important;
+    }
+    .main-footer p {
+      position: relative;
+      padding-bottom: 10px;
+      padding-left: 35px;
+      font-size: 14px;
+    }
+    .main-footer ul, ol {
+      padding-left: 0px;
+    }
+    .main-footer .about-vmedo {
+      color: #fff;
+      text-align: justify;
+      margin-top: -1em;
+    }
+    .main-footer ul li {
+      list-style-type: none;
+      text-align: left;
+    }
+    .main-footer ul.lst li a {
+      padding: 5px;
+      text-decoration: none;
+    }
+    .main-footer ul.lst li a, ul.lst li a i {
+      color: #ececec;
+    }
+    .main-footer i.fa.fa-chevron-right {
+      color: red;
+      padding: 10px;
+    }
+    .main-footer a.follow-us-text {
+      color: white;
+    }
+    .main-footer .follow-us {
+      margin-top: 0px;
+      text-align:left;
+    }
+    .main-footer .foot-social {
+      list-style-type: none;
+      text-align: left;
+      padding-top: 1em;
+    }
+    .main-footer .foot-social li {
+      display: inline-block;
+    }
+    .main-footer .foot-social li a {
+      color: white;
+      font-size: 18px;
+      padding: 0 8px;
+      transition: .3s;
+    }
+    .know {
+      background: #424853;
+      border: none;
+      box-shadow: none;
+      border-radius: 3px;
+      color: #fff;
+      font-size: 13px;
+      padding: 9px 9px;
+      float: left;
+      outline: none;
+      transition: .5s;
+      text-align: center;
+    }
+    .know:hover {
+      background: #DF0606;
+      color: #fff;
+      transition: .5s;
+      text-decoration: none;
+    }
+    .main-footer ul.lst li a {
+      padding: 5px;
+      text-decoration: none;
+    }
+    .main-footer ul.lst li a, ul.lst li a i {
+      color: #ececec;
+    }
+    .main-footer a.follow-us-text {
+      color: white;
+    }
+  
+    @media screen and (min-width: 768px) and (max-width: 1190px){
+    .main-footer i.fa.fa-chevron-right {
+      color: red;
+      padding: 4px;
+      font-size: 13px;
+    }
+    .main-footer ul.lst li a {
+      padding: 0px;
+      text-decoration: none;
+      font-size: 14px;
+  
+    }
+    .main-footer ul.lst li a {
+      padding: 0px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+  }
+  .sub-footer {
+      background: #181a1f;
+      width: 100%;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      display: block;
+      float: left;
+      border-top: 1px solid #272b32;
+    height: 30%;
+  }
+  .sub-footer p {
+      font-size: 14px;
+      margin-bottom: 0px;
+      padding: 5px 0;
+      color: #979797;
+      display: inline-block;
+      text-align: center;
+  }
+  .sub-footer a {
+      color: grey;
+      transition: .3s;
+      font-size: 14px;
+  
+  }
+  
+  
+  .descr{
+    margin-top: -90px;
+    position: relative;
+    left: 17px;
+  }
+  .blooddonor-testimonial{
+    background-image: linear-gradient(to right,#333232,#473131,#592e2e,#6a2a2a,#7a2525,#882222,#951e1e,#a21819,#b11517,#c11113,#d00c0e,#df0606)!important;
+  }
+  .testimonial-blood-img{
+    height: 140px;
+    position: relative;
+    left: 150px;
+  }
+  
+  
+  
+  @media screen and (min-width:780px){
+    .amb1,.amb2,.amb3,.amb4{
+      margin-left: 450px;
+      border-radius: 25px;
+    }
+    .pop-image{
+      position: relative;
+      left: 170px;
+    }
+    .pop-image2{
+      position: relative;
+      left: 140px;
+    }
+  }
+  .ambulancesection{
+    background-color: #F4F4FF;
+    border-radius: 25px;
+  }
+  .amb1,.amb2,.amb3,.amb4{
+    background-color: #D5D3FA;
+    border-radius: 35px;
+  }
+  .yooo{
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    padding: 15px;
+  }
+  .ambulance-section1-header{
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    text-align: center;
+    font-size: 25px;
+  }
+  

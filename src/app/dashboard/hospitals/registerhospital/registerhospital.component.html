@@ -1,0 +1,273 @@
+<div class="container-fluid" style="height: calc(100% + 5px);">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-lg-12" id="navigation">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand">
+          <svg class="logo logo-md">
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo"></use>
+          </svg>
+          <svg [routerLink]="'/home'" class="logo logo-sm">
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo-white"></use>
+          </svg>
+        </a>
+        <div *ngIf="common.auth_token !== undefined && common.auth_token !== null"
+          class="back pull-right btn btn-sm btn-outline-secondary profile-icon" [routerLink]="'/dashboard/profile/1'"
+          placement="bottom" ngbTooltip="Profile" style="margin-right: 40px;">
+          <svg class="">
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user-solid-circle"></use>
+          </svg>
+        </div>
+        <div class="back pull-right btn btn-sm btn-outline-secondary" [routerLink]="'/dashboard/hospitals'"
+          placement="bottom" ngbTooltip="Back">
+          <svg class="">
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-back"></use>
+          </svg>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="row body register-hospital">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="row panel">
+        <div class="col-12 col-sm-6 col-md-6 col-xl-6 cursor-default">
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 create">
+              <div class="card" style="border: none; border-radius: 50%; padding: 20px;">
+                <svg>
+                  <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-office"></use>
+                  <title>Add Hospital</title>
+                </svg>
+              </div>
+              <span>Add Hospital</span>
+            </div>
+          </div>
+          <div class="row padding-top-0">
+            <ul ngbNav #nav="ngbNav" [(activeId)]="activeTabId" class="nav-tabs">
+              <li [ngbNavItem]="1">
+                <ng-template ngbNavContent>
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding card"
+                    [ngClass]="{'error': lblHospitalName !== undefined}">
+
+                    <div class="text-control">
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-office"></use>
+                      </svg>
+                      <input type="text" placeholder="Hospital name" [(ngModel)]="txtHospitalName"
+                        (ngModelChange)="OnTextChanged('txtHospitalName', $event)">
+                      <span class="error-line" placement="bottom"
+                        ngbTooltip="{{lblHospitalName}}">{{lblHospitalName}}</span>
+                      <!-- <svg>
+                                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-warning"></use>
+                                    <title>{{lblHospitalName}}</title>
+                                </svg> -->
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding card"
+                    [ngClass]="{'error': lblHospitalEmail !== undefined}">
+                    <div class="text-control">
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-at-symbol"></use>
+                      </svg>
+                      <input type="text" placeholder="Hospital email(This will be official email for login)"
+                        [(ngModel)]="txtHospitalEmail" (ngModelChange)="OnTextChanged('txtHospitalEmail', $event)">
+                      <span class="error-line" placement="bottom"
+                        ngbTooltip="{{lblHospitalEmail}}">{{lblHospitalEmail}}</span>
+
+                    </div>
+                  </div>
+
+                  <!-- manager name -->
+
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding card"
+                    [ngClass]="{'error': lblManagerName !== undefined}">
+
+                    <div class="text-control">
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user"></use>
+                      </svg>
+                      <input type="text" placeholder="Contact person name" [(ngModel)]="txtManagerName"
+                        (ngModelChange)="OnTextChanged('txtManagerName', $event)">
+                      <span class="error-line" placement="bottom"
+                        ngbTooltip="{{lblManagerName}}">{{lblManagerName}}</span>
+
+                    </div>
+                  </div>
+
+
+                  <!-- manager phone number -->
+
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding card"
+                    [ngClass]="{'error': lblManagerContact !== undefined}">
+                    <div class="text-control">
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-mobile2"></use>
+                      </svg>
+                      <input type="text" placeholder="Contact person mobile number"
+                        (keypress)="common.AllowOnlyNumbers($event)" [(ngModel)]="txtManagerContact"
+                        (ngModelChange)="OnTextChanged('txtManagerContact', $event)">
+                      <span class="error-line" placement="bottom"
+                        ngbTooltip="{{lblManagerContact}}">{{lblManagerContact}}</span>
+
+                    </div>
+                  </div>
+
+
+
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding card"
+                    [ngClass]="{'error': lblEmergencyContact !== undefined}">
+                    <div class="text-control">
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-phone1"></use>
+                      </svg>
+                      <input type="text" placeholder="Emergency department number"
+                        (keypress)="common.AllowOnlyNumbers($event)" [(ngModel)]="txtEmergencyContact"
+                        (ngModelChange)="OnTextChanged('txtEmergencyContact', $event)">
+                      <span class="error-line" placement="bottom"
+                        ngbTooltip="{{lblEmergencyContact}}">{{lblEmergencyContact}}</span>
+
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding card"
+                    [ngClass]="{'error': lblGeneralContact !== undefined}">
+                    <div class="text-control">
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-mobile2"></use>
+                      </svg>
+                      <input type="text" placeholder="General enquiry department number"
+                        (keypress)="common.AllowOnlyNumbers($event)" [(ngModel)]="txtGeneralContact"
+                        (ngModelChange)="OnTextChanged('txtGeneralContact', $event)">
+                      <span class="error-line" placement="bottom"
+                        ngbTooltip="{{lblGeneralContact}}">{{lblGeneralContact}}</span>
+
+                    </div>
+                  </div>
+
+
+
+
+
+
+
+
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding city card"
+                    [ngClass]="{'error': lblCity !== undefined}">
+
+                    <div class="text-control cmbbox">
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-location1"></use>
+                      </svg>
+                      <input type="text" placeholder="Location/Landmark/Google address" [(ngModel)]="txtCity"
+                        (ngModelChange)="OnTextChanged('txtCity', $event); OnSelectLocation(txtCity);"
+                        (keydown)="OnKeyDownSearchLocation(txtCity)" [ngbTypeahead]="search"
+                        (focus)="focus$.next($any($event).target.value)"
+                        (click)="click$.next($any($event).target.value)" #instance="ngbTypeahead">
+                      <span class="error-line" placement="bottom" ngbTooltip="{{lblCity}}">{{lblCity}}</span>
+
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding card"
+                    [ngClass]="{'error': lblAddress !== undefined}">
+
+                    <div class="text-control">
+                      <svg style="margin-top: -20px;">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-address-book"></use>
+                      </svg>
+                      <textarea type="text" placeholder="Display address (This will be displayed on your profile)"
+                        [(ngModel)]="txtAddress" (ngModelChange)="OnTextChanged('txtAddress', $event)"></textarea>
+                      <span class="error-line" placement="bottom" ngbTooltip="{{lblAddress}}">{{lblAddress}}</span>
+
+                    </div>
+                  </div>
+                </ng-template>
+              </li>
+              <li [ngbNavItem]="2">
+                <ng-template ngbNavContent>
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding card">
+                    <!-- <label>Specialization</label> -->
+                    <ng-multiselect-dropdown style="width: 100%;" [placeholder]="'Specialities available'"
+                      [settings]="specializationSettings" [data]="specializations" [(ngModel)]="selectedSpecializations"
+                      (onSelect)="OnItemSelect($event)" (onSelectAll)="OnSelectAll($event)">
+                    </ng-multiselect-dropdown>
+                    <span class="error-line" placement="bottom"
+                      ngbTooltip="{{lblSelectedSpecialization}}">{{lblSelectedSpecialization}}</span>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding card">
+                    <!-- <label>Emergency Handled</label> -->
+                    <ng-multiselect-dropdown style="width: 100%;" [placeholder]="'Type of emergencies you can handle'"
+                      [settings]="emergencyHandlesSettings" [data]="emergencyHandles"
+                      [(ngModel)]="selectedEmergencyHandles" (onSelect)="OnItemSelect($event)"
+                      (onSelectAll)="OnSelectAll($event)">
+                    </ng-multiselect-dropdown>
+                    <span class="error-line" placement="bottom"
+                      ngbTooltip="{{lblSelectedEmergencyHandled}}">{{lblSelectedEmergencyHandled}}</span>
+                  </div>
+
+                </ng-template>
+              </li>
+
+            </ul>
+
+            <div [ngbNavOutlet]="nav" class="mt-2 full-width"></div>
+          </div>
+          <div class="row controls">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 align-center align-v">
+              <div class="col-12 col-sm-12 col-md-12 col-xl-12 align-center" *ngIf="activeTabId === 2">
+                <label class="rd-checkbox align-center">
+
+                  <input type="checkbox" [(ngModel)]="chkAgree">
+                  <span class="checkmark"></span>
+                </label>
+
+                <span (click)="common.RedirectToUrl(links.pages.more.termsandcondition)">Terms & conditions</span>
+              </div>
+              <div class="col-12 col-sm-12 col-md-12 col-xl-12 align-center register">
+                <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="activeTabId > 1"
+                  (click)="OnClickBack()">Back</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="activeTabId < 2"
+                  (click)="OnClickNext()">Next</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary rd-button" *ngIf="activeTabId === 2"
+                  [disabled]="!chkAgree" (click)="OnClickSubmit()">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row widget-menu">
+    <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+      <svg (click)="app.OnOpenLoginForm('dashboard/profile/1')">
+        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-user-1"></use>
+      </svg>
+
+      <div>
+        {{ common.auth_token ? 'Profile' : 'Login' }}
+      </div>
+
+    </div>
+    <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+      <svg [routerLink]="'/home'">
+        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-home"></use>
+      </svg>
+      Home
+    </div>
+    <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+      <svg [routerLink]="'/services/more'">
+        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-navigation-more"></use>
+      </svg>
+      More
+    </div>
+  </div>
+
+  <div class="row footer">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="row">
+        <div class="col-6 col-sm-6 col-md-6 col-lg-6">&copy; Copyrights Arera Healthcare and Technologies Pvt Ltd 2022.
+          All rights reserved.</div>
+        <div class="col-6 col-sm-6 col-md-6 col-lg-6">.&nbsp;<span>.</span></div>
+      </div>
+    </div>
+  </div>
+</div>

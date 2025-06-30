@@ -1,0 +1,304 @@
+<div class="container-fluid" style="height: calc(100% + 5px); overflow: auto;">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-lg-12" id="navigation">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="img-box" [routerLink]="'/home'" title="Back" style="width: 36px; margin-left: 14px;cursor: pointer;">
+          <img src="assets\Profile-home\profile\icons8-back-white.png"  alt="some user image">
+        </div>
+        <a class="navbar-brand">
+          <svg class="logo logo-md" style="height: 20px; width: 100px;">
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo"></use>
+          </svg>
+          <svg [routerLink]="'/home'" class="logo logo-sm" style="height: 30px; width: 100px;">
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo-white"></use>
+          </svg>
+        </a>
+        <div *ngIf="common.auth_token !== undefined && common.auth_token !== null"  class="profile-icon back pull-right btn btn-sm btn-outline-secondary" 
+          placement="bottom" ngbTooltip="Profile" style="margin-right: 40px;">
+          <nav>
+          <div class="menu-toggle"></div>
+          <div class="profile" (click)="openProfile()">
+            <div class="img-box">
+              <img src="assets\Profile-home\profile\profile.png"  alt="some user image">
+            </div>
+          </div>
+          <div class="menu">
+            <ul>
+              <li [routerLink]="'/dashboard/profile/1'"> Profile</li>
+              <li (click)="OnClickLogout()">Sign Out</li>
+            </ul>
+          </div>
+        </nav>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+
+  <div class=" profile-body">
+
+    <div class="container" id="boxPosition">
+
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 photo" style="margin-top: -20px; text-align: -webkit-center;">
+          <div>
+            <img [src]="profileImage[0].src" [alt]="profileImage[0].caption" class="img2" for="img-upload"
+              *ngIf="profileImage.length > 0 && profileImage[0].src !== undefined" [routerLink]="'/dashboard/profile/1'">
+            <label *ngIf="profileImage.length === 0">
+              <svg class="img-upload-one">
+                <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-profile">
+                </use>
+              </svg>
+            </label>
+          </div>
+          
+      
+         
+        </div>
+      </div>
+      <div class="mt-2" style="text-align: center;">
+        <h5 style="font-weight: 600;">{{txtName}}</h5>
+      </div>
+      <div *ngIf="!txtisPaidMember" style="display: flex;text-align: center;justify-content: center;">
+        <div style="color: black;" type="button">Card Type - Free Subscription</div>
+       
+      </div>
+      <div *ngIf="txtisPaidMember" class="premium-button" style="display: flex;text-align: center;justify-content: center;">
+        <div style="color: black;" type="button">Card Type - {{txtpackageName}}</div>
+       
+      </div>
+
+
+
+      <div class="mt-3">
+
+
+        <mat-card class="cardsDesign" [routerLink]="'/dashboard/profile/1'">
+
+          <div class="row" style="width: 100%;">
+
+            <div class="col-2" style="padding: 7px;">
+              <img class="imagestyleone" src="assets\Profile-home\user-profile.png" 
+                onerror="" alt="User Image">
+            </div>
+
+            <div class="col-8 mt-2" style="display: flex; align-items:center;justify-content: center;text-align: center;">
+
+              <mat-card-content> <span class="text-style"> My profile </span></mat-card-content>
+
+            </div>
+
+            <div class="col-2">
+              <img class="imagestyle" src="assets\new-home\skip-track.png" 
+                onerror="" alt="User Image">
+            </div>
+
+
+          </div>
+
+        </mat-card>
+
+      </div>
+
+      <div class="mt-4">
+
+
+        <mat-card class="cardsDesign" [routerLink]="'/dashboard/profile/2'" >
+
+          <div class="row" style="width: 100%;">
+
+            <div class="col-2" style="padding: 7px;">
+              <img class="imagestyleoneone" src="assets\Profile-home\emergency-card.png"
+                onerror="" alt="User Image">
+            </div>
+
+            <div class="col-8" style="display: flex; align-items:center;justify-content: center;text-align: center;margin-top: 10px;">
+
+              <mat-card-content> <span class="text-style" style="text-wrap: nowrap;">Emergency cards </span>
+              </mat-card-content>
+
+            </div>
+
+            <div class="col-2">
+              <img class="imagestyle" src="assets\new-home\skip-track.png" 
+                onerror="" alt="User Image">
+            </div>
+
+
+          </div>
+
+        </mat-card>
+
+      </div>
+
+      <div class="mt-4" [routerLink]="'/dashboard/profile/3'">
+
+        <mat-card class="cardsDesign" >
+
+          <div class="row" style="width: 100%;">
+
+            <div class="col-2" style="padding: 7px;">
+              <img class="imagestyleone" src="assets\Profile-home\blood-donation.png"
+                 onerror="" alt="User Image">
+            </div>
+
+            <div class="col-8" style="display: flex; align-items:center;justify-content: center;text-align: center;margin-top: 10px;">
+
+              <mat-card-content> <span class="text-style">Blood donations</span>
+              </mat-card-content>
+
+            </div>
+            <div class="col-2">
+              <img class="imagestyle" src="assets\new-home\skip-track.png" 
+                onerror="" alt="User Image">
+            </div>
+
+          </div>
+
+        </mat-card>
+
+      </div>
+
+
+      <div style="margin-top: 2rem;" *ngIf="txtisUnpaidPaidMember" >
+
+
+        <button class="upgrade-premium-button" mat-raised-button (click)="goToPackage('All')">
+
+          <div style="display: flex;">
+            <div style="margin-top: 3%; margin-right: 3%;">
+              <img class="imagestyletwo" routerLink="" routerLinkActive="active" src="assets\images\new_images\premium1.png"
+              onerror="" alt="User Image" >
+            </div>
+  
+            <div>
+              Upgrade for premium
+            </div>
+          </div>
+
+          
+
+        </button>
+
+        <div class="row date date-one mt-2 mb-4" style="text-align: center;">
+          <span style=" font-size: 0.8rem; color: #ce2424;" [routerLink]="'/subscription'"> Subscription plan details </span>
+
+        </div>
+
+
+      </div>
+
+      
+            <div class="mt-4" *ngIf="txtisPaidMember">
+
+
+        <mat-card class="cardsDesign" style="color: #fff;background: #5f9f74; box-shadow: 0 5px 20px rgba(250, 129, 232, 0.3);" >
+
+          <div class="row" style="width: 100%;">
+
+            <div class="col-2" style="padding: 7px;">
+              <img class="imagestyleoneone" src="assets/images/new_images/premium.png" onerror="" alt="User Image">
+            </div>
+
+            <div class="col-8" style="display: flex; align-items:center;justify-content: center;text-align: center;margin-top: 10px;">
+
+              <mat-card-content> 
+                <div class="text-style" style="text-wrap: nowrap;">PREMIUM MEMBER </div>
+                <div style="line-height: 1.2;">
+                    <div style="text-align: initial; font-size: 0.8rem;text-align: center;">{{txtpackageName}} Plan</div>
+                    <div style=" font-size: 0.8rem;text-wrap: nowrap;text-align: center;"> Valid Till: {{txtpackagevalid_till | date:'dd/MM/yyyy'}}</div>
+                    
+                </div>
+                
+              </mat-card-content>
+
+            </div>
+
+            <!-- <div class="col-2">
+              <img class="imagestyle" src="assets\new-home\skip-track.png" 
+                onerror="" alt="User Image">
+            </div> -->
+
+
+          </div>
+
+        </mat-card>
+
+      </div>
+
+      <div id="premium-button-style" *ngIf="txtpackageName === 'Individual'" class="mb-4">
+
+
+        <button class="upgrade-premium-button" mat-raised-button
+          [routerLink]="'/dashboard/package'">
+          <img class="imagestyletwo" routerLink="" routerLinkActive="active" src="assets\images\new_images\premium1.png"
+             onerror="" alt="User Image">
+          Upgrade to Family Plus</button>
+
+      </div>
+
+    </div>
+
+    
+  </div>
+
+
+
+  <div class="row widget-menu">
+    <div class="col-4 col-md-4 col-sm-4 col-lg-4"
+    [ngClass]="{ 'highlighted-icon': isCurrentRoute('/dashboard/profile') }">
+      
+      <svg (click)="app.OnOpenLoginForm('dashboard/profile/1')">
+        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-user-1"></use>
+      </svg>
+      <div>
+        {{ common.auth_token ? 'Profile' : 'Login' }}
+      </div>
+
+    </div>
+    <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+      <svg [routerLink]="'/home'">
+        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-home"></use>
+      </svg>
+      Home
+    </div>
+    <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+      <svg [routerLink]="'/services/more'">
+        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-navigation-more"></use>
+      </svg>
+      More
+    </div>
+  </div>
+
+
+
+
+  <ng-template #premiumFeatures let-modal>
+    <div class="modal-body" style="max-height: calc(100vh - 15px); overflow: auto; font-size: 12px;">
+      <div class="row logo">
+        <!-- <span>VMEDO</span> -->
+        <label (click)="modal.close('Cancel');">
+          <svg>
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-cross"></use>
+          </svg>
+        </label>
+      </div>
+      <div class="row title">
+        <div class="col-12 col-sm-12 col-md-12 col-xl-12" style="font-size: 14px;">
+
+          <span class="mb-2">Premium Benefits</span>
+
+          <div style="padding: 0px;">
+
+            <img src="assets\images\new_images\Subscription Plans 2.png" style="width: 100%;" loading="lazy" alt=""
+              class="image">
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </ng-template>
+
+</div>

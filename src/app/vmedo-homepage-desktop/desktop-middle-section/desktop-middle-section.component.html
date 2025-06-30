@@ -1,0 +1,112 @@
+<ul class="flex space-x-6 mr-5 z-999">
+    <!-- Your navigation menu items -->
+    <li>
+      <div class="relative z-10">
+        <div class="main-services">
+
+          <div class="flex flex-row">
+
+            <div class="navigation-menu  text-white font-medium  hover:no-underline transition duration-200"
+              (click)="toggleDropdownDesktop()">
+              Healthcare-services
+              
+              <i *ngIf="isDropdownDesktopOpen" class="fa-solid fa-chevron-up text-white"></i>
+              <i *ngIf="!isDropdownDesktopOpen" class="fa-solid fa-chevron-down text-white"></i>
+
+            </div>
+
+          </div>
+
+
+          <div class="dropdown-menu" *ngIf="isDropdownDesktopOpen">
+
+            <div class="">
+              <div class="grid grid-cols-4 gap-4 p-4">
+                <!-- First row -->
+                <div class="col-span-1">
+                  <p class="font-semibold mb-2">Doctor Consultation</p>
+                  <a class="block text-sm text-gray-500 hover:text-gray-900"
+                    [routerLink]="'/services/emergency-online-doctor-consultation'">General Physician</a>
+                  <a class="block text-sm text-gray-500 hover:text-gray-900"
+                    [routerLink]="'/services/emergency-online-doctor-consultation'">Emergency Physician</a>
+                  <a class="block text-sm text-gray-500 hover:text-gray-900"
+                    [routerLink]="'/services/emergency-online-doctor-consultation'">Second opinion</a>
+                  <a class="block text-sm text-gray-500 hover:text-gray-900"
+                    [routerLink]="'/services/emergency-online-doctor-consultation'">Pediatricion</a>
+                  <a class="block text-sm text-gray-500 hover:text-gray-900"
+                    [routerLink]="'/services/emergency-online-doctor-consultation'">Orthopedic</a>
+                </div>
+                <div class="col-span-1">
+                  <p class="font-semibold mb-2">VMEDO Ambulance</p>
+                  <a class="block text-sm text-gray-500 hover:text-gray-900"
+                    [routerLink]="'/services/ambulance-service-india'">Emergency Ambulance</a>
+                  <a class="block text-sm text-gray-500 hover:text-gray-900"
+                    [routerLink]="'/services/ambulance-service-india'">Non Emergency Ambulance</a>
+                  <a class="block text-sm text-gray-500 hover:text-gray-900"
+                    [routerLink]="'/services/ambulance-service-india'">Patient transport vehicle</a>
+                  <a class="block text-sm text-gray-500 hover:text-gray-900"
+                    [routerLink]="'/services/ambulance-service-india'">Ambulance for rent</a>
+                  <a class="block text-sm text-gray-500 hover:text-gray-900"
+                    [routerLink]="'/services/ambulance-service-india'">Ambulance for events</a>
+                </div>
+                <div class="col-span-1">
+                  <p class="font-semibold mb-2">Urgent care at home</p>
+                  <a class="block text-sm text-gray-500 hover:text-gray-900"
+                    [routerLink]="'/services/urgent-medical-care-at-home'">Dressing at home</a>
+                  <a class="block text-sm text-gray-500 hover:text-gray-900"
+                    [routerLink]="'/services/urgent-medical-care-at-home'">Bandaging at home</a>
+
+                  <a class="block text-sm text-gray-500 hover:text-gray-900"
+                    [routerLink]="'/services/urgent-medical-care-at-home'">Injection/IV fluids at home</a>
+                  <a class="block text-sm text-gray-500 hover:text-gray-900"
+                    [routerLink]="'/services/urgent-medical-care-at-home'">Minor illness or injuries at home</a>
+                  <a class="block text-sm text-gray-500 hover:text-gray-900"
+                    [routerLink]="'/services/urgent-medical-care-at-home'">Blood test at home</a>
+                </div>
+                <div class="col-span-1">
+                  <p class="font-semibold mb-2">Labtest and scans</p>
+                  <a class="block text-sm text-gray-500 hover:text-gray-900"
+                    [routerLink]="'/services/diagnostics-at-home'">Checkups</a>
+                  <a class="block text-sm text-gray-500 hover:text-gray-900"
+                    [routerLink]="'/services/diagnostics-at-home'">Labtests</a>
+                  <a class="block text-sm text-gray-500 hover:text-gray-900"
+                    [routerLink]="'/services/diagnostics-at-home'">Scans</a>
+                </div>
+
+
+                <div class="col-span-1">
+                  <p class="font-semibold mb-2">Hospital admission</p>
+                  <a class="text-sm block text-gray-500 hover:text-gray-900" [routerLink]="'/hospitals'">Emergency
+                    hospital admission</a>
+
+                </div>
+                <div class="col-span-1">
+                  <p class="font-semibold mb-2">VMEDO Store</p>
+                  <a class="text-sm block text-gray-500 hover:text-gray-900"
+                    onclick="window.location.href='https://store.vmedo.com/'">Hospital Equipments</a>
+                  <a class="text-sm block text-gray-500 hover:text-gray-900"
+                    onclick="window.location.href='https://store.vmedo.com/'">Medical supplies</a>
+                </div>
+
+
+                <div class="col-span-2">
+                  <div class="rounded-xl">
+                    <img src="assets/images/website-images/mini_banner_1.png" alt="Image Description"
+                      class="w-4/5 h-full rounded-xl object-cover" [routerLink]="'/services/emergency-online-doctor-consultation'"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <a [routerLink]="'/info/occupational-health-services'"
+        class="navigation-menu font-medium text-white hover:font-bold hover:no-underline transition duration-200">VMEDO for Corporates</a>
+    </li>
+  </ul>

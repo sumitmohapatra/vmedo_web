@@ -1,0 +1,301 @@
+<div [style.height]="isPackageSelected ? 'calc(82% + 5px)' : 'calc(100% + 5px)'"
+  style="overflow: auto; overflow-x: hidden; background-color: white;">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-lg-12" id="navigation">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="img-box" [routerLink]="'/dashboard/profile'" title="Back" style="width: 36px; margin-left: 14px;cursor: pointer;">
+          <img src="assets\Profile-home\profile\icons8-back-white.png"  alt="some user image">
+        </div>
+        <a class="navbar-brand">
+          <svg class="logo logo-md" style="height: 20px; width: 100px;">
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo"></use>
+          </svg>
+          <svg [routerLink]="'/home'" class="logo logo-sm" style="height: 30px; width: 100px;">
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo-white"></use>
+          </svg>
+        </a>
+       <div *ngIf="common.auth_token !== undefined && common.auth_token !== null"  class="profile-icon back pull-right btn btn-sm btn-outline-secondary" 
+          placement="bottom" ngbTooltip="Profile" style="margin-right: 40px;">
+          <nav>
+          <div class="menu-toggle"></div>
+          <div class="profile" (click)="openProfile()">
+            <div class="img-box">
+              <img src="assets\Profile-home\profile\profile.png"  alt="some user image">
+            </div>
+          </div>
+          <div class="menu">
+            <ul>
+              <li [routerLink]="'/dashboard/profile/1'"> Profile</li>
+              <li (click)="OnClickLogout()">Sign Out</li>
+            </ul>
+          </div>
+        </nav>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+
+  <div class="profile-body">
+
+    <div class="container" id="boxPosition">
+
+      <div class="container">
+        <h5 style="color: #734b15;">Select subscription package</h5>
+      </div>
+
+      <div class="mb-5">
+
+        <div class="container" *ngFor="let package of packages | orderByDiscount; let i = index">
+          <div class="position-relative" *ngIf="package.packageName == subscriptionPackagesName || subscriptionPackagesName == 'All'">
+
+
+            <mat-card class="cardsDesign mt-3" (click)="onPackageSelection(package)"
+              [class.selected]="selectedCard === package" [ngStyle]="{'width': '90%'}"
+              [ngClass]="{'basic-package': package.id === 1,'individual-package': package.id === 3, 'family-package': package.id === 2, 'individual-plus':package.id===4}">
+
+
+              <div class="row" style="width: 100%;">
+
+                <div class="col" style="display: flex; align-items:center; justify-content: center;">
+
+                  <mat-card-content>
+
+
+                    <div class="mt-1 mb-1" hidden>
+                      <h2>{{package.id}}</h2>
+                    </div>
+
+                    <div class="mt-1" style="display: flex;align-items: center;justify-content: center;">
+
+                      <img style="margin-right: 10px;" *ngIf="package.packageDiscount !== 0" class="imagestyletwo" routerLink=""
+                        routerLinkActive="active" src="assets\images\new_images\premium1.png" onerror=""
+                        alt="User Image">
+
+                      <span style="font-weight: 500;font-size: 17px;color: #dd4b1f;"> {{package.packageName}}
+                      </span>
+                    </div>
+
+
+                    <!-- displaying package amount -->
+
+                    <div class="mt-2 mb-2">
+
+                      <h5>
+                        <span style="font-size: 15px;" *ngIf="package.packageDiscount !== 0" class="strikethrough">{{
+                          package.packageAmount |
+                          currency:'INR':'symbol':'1.0-0' }} </span>
+
+                        <span class="ml-2" style="font-size: 19px;">{{package.packageDiscount |
+                          currency:'INR':'symbol':'1.0-0'}}/year
+                        </span>
+
+
+                      </h5>
+                      <div class="flex  p-3" style="height: calc(100% - 109px);overflow-y: scroll;" class="package-description">
+                                <ul class="text-left mt-2 text-xs">
+
+                                    <div>
+                                        <li class="flex flex-row" style="align-items: center;">
+
+                                            <!-- <i class="fa-regular fa-circle-check"></i> -->
+
+                                            <div class="px-2" [innerHTML]="package?.packageDescription"></div>
+                                        </li>
+                                    </div>
+
+                                   
+
+                                </ul>
+                            </div>
+
+                    </div>
+
+
+                    <div [style.text-align]="'left'" [style.font-size.px]="12" *ngIf="package.id === 3"
+                      class="mt-3 ml-3">
+                      <ul class="tick-list">
+                        <li>&nbsp; 1 member covered</li>
+                        <li>&nbsp; 24*7 Medical Assistance </li>
+                        <li>&nbsp; Unlimited doctor consultation</li>
+                        <li>&nbsp; Free Emergency ambulance cover of ₹5000</li>
+                        <li>&nbsp; 20% discounts on Urgent care at home, Diagnostics at home</li>
+                        <li>&nbsp; 10% additional discounts on Ambulance services and medical items</li>
+                        <li>&nbsp; Access to Healthcare training and E-books</li>
+
+                      </ul>
+                    </div>
+
+                    <div [style.text-align]="'left'" [style.font-size.px]="12" *ngIf="package.id === 4"
+                      class="mt-3 ml-3">
+                      <ul class="tick-list">
+                        <li>&nbsp; 1 member covered</li>
+                        <li>&nbsp; Unlimited doctor consultation</li>
+                        <li>&nbsp; Free Emergency ambulance </li>
+                        <li>&nbsp; Complimentary Annual health checkup </li>
+                        <li>&nbsp; Up to 30% discounts on home care, <br> lab tests, patient transport service <br> and
+                          medical supplies* </li>
+
+                          
+
+                      </ul>
+                    </div>
+
+                    <div [style.text-align]="'left'" [style.font-size.px]="12" *ngIf="package.id === 2"
+                      class="mt-3 ml-3">
+                      <ul class="tick-list">
+                        <li>&nbsp; 4 members covered</li>
+                        <li>&nbsp; 24*7 Medical Assistance </li>
+                        <li>&nbsp; Unlimited doctor consultation</li>
+                        <li>&nbsp; Free Emergency ambulance cover of ₹5000</li>
+                        <li>&nbsp; 20% discounts on Urgent care at home, Diagnostics at home</li>
+                        <li>&nbsp; 10% additional discounts on Ambulance services and medical items</li>
+                        <li>&nbsp; Access to Healthcare training and E-books</li>
+                      </ul>
+                    </div>
+
+                    <div [style.text-align]="'left'" [style.font-size.px]="12" *ngIf="package.id === 1"
+                      class="mt-2 ml-3" style="margin-bottom: -16px;">
+                      <ul class="tick-list">
+                        <li>&nbsp; 1 member covered</li>
+                        <li>&nbsp; 24x7 Emergency Assistance</li>
+
+                      </ul>
+                    </div>
+
+                  </mat-card-content>
+
+                </div>
+
+              </div>
+
+            </mat-card>
+
+
+            <!-- <div style="position: absolute;top: 39%;left: 95%;padding: 0;">
+              <span (click)="onPackageSelectionInformation(package.packageDescription)"
+                class="info-symbol">&#x2139;</span>
+            </div> -->
+
+          </div>
+        </div>
+
+
+        <!-- <div *ngIf="hasZeroAmountPackage() && selectedCard && selectedCard.packageDiscount === 0.00" class="mt-4 mb-5">
+          <button (click)="onConfirm()" class="custom-button"
+            style="background-color: #ce2424;padding: 1% 10%;font-size: 19px; border-radius: 18px;" mat-flat-button
+            color="primary">Confirm</button>
+        </div> -->
+
+
+        <div class="scrollable-container-free">
+
+          <div class="mt-2 subscription-details-free" *ngIf="selectedCard && selectedCard.packageDiscount == 0">
+
+
+            <div class="row header-row-3 mt-2 mb-2">
+
+
+
+              <div class="col-12 desktop-payment">
+
+                <div *ngIf="hasZeroAmountPackage() && selectedCard && selectedCard.packageDiscount === 0.00" class="">
+
+                  <div class="mt-3 mb-3">
+
+                    <h6 style="color: #434343; font-size: 15px;">VMEDO Free subscription package selected </h6>
+
+                  </div>
+
+                  <div class="mb-3">
+                    <button (click)="onConfirm()" class="custom-button"
+                      style="background-color: #ce2424;padding: 1% 10%;font-size: 17px; border-radius: 18px;"
+                      mat-raised-button color="primary">Confirm</button>
+                  </div>
+                </div>
+
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+
+
+
+        <div class="scrollable-container">
+
+          <div class="mt-2 subscription-details" *ngIf="selectedCard && selectedCard.packageDiscount !== 0">
+
+
+            <div class="row header-row-3 mt-2 mb-2">
+
+              <div class="col-12">
+
+                <div class="row">
+
+                  <div class="Coupon code" style="text-align: center;">
+
+
+                    <form (ngSubmit)="submitCouponCode()">
+
+                      <div *ngIf="couponCodeActive">
+
+                        <label>
+
+                          <input type="text" id="coupon-code" placeholder="Enter coupon code" [(ngModel)]="couponCode"
+                            name="couponCode" [readonly]="couponApplied">
+
+                        </label>
+
+                        <button *ngIf="!couponApplied" mat-raised-button
+                          style="background-color: #434343; color: white; border-radius: 30px; font-size: 14px;"
+                          type="submit" [disabled]="!couponCode" class="ml-3">
+                          Apply
+
+                        </button>
+
+                        <span *ngIf="couponApplied" style="font-size: 12px; font-weight: 600; color: rgb(39, 126, 28);"
+                          class="ml-3">Coupon applied!!</span>
+
+                      </div>
+
+                    </form>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="col-12 desktop-payment" *ngIf="couponCodeActive">
+
+                <button (click)="onPackageSelectionPayment()" id="payment-button-desktop"
+                  style="font-size: 20px;background-color: #ce2424;color: white; font-size: 16px; border-radius: 18px;"
+                  mat-raised-button> <span style="font-size: 15px;">Proceed to pay </span>
+                  <span style="margin-bottom: 5px; font-size: 18px;">{{ (finalAmount ||
+                    originalPackageAmount) | currency:'INR':'symbol':'1.0-0'}} </span>
+                </button>
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+</div>

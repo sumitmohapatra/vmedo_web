@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.error-code {
+    font-size: 120px;
+    color: #e74c3c;
+}
+
+.error-message {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.return-home {
+    text-decoration: none;
+    background-color: #ce2424;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.return-home:hover {
+    background-color: #ce2424;
+}

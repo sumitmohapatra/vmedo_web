@@ -1,0 +1,168 @@
+<div class="h-screen overflow-y-auto" style="margin: 0px">
+  <div class="relative">
+    <!-- Desktop navigation section -->
+    <nav class="bg-red-400 bg-opacity-40 flex justify-between items-center p-3 absolute top-0 left-0 right-0 z-10">
+      <!-- Left section with company logo -->
+      <div class="flex items-center">
+        <img src="assets/images/website-images/logo-white.png" alt="Company Logo"
+          class="h-[50px] w-auto mr-4 cursor-pointer" [routerLink]="'/desktop'" />
+      </div>
+
+      <!-- Middle section with navigation menus -->
+      <app-desktop-middle-section></app-desktop-middle-section>
+
+      <!-- Right section with login -->
+
+      <!-- Right section with login -->
+      <div class="flex flex-row" *ngIf="common.auth_token">
+        <div>
+          <button
+            class="px-4 py-2 bg-transparent text-white font-semibold rounded-md border border-white hover:bg-white hover:text-black"
+            (click)="app.OnOpenLoginForm('/dashboard/profile')">
+            <span>Profile</span>
+          </button>
+        </div>
+
+        <div>
+          <button class="px-4 py-2 text-white font-semibold rounded-md" (click)="OnClickLogout()">
+            <span>Signout</span>
+          </button>
+        </div>
+
+      </div>
+
+
+      <div *ngIf="!common.auth_token">
+        <button
+          class="px-4 py-2 bg-transparent text-white font-semibold rounded-md border border-white hover:bg-white hover:text-black"
+          (click)="app.OnOpenLoginForm('/dashboard/profile')">
+          <span>Login</span>
+        </button>
+      </div>
+
+    </nav>
+
+    <!--Hero Video section -->
+    <section class="w-full h-screen flex justify-center items-center">
+      <!-- Video container -->
+      <div class="absolute inset-0 overflow-hidden">
+        <!-- Video element -->
+        <video [autoplay]="true" [muted]="true" [loop]="true" [playsInline]="true"
+          class="min-w-full min-h-full object-cover">
+          <source src="assets/images/website-images/Homepage_Video3.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+    <!-- Desktop VMEDO services section -->
+    <app-desktop-vmedo-services></app-desktop-vmedo-services>
+  </div>
+
+  <!-- Desktop Home Section -->
+  <div class="home-container px-2">
+    <!-- Desktop VMEDO subscription section -->
+    <app-desktop-vmedo-subscription></app-desktop-vmedo-subscription>
+
+    <!-- Desktop about us section -->
+    <section class="vmedo-about-us-section-desktop py-10 px-8">
+
+      <div class="flex justify-center bg-red-50">
+        <h2 class="text-xl font-medium text-red-900 pt-4">
+          India’s Most trusted Urgent Healthcare platform
+        </h2>
+      </div>
+
+
+      <div class="about-us-section-swiper-container2 bg-red-50 rounded-lg p-6 grid grid-cols-3 md:grid-cols-3 gap-6">
+
+
+        <!-- Card 1 -->
+        <div class="bg-white rounded-xl p-3 text-center">
+          <!-- Image (2/5 of the card's height) -->
+          <div style="display: flex; justify-content: center">
+            <img src="assets/images/website-images/Icons/members-1.png" alt="Banner 4" style="width: 15%"
+              class="rounded-md" />
+          </div>
+          <h2 class="text-lg font-semibold py-2 text-red-700">10,000+</h2>
+          <p class="text-sm text-gray-600">Registered Members
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+
+        <div class="bg-white rounded-xl p-3 text-center">
+          <!-- Image (2/5 of the card's height) -->
+          <div style="display: flex; justify-content: center">
+            <img src="assets/images/website-images/Icons/people-assisted.png" alt="Banner 4" style="width: 15%"
+              class="rounded-md" />
+          </div>
+          <h2 class="text-lg font-semibold py-2 text-red-700">6,00,000+</h2>
+          <p class="text-sm text-gray-600">People Assisted
+          </p>
+        </div>
+
+
+        <!-- Card 3 -->
+
+        <div class="bg-white rounded-xl p-3 text-center">
+          <!-- Image (2/5 of the card's height) -->
+          <div style="display: flex; justify-content: center">
+            <img src="assets/images/website-images/Icons/rating.png" alt="Banner 4" style="width: 15%"
+              class="rounded-md" />
+          </div>
+          <h2 class="text-lg font-semibold py-2 text-red-700"> 4.8*</h2>
+          <p class="text-sm text-gray-600"> Rating on Google
+          </p>
+        </div>
+
+
+      </div>
+    </section>
+
+
+
+    <!-- Desktop Mini Banners -->
+    <app-desktop-mini-banners></app-desktop-mini-banners>
+
+    <!-- Desktop care at home section -->
+    <app-desktop-home></app-desktop-home>
+
+    <!-- Desktop diagnostics at home section -->
+    <app-desktop-diagnostics></app-desktop-diagnostics>
+
+    <!-- Desktop Banner section -->
+    <app-desktop-banner></app-desktop-banner>
+    <!-- Desktop medical supplies section -->
+    <app-desktop-medical-supplies></app-desktop-medical-supplies>
+
+
+    <!-- Desktop about us section -->
+    <app-desktop-about-us></app-desktop-about-us>
+
+    <!-- Desktop Banner section -->
+
+
+    <!-- Desktop review section -->
+    <app-desktop-review></app-desktop-review>
+  </div>
+
+  <!-- Desktop Awards & Achievements section -->
+  <section class="Awards-achievements-Section py-6 px-14 bg-white">
+    <h2 class="text-3xl py-2 pl-8 font-medium text-black">
+      Awards and achievements
+    </h2>
+
+    <div class="rounded-3xl mt-6 ml-5">
+      <img src="assets/images/website-images/awards-banner.png" alt="Image Description"
+        class="mx-auto w-4/5 h-full rounded-3xl object-cover" />
+    </div>
+  </section>
+
+  <!-- Desktop Media Coverage Section -->
+  <app-desktop-media-coverage></app-desktop-media-coverage>
+
+  <!-- Desktop footer section -->
+  <app-desktop-footer></app-desktop-footer>
+
+</div>

@@ -1,0 +1,418 @@
+.body{
+  /* height: calc(100vh - 115px);
+  overflow: auto; */
+}
+
+.navbar a.navbar-brand{
+  color: #ffffff;
+  font-weight: 700;
+  margin-left: 5px;
+}
+
+.items-body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.items-body .item-links,
+.items-body .social-links,
+.items-body .other-links{
+  padding: 10px 0;
+}
+
+.items-body .item-links .card{
+  border-radius: 10px;
+  box-shadow: 1px 2px 3px #ccc;
+}
+
+@media only screen and (max-width: 768px){
+  
+  .widget-menu>div>div>svg {
+    height: 20px;
+    width: 20px;
+    fill: #666666;
+    outline: none;
+  }
+}
+.items-body .item-links > div > div{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 5px 20px;
+  margin: 5px 0;
+  height: 50px;
+}
+
+.items-body .item-links > div > div > svg{
+  height: 30px;
+  width: 30px;
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+.items-body .item-links > div > div > label{
+  cursor: pointer;
+  margin: 5px 0 0 0;
+  font-size: 13px;
+}
+
+.items-body .social-links > div{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.items-body .social-links > div > label{
+  margin: 5px 0 0 0;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.items-body .social-links > div > ul,
+.items-body .social-links > div > ul > li{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.items-body .social-links > div > ul{
+  display: table;
+  width: 100%;
+}
+
+.items-body .social-links > div > ul > li{
+  display: table-cell;
+}
+
+.items-body .social-links > div > ul > li > svg{
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+
+.items-body .other-links > div{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.items-body .other-links > div > label{
+  margin: 5px 0 0 0;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.items-body .other-links > div ul,
+.items-body .other-links > div ul li{
+  /* margin: 0;
+  padding: 0; */
+  /* font-size: 9px; */
+
+  font-size: 11px;
+  text-align: center;
+  color: #154887;
+}
+
+.items-body .other-links > div ul{
+  padding: 0 0 0 15px;
+  width: 100%;
+}
+
+.items-body .other-links > div >div > div:first-child ul{
+  padding-left: 30px;
+}
+
+@media (max-width: 767px) {
+
+.more-image{
+  text-align: center;
+}
+
+.img-card{
+  height: 65px;
+}
+
+.widget-menu{
+  width: 100%;
+  margin-left: -16px;
+  margin-right: auto;
+  position: fixed;
+  bottom: 0px;
+}
+
+
+  .navbar{
+      background: #ffffff !important;
+  }
+  .navbar-brand{
+      color: #ce2424 !important; margin-bottom: -3px;
+  }
+
+ 
+  .widget-menu > div{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 60px;
+      background: #ffffff;
+      font-size: 12px;
+      
+  }
+
+  .widget-menu > div > svg{
+      height: 20px;
+      width: 20px;
+      fill: #666666;
+      outline: none;
+  }
+
+  .widget-menu > div:last-child > svg{
+      transform: rotate(-90deg);
+  }
+
+  .widget-menu > div > svg:hover{
+      fill: #ce2424;
+  }
+
+  .footer{
+      display: none !important;
+  }
+}
+
+
+@media (min-width: 768px) {
+
+.more-image{
+  text-align: center;
+}
+
+.img-card{
+  height: 80px;
+}
+
+
+  .widget-menu,
+  .widget-menu > div{
+      display: none !important;
+  }
+
+  .footer{
+      display: flex;
+  }
+
+}
+
+.svg{
+height: 80px;
+}
+.label1{
+font-family: "poppins",sans-serif;
+text-align: center;
+padding: 5px;
+
+}
+.label2{
+font-family: "poppins",sans-serif;
+position: relative;
+left: 50px;
+padding: 5px;
+margin-top: 24px;
+}
+.label3{
+font-family: "poppins",sans-serif;
+position: relative;
+left: 90px;
+padding: 5px;
+margin-top: 10px;
+}
+.label4{
+font-family: "poppins",sans-serif;
+position: relative;
+left: 90px;
+padding: 5px;
+margin-top: 10px;
+}
+.label5{
+font-family: "poppins",sans-serif;
+position: relative;
+left: 110px;
+padding: 5px;
+margin-top: 10px;
+}
+.label6{
+font-family: "poppins",sans-serif;
+position: relative;
+left: 90px;
+padding: 5px;
+margin-top: 10px;
+}
+
+
+.card01{
+/* margin-top: 20px;
+border-style: solid;
+border-radius: 25px;
+background-color: #FDF2EE; */
+
+  margin-top: 20px;
+  border-radius: 25px;
+  background-color: #ffffff;
+  border: 1.6px solid #ffffff;
+  border-width: 3px;
+  box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);
+}
+
+.logout-card{
+/* margin-top: 20px;
+border-style: solid;
+border-radius: 25px;
+background-color: #FDF2EE; */
+
+  margin-top: 20px;
+  border-radius: 25px;
+  background-color: #ffffff;
+  border: 1.6px solid #ffffff;
+  border-width: 3px;
+  box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);
+}
+
+
+.card02{
+margin-top: 20px;
+border-style: solid;
+border-radius: 25px;
+background-color: #FDF2EE;
+}
+.links{
+border-radius: 25px;
+margin: 2px;
+background-color: #FDF2EE;
+border-style: solid;
+}
+
+@media screen and (max-width: 376px) and (min-width: 280px)
+
+
+{
+
+.widget-menu{
+width: 100%;
+margin-left: auto;
+margin-right: auto;
+position: fixed;
+bottom: 0px;
+}
+.svg{
+  height: 50px;
+  margin-left: -90px;
+}
+.label1{
+  font-size: 10px;
+  font-weight: 600;
+}
+.label3,.label6{
+  font-size: 10px;
+  font-weight: 600;
+  margin-left: -80px;
+}
+.label5{
+  font-size: 10px;
+  font-weight: 600;
+  margin-left: -85px;
+}
+.label4{
+  font-size: 10px;
+  font-weight: 600;
+  margin-left: -70px;
+}
+.label2{
+  font-size: 10px;
+  font-weight: 600;
+  margin-left: -60px;
+}
+
+.links{
+width: 100%;
+height: 40%;
+}
+.other-links{
+margin-left: 10px;
+}
+}
+@media screen and (max-width: 767px) and (min-width: 380px){
+.svg{
+  height: 50px;
+  margin-left: -85px;
+}
+.label1{
+  font-size: 10px;
+  font-weight: 600;
+}
+.label3,.label6{
+  font-size: 10px;
+  font-weight: 600;
+  margin-left: -75px;
+}
+.label5{
+  font-size: 10px;
+  font-weight: 600;
+  margin-left: -85px;
+}
+.label4{
+  font-size: 10px;
+  font-weight: 600;
+  margin-left: -70px;
+}
+.label2{
+  font-size: 10px;
+  font-weight: 600;
+  margin-left: -52px;
+}
+
+.links{
+width: 100%;
+height: 40%;
+}
+.other-links{
+margin-left: 10px;
+}
+}
+@media screen and (max-width: 999px) and (min-width: 767px){
+.container-fluid{
+width: 140%;
+margin-left: -150px;
+}
+.other-links{
+margin-left: 10px;
+}
+.svg{
+margin-left: -30px;
+}
+.label2,.label3,.label4,.label5,.label6{
+margin-left: -40px;
+font-weight: 600;
+
+}
+.label1{
+font-weight: 600;
+}
+
+}
+
+@media (min-width:999px){
+.logout{
+  display: none;
+}
+}
+.highlighted-icon {
+  color: red; /* You can adjust the style as needed */
+}

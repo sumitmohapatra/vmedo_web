@@ -1,0 +1,30 @@
+.rd-button{
+    border-color: #ce2424;
+    background: #ffffff;
+    color: #ce2424;
+    cursor: pointer;
+}
+
+.rd-button > svg{
+    fill: #ce2424;
+}
+
+.rd-button:hover,
+.rd-button:focus,
+.rd-button:active{
+    border-color: #ce2424;
+    background: #ce2424;
+    color: #ffffff;
+}
+
+.rd-button:hover > svg,
+.rd-button:focus > svg,
+.rd-button:active > svg{
+    fill: #ffffff;
+}
+
+button{    
+    margin-top: 5px !important;
+    /* padding-top: 8px !important; */
+    letter-spacing: 1px !important;
+}

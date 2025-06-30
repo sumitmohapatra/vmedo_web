@@ -1,0 +1,897 @@
+.container-fluid{
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.register,
+.register > div{
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sub-footer {
+background: #181a1f;
+width: 100%;
+padding-top: 15px;
+padding-bottom: 15px;
+display: block;
+float: left;
+border-top: 1px solid #272b32;
+}
+.sub-footer p {
+font-size: 14px;
+margin-bottom: 0px;
+padding: 5px 0;
+color: #979797;
+display: inline-block;
+text-align: center;
+}
+.sub-footer a {
+color: grey;
+transition: .3s;
+font-size: 14px;
+}
+.register button{
+  background: #ce2424;
+  border: 1px solid #ce2424;
+  color: #ffffff;
+}
+
+.register button:disabled,
+.register button[disabled]{
+  color: #ce2424 !important;
+  background: #ffffff !important;
+}
+
+.register button:hover{
+  background: #ffffff;
+  color: #ce2424;
+}
+
+.hospitals .row.title{
+  font-size: 20px;
+  margin: 20px 0;
+}
+
+.navbar .back{
+  /* width: 100px; */
+  padding: 2px 5px;
+  margin: 7px 5px 0 0;
+  background: #ffffff;
+  border: 2px solid #af1e1e;
+  float: right;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar .back:hover{
+  border: 2px solid #ffffff;
+  background: #ce2424;
+}
+
+.navbar .back svg{
+  height: 20px;
+  width: 20px;
+  /* position: absolute;
+  right: 60px; */
+  fill: #ce2424;
+  /* fill: rgb(0,0,0,0.5); */
+  /* border: 2px solid rgb(0,0,0,0.5); */
+}
+
+.navbar .back:hover svg{
+  fill: #ffffff;
+}
+
+.hospitals .row.title > div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #ce2424;
+}
+
+.hospitals .row.title > div > div{
+  /* border: 2px solid #ce2424; */
+  background-color: #ffffff;
+  border-radius: 50px;
+  /* height: 80px;
+  width: 80px; */
+  /* padding: 20px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hospitals .row.title > div > div > svg{
+  height: 40px;
+  width: 40px;
+  fill: #ce2424;
+}
+
+.hospitals .row.controls{
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.hospitals .row.controls > div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hospitals .row.controls button{
+  min-width: 80px;
+  border: 1px solid #ce2424;
+  color: #ce2424;
+}
+
+.hospitals .row.controls button{
+  margin-right: 5px;
+}
+
+.hospitals .row.controls button:last-child{
+  margin-right: 0;
+}
+
+.hospitals .row.controls a.register{
+  text-decoration: underline;
+  margin-top: 20px;
+  color: #ce2424;
+  cursor: pointer;
+}
+
+.hospitals .row.controls a.register:hover{
+  color: #e75454;
+}
+
+.hospitals .row.controls button:hover,
+.hospitals .row.controls button:focus,
+.hospitals .row.controls button:active{
+  background: #ce2424;
+  color: #ffffff;
+}
+
+input[type=text],
+input[type=password]{
+ border: none;
+ outline: none;
+ margin: 5px 0;
+ width: 100%;
+ color: #666666;
+ background: #f1f1f1;
+ padding: 10px;
+ box-shadow: 0 1px 1px rgba(0, 0, 0, 0.192);
+ /* transform: translateZ(0);
+ -webkit-transform: translateZ(0);*/
+ z-index: 1;
+}
+
+input[type=text]:hover,
+input[type=text]:focus,
+input[type=text]:active,
+input[type=password]:hover,
+input[type=password]:focus,
+input[type=password]:active{
+ background: #ececec;
+ box-shadow: 0 1px 1px rgba(0, 0, 0, 0.199);
+}
+
+.hospitals .panel {
+  /* margin: 0; */
+  padding: 10px;
+}
+
+.hospitals .panel .card{
+  background: #ffffff;
+  box-shadow: 0 1px 3px #cccccc;
+  border-radius: 25px;
+  font-size: 13px;
+  padding: 10px;
+  /* min-height: 100px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.hospitals .panel .card > .row{
+  width: 100%;
+  /* padding-bottom: 10px; */
+}
+
+.hospitals .panel .card > .row .search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hospitals .panel .card > .row .search button{
+  border: 1px solid #ce2424;
+  color: #ce2424;
+  margin-left: 5px;
+  padding: 8px 13px;
+}
+
+.hospitals .panel .card > .row .search button svg{
+  fill: #ce2424;
+}
+
+.hospitals .panel .card > .row .search button:hover,
+.hospitals .panel .card > .row .search button:focus,
+.hospitals .panel .card > .row .search button:active{
+  background: #ce2424;
+  color: #ffffff;
+}
+
+.hospitals .panel .card > .row .search svg{
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+
+.hospitals .panel .card > .row .search button:hover svg,
+.hospitals .panel .card > .row .search button:focus svg,
+.hospitals .panel .card > .row .search button:active svg{
+  fill: #ffffff;
+}
+
+
+
+.hospitals .panel{
+  padding-top: 0;
+}
+
+.hospitals .panel:first-child{
+  padding-top: 10px;
+}
+.hospitals .panel:first-child .card {
+  padding: 5px 10px;
+}
+
+.hospitals .panel:first-child .card > .row{
+  padding-bottom: 0;
+}
+
+.hospitals .panel:first-child .card > .row .search{
+  padding: 0;
+}
+
+.hospitals .details,
+.hospitals .details > .row,
+.hospitals .details > .row > div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666666;
+  cursor: pointer;
+}
+
+.hospitals .details:hover,
+.hospitals .details:focus,
+.hospitals .details:active{
+  /* border: 1px solid #ce2424;
+  background: rgb(252, 245, 245) !important; */
+}
+
+.hospitals .details svg{
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  fill: #666666;
+}
+
+.hospitals .details > .row > div:last-child{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 13px;
+}
+
+.hospitals .details > .row > div:last-child >  div{
+  padding: 2px 0;
+}
+
+.hospitals .details > .row > div:last-child >  div > svg{
+  height: 15px;
+  width: 15px;
+  margin-right: 5px;
+}
+
+.hospitals .details > .row > div:last-child >  div > span{
+  margin-left: 20px;
+}
+
+.hospitals .details > .row > div:last-child .name{
+  font-size: 15px;
+}
+
+.hospitals .details > .row > div:last-child .rating{
+  font-size: 12px;
+}
+.hospitals .details > .row > div:last-child .rating > label{
+  margin: 0;
+}
+
+.hospitals .details > .row > div:last-child .rating > label:first-child{
+  border:1px solid #10a80b;
+  color: #10a80b;
+  padding: 2px 5px;
+  border-radius: 10px;
+  margin-right: 5px;
+  width: 37px;
+  padding: 0px 5px;
+}
+
+.hospitals .details > .row > div:last-child .rating > label:first-child > svg{
+  height: 12px;
+  width: 12px;
+  fill: #10a80b;
+  margin: 0 5px;
+  margin-top: 2px;
+}
+
+.hospitals .details > .row > div:last-child .name:hover{
+  color: #ce2424 !important;
+  cursor: pointer !important;
+  text-decoration: underline !important;
+}
+
+.hospitals .details > .row > div:last-child .time,
+.hospitals .details > .row > div:last-child .emergency{
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.hospitals .details > .row > div:last-child .enquiry button{
+  border: 1px solid #ce2424;
+  background: #ce2424;
+  color: #ffffff;
+}
+
+.hospitals .details > .row > div:last-child .enquiry button:last-child{
+  margin-left: 5px;
+}
+
+.hospitals .details > .row > div:last-child .enquiry button:last-child svg{
+  position: relative;
+}
+
+.hospitals .details > .row > div:last-child .enquiry button svg{
+  height: 15px;
+  width: 15px;
+  fill: #ffffff;
+}
+
+.hospitals .details > .row > div:last-child .enquiry button:hover,
+.hospitals .details > .row > div:last-child .enquiry button:focus,
+.hospitals .details > .row > div:last-child .enquiry button:active{
+  color: #ce2424;
+  background: #ffffff;
+}
+
+.hospitals .details > .row > div:last-child .enquiry button:hover svg,
+.hospitals .details > .row > div:last-child .enquiry button:focus svg,
+.hospitals .details > .row > div:last-child .enquiry button:active svg{
+  fill: #ce2424;
+}
+
+.hospitals > div > div.row{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.star {
+  font-size: 1.5rem;
+  color: #b0c4de;
+}
+.filled {
+  color: #10a80b;
+}
+
+.hospitals .text-control input[type=text]{
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .navbar{
+      background: #ffffff !important;
+  }
+  .navbar-brand{
+      color: #ce2424 !important; margin-bottom: -3px;
+  }
+
+  .hospitals .details > .row > div > img{
+      height: auto;
+  }
+
+  .widget-menu,
+  .widget-menu > div{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 60px;
+      background: #ffffff;
+      font-size: 12px;
+
+  }
+
+  .widget-menu > div > svg{
+      height: 20px;
+      width: 20px;
+      fill: #666666;
+      outline: none;
+  }
+
+  .widget-menu > div:last-child > svg{
+      transform: rotate(-90deg);
+  }
+
+  .widget-menu > div > svg:hover{
+      fill: #ce2424;
+  }
+
+
+}
+
+
+@media (min-width: 768px) {
+  .hospitals  input[type=text]{
+      margin-right: 10px;
+  }
+
+  .hospitals .ddlist svg.dropdown{
+      right: 20px;
+  }
+
+  .widget-menu,
+  .widget-menu > div{
+      display: none !important;
+  }
+
+
+}
+
+
+
+.hospitals .panel .card{
+  box-shadow: 1px 2px 3px red !important;
+  border-radius: 10px;
+  padding: 0;
+  margin: 5px 0
+}
+
+.hospitals .panel .card input[type=text],
+.hospitals .panel .card input[type=password],
+.hospitals .panel .card textarea{
+  background: #ffffff !important;
+  box-shadow: none !important;
+}
+
+
+
+/* new css */
+.srh{
+position: relative;
+left:380px;
+}
+
+.nearby{
+fcolor: white;
+font-size: 50px;
+
+
+}
+.hospital-register-steps-img{
+height: 100px;
+position: relative;
+left: 150px;
+}
+.hospital-register-steps-img1{
+height: 100px;
+position: relative;
+left: 160px;
+}
+.hospital-register-steps-step{
+padding-left: 75px;
+font-family: Roboto, "Helvetica Neue", sans-serif;
+padding-top: 25px;
+padding-bottom: 25px;
+text-align: center;
+}
+.hospital-register-steps{
+margin-top: 30px;
+}
+
+@media screen and (max-width: 376px) and (min-width: 280px){
+.srh{
+  margin-left: -380px;
+  width: 100%;
+ }
+ .container-fluid{
+  width: 100%;
+  height: 100%;
+ }
+ .nearby{
+  font-family: 'Acumin Pro', 'Poppins', 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-style: unset;
+  text-align: center;
+  position: relative;
+
+}
+hr{
+  margin-left: -75px;
+}
+.hospital-information-header3{
+  font-size: 1.25rem;
+}
+.hospital-register-header{
+  font-size: 17px;
+}
+.hospital-register-steps-img{
+  height: 80px;
+  position: relative;
+  left: 110px;
+}
+.hospital-register-steps-img1{
+  height: 80px;
+  position: relative;
+  left: 130px;
+}
+.hospital-register-steps-step{
+  font-size: 15px;
+  padding-top: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: center;
+  padding-bottom: 15px;
+  position: relative;
+  left: 10px;
+}
+.hospital-register-steps{
+  margin-top: 30px;
+}
+.register-button{
+  position: relative;
+  left: -70px;
+  top: -40px;
+  white-space: nowrap;
+}
+}
+@media screen and (max-width: 767px) and (min-width: 380px){
+.srh{
+  margin-left: -380px;
+  width: 100%;
+ }
+ .container-fluid{
+  width: 100%;
+  height: 100%;
+ }
+ .nearby{
+  font-family: 'Acumin Pro', 'Poppins', 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-style: unset;
+  text-align: center;
+  position: relative;
+  left: 5px;
+}
+hr{
+
+  margin-left: -75px;
+}
+.hospital-information-header3{
+  font-size: 1.25rem;
+}
+.hospital-register-header{
+  font-size: 17px;
+}
+.hospital-register-steps-img{
+  height: 80px;
+  position: relative;
+  left: 110px;
+}
+.hospital-register-steps-img1{
+  height: 80px;
+  position: relative;
+  left: 130px;
+}
+.hospital-register-steps-step{
+  font-size: 15px;
+  padding-top: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: center;
+  padding-bottom: 15px;
+  position: relative;
+  left: 10px;
+}
+.hospital-register-steps{
+  margin-top: 30px;
+}
+.register-button{
+  position: relative;
+  left: -70px;
+  top: -40px;
+  white-space: nowrap;
+}
+}
+.hospital-search{
+position: relative;
+border-radius: 25px;
+/* background-image: url(src\assets\new-images\hospital1.png); */
+
+}
+
+
+
+
+.hospital-search-header1{
+font-family: 'Acumin Pro', 'Poppins', 'Open Sans', sans-serif;
+font-size: 20px;
+}
+.hospital-information{
+border-radius: 25px;
+background-color: #ffffff;
+margin-top: 20px;
+}
+
+.hospital-information-header3{
+font-family: Roboto, "Helvetica Neue", sans-serif;
+text-align: center;
+font-weight: 600;
+}
+hr{
+border: 2px solid black;
+width: 85%;
+position: relative;
+left: 85px;
+}
+.red{
+background-image: linear-gradient(to right,#333232,#473131,#592e2e,#6a2a2a,#7a2525,#882222,#951e1e,#a21819,#b11517,#c11113,#d00c0e,#df0606)!important;
+margin-top: 20px;
+}
+.hospital-register{
+background-color: #ffffff;
+margin-top: 20px;
+border-radius: 25px;
+}
+.hospital-register-header{
+font-family: 'Acumin Pro', 'Poppins', 'Open Sans', sans-serif;
+text-align: center;
+font-weight: 700;
+}
+.register-button{
+font-family: 'Acumin Pro', 'Poppins', 'Open Sans', sans-serif;
+margin-left: 43%;
+}
+.container-fluid{
+overflow-y: scroll;
+overflow-x: hidden;
+height: 100%;
+
+}
+
+/* widget-menu */
+@media screen and (max-width: 376px) and (min-width: 280px){
+.widget-menu{
+
+
+width: 100%;
+
+position: fixed;
+bottom: 0px;
+  }
+  .hospital-register-steps-img,.hospital-register-steps-img1{
+    margin-left: -10px;
+  }
+  .sub-footer{
+    height: 30%;
+  }
+}
+
+@media screen and (max-width: 767px) and (min-width: 380px){
+  .widget-menu{
+
+
+    width: 100%;
+
+    position: fixed;
+    bottom: 0px;
+      }
+      .hospital-register-steps-img,.hospital-register-steps-img1{
+        margin-left: -10px;
+      }
+
+      .sub-footer{
+        height: 20%;
+      }
+}
+@media screen and (max-width: 999px) and (min-width: 768px){
+  .srh{
+    margin-left: -250px;
+  }
+  .hr{
+    margin-left: -95px;
+  }
+  .hospital-register-steps-img1{
+    margin-left: -90px;
+  }
+  .hospital-register-steps-step{
+    font-size: 15px;
+    padding-top: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: center;
+    padding-bottom: 15px;
+    position: relative;
+    left: 10px;
+  }
+  .hospital-register-steps-img{
+    margin-left: -80px;
+  }
+  .register-button{
+    position: relative;
+    left: -40px;
+  }
+}
+
+
+
+.main-footer {
+  background: #1e2127;
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: block;
+  float: left;
+  border-bottom: 1px solid #181a1f;
+}
+.main-footer h4::after {
+  width: 70px;
+  height: 1px;
+  background: #DF0606;
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0px;
+}
+.main-footer h4 {
+  color: #fff;
+  font-size: 18px;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #565d68;
+  font-weight: 400;
+  margin-top: 0px;
+  position: relative;
+  text-align:left;
+}
+.mcare-foot-about p {
+  font-size: 14px;
+  padding-top: 25px;
+  line-height: 1.5em;
+  padding-left: 0px !important;
+}
+.main-footer p {
+  position: relative;
+  padding-bottom: 10px;
+  padding-left: 35px;
+  font-size: 14px;
+}
+.main-footer ul, ol {
+  padding-left: 0px;
+}
+.main-footer .about-vmedo {
+  color: #fff;
+  text-align: justify;
+  margin-top: -1em;
+}
+.main-footer ul li {
+  list-style-type: none;
+  text-align: left;
+}
+.main-footer ul.lst li a {
+  padding: 5px;
+  text-decoration: none;
+}
+.main-footer ul.lst li a, ul.lst li a i {
+  color: #ececec;
+}
+.main-footer i.fa.fa-chevron-right {
+  color: red;
+  padding: 10px;
+}
+.main-footer a.follow-us-text {
+  color: white;
+}
+.main-footer .follow-us {
+  margin-top: 0px;
+  text-align:left;
+}
+.main-footer .foot-social {
+  list-style-type: none;
+  text-align: left;
+  padding-top: 1em;
+}
+.main-footer .foot-social li {
+  display: inline-block;
+}
+.main-footer .foot-social li a {
+  color: white;
+  font-size: 18px;
+  padding: 0 8px;
+  transition: .3s;
+}
+.know {
+  background: #424853;
+  border: none;
+  box-shadow: none;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 13px;
+  padding: 9px 9px;
+  float: left;
+  outline: none;
+  transition: .5s;
+  text-align: center;
+}
+.know:hover {
+  background: #DF0606;
+  color: #fff;
+  transition: .5s;
+  text-decoration: none;
+}
+.main-footer ul.lst li a {
+  padding: 5px;
+  text-decoration: none;
+}
+.main-footer ul.lst li a, ul.lst li a i {
+  color: #ececec;
+}
+.main-footer a.follow-us-text {
+  color: white;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1190px){
+.main-footer i.fa.fa-chevron-right {
+  color: red;
+  padding: 4px;
+  font-size: 13px;
+}
+.main-footer ul.lst li a {
+  padding: 0px;
+  text-decoration: none;
+  font-size: 14px;
+
+}
+.main-footer ul.lst li a {
+  padding: 0px;
+  text-decoration: none;
+  font-size: 14px;
+}
+}
+.po{
+font-family: Roboto, "Helvetica Neue", sans-serif;
+font-size: 1rem;
+
+}
+.quote111{
+font-family: 'Acumin Pro', 'Poppins', 'Open Sans', sans-serif;
+}
+@media screen and (min-width: 768px) and (max-width: 1600px){
+.po{
+  text-align: center;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+
+}
+}

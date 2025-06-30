@@ -1,0 +1,62 @@
+.srch button{
+    background: #ce2424 !important;
+    border: 1px solid #ce2424 !important;
+    color: #ffffff !important;
+}
+
+.srch button:disabled,
+.srch button[disabled]{
+    color: #ce2424 !important;
+    background: #ffffff !important;
+}
+
+.srch button:hover,
+.srch button:active,
+.srch button:focus{
+    outline: none !important;
+    background: #ce2424 !important;
+    border: 1px solid #ce2424 !important;
+    color: #ffffff !important;
+}
+
+.srch button svg{
+   fill: #ffffff !important;
+   height: 15px !important;
+   width: 15px !important;
+}
+
+.search-sm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-sm button{
+    border: 1px solid #ce2424;
+    color: #ce2424;
+    /* margin-left: 5px; */
+    padding: 8px 13px;
+}
+
+.search-sm button svg{
+    fill: #ce2424;
+}
+
+.search-sm button:hover,
+.search-sm button:focus,
+.search-sm button:active{
+    background: #ce2424;
+    color: #ffffff;
+}
+
+.search-sm svg{
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.search-sm button:hover svg,
+.search-sm button:focus svg,
+.search-sm button:active svg{
+    fill: #ffffff;
+}

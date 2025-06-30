@@ -1,0 +1,472 @@
+<div style="height: calc(100% + 5px);overflow: auto; overflow-x: hidden; background-color: #ffffff;">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-lg-12" id="navigation">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand">
+          <svg class="logo logo-md">
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo"></use>
+          </svg>
+          <svg [routerLink]="'/home'" class="logo logo-sm">
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo-white"></use>
+          </svg>
+        </a>
+        <div *ngIf="common.auth_token !== undefined && common.auth_token !== null"
+          class="back pull-right btn btn-sm btn-outline-secondary profile-icon" [routerLink]="'/dashboard/profile/1'"
+          placement="bottom" ngbTooltip="Profile" style="margin-right: 40px;">
+          <svg class="">
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user-solid-circle"></use>
+          </svg>
+        </div>
+        <div class="back pull-right btn btn-sm btn-outline-secondary" [routerLink]="'/home'" placement="bottom"
+          ngbTooltip="Back">
+          <svg class="">
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-back"></use>
+          </svg>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- landing page -->
+
+  <div class="container">
+
+    <section class="emid1">
+      <div class="row" style="padding: 16px 0px;">
+
+        <div class="col-sm-7">
+          <div class="">
+            <div class="">
+
+              <div>
+                <h3 class="mt-3" id="skillpeople" style="font-weight: bold;">
+                  <span style="font-size: 22pt;">24*7 Medical Emergency Helpline </span>
+                  <br>
+
+                </h3>
+
+                <div class="mt-4">
+
+
+                  <span style="font-size: 16pt;">Speak to our expert Medical team
+
+                  </span>
+                  <br>
+
+                  <span style="font-size: 16pt;">Get connected to the nearest ambulance and hospital
+                  </span>
+                </div>
+
+
+              </div>
+
+              <br>
+
+              <div class="row">
+                <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 mobiaccessemid mt-3">
+
+
+                  <a [href]="'tel:' + phone">
+                    <button class="btn btn-danger btn-lg"> Call Helpline Now
+
+                    </button>
+                  </a>
+
+
+                </div>
+
+
+
+              </div>
+
+              <div>
+
+              </div>
+            </div>
+            <!-- eof .slide_description -->
+          </div>
+          <!-- eof .slide_description_wrapper -->
+        </div>
+
+        <div class="col-sm-5 intro-layer mt-5" style="display: flex;
+            justify-content: center;">
+          <img src="assets\images\new_images\emergency-service-image1.png" style="width: 86%;" loading="lazy" alt=""
+            class="image">
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+
+  <section class="">
+    <div class="container">
+      <br>
+
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h4 style="color:black; text-align: center;font-weight: bold;">When to call?
+        </h4>
+
+      </div>
+
+      <div class="row mt-4" style="justify-content: center;">
+
+        <div class="col-sm-7">
+          <div class="">
+            <div class="">
+
+              <div>
+
+                <div class="test1 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <mat-card class="" style="box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);">
+
+                    <strong>
+                      <h5 style="font-weight: 600;color: #971519;text-align: center;"> Hospital Information</h5>
+                    </strong>
+
+                    <p class="mt-3">
+                      Not every hospital can handle every emergency, Choosing the right hospital during a Medical
+                      emergency plays a vital role in saving a life. We assist you with a list of verified Hospitals
+                      based on the medical emergency and help you with the right information on Emergency beds
+                      availability, ICU and Doctor availability to accept emergencies at the hospital at that moment. We
+                      also assist patients/guardians with hospital admission and support them during their tenure at the
+                      hospital for additional support including ambulance and blood.
+                    </p>
+
+
+                  </mat-card>
+                </div>
+
+                <div class="test1 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
+                  <mat-card class="" style="box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);">
+
+                    <strong>
+                      <h5 style="font-weight: 600;color: #971519;text-align: center;"> Ambulance Booking </h5>
+                    </strong>
+
+                    <p class="mt-3">
+                      Finding the right ambulance, negotiating with them for a better price can be stressful during
+                      Medical Emergencies. We assist users to get the nearest verified ambulance at a fixed affordable
+                      price and support them throughout their journey to ensure, quick, safe and quality ambulance
+                      service without any hassles from the service provider.
+                    </p>
+
+
+                  </mat-card>
+                </div>
+
+                <div class="test1 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
+                  <mat-card class="" style="box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);">
+
+                    <strong>
+                      <h5 style="font-weight: 600;color: #971519;text-align: center;">Doctor Consultation </h5>
+                    </strong>
+
+                    <p class="mt-3">
+                      Not every Medical emergency needs hospital admission. Majority of the symptoms can be handled at
+                      home to avoid an unwanted hospital visit. Speak to our in-house Emergency Doctors to get immediate
+                      treatment advice or consultation to manage Medical Emergencies efficiently.
+                    </p>
+
+                  </mat-card>
+                </div>
+
+              </div>
+
+              <br>
+
+              <div class="row mb-3" style="justify-content: center;">
+
+                <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 mobicreateemid2">
+
+                  <a [href]="'tel:' + phone">
+                    <button class="btn btn-danger btn-lg"> Get expert assistance now!
+                    </button>
+                  </a>
+
+
+
+                </div>
+              </div>
+
+              <div>
+
+              </div>
+            </div>
+            <!-- eof .slide_description -->
+          </div>
+          <!-- eof .slide_description_wrapper -->
+        </div>
+
+
+        <!-- <div class="col-sm-5 intro-layer">
+
+                    <iframe width="100%" height="250" src="https://youtube.com/embed/fZMNcp9FGT8" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+
+                </div> -->
+
+      </div>
+    </div>
+  </section>
+
+  <section class="">
+    <div class="container">
+      <br>
+
+
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h4 style="color:black; text-align: center;font-weight: bold;">How it works
+        </h4>
+
+      </div>
+
+
+      <div class=" col-12">
+
+        <div class="hospital-register-steps col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="row">
+
+            <!-- <div class="col-lg-12 col-md-12- col-sm-12">
+                  <h3 style="font-family: poppins;text-align:center;margin-bottom: 10px;">How it Works?</h3>
+                </div> -->
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+              <img src="assets\images\new_images\emergency-request.png" alt="" class="hospital-register-steps-img1">
+              <h4 class="hospital-register-steps-step" style="font-weight: 500;">Call Our Helpline</h4>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+              <img src="assets\images\new_images\emergency-assistance.png" alt="" class="hospital-register-steps-img1">
+              <h4 class="hospital-register-steps-step" style="font-weight: 500;">Customer support executive <br>
+                is assigned to you</h4>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+              <img src="assets\images\new_images\right-connection.png" alt="" class="hospital-register-steps-img1">
+              <h4 class="hospital-register-steps-step" style="font-weight: 500;">The executive understands the <br>
+                situation and assists you with
+                <br> the right connection
+              </h4>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+              <img src="assets\images\new_images\co-ordinates.png" alt="" class="hospital-register-steps-img1">
+              <h4 class="hospital-register-steps-step" style="font-weight: 500;">The executive co-ordinates with <br>
+                verified service providers to <br> help you have a hassle-free <br> experience. </h4>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+              <img src="assets\images\new_images\additional-support.png" alt="" class="hospital-register-steps-img1">
+              <h4 class="hospital-register-steps-step" style="font-weight: 500;">The executive assists you <br> with any
+                other additional support <br> needed during Hospitalization </h4>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+
+  <section class="ambulance-section2" style="margin-left: -15px; margin-right: -15px; margin-bottom: 0px;">
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <img src="assets\new-images\two.png" alt="" class="ambulance-section2-image">
+
+        <p class="ambulance-section2-para">2500+ <br> verified ambulances</p>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <img src="assets\new-images\three.png" alt="" class="ambulance-section2-image">
+
+        <p class="ambulance-section2-para">500+ <br> hospital partners </p>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <img src="assets\images\new_images\doctor-image.png" alt="" class="ambulance-section2-image">
+
+        <p class="ambulance-section2-para">10+ <br> emergency doctors</p>
+      </div>
+    </div>
+  </section>
+
+
+
+  <div class="main-footer" style="font-weight: 200;">
+
+    <div class="container mom8">
+
+      <div class="row">
+
+
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 mb-3">
+
+          <div class="mcare-foot-about footer-box">
+            <h4>
+
+              About VMEDO
+
+            </h4>
+            <p class="about-vmedo">
+              VMEDO is a digital healthcare platform, on a mission to make quality healthcare accessible and affordable to all..
+              <br>
+              <a [routerLink]="'/info/aboutus'" class="know" style="color: #fff;">View More. . .</a>
+
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+
+          <div class="mcare-foot-about footer-box">
+            <h4>
+
+              Quick Links
+
+            </h4>
+
+            <ul class="lst">
+
+              <li><a href="https://academy.vmedo.com"><i class="fa fa-chevron-right"></i>VMEDO
+                  Academy</a></li>
+              <li><a href="https://store.vmedo.com/categories/home-care-primary-care-medical-products/subcategories"><i
+                    class="fa fa-chevron-right"></i>VMEDO Store</a>
+              </li>
+
+              <li><a [routerLink]="'/services/ambulance-service-india'"><i class="fa fa-chevron-right"></i>VMEDO Ambulance</a></li>
+              <li><a [routerLink]="'/info/occupational-health-services'"><i class="fa fa-chevron-right"></i>For
+                  Corporates</a></li>
+
+              <li><a href="www.vmedo.com/first-aid-training"><i class="fa fa-chevron-right"></i>First Aid Training</a>
+              </li>
+
+              <li><a href="https://hospital.vmedo.com"><i class="fa fa-chevron-right"></i>Hospital login</a></li>
+
+              <li><a [routerLink]="'/services/find-blood-donor'"><i class="fa fa-chevron-right"></i>Find blood donors</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+
+
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+
+          <div class="mcare-foot-address footer-box">
+            <h4>More</h4>
+            <ul class="lst">
+              <li><a href="https://www.vmedo.com/blog/"><i class="fa fa-chevron-right"></i> Blog</a></li>
+
+              <li><a [routerLink]="'/info/aboutus'"><i class="fa fa-chevron-right"></i> About Us</a>
+              </li>
+              <li><a href="https://vmedo.com/blog/join-our-team-vmedo/"><i class="fa fa-chevron-right"></i> Career</a>
+              </li>
+
+                <li><a [routerLink]="'/info/partner-with-us'"><i class="fa fa-chevron-right"></i> Partner
+                  With Us</a></li>
+              <li><a [routerLink]="'/info/contact-us'"><i class="fa fa-chevron-right"></i> Contact
+                  Us</a></li>
+
+
+
+
+            </ul>
+
+
+          </div>
+
+        </div>
+
+
+
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+
+          <div class="mcare-foot-tweets footer-box">
+
+            <h4>
+
+              Subscribe
+
+            </h4>
+
+
+            <div class="follow-us">
+              <a href="" class="follow-us-text">Follow Us On</a>
+            </div>
+            <ul class="foot-social">
+              <li><a href="https://www.facebook.com/vmedohealthcare"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="https://twitter.com/vmedoapp"><i class="fa fa-twitter"></i></a>
+              </li>
+
+              <li><a href="https://www.linkedin.com/company/vmedo"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+              </li>
+              <li><a href="https://www.instagram.com/vmedo_healthcare/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+              </li>
+              <li><a href="https://www.youtube.com/c/Bloodforsureapp/featured"><i class="fa fa-youtube"></i></a></li>
+            </ul>
+
+          </div>
+        </div>
+
+
+      </div>
+      <h5 style="text-align: center; font-weight:500;color:white;margin-top: 15px;">
+        "we work to save lives"</h5>
+    </div>
+  </div>
+  <div class="sub-footer mb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+          <p class="text-content copy-content">
+            © Copyrights <span class="copyrights" href="index.html" style="color: #dc1f26;">Arera
+              Healthcare and Technologies Pvt Ltd</span> 2021. All rights reserved.
+          </p>
+          <div class="terms-conditions">
+            <a href="vmedo-terms.html">Terms and Condition</a> | <a href="vmedo-privacy.html">
+              Privacy </a> | <a href="https://vmedo.com/sitemap.xml"> Sitemap </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="row widget-menu">
+    <div class="col-4 col-md-4 col-sm-4 col-lg-4" >
+     
+      <div *ngIf="!common.auth_token">
+        <svg (click)="app.OnOpenLoginForm('/dashboard/profile')"  >
+          <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-key1"></use>
+        </svg>
+      </div>
+     
+      <div *ngIf="common.auth_token">
+        <svg  [routerLink]="getDashboardLink()">
+          <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-user-1"></use>
+        </svg>
+      </div>
+      
+  
+      <!-- Profile -->
+  
+      <div>
+        {{ common.auth_token ? 'Profile' : 'Login' }}
+      </div>
+  
+    </div>
+    <div class="col-4 col-md-4 col-sm-4 col-lg-4"
+    >
+  <svg [routerLink]="'/home'">
+   <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-home"></use>
+  </svg>
+  Home
+  </div>
+    <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+      <svg [routerLink]="'/services/more'">
+        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-navigation-more"></use>
+      </svg>
+      More
+    </div>
+  </div>

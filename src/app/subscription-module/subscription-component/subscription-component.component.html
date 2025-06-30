@@ -1,0 +1,3052 @@
+<div *ngIf="isMobile; else desktopContent">
+    <div class="h-screen overflow-y-auto pb-10">
+        <!-- Mobile navbar -->
+        <nav class="flex items-center justify-between bg-red-500 p-2"
+            style="position: fixed; top: 0; left: 0; right: 0; z-index: 999">
+            <button class="text-white focus:outline-none focus:text-white" (click)="toggleSideMenu()">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+            <img src="assets/img/logo-white.png" alt="Logo" class="h-8 w-auto pl-3" [routerLink]="'/home'" />
+
+            <!-- Mobile navbar login -->
+
+            <div>
+                <div *ngIf="common.auth_token">
+
+                    <p class="text-white font-normal" (click)="app.OnOpenLoginForm('/dashboard/profile')">Profile</p>
+
+                </div>
+
+                <div *ngIf="!common.auth_token">
+                    <p class="text-white font-normal" (click)="app.OnOpenLoginForm('/dashboard/profile')">Login</p>
+                </div>
+            </div>
+
+            <!-- Mobile navbar -->
+
+
+        </nav>
+
+        <div class="home-mobile-container mt-5">
+            <!--Mobile Side Menu -->
+            <div [ngClass]="{ 'side-menu-open': isSideMenuOpen }"
+                class="side-menu bg-white shadow-2xl text-gray-800 fixed left-0 h-full w-60 transition-all duration-300 ease-in-out z-10">
+                <!-- Side Menu Content -->
+                <ul class="py-3">
+                    <li class="px-4 py-2 hover:bg-gray-50">
+                        <a class="font-medium block hover:no-underline hover:text-red-700"
+                            (click)="toggleServices2()">Healthcare
+                            Services <i *ngIf="!isOpen2" class="fa-solid fa-chevron-down"></i> <i *ngIf="isOpen2"
+                                class="fa-solid fa-chevron-up"></i> </a>
+                        <!-- Display services if isOpen is true -->
+                        <ul *ngIf="isOpen2" class="pl-2 py-2">
+                            <li class="text-sm pt-2 block hover:no-underline hover:text-red-700"
+                                [routerLink]="'/services/emergency-online-doctor-consultation'"><i
+                                    class="fa-solid fa-caret-right"></i> Doctor Consultation</li>
+                            <li class="text-sm pt-3 block hover:no-underline hover:text-red-700"
+                                [routerLink]="'/services/ambulance-service-india'"><i
+                                    class="fa-solid fa-caret-right"></i> VMEDO Ambulance</li>
+                            <li class="text-sm pt-3 block hover:no-underline hover:text-red-700"
+                                [routerLink]="'/services/urgent-medical-care-at-home'"><i
+                                    class="fa-solid fa-caret-right"></i> Urgent care at home</li>
+                            <li class="text-sm pt-3 block hover:no-underline hover:text-red-700"
+                                [routerLink]="'/services/diagnostics-at-home'"><i class="fa-solid fa-caret-right"></i>
+                                Labtest and scans</li>
+                            <li class="text-sm pt-3 block hover:no-underline hover:text-red-700"
+                                [routerLink]="'/hospitals'"><i class="fa-solid fa-caret-right"></i> Hospital
+                                admission</li>
+                            <li class="text-sm pt-3 block hover:no-underline hover:text-red-700"
+                                onclick="window.location.href='https://store.vmedo.com/'"><i
+                                    class="fa-solid fa-caret-right"></i> VMEDO Store</li>
+                        </ul>
+                    </li>
+
+                    <li class="px-4 py-2 hover:bg-red-50">
+                        <a class="font-medium block hover:no-underline hover:text-red-700"
+                            [routerLink]="'/info/occupational-health-services'">For Corporates</a>
+                    </li>
+
+                    <!-- Mobile Signout -->
+
+                    <li *ngIf="common.auth_token" class="px-4 py-2 hover:bg-red-50">
+
+                        <div>
+                            <p class="font-normal text-red-700" (click)="OnClickLogout()">Signout</p>
+                        </div>
+                    </li>
+
+                    <!-- Mobile signout -->
+
+
+                </ul>
+            </div>
+
+            <section class="container mx-auto py-5">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h2 class="text-2xl font-semibold mb-4">
+                            Ensure your Family’s Health and safety with
+                            VMEDO Membership
+
+                        </h2>
+                        <h3 class="text-md font-medium text-gray-600 mb-2">
+                            Experience peace of mind with a 24*7 Medical assistance team, unlimited doctor
+                            consultations, priority access and discounts on home care, diagnostic services and Ambulance
+                            service.
+                        </h3>
+                    </div>
+                    <div>
+                        <img class="w-full h-auto rounded-3xl" src="assets/images/website-images/subscription_image.jpg"
+                            alt="Urgent Care Image" />
+                    </div>
+                </div>
+            </section>
+
+            <!-- Desktop about us section -->
+            <section class="vmedo-about-us-section-desktop py-4">
+                <div
+                    class="about-us-section-swiper-container2 bg-red-50 rounded-lg p-3 grid grid-cols-2 md:grid-cols-2 gap-6">
+                    <!-- Card 1 -->
+
+                    <div class="bg-white rounded-xl p-2 flex flex-col items-center">
+
+                        <img src="assets/images/website-images/Icons/members-1.png" alt="Banner 4" style="width: 30%"
+                            class="rounded-md" />
+
+                        <h2 class="text-xl font-medium text-red-700 mt-2">
+                            10,000+
+                        </h2>
+                        <p class="mb-2 ">
+                            Members
+                        </p>
+
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white rounded-xl p-2 flex flex-col items-center">
+
+                        <img src="assets/images/website-images/Icons/people-assisted.png" alt="Banner 4"
+                            style="width: 30%" class="rounded-md" />
+
+                        <h2 class="text-xl font-medium text-red-700 mt-2">
+                            6,00,000+
+                        </h2>
+                        <p class="mb-2">
+                            People assisted
+                        </p>
+
+                    </div>
+
+
+                </div>
+            </section>
+
+            <!-- Mobile select package -->
+            <section class="select-package-section py-4 px-3 bg-white">
+
+                <div class="pb-1 px-1">
+                    <h2 class="font-medium mb-3">membership packages</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Card 1 -->
+                    <div
+                        class="subscription-card-mobile relative p-4 rounded-xl shadow-md bg-gradient-to-br from-red-800 to-pink-400 opacity-75 text-white"  *ngFor="let package of subscriptionPackagesList">
+
+                        <div>
+
+                            <div class="flex flex-col items-center justify-center mt-1" style="height: 20%;">
+                                <div>
+                                    <h2 class="font-medium">{{package.packageName}}</h2>
+                                </div>
+
+                                <div>
+                                    <h2 class="text-2xl">₹{{package.packageAmount}}</h2>
+                                </div>
+
+                                <!-- <div>
+                                <h3 class="text-sm mt-1">Valid for lifetime</h3>
+                            </div> -->
+
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Content Section (50%) -->
+                        <div class="flex  p-3" style="height: calc(100% - 109px);overflow-y: scroll;">
+                            <ul class="text-left mt-2 text-xs">
+
+                                    <div>
+                                        <li class="flex flex-row" style="align-items: center;">
+
+                                            <!-- <i class="fa-regular fa-circle-check"></i> -->
+
+                                            <div class="px-2" [innerHTML]="package?.packageDescription"></div>
+                                        </li>
+                                    </div>
+                            </ul>
+                        </div>
+
+                        <!-- Button Section (20%) -->
+                        <div class="flex items-center justify-center" style="height: 20%;">
+
+                            <button (click)="app.OnOpenLoginForm('/dashboard/package')"
+                                class="bg-white text-red-500 text-sm font-bold py-2 px-3 rounded focus:outline-none shadow-md hover:bg-red-100">
+                                Subscribe now
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+            <!-- Mobile about us  -->
+            <section class="how-it-works-mobile-section px-3 py-4 bg-white">
+
+                <div class="pb-1 px-1">
+                    <h2 class="font-medium">How it works</h2>
+                </div>
+
+                <div class="grid grid-cols-1 gap-3 py-2 bg-white rounded-md">
+                    <div
+                        class="vmedo-about-us-card-mobile bg-white rounded-md flex items-center justify-center flex-col">
+
+
+                        <div class="grid grid-cols-4 gap-4 p-3">
+                            <!-- First column: Image -->
+                            <div>
+                                <img src="assets/images/website-images/Icons/register-member.png" alt="Banner 4"
+                                    style="width: 80%" class="rounded-md" />
+                            </div>
+
+                            <!-- Second column: Heading and Content -->
+                            <div class="flex flex-col justify-center col-span-3">
+                                <!-- Heading -->
+                                <p class="text-left text-red-700 font-bold mb-2">1.Register</p>
+
+                                <!-- Content -->
+                                <div>
+
+                                    <p class="text-xs text-left text-black">Register to VMEDO, select the subscription
+                                        type of your choice and add family members to your account
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Second card -->
+                    <div
+                        class="vmedo-about-us-card-mobile bg-white rounded-md flex items-center justify-center flex-col">
+                        <!-- Image (2/5 of the card's height) -->
+
+                        <div class="grid grid-cols-4 gap-4 p-3">
+                            <!-- First column: Image -->
+                            <div class="p-0 m-0">
+                                <img src="assets/images/website-images/Icons/medical-card.png" alt="Banner 4"
+                                    style="width: 80%" class="rounded-md" />
+                            </div>
+
+                            <!-- Second column: Heading and Content -->
+                            <div class="flex flex-col justify-center col-span-3">
+                                <!-- Heading -->
+                                <p class="text-left text-red-700 font-bold mb-2">2.Get VMEDO card</p>
+
+                                <!-- Content -->
+                                <div>
+
+                                    <p class="text-xs text-left text-black">Get a VMEDO Emergency Health Card with a
+                                        unique Serial number for each member</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Third card -->
+                    <div
+                        class="vmedo-about-us-card-mobile  bg-white rounded-md flex items-center justify-center flex-col">
+
+
+                        <div class="grid grid-cols-4 gap-4 p-3">
+                            <!-- First column: Image -->
+                            <div>
+                                <img src="assets/images/website-images/Icons/connect-to-doctor.png" alt="Banner 4"
+                                    style="width: 80%" class="rounded-md" />
+                            </div>
+
+                            <!-- Second column: Heading and Content -->
+                            <div class="flex flex-col justify-center col-span-3">
+                                <!-- Heading -->
+                                <p class="text-left text-red-700 font-bold mb-2">3.Call Helpline</p>
+
+                                <!-- Content -->
+                                <div>
+
+                                    <p class="text-xs text-left text-black">Any subscriber and their registered family
+                                        member can call the VMEDO helpline and mention the card number to get the
+                                        required assistance during medical emergencies. </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+            </section>
+
+            <section class="Membership-Benefits container px-3 py-4">
+                <!-- Heading -->
+
+                <h2 class="font-medium mb-4">Membership Benefits</h2>
+
+                <!-- Accordions using CSS Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-4 gap-3 justify-center">
+                    <!-- Accordion 1 -->
+                    <div class="bg-white rounded-xl p-3" style="border: 1px solid lightgrey;"
+                        (click)="toggleAccordion(0)">
+
+                        <div class="flex flex-row">
+                            <div>
+                                <h3 class="font-semibold mb-2 cursor-pointer flex flex-row text-red-700">
+                                    <i class="fa-solid fa-circle-check mr-2 text-green-700 flex items-center"></i> 24/7
+                                    Medical
+                                    Assistence
+                                </h3>
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions2[1].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions2[1].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[0].isOpen" class="mt-3">
+                            <p class="text-sm">Gain instant access to round-the-clock medical assistance and guidance from our team of
+                                experienced healthcare professionals. Whether it's a pressing health concern or a simple
+                                query, our experts are here to provide personalized support whenever you need it</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 3 -->
+                    <div class="bg-white rounded-xl p-3" style="border: 1px solid lightgrey;"
+                        (click)="toggleAccordion(1)">
+
+                        <div class="flex flex-row">
+                            <div>
+                                <!-- Accordion Title (Clickable) -->
+                        <h3 class="font-semibold mb-2 cursor-pointer flex flex-row text-red-700">
+                            <i class="fa-solid fa-circle-check mr-2 text-green-700 flex items-center"></i> Unlimited
+                            Doctor Consultations
+                        </h3>
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions2[1].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions2[1].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+                        
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[1].isOpen" class="mt-3">
+                            <p class="text-sm">Say goodbye to long wait times and limited access to healthcare. With Vmedo Subscription,
+                                you can enjoy unlimited virtual consultations with qualified doctors, ensuring prompt
+                                medical attention and continuity of care from the comfort of your own home.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 4 -->
+                    <div class="bg-white rounded-xl p-3" style="border: 1px solid lightgrey;"
+                        (click)="toggleAccordion(2)">
+
+                        <div class="flex flex-row">
+                            <div>
+                                <!-- Accordion Title (Clickable) -->
+                        <h3 class="font-semibold mb-2 cursor-pointer flex flex-row text-red-700">
+                            <i class="fa-solid fa-circle-check mr-2 text-green-700 flex items-center"></i> Free
+                            Emergency Ambulance
+                        </h3>
+
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions2[1].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions2[1].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+
+                        
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[2].isOpen" class="mt-3">
+                            <p class="text-sm">In times of crisis, every second counts. As a subscriber, you'll receive complimentary
+                                emergency ambulance services, ensuring rapid response and transportation to the nearest
+                                medical facility in the event of an emergency.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 1 -->
+                    <div class="bg-white rounded-xl p-3" style="border: 1px solid lightgrey;"
+                        (click)="toggleAccordion(3)">
+
+                        <div class="flex flex-row">
+                            <div>
+                                <!-- Accordion Title (Clickable) -->
+                        <h3 class="font-semibold mb-2 cursor-pointer flex flex-row text-red-700">
+                            <i class="fa-solid fa-circle-check mr-2 text-green-700 flex items-center"></i>Discount on
+                            Home Care
+                        </h3>
+
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions2[1].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions2[1].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+                        
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[3].isOpen" class="mt-3">
+                            <p class="text-sm">Receive exclusive discounts on home healthcare services, including nursing care, wound
+                                dressing, medication administration, and more. Enjoy peace of mind knowing that
+                                professional medical assistance is just a phone call away, all at a discounted rate.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 2 -->
+                    <div class="bg-white rounded-xl p-3" style="border: 1px solid lightgrey;"
+                        (click)="toggleAccordion(4)">
+
+                        <div class="flex flex-row">
+                            <div>
+                                <!-- Accordion Title (Clickable) -->
+                        <h3 class="font-semibold mb-2 cursor-pointer flex flex-row text-red-700">
+                            <i class="fa-solid fa-circle-check mr-2 text-green-700 flex items-center"></i> Discount on
+                            Diagnostics
+                        </h3>
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions2[1].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions2[1].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+
+                        
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[4].isOpen" class="mt-3">
+                            <p class="text-sm">Take control of your health with discounted rates on a wide range of diagnostic tests and
+                                screenings. From blood tests to imaging studies, our subscription ensures affordable
+                                access to essential diagnostic services to monitor your health and detect potential
+                                issues early.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 3 -->
+                    <div class="bg-white rounded-xl p-3" style="border: 1px solid lightgrey;"
+                        (click)="toggleAccordion(5)">
+
+                        <div class="flex flex-row">
+                            <div>
+                                <!-- Accordion Title (Clickable) -->
+                        <h3 class="font-semibold mb-2 cursor-pointer flex flex-row text-red-700">
+                            <i class="fa-solid fa-circle-check mr-2 text-green-700 flex items-center"></i> Discount on
+                            Medical Items
+                        </h3>
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions2[1].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions2[1].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[5].isOpen" class="mt-3">
+                            <p class="text-sm">Access high-quality medical supplies and equipment at discounted prices, including
+                                prescription medications, medical devices, and wellness products. Save on essential
+                                healthcare essentials and take proactive steps towards better health and well-being.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 4 -->
+                    <div class="bg-white rounded-xl p-3" style="border: 1px solid lightgrey;"
+                        (click)="toggleAccordion(6)">
+
+                        <div class="flex flex-row">
+                            <div>
+                                <!-- Accordion Title (Clickable) -->
+                        <h3 class="font-semibold mb-2 cursor-pointer flex flex-row text-red-700">
+                            <i class="fa-solid fa-circle-check mr-2 text-green-700 flex items-center"></i> Discount on
+                            Non-Emergency Ambulance
+                        </h3>
+
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions2[1].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions2[1].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+
+                        
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[6].isOpen" class="mt-3">
+                            <p class="text-sm">Whether it's for scheduled medical appointments or non-urgent transfers, our subscription
+                                members enjoy discounted rates on non-emergency ambulance services. From transportation
+                                to and from medical facilities to inter-hospital transfers, our reliable ambulance
+                                services ensure safe and comfortable travel at a reduced cost
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 4 -->
+                    <div class="bg-white rounded-xl p-3" style="border: 1px solid lightgrey;"
+                        (click)="toggleAccordion(7)">
+
+                        <div class="flex flex-row">
+                            <div>
+                                <!-- Accordion Title (Clickable) -->
+                                <h3 class="font-semibold mb-2 cursor-pointer flex flex-row text-red-700">
+                                    <i class="fa-solid fa-circle-check mr-2 text-green-700 flex items-center"></i>Access
+                                    to
+                                    Healthcare Training and E-books
+                                </h3>
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions2[1].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions2[1].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[7].isOpen" class="mt-3">
+                            <p class="text-sm">From wellness tips and disease management strategies to healthcare technology insights,
+                                our subscription members gain valuable knowledge to support their health journey.
+                                Whether you're looking to learn more about managing chronic conditions, maintaining a
+                                healthy lifestyle, or navigating the healthcare system, our curated resources provide
+                                the guidance you need to make informed decisions and take control of your health.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mobile doctor consultation banner  -->
+            <section class="Doctor-consultation-section-mobile py-4 bg-white flex justify-center">
+                <div class="doctor-consultation-card-mobile rounded-xl bg-gray-200 content-center">
+                    <img src="assets/images/website-images/vmedo-mobile-banner-1.png" alt="Image Description"
+                        class="w-full h-full rounded-xl object-cover" [routerLink]="'/services/ambulance-service-india'"/>
+                </div>
+            </section>
+
+            <!-- Mobile Urgent care at home -->
+            <section class="urgent-care-at-home-section py-4 bg-white">
+                <div class="pb-3 px-3">
+                  <h2 class="font-medium">Other services</h2>
+                </div>
+        
+                <swiper [config]="other_services_mobile" class="px-7">
+        
+        
+                  <ng-template swiperSlide>
+                    <div class="other-service-card-mobile bg-gray-100 rounded-md"
+                      [routerLink]="'/services/emergency-online-doctor-consultation'">
+                      <div style="display: flex; justify-content: center">
+                        <img src="assets/images/website-images/other-service-1.png" alt="Banner 4" style="width: 100%"
+                          class="rounded-md" />
+                      </div>
+                    </div>
+        
+                    <div class="py-2">
+                      <p class="font-medium" style="font-size: 12px">
+                        Online Doctor Consultation
+                      </p>
+                    </div>
+                  </ng-template>
+        
+                  <ng-template swiperSlide>
+                    <div class="other-service-card-mobile bg-gray-100 rounded-md"
+                      [routerLink]="'/services/ambulance-service-india'">
+                      <div style="display: flex; justify-content: center">
+                        <img src="assets/images/website-images/other-service-2.png" alt="Banner 4" style="width: 100%"
+                          class="rounded-md" />
+                      </div>
+                    </div>
+        
+                    <div class="py-2">
+                      <p class="font-medium" style="font-size: 12px">VMEDO Ambulance</p>
+                    </div>
+                  </ng-template>
+        
+                  <ng-template swiperSlide>
+        
+                    <div class="other-service-card-mobile bg-gray-100 rounded-md"
+                      [routerLink]="'/services/urgent-medical-care-at-home'">
+                      <div style="display: flex; justify-content: center">
+                        <img src="assets/images/website-images/other-service-5.png" alt="Banner 4" style="width: 100%"
+                          class="rounded-md" />
+                      </div>
+                    </div>
+        
+                    <div class="py-2">
+                      <p class="font-medium" style="font-size: 12px">
+                        Urgent care at home
+                      </p>
+                    </div>
+                  </ng-template>
+        
+                  <ng-template swiperSlide>
+                    <div class="other-service-card-mobile bg-gray-100 rounded-md"
+                      [routerLink]="'/services/diagnostics-at-home'">
+                      <div style="display: flex; justify-content: center">
+                        <img src="assets/images/website-images/other-service-6.png" alt="Banner 4" style="width: 100%"
+                          class="rounded-md" />
+                      </div>
+                    </div>
+        
+                    <div class="py-2">
+                      <p class="font-medium" style="font-size: 12px">
+                        Diagnostics at home
+                      </p>
+                    </div>
+                  </ng-template>
+        
+                  <ng-template swiperSlide>
+                    <div class="other-service-card-mobile bg-gray-100 rounded-md"
+                      onclick="window.location.href='https://store.vmedo.com/'">
+                      <div style="display: flex; justify-content: center">
+                        <img src="/assets/images/new_images/service-6.png" alt="Banner 4" style="width: 100%"
+                          class="rounded-md" />
+                      </div>
+                    </div>
+        
+                    <div class="py-2">
+                      <p class="font-medium" style="font-size: 12px">
+                        Medical products
+                      </p>
+                    </div>
+                  </ng-template>
+        
+                  <ng-template swiperSlide>
+                    <div class="other-service-card-mobile bg-gray-100 rounded-md" [routerLink]="'/hospitals'">
+                      <div style="display: flex; justify-content: center">
+                        <img src="assets/images/website-images/other-service-4.png" alt="Banner 4" style="width: 100%"
+                          class="rounded-md" />
+                      </div>
+                    </div>
+        
+                    <div class="py-2">
+                      <p class="font-medium" style="font-size: 12px">
+                        Hospital admission
+                      </p>
+                    </div>
+                  </ng-template>
+        
+        
+        
+                </swiper>
+              </section>
+
+            <!-- Mobile review section -->
+            <section class="what-people-say-about-us-mobile-section px-3 py-4 bg-white">
+
+                <!-- Heading -->
+                <h2 class="font-semibold mb-4">What people say about us</h2>
+
+                <!-- <div class="pb-3">
+                    <h2 class="font-medium">What people say about us</h2>
+                </div> -->
+
+                <swiper [config]="vmedo_review_mobile">
+                    <ng-template swiperSlide>
+                        <div class="what-people-say-about-us-card bg-white rounded-xl shadow-md p-2">
+                            <div class="flex justify-center items-center pt-2" style="height: 30%">
+                                <img src="assets/images/website-images/subscription/Lakshmish_review.jpeg"
+                                    alt="Person Image" style="border-radius: 50%; height: 100%; width: auto" />
+                            </div>
+                            <div class="overflow-auto pt-3" style="height: 50%">
+                                <p class="text-sm h-full p-3">
+                                    "I was able to save a person’s life during my Trekking Event with the help of VMEDO.
+                                    I feel more confident being trained in First aid from VMEDO and relaxed for the fact
+                                    that VMEDO is there for my help in case of Emergency"
+                                </p>
+                            </div>
+                            <div class="h-20 flex flex-col justify-center items-center" style="height: 20%">
+                                <p class="font-medium text-red-900">Lakshmish gowda</p>
+                                <p class="text-sm font-medium text-red-900">Mountaineer</p>
+                                <p class="text-sm font-medium text-red-900">Explore Nation</p>
+
+                            </div>
+                        </div>
+                    </ng-template>
+
+                    <ng-template swiperSlide>
+                        <div class="what-people-say-about-us-card bg-white rounded-xl shadow-md p-2">
+                            <div class="flex justify-center items-center pt-2" style="height: 30%">
+                                <img src="assets/images/website-images/subscription/Arvind_review.jpeg"
+                                    alt="Person Image" style="border-radius: 50%; height: 100%; width: auto" />
+                            </div>
+                            <div class="overflow-auto pt-3" style="height: 50%">
+                                <p class="text-sm h-full p-3">
+                                    "As a member of VMEDO I never thought I would use it, But just within 6 Months I had
+                                    to take the help of VMEDO to save my Aunt’s life. I truly want to thank the entire
+                                    team for saving my family member, and I recommend everyone to become a VMEDO member"
+                                </p>
+                            </div>
+                            <div class="h-20 flex flex-col justify-center items-center" style="height: 20%">
+                                <p class="font-medium text-red-900">Arvind LR</p>
+                                <p class="text-sm font-medium text-red-900">Founder, Chairman</p>
+                                <p class="text-sm font-medium text-red-900">Sudheergha Industries</p>
+                            </div>
+                        </div>
+                    </ng-template>
+
+                    <ng-template swiperSlide>
+                        <div class="what-people-say-about-us-card bg-white rounded-xl shadow-md p-2">
+                            <div class="flex justify-center items-center pt-2" style="height: 30%">
+                                <img src="assets/images/website-images/subscription/Prashanth_review.jpeg"
+                                    alt="Person Image" style="border-radius: 50%; height: 100%; width: auto" />
+                            </div>
+                            <div class="overflow-auto pt-3" style="height: 50%">
+                                <p class="text-sm h-full p-3">
+                                    "VMEDO was able to send an Ambulance within 5 min when one of our member met with a
+                                    serious injury. We are happy to be associated with VMEDO as our Emergency response
+                                    partner"
+                                </p>
+                            </div>
+                            <div class="h-20 flex flex-col justify-center items-center" style="height: 20%">
+                                <p class="font-medium text-red-900">Prashanth</p>
+                                <p class="text-sm font-medium text-red-900">Smash-It Badminton club</p>
+                                <p class="text-sm font-medium text-red-900">Shimoga</p>
+                            </div>
+                        </div>
+                    </ng-template>
+
+                    <ng-template swiperSlide>
+                        <div class="what-people-say-about-us-card bg-white rounded-xl shadow-md p-2">
+                            <div class="flex justify-center items-center pt-2" style="height: 30%">
+                                <img src="assets/images/website-images/subscription/Ravi_review.jpeg" alt="Person Image"
+                                    style="border-radius: 50%; height: 100%; width: auto" />
+                            </div>
+                            <div class="overflow-auto pt-3" style="height: 50%">
+                                <p class="text-sm h-full p-3">
+                                    "VMEDO team arranged an ICU bed in a hospital when we were struggling to find an ICU
+                                    bed for my Dad, I feel blessed to be a member of VMEDO. God bless them!"
+                                </p>
+                            </div>
+                            <div class="h-20 flex flex-col justify-center items-center" style="height: 20%">
+                                <p class="font-medium text-red-900">Ravi</p>
+                                <p class="text-sm font-medium text-red-900">Bengaluru</p>
+                            </div>
+                        </div>
+                    </ng-template>
+                </swiper>
+            </section>
+
+            <section class="FAQ-Section container px-3 py-8">
+                <!-- Heading -->
+                <h2 class="font-semibold mb-4">Frequently Asked Questions (FAQs)</h2>
+
+                <!-- Accordions using CSS Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-4 gap-3 justify-center">
+                    <!-- Accordion 1 -->
+                    <div class="bg-white rounded-xl p-3" style="border: 1px solid lightgrey;">
+
+                        <div class="flex flex-row" (click)="toggleAccordion(0)">
+                            <div>
+
+                                <!-- Accordion Title (Clickable) -->
+                                <h3 class="font-medium mb-2 cursor-pointer text-red-700">
+                                    Is this an
+                                    insurance subscription?</h3>
+
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions[0].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions[0].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[0].isOpen" class="mt-3">
+                            <p class="text-sm">No, this is not insurance. This is an Emergency Medical Service (EMS)
+                                subscription only.
+                                This subscription ensures 24x7 Medical Emergency assistance service to your entire
+                                family across India and also gives access to value-added services like Free doctor
+                                consultation, Free Emergency ambulance and also discounts on other services booked on
+                                the platform.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 2 -->
+                    <div class="bg-white rounded-xl p-3" style="border: 1px solid lightgrey;">
+
+                        <div class="flex flex-row" (click)="toggleAccordion(1)">
+                            <div>
+
+                                <!-- Accordion Title (Clickable) -->
+                                <h3 class="font-medium mb-2 cursor-pointer text-red-700">
+                                    How to add
+                                    family member to a subscription?</h3>
+
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions[1].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions[1].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[1].isOpen" class="mt-3">
+                            <p class="text-sm">Simple. Once you create your account on the platform, you can add/delete
+                                or Modify
+                                details of family members by visiting the profile section. Once the member is added, you
+                                can download the Emergency card of the respective member.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 3 -->
+                    <div class="bg-white rounded-xl p-3" style="border: 1px solid lightgrey;">
+
+                        <div class="flex flex-row" (click)="toggleAccordion(2)">
+                            <div>
+
+                                <!-- Accordion Title (Clickable) -->
+                                <h3 class="font-medium mb-2 cursor-pointer text-red-700">
+                                    How to get
+                                    Emergency assistance?</h3>
+
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions[2].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions[2].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[2].isOpen" class="mt-3">
+                            <p class="text-sm">Simply call our 24x7 Helpline number and mention your Emergency card
+                                number to the
+                                executive to confirm your subscription. Based on your subscription our executives shall
+                                deliver the required services.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 4 -->
+                    <div class="bg-white rounded-xl p-3" style="border: 1px solid lightgrey;">
+
+                        <div class="flex flex-row" (click)="toggleAccordion(3)">
+                            <div>
+
+                                <!-- Accordion Title (Clickable) -->
+                                <h3 class="font-medium mb-2 cursor-pointer text-red-700">
+                                    How to get a
+                                    free doctor consultation?</h3>
+
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions[3].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions[3].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[3].isOpen" class="mt-3">
+                            <p class="text-sm">Call our 24x7 Helpline number and mention your Emergency card number to
+                                the executive to
+                                confirm your subscription. If your subscription has the benefit of Free doctor
+                                consultation, the executive will immediately connect you to our in-house doctor for
+                                consultation.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 1 -->
+                    <div class="bg-white rounded-xl p-3" style="border: 1px solid lightgrey;">
+
+                        <div class="flex flex-row" (click)="toggleAccordion(4)">
+                            <div>
+
+                                <!-- Accordion Title (Clickable) -->
+                                <h3 class="font-medium mb-2 cursor-pointer text-red-700">
+                                    How to book
+                                    free Emergency Ambulance?</h3>
+
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions[4].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions[4].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[4].isOpen" class="mt-3">
+                            <p class="text-sm">Call our 24x7 Helpline number and mention your Emergency card number to
+                                the executive to
+                                confirm your subscription. If your subscription covers free ambulance, our executives
+                                will arrange a Free ambulance to transfer the patient to the nearest Hospital. The
+                                benefit is applicable only to cardholders, and only in case of an emergency hospital
+                                admission (incident spot to hospital emergency bed). Free ambulance doesn't apply for
+                                regular hospital visits, discharge from the hospital, or inter-hospital transfers.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 2 -->
+                    <div class="bg-white rounded-xl p-3" style="border: 1px solid lightgrey;">
+
+                        <div class="flex flex-row" (click)="toggleAccordion(5)">
+                            <div>
+
+                                <!-- Accordion Title (Clickable) -->
+                                <h3 class="font-medium mb-2 cursor-pointer text-red-700">
+                                    What if VMEDO
+                                    can’t send a free ambulance?</h3>
+
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions[5].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions[5].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[5].isOpen" class="mt-3">
+                            <p class="text-sm">If VMEDO cannot arrange a free ambulance (incident spot to a hospital
+                                emergency bed) for
+                                its premium subscriber due to the unavailability of VMEDO fleet nearby, upon
+                                confirmation from VMEDO, subscriber can book any private ambulance to take the patient
+                                to the nearest hospital. Ambulance expenses for that particular trip will be reimbursed
+                                by VMEDO to the subscriber upon submission of the bill.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 3 -->
+                    <div class="bg-white rounded-xl p-3" style="border: 1px solid lightgrey;">
+
+                        <div class="flex flex-row" (click)="toggleAccordion(6)">
+                            <div>
+
+                                <!-- Accordion Title (Clickable) -->
+                                <h3 class="font-medium mb-2 cursor-pointer text-red-700">
+                                    How to get
+                                    discounts at the hospital?</h3>
+
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions[6].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions[6].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[6].isOpen" class="mt-3">
+                            <p class="text-sm">Discounts at the partner hospitals to VMEDO subscribers are applicable
+                                only for the
+                                admissions initiated from VMEDO. A discount coupon will be issued from VMEDO immediately
+                                after admission, and the benefit of a discount can be availed during billing.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 4 -->
+                    <div class="bg-white rounded-xl p-3" style="border: 1px solid lightgrey;">
+
+                        <div class="flex flex-row" (click)="toggleAccordion(7)">
+                            <div>
+
+                                <!-- Accordion Title (Clickable) -->
+                                <h3 class="font-medium mb-2 cursor-pointer text-red-700">
+                                    How to get
+                                    discounts on Non-Emergency ambulance bookings?</h3>
+
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions[7].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions[7].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[7].isOpen" class="mt-3">
+                            <p class="text-sm">Call our 24x7 Helpline number and mention your emergency card number to
+                                the executive to
+                                confirm your subscription. Upon confirmation of your subscription, our executive will
+                                book an ambulance at a discounted price.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 4 -->
+                    <div class="bg-white rounded-xl p-3" style="border: 1px solid lightgrey;">
+
+                        <div class="flex flex-row" (click)="toggleAccordion(8)">
+                            <div>
+
+                                <!-- Accordion Title (Clickable) -->
+                                <h3 class="font-medium mb-2 cursor-pointer text-red-700">
+                                    How to get
+                                    discounts on medical items?</h3>
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions[8].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions[8].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[8].isOpen" class="mt-3">
+                            <p class="text-sm">Log in to our e-commerce portal, and Enter coupon code shared during
+                                registration (via
+                                Email) at checkout to get the applicable discount.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Mobile footer section -->
+    <footer class="mobile-footer-section bg-gray-800 text-white py-8 relative bottom-0 left-0 w-full mb-12">
+        <div class="container mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <h3 class="text-lg font-semibold mb-3">Follow us on</h3>
+              <div class="flex space-x-4">
+                <a href="https://www.facebook.com/Vmedoapp/" class="text-white hover:text-gray-400 text-3xl mr-1"><i class="fab fa-facebook"></i></a>
+                <a href="https://twitter.com/vmedoapp" class="text-white hover:text-gray-400 text-3xl mr-1"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/vmedo_app/" class="text-white hover:text-gray-400 text-3xl mr-1"><i class="fab fa-instagram"></i></a>
+                <a href="https://in.linkedin.com/company/vmedo" class="text-white hover:text-gray-400 text-3xl mr-1"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.youtube.com/channel/UClEydLiJCRonhXN7vMf4ikg" class="text-white hover:text-gray-400 text-3xl mr-1"><i class="fab fa-youtube"></i></a>
+              </div>
+            </div>
+  
+            <div class="py-2">
+              <h3 class="text-lg font-semibold mb-3">About Company</h3>
+              <p>
+                VMEDO is a digital healthcare platform, on a mission to make quality healthcare accessible and affordable to all..
+              </p>
+  
+              <div>
+                <button>
+                  <p class="text-red-600 font-medium" [routerLink]="'/info/aboutus'">
+                    Read More..</p>
+                </button>
+              </div>
+            </div>
+  
+            <!-- First row - First column (About Company) -->
+  
+            <!-- First row - Second column (Links) -->
+            <div class="grid grid-rows-7 gap-0">
+              <h3 class="text-lg font-semibold mb-3">Quick Links</h3>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/services/emergency-online-doctor-consultation'">
+                    Online Doctor Consultation</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/services/urgent-medical-care-at-home'">
+                    Urgent care at home</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/services/diagnostics-at-home'">
+                    Diagnostics at home</a>
+                </div>
+  
+              </div>
+  
+  
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/services/ambulance-service-india'">
+                    VMEDO Ambulance</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a href="https://store.vmedo.com" class="hover:text-gray-400">
+                    VMEDO Store</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/info/occupational-health-services'">
+                    For Corporates</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a href="https://vmedo.com/first-aid-training/index.html" class="hover:text-gray-400">
+                    First Aid Training</a>
+                </div>
+  
+              </div>
+  
+            </div>
+            <!-- First row - Third column (Links) -->
+            <div class="grid grid-rows-7 gap-0 py-2">
+              <h3 class="text-lg font-semibold mb-3">More</h3>
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a href="https://vmedo.com/blog" class="hover:text-gray-400">
+                      Blog</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a href="https://academy.vmedo.com" class="hover:text-gray-400">
+                      VMEDO Academy</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a class="hover:text-gray-400" [routerLink]="'/hospitals'">
+                      Emergency Hospital Admission</a> </p>
+                </div>
+  
+              </div>
+  
+              
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a class="hover:text-gray-400" [routerLink]="'/info/aboutus'">
+                      About us</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a href="https://vmedo.com/blog/career-jobs-at-vmedo/" class="hover:text-gray-400">
+                      Career</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a class="hover:text-gray-400" [routerLink]="'/info/partner-with-us'">
+                      Partner with us</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a class="hover:text-gray-400" [routerLink]="'/info/contact-us'">
+                      Contact us</a> </p>
+                </div>
+  
+              </div>
+            </div>
+          </div>
+  
+          <div class="flex justify-center mt-8">
+            <div>
+              <h2 class="text-center">"we work to save lives"</h2>
+            </div>
+          </div>
+  
+          <div class="text-center mt-8 mb-8 border-t border-gray-700 pt-8">
+            <!-- Second row - First column (Copyright) -->
+            <div>
+              <p>
+                &copy; Arera Healthcare and Technologies Pvt Ltd
+                <br />
+                All rights reserved.
+              </p>
+            </div>
+            <!-- Second row - Second column (Social Media Icons) -->
+            <div class="mt-3">
+              <div class="flex flex-row justify-center">
+  
+                <div>
+                  <h3 class="text-sm">
+                    <a href="https://vmedo.com/vmedo-privacy.html" class="hover:text-gray-400">
+                      Privacy policy</a>
+                  </h3>
+                </div>
+  
+                <div class="px-4">
+                  <h3 class="text-sm">
+                    <a href="https://vmedo.com/vmedo-terms.html" class="hover:text-gray-400">
+                      Terms & Conditions</a>
+  
+                  </h3>
+                </div>
+                
+                <div>
+                  <h3 class="text-sm">
+                    <a href="https://vmedo.com/sitemap.xml" class="hover:text-gray-400">
+                      Sitemap</a>
+                  </h3>
+                </div>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    <!-- Mobile widget section -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white py-2.5 px-2 flex justify-around rounded-xl shadow-lg z-10">
+        <div class="flex flex-col items-center">
+            <button (click)="app.OnOpenLoginForm('/dashboard/package')" style="
+          padding: 0.7rem 5rem;
+          background-color: #dc2626;
+          color: #fff;
+          font-weight: 600;
+          border-radius: 0.375rem;
+          border: 1px solid transparent;
+          transition: all 0.3s ease-in-out;
+        " onmouseover="this.style.borderColor = '#dc2626'; this.style.backgroundColor = '#fff'; this.style.color = '#dc2626';"
+                onmouseout="this.style.borderColor = 'transparent'; this.style.backgroundColor = '#dc2626'; this.style.color = '#fff';">
+                Subscribe now
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Mobile VMEDO services popup section -->
+    <div *ngIf="showPopup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10"
+        (click)="togglePopup()">
+        <!-- Card content here -->
+        <div class="vmedo-more-card-mobile bg-white-500 rounded-lg shadow-md items-center overflow-hidden"
+            (click)="$event.stopPropagation()">
+            <div class="text-center py-4">
+                <h3 class="font-medium text-red-700">VMEDO Services</h3>
+            </div>
+
+            <!-- Grid container with 3 rows and 3 columns -->
+            <div class="grid grid-cols-3 gap-4 px-4">
+                <!-- Grid items -->
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    [routerLink]="'/services/emergency-online-doctor-consultation'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-1.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">
+                            Instant <br />
+                            doctor consultation
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    [routerLink]="'/services/ambulance-service-india'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-2.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">
+                            Book Emergency Ambulance
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    [routerLink]="'/services/urgent-medical-care-at-home'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-4.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">
+                            Urgent medical care at home
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    [routerLink]="'/services/labs'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-8.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">
+                            Lab tests and scans
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    onclick="window.location.href='https://store.vmedo.com'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-1.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">
+                            Healthcare products
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    [routerLink]="'/hospitals'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-3.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">
+                            Hospital admission
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    onclick="window.location.href='https://academy.vmedo.com'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-6.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">VMEDO Academy</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    [routerLink]="'/services/find-blood-donor'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-7.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">Find blood donor</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    [routerLink]="'/info/occupational-health-services'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-1.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">VMEDO-Corporate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile VMEDO services popup section -->
+    <div *ngIf="showPopup2" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10"
+        (click)="togglePopup2()">
+        <!-- Card content here -->
+        <div class="vmedo-more-card-mobile2 bg-white-500 rounded-lg shadow-md items-center overflow-hidden"
+            (click)="$event.stopPropagation()">
+            <div class="text-center pt-4 pb-2">
+                <h3 class="text-lg font-medium text-red-700">Urgent care at home</h3>
+            </div>
+
+            <div class="bg-white rounded-md px-13 container mt-2">
+
+                <h3 class="text-md font-semibold py-2"> Enhanced Comfort & Convenience:</h3>
+
+                <ul class="list-disc mb-2 px-13" style="padding: 14px; padding-top: 0px">
+                    <li class="text-sm">Get expert wound care and bandaging at home.</li>
+                    <li class="text-sm mt-1">
+                        Avoid the stress of traveling to a medical facility.
+                    </li>
+                </ul>
+
+                <h3 class="text-md font-semibold py-2">Reduced Risk of Infections:</h3>
+                <ul class="list-disc mb-2 px-13" style="padding: 14px; padding-top: 0px">
+                    <li class="text-sm">
+                        Lower the risk of infections by choosing home-based care.
+                    </li>
+                    <li class="text-sm mt-1">Heal in a safe, familiar environment.</li>
+                </ul>
+
+                <h3 class="text-md font-semibold py-2">
+                    Personalized Care & Faster Recovery:
+                </h3>
+                <ul class="list-disc mb-2 px-13" style="padding: 14px; padding-top: 0px">
+                    <li class="text-sm">Receive tailored care for faster recovery.</li>
+                    <li class="text-sm mt-1">
+                        Experience expert wound management at your doorstep.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="flex flex-col items-center">
+                <button style="
+            padding: 0.6rem 3rem;
+            background-color: #dc2626;
+            color: #fff;
+            font-weight: 600;
+            border-radius: 0.375rem;
+            border: 1px solid transparent;
+            transition: all 0.3s ease-in-out;
+          " onmouseover="this.style.borderColor = '#dc2626'; this.style.backgroundColor = '#fff'; this.style.color = '#dc2626';"
+                    onmouseout="this.style.borderColor = 'transparent'; this.style.backgroundColor = '#dc2626'; this.style.color = '#fff';">
+                    Book now
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #desktopContent>
+    <div class="h-screen overflow-y-auto" style="margin: 0px">
+        <!-- Desktop navigation section -->
+        <nav class="bg-white flex justify-between items-center p-3">
+            <!-- Left section with company logo -->
+            <div class="flex items-center">
+                <img src="assets/img/vmedologo.png" alt="Company Logo" class="h-8 w-auto mr-4"
+                    [routerLink]="'/home'" style="height: 50px;"/>
+            </div>
+
+            <!-- Middle section with navigation menus -->
+            <ul class="flex space-x-6 mr-5">
+
+                <li>
+                    <div class="relative">
+                        <a class="navigation-menu font-medium hover:font-bold hover:no-underline transition duration-200"
+                            (click)="toggleDropdownDesktop()">
+                            Healthcare-services
+                            
+                            <i *ngIf="isDropdownDesktopOpen" class="fa-solid fa-chevron-up"></i>
+                            <i *ngIf="!isDropdownDesktopOpen" class="fa-solid fa-chevron-down"></i>
+                        
+                        </a>
+
+
+                        <div class="dropdown-menu" *ngIf="isDropdownDesktopOpen">
+
+                            <div class="">
+                                <div class="grid grid-cols-4 gap-4 p-4">
+                                    <!-- First row -->
+                                    <div class="col-span-1">
+                                        <p class="font-semibold mb-2">Doctor Consultation</p>
+                                        <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                            [routerLink]="'/services/emergency-online-doctor-consultation'">General
+                                            Physician</a>
+                                        <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                            [routerLink]="'/services/emergency-online-doctor-consultation'">Emergency
+                                            Physician</a>
+                                        <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                            [routerLink]="'/services/emergency-online-doctor-consultation'">Second
+                                            opinion</a>
+                                        <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                            [routerLink]="'/services/emergency-online-doctor-consultation'">Pediatricion</a>
+                                        <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                            [routerLink]="'/services/emergency-online-doctor-consultation'">Orthopedic</a>
+                                    </div>
+                                    <div class="col-span-1">
+                                        <p class="font-semibold mb-2">VMEDO Ambulance</p>
+                                        <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                            [routerLink]="'/services/ambulance-service-india'">Emergency Ambulance</a>
+                                        <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                            [routerLink]="'/services/ambulance-service-india'">Non Emergency
+                                            Ambulance</a>
+                                        <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                            [routerLink]="'/services/ambulance-service-india'">Patient transport
+                                            vehicle</a>
+                                        <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                            [routerLink]="'/services/ambulance-service-india'">Ambulance for rent</a>
+                                        <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                            [routerLink]="'/services/ambulance-service-india'">Ambulance for events</a>
+                                    </div>
+                                    <div class="col-span-1">
+                                        <p class="font-semibold mb-2">Urgent care at home</p>
+                                        <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                            [routerLink]="'/services/urgent-medical-care-at-home'">Dressing at home</a>
+                                        <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                            [routerLink]="'/services/urgent-medical-care-at-home'">Bandaging at home</a>
+
+                                        <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                            [routerLink]="'/services/urgent-medical-care-at-home'">Injection/IV fluids
+                                            at home</a>
+                                        <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                            [routerLink]="'/services/urgent-medical-care-at-home'">Minor illness or
+                                            injuries at home</a>
+                                        <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                            [routerLink]="'/services/urgent-medical-care-at-home'">Blood test at
+                                            home</a>
+                                    </div>
+                                    <div class="col-span-1">
+                                        <p class="font-semibold mb-2">Labtest and scans</p>
+                                        <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                            [routerLink]="'/services/diagnostics-at-home'">Checkups</a>
+                                        <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                            [routerLink]="'/services/diagnostics-at-home'">Labtests</a>
+                                        <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                            [routerLink]="'/services/diagnostics-at-home'">Scans</a>
+                                    </div>
+
+
+                                    <div class="col-span-1">
+                                        <p class="font-semibold mb-2">Hospital admission</p>
+                                        <a class="text-sm block text-gray-500 hover:text-gray-900"
+                                            [routerLink]="'/hospitals'">Emergency hospital admission</a>
+
+                                    </div>
+                                    <div class="col-span-1">
+                                        <p class="font-semibold mb-2">VMEDO Store</p>
+                                        <a class="text-sm block text-gray-500 hover:text-gray-900"
+                                            onclick="window.location.href='https://store.vmedo.com/'">Hospital
+                                            Equipments</a>
+                                        <a class="text-sm block text-gray-500 hover:text-gray-900"
+                                            onclick="window.location.href='https://store.vmedo.com/'">Medical
+                                            supplies</a>
+                                    </div>
+
+
+                                    <div class="col-span-2">
+                                        <div class="rounded-xl">
+                                            <img src="assets/images/website-images/mini_banner_1.png"
+                                                alt="Image Description" class="w-4/5 h-full rounded-xl object-cover" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+
+                    </div>
+                </li>
+
+
+                <li>
+                    <a class="navigation-menu font-medium hover:text-red-700 hover:font-bold hover:no-underline transition duration-200"
+                        [routerLink]="'/info/occupational-health-services'">VMEDO for Corporates</a>
+                </li>
+            </ul>
+
+            <!-- Right section with login -->
+
+            <div class="flex flex-row" *ngIf="common.auth_token">
+                <div>
+                    <button class="px-4 py-2 bg-red-700 text-white font-semibold rounded-md hover:bg-red-600"
+                        (click)="app.OnOpenLoginForm('/dashboard/profile')">
+                        <span>Profile</span>
+                    </button>
+                </div>
+
+                <div>
+                    <button class="px-4 py-2 bg-white text-red-700 font-semibold rounded-md hover:bg-red-600"
+                        (click)="OnClickLogout()">
+                        <span>Signout</span>
+                    </button>
+                </div>
+
+            </div>
+
+
+            <div *ngIf="!common.auth_token">
+                <button class="px-4 py-2 bg-red-700 text-white font-semibold rounded-md hover:bg-red-600"
+                    (click)="app.OnOpenLoginForm('/dashboard/profile')">
+                    <span>Login</span>
+                </button>
+            </div>
+
+        </nav>
+
+        <div class="home-container">
+            <!-- Desktop academy section -->
+            <section class="vmedo-academy-section-desktop bg-white py-10 px-8">
+                <!-- Second section -->
+                <div class="container mx-auto flex flex-col md:flex-row items-center px-5">
+                    <div class="text-content md:order-1 md:w-3/5 md:pr-10">
+                        <h2 class="text-3xl font-bold mb-4">
+                            Ensure your Family’s Health and safety with VMEDO Membership
+
+                        </h2>
+                        <!-- Adjust heading -->
+                        <p class="text-lg mb-4">
+                            Experience peace of mind with a 24*7 Medical assistance team, unlimited doctor
+                            consultations, priority access and discounts on home care, diagnostic services and Ambulance
+                            service.
+                        </p>
+
+                        <!-- Adjust subheading -->
+                        <button style="
+                padding: 0.5rem 1rem;
+                background-color: #dc2626;
+                color: #fff;
+                font-weight: 600;
+                border-radius: 0.375rem;
+                border: 1px solid transparent;
+                transition: all 0.3s ease-in-out;
+              " onmouseover="this.style.borderColor = '#dc2626'; this.style.backgroundColor = '#fff'; this.style.color = '#dc2626';"
+                            onmouseout="this.style.borderColor = 'transparent'; this.style.backgroundColor = '#dc2626'; this.style.color = '#fff';" (click)="app.OnOpenLoginForm('/dashboard/package','All')">
+                            Subscribe Now
+                        </button>
+                    </div>
+                    <div class="image-container md:order-2 md:w-2/5 md:pl-10">
+
+                        <video [autoplay]="true" [muted]="true" [loop]="true" [playsInline]="true"
+                            class="min-w-full min-h-full object-cover">
+                            <source src="assets/images/website-images/subscription-animation.mp4" type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Desktop about us section -->
+            <section class="vmedo-about-us-section-desktop py-8 px-8">
+                <div
+                    class="about-us-section-swiper-container2 bg-red-50 rounded-lg p-6 grid grid-cols-2 md:grid-cols-2 gap-6">
+
+                    <!-- Card 1 -->
+
+                    <div class="bg-white rounded-xl p-3 text-center">
+                        <!-- Image (2/5 of the card's height) -->
+                        <div style="display: flex; justify-content: center">
+                            <img src="assets/images/website-images/Icons/members-1.png" alt="Banner 4"
+                                style="width: 10%" class="rounded-md" />
+                        </div>
+                        <h2 class="text-lg font-semibold py-2 text-red-700">10,000+</h2>
+                        <p class="text-sm text-gray-600"> Registered Members
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+
+                    <div class="bg-white rounded-xl p-3 text-center">
+                        <!-- Image (2/5 of the card's height) -->
+                        <div style="display: flex; justify-content: center">
+                            <img src="assets/images/website-images/Icons/people-assisted.png" alt="Banner 4"
+                                style="width: 10%" class="rounded-md" />
+                        </div>
+                        <h2 class="text-lg font-semibold py-2 text-red-700"> 6,00,000+</h2>
+                        <p class="text-sm text-gray-600"> People Assisted
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Desktop packages section -->
+            <section class="Subscription-packages-section py-8 px-8">
+                <div class="px-5 mb-2">
+                    <h2 class="font-medium">Membership packages</h2>
+                </div>
+                <div class="grid grid-cols-4 gap-4 py-6 px-16">
+
+                    <div class="subscription-card-desktop relative p-4 rounded-xl shadow-md" *ngFor="let package of subscriptionPackagesList">
+                        <div
+                            class="absolute inset-0 flex flex-col rounded-xl justify-between bg-gradient-to-br from-red-800 to-pink-400 opacity-75 text-white">
+                            <!-- Pricing Section (30%) -->
+
+                            <div class="flex flex-col items-center justify-center mt-4" style="height: 20%;">
+                                <div>
+                                    <h2 class="font-medium">{{package.packageName}}</h2>
+                                </div>
+
+                                <div>
+                                    <h2 class="text-2xl">₹{{package.packageAmount}}</h2>
+                                   
+                                </div>
+
+                            </div>
+
+                            <!-- Content Section (50%) -->
+                            <div class="flex  p-3" style="height: calc(100% - 109px);overflow-y: scroll;">
+                                <ul class="text-left mt-2 text-xs">
+
+                                    <div>
+                                        <li class="flex flex-row" style="align-items: center;">
+
+                                            <!-- <i class="fa-regular fa-circle-check"></i> -->
+
+                                            <div class="px-2" [innerHTML]="package?.packageDescription"></div>
+                                        </li>
+                                    </div>
+
+                                   
+
+                                </ul>
+                            </div>
+
+
+                            <!-- Button Section (20%) -->
+                            <div class="flex items-center justify-center" style="height: 20%;">
+
+                                <button
+                                    class="bg-white text-red-500 text-sm font-bold py-2 px-3 rounded focus:outline-none shadow-md hover:bg-red-100"
+                                    (click)="app.OnOpenLoginForm('/dashboard/package',package.packageName)">
+                                    Subscribe now
+                                </button>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Other services section -->
+            <section class="other-services-section py-8 px-8">
+                <div class="px-5">
+                    <h2 class="font-medium">How it works?</h2>
+                </div>
+
+                <div
+                    class="about-us-section-swiper-container2 bg-white rounded-lg grid grid-cols-2 md:grid-cols-3 gap-6 px-12">
+                    <!-- Card 1 -->
+                    <div class="bg-white rounded-lg p-4 text-center flex flex-col items-center">
+
+                        <div>
+                            <img src="assets/images/website-images/Icons/register-member.png" alt="Banner 4"
+                                class="rounded-md" style="width: 75%;" />
+                        </div>
+
+
+                        <h2 class="text-lg font-semibold mb-2 text-red-700 pt-2">
+                            1.Register
+                        </h2>
+                        <p class="text-sm text-gray-600">
+                            Register to VMEDO, select the subscription type of your choice and add family members to
+                            your account
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white rounded-lg p-4 text-center flex flex-col items-center">
+
+                        <div>
+                            <img src="assets/images/website-images/Icons/medical-card.png" alt="Banner 4"
+                                class="rounded-md" style="width: 75%;" />
+                        </div>
+
+
+                        <h2 class="text-lg font-semibold mb-2 text-red-700 pt-2">
+                            2.Get VMEDO card
+                        </h2>
+                        <p class="text-sm text-gray-600">
+                            Get a VMEDO Emergency Health Card with a unique Serial number for each member
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-white rounded-lg p-4 text-center flex flex-col items-center">
+
+                        <div>
+                            <img src="assets/images/website-images/Icons/connect-to-doctor.png" alt="Banner 4"
+                                class="rounded-md" style="width: 75%;" />
+                        </div>
+
+                        <h2 class="text-lg font-semibold mb-2 text-red-700 pt-2">
+                            3.Call Helpline
+                        </h2>
+                        <p class="text-sm text-gray-600">
+                            Any subscriber and their registered family member can call the VMEDO helpline and mention
+                            the card number to get the required assistance during medical emergencies.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="membership-benefits-section py-8 px-8">
+                <!-- Heading -->
+                <div class="px-5 mb-8">
+                    <h2 class="font-medium">Membership Benefits</h2>
+                </div>
+
+                <!-- Accordions using CSS Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 justify-center px-16">
+                    <!-- Accordion 2 -->
+                    <div class="bg-white shadow-md rounded-xl p-4" style="border: 1px solid lightgrey;"
+                        (click)="toggleAccordion2(1)">
+
+                        <div class="flex flex-row">
+                            <div>
+                                <h3 class="font-semibold mb-2 cursor-pointer flex flex-row text-red-700">
+                                    <i class="fa-solid fa-circle-check mr-2 text-green-700 flex items-center"></i> 24/7
+                                    Medical
+                                    Assistence
+                                </h3>
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions2[1].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions2[1].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions2[1].isOpen" class="mt-4">
+                            <p class="text-sm">Gain instant access to round-the-clock medical assistance and guidance
+                                from our team of experienced healthcare professionals. Whether it's a pressing health
+                                concern or a simple query, our experts are here to provide personalized support whenever
+                                you need it.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 2 -->
+                    <div class="bg-white shadow-md rounded-xl p-4" style="border: 1px solid lightgrey;"
+                        (click)="toggleAccordion2(1)">
+                        <!-- Accordion Title (Clickable) -->
+                        <div class="flex flex-row">
+                            <div>
+                                <h3 class="font-semibold mb-2 cursor-pointer flex flex-row text-red-700">
+                                    <i class="fa-solid fa-circle-check mr-2 text-green-700 flex items-center"></i>
+                                    Unlimited
+                                    Doctor Consultations
+                                </h3>
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions2[1].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions2[1].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions2[1].isOpen" class="mt-4">
+                            <p class="text-sm">Say goodbye to long wait times and limited access to healthcare. With
+                                Vmedo Subscription, you can enjoy unlimited virtual consultations with qualified
+                                doctors, ensuring prompt medical attention and continuity of care from the comfort of
+                                your own home.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 3 -->
+                    <div class="bg-white shadow-md rounded-xl p-4" style="border: 1px solid lightgrey;"
+                        (click)="toggleAccordion2(2)">
+
+                        <div class="flex flex-row">
+                            <div>
+                                <!-- Accordion Title (Clickable) -->
+                                <h3 class="font-semibold mb-2 cursor-pointer flex flex-row text-red-700">
+                                    <i class="fa-solid fa-circle-check mr-2 text-green-700 flex items-center"></i>Free
+                                    Emergency
+                                    Ambulance
+                                </h3>
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions2[2].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions2[2].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions2[2].isOpen" class="mt-4">
+                            <p class="text-sm">In times of crisis, every second counts. As a subscriber, you'll receive
+                                complimentary emergency ambulance services, ensuring rapid response and transportation
+                                to the nearest medical facility in the event of an emergency.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 4 -->
+                    <div class="bg-white shadow-md rounded-xl p-4" style="border: 1px solid lightgrey;"
+                        (click)="toggleAccordion2(2)">
+
+                        <div class="flex flex-row">
+                            <div>
+                                <!-- Accordion Title (Clickable) -->
+                                <h3 class="font-semibold mb-2 cursor-pointer flex flex-row text-red-700">
+                                    <i class="fa-solid fa-circle-check mr-2 text-green-700 flex items-center"></i>
+                                    Discount on Home Care
+                                </h3>
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions2[2].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions2[2].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions2[2].isOpen" class="mt-4">
+                            <p class="text-sm">Receive exclusive discounts on home healthcare services, including
+                                nursing care, wound dressing, medication administration, and more. Enjoy peace of mind
+                                knowing that professional medical assistance is just a phone call away, all at a
+                                discounted rate.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 1 -->
+                    <div class="bg-white shadow-md rounded-xl p-4" style="border: 1px solid lightgrey;"
+                        (click)="toggleAccordion2(3)">
+
+                        <div class="flex flex-row">
+                            <div>
+                                <!-- Accordion Title (Clickable) -->
+                                <h3 class="font-semibold mb-2 cursor-pointer flex flex-row text-red-700">
+                                    <i
+                                        class="fa-solid fa-circle-check mr-2 text-green-700 flex items-center"></i>Discount
+                                    on
+                                    Diagnostics
+                                </h3>
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions2[3].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions2[3].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions2[3].isOpen" class="mt-4">
+                            <p class="text-sm">Take control of your health with discounted rates on a wide range of
+                                diagnostic tests and screenings. From blood tests to imaging studies, our subscription
+                                ensures affordable access to essential diagnostic services to monitor your health and
+                                detect potential issues early.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 2 -->
+                    <div class="bg-white shadow-md rounded-xl p-4" style="border: 1px solid lightgrey;"
+                        (click)="toggleAccordion2(3)">
+
+                        <div class="flex flex-row">
+                            <div>
+                                <!-- Accordion Title (Clickable) -->
+                                <h3 class="font-semibold mb-2 cursor-pointer flex flex-row text-red-700">
+                                    <i
+                                        class="fa-solid fa-circle-check mr-2 text-green-700 flex items-center"></i>Discount
+                                    on
+                                    Medical Items
+                                </h3>
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions2[3].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions2[3].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions2[3].isOpen" class="mt-4">
+                            <p class="text-sm">Access high-quality medical supplies and equipment at discounted prices,
+                                including prescription medications, medical devices, and wellness products. Save on
+                                essential healthcare essentials and take proactive steps towards better health and
+                                well-being.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 3 -->
+                    <div class="bg-white shadow-md rounded-xl p-4" style="border: 1px solid lightgrey;"
+                        (click)="toggleAccordion2(4)">
+
+                        <div class="flex flex-row">
+                            <div>
+                                <!-- Accordion Title (Clickable) -->
+                                <h3 class="font-semibold mb-2 cursor-pointer flex flex-row text-red-700">
+                                    <i class="fa-solid fa-circle-check mr-2 text-green-700 flex items-center"></i>
+                                    Discount on
+                                    Non-Emergency Ambulance
+                                </h3>
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions2[4].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions2[4].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions2[4].isOpen" class="mt-4">
+                            <p class="text-sm">Whether it's for scheduled medical appointments or non-urgent transfers,
+                                our subscription members enjoy discounted rates on non-emergency ambulance services.
+                                From transportation to and from medical facilities to inter-hospital transfers, our
+                                reliable ambulance services ensure safe and comfortable travel at a reduced cost</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 4 -->
+                    <div class="bg-white shadow-md rounded-xl p-4" style="border: 1px solid lightgrey;"
+                        (click)="toggleAccordion2(4)">
+
+                        <div class="flex flex-row">
+                            <div>
+                                <!-- Accordion Title (Clickable) -->
+                                <h3 class="font-semibold mb-2 cursor-pointer flex flex-row text-red-700">
+                                    <i class="fa-solid fa-circle-check mr-2 text-green-700 flex items-center"></i>
+                                    Access to
+                                    Healthcare Training and E-books
+                                </h3>
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions2[4].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions2[4].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions2[4].isOpen" class="mt-4">
+                            <p class="text-sm">From wellness tips and disease management strategies to healthcare
+                                technology insights, our subscription members gain valuable knowledge to support their
+                                health journey. Whether you're looking to learn more about managing chronic conditions,
+                                maintaining a healthy lifestyle, or navigating the healthcare system, our curated
+                                resources provide the guidance you need to make informed decisions and take control of
+                                your health.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+
+
+            <section class="Ambulance-banner-section py-10 flex justify-center">
+                <div class="ambulance-banner-card rounded-3xl bg-gray-200">
+                    <img src="assets/images/website-images/homepage-banner-1.png" alt="Image Description"
+                        class="w-full h-full rounded-3xl object-cover" [routerLink]="'/services/ambulance-service-india'"/>
+                </div>
+            </section>
+
+            <!-- Desktop lab services section -->
+            <section class="care-at-home-section py-8 px-8">
+                <h2 class="font-medium mb-8 pl-8">Our other services</h2>
+        
+                <div class="px-4">
+                  <swiper class="px-6" [config]="our_other_services_dektop">
+        
+                    <ng-template swiperSlide>
+                      <div class="bg-gray-200 other-services-card-desktop rounded-md mx-auto overflow-hidden"
+                        [routerLink]="'/services/emergency-online-doctor-consultation'">
+                        <img src="assets/images/website-images/other-service-1.png" alt="Image Description"
+                          class="w-full h-full rounded-md object-cover image-hover" />
+                      </div>
+                      <p class="mt-2 text-center text-base px-3">
+                        Doctor consultation
+                      </p>
+                    </ng-template>
+        
+                    <ng-template swiperSlide>
+                      <div class="bg-gray-200 other-services-card-desktop rounded-md mx-auto overflow-hidden"
+                        [routerLink]="'/services/ambulance-service-india'">
+                        <img src="assets/images/website-images/other-service-2.png" alt="Image Description"
+                          class="w-full h-full rounded-md object-cover image-hover" />
+                      </div>
+                      <p class="mt-2 text-center text-base px-3">
+                        VMEDO Ambulance
+                      </p>
+                    </ng-template>
+        
+                    <ng-template swiperSlide>
+                      <div [routerLink]="'/services/urgent-medical-care-at-home'">
+                        <div class="bg-gray-200 other-services-card-desktop rounded-md mx-auto overflow-hidden">
+                          <img src="assets/images/website-images/other-service-5.png" alt="Image Description"
+                            class="w-full h-full rounded-md object-cover image-hover" />
+                        </div>
+                        <p class="mt-2 text-center text-base px-3">
+                          Urgent care at home
+                        </p>
+                      </div>
+        
+                    </ng-template>
+        
+        
+                    <ng-template swiperSlide>
+                      <div class="bg-gray-200 other-services-card-desktop rounded-md mx-auto overflow-hidden"
+                        [routerLink]="'/services/diagnostics-at-home'">
+                        <img src="assets/images/website-images/other-service-6.png" alt="Image Description"
+                          class="w-full h-full rounded-md object-cover image-hover" />
+                      </div>
+                      <p class="mt-2 text-center text-base px-3">
+                        Diagnostics at home
+                      </p>
+                    </ng-template>
+        
+                    <ng-template swiperSlide>
+                      <div class="bg-gray-200 other-services-card-desktop rounded-md mx-auto overflow-hidden"
+                        onclick="window.location.href='https://store.vmedo.com/'">
+                        <img src="assets/images/new_images/service-6.png" alt="Image Description"
+                          class="w-full h-full rounded-md object-cover image-hover" />
+                      </div>
+                      <p class="mt-2 text-center text-base px-3">
+                        Medical products
+                      </p>
+                    </ng-template>
+        
+                    <ng-template swiperSlide>
+                      <div class="bg-gray-200 other-services-card-desktop rounded-md mx-auto overflow-hidden"
+                        [routerLink]="'/hospitals'">
+                        <img src="assets/images/website-images/other-service-4.png" alt="Image Description"
+                          class="w-full h-full rounded-md object-cover image-hover" />
+                      </div>
+                      <p class="mt-2 text-center text-base px-3">
+                        Emergency hospital admission
+                      </p>
+                    </ng-template>
+        
+                  </swiper>
+                </div>
+              </section>
+
+
+            <!-- Desktop review section -->
+            <section class="what-people-say-about-us-section-desktop py-8 px-8">
+                <!-- Heading -->
+                <div class="px-5 mb-8">
+                    <h2 class="font-medium">What people say about us</h2>
+                </div>
+
+                <swiper [config]="vmedo_review_desktop" class="px-10">
+                    <ng-template swiperSlide>
+                        <div class="what-people-say-about-us-card-desktop bg-white rounded-xl shadow-md p-2">
+                            <div class="flex justify-center items-center" style="height: 30%">
+                                <img src="assets/images/website-images/subscription/Lakshmish_review.jpeg"
+                                    alt="Person Image" style="border-radius: 50%; height: 100%; width: auto" />
+                            </div>
+                            <div class="overflow-auto pt-3" style="height: 50%">
+                                <p class="text-sm h-full p-3">
+                                    "I was able to save a person’s life during my Trekking Event with the help of VMEDO.
+                                    I feel more confident being trained in First aid from VMEDO and relaxed for the fact
+                                    that VMEDO is there for my help in case of Emergency"
+                                </p>
+                            </div>
+                            <div class="h-20 flex flex-col justify-center items-center" style="height: 20%">
+                                <p class="font-medium text-red-900">Lakshmish gowda</p>
+                                <p class="text-sm font-medium text-red-900">Mountaineer</p>
+                                <p class="text-sm font-medium text-red-900">Explore Nation</p>
+
+                            </div>
+                        </div>
+                    </ng-template>
+
+                    <ng-template swiperSlide>
+                        <div class="what-people-say-about-us-card-desktop bg-white rounded-xl shadow-md p-2">
+                            <div class="flex justify-center items-center" style="height: 30%">
+                                <img src="assets/images/website-images/subscription/Arvind_review.jpeg"
+                                    alt="Person Image" style="border-radius: 50%; height: 100%; width: auto" />
+                            </div>
+                            <div class="overflow-auto pt-3" style="height: 50%">
+                                <p class="text-sm h-full p-3">
+                                    "As a member of VMEDO I never thought I would use it, But just within 6 Months I had
+                                    to take the help of VMEDO to save my Aunt’s life. I truly want to thank the entire
+                                    team for saving my family member, and I recommend everyone to become a VMEDO member"
+                                </p>
+                            </div>
+                            <div class="h-20 flex flex-col justify-center items-center" style="height: 20%">
+                                <p class="font-medium text-red-900">Arvind LR</p>
+                                <p class="text-sm font-medium text-red-900">Founder, Chairman</p>
+                                <p class="text-sm font-medium text-red-900">Sudheergha Industries</p>
+                            </div>
+                        </div>
+                    </ng-template>
+
+                    <ng-template swiperSlide>
+                        <div class="what-people-say-about-us-card-desktop bg-white rounded-xl shadow-md p-2">
+                            <div class="flex justify-center items-center" style="height: 30%">
+                                <img src="assets/images/website-images/subscription/Prashanth_review.jpeg"
+                                    alt="Person Image" style="border-radius: 50%; height: 100%; width: auto" />
+                            </div>
+                            <div class="overflow-auto pt-3" style="height: 50%">
+                                <p class="text-sm h-full p-3">
+                                    "VMEDO was able to send an Ambulance within 5 min when one of our member met with a
+                                    serious injury. We are happy to be associated with VMEDO as our Emergency response
+                                    partner"
+                                </p>
+                            </div>
+                            <div class="h-20 flex flex-col justify-center items-center" style="height: 20%">
+                                <p class="font-medium text-red-900">Prashanth</p>
+                                <p class="text-sm font-medium text-red-900">Smash-It Badminton club</p>
+                                <p class="text-sm font-medium text-red-900">Shimoga</p>
+                            </div>
+                        </div>
+                    </ng-template>
+
+                    <ng-template swiperSlide>
+                        <div class="what-people-say-about-us-card-desktop bg-white rounded-xl shadow-md p-2">
+                            <div class="flex justify-center items-center" style="height: 30%">
+                                <img src="assets/images/website-images/subscription/Ravi_review.jpeg" alt="Person Image"
+                                    style="border-radius: 50%; height: 100%; width: auto" />
+                            </div>
+                            <div class="overflow-auto pt-3" style="height: 50%">
+                                <p class="text-sm h-full p-3">
+                                    "VMEDO team arranged an ICU bed in a hospital when we were struggling to find an ICU
+                                    bed for my Dad, I feel blessed to be a member of VMEDO. God bless them!"
+                                </p>
+                            </div>
+                            <div class="h-20 flex flex-col justify-center items-center" style="height: 20%">
+                                <p class="font-medium text-red-900">Ravi</p>
+                                <p class="text-sm font-medium text-red-900">Bengaluru</p>
+                            </div>
+                        </div>
+                    </ng-template>
+
+
+
+                </swiper>
+            </section>
+
+            <section class="FAQ-Section py-8 px-8">
+                <!-- Heading -->
+                <div class="px-5 mb-8">
+                    <h2 class="font-medium">Frequently Asked Questions (FAQs)</h2>
+                </div>
+
+                <!-- Accordions using CSS Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-3 justify-center px-64">
+                    <!-- Accordion 1 -->
+                    <div class="bg-white rounded-xl p-3 outline-2" style="border: 1px solid lightgrey;"
+                        (click)="toggleAccordion(0)">
+                        <!-- Accordion Title (Clickable) -->
+
+                        <div class="flex flex-row">
+                            <div>
+
+                                <h3 class=" font-semibold mb-2 cursor-pointer text-red-700">
+                                    1.Is this an
+                                    insurance subscription? </h3>
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions[0].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions[0].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[0].isOpen" class="mt-4">
+                            <p class="text-sm">No, this is not insurance. This is an Emergency Medical Service (EMS)
+                                subscription only. This subscription ensures 24x7 Medical Emergency assistance service
+                                to your entire family across India and also gives access to value-added services like
+                                Free doctor consultation, Free Emergency ambulance and also discounts on other services
+                                booked on the platform.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 2 -->
+                    <div class="bg-white  rounded-xl p-3" style="border: 1px solid lightgrey;"
+                        (click)="toggleAccordion(1)">
+                        <!-- Accordion Title (Clickable) -->
+
+                        <div class="flex flex-row">
+                            <div>
+                                <h3 class=" font-semibold mb-2 cursor-pointer text-red-700">2.How to add
+                                    family member to a subscription?</h3>
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions[1].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions[1].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[1].isOpen" class="mt-4">
+                            <p class="text-sm">Simple. Once you create your account on the platform, you can add/delete
+                                or Modify details of family members by visiting the profile section. Once the member is
+                                added, you can download the Emergency card of the respective member.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 3 -->
+                    <div class="bg-white  rounded-xl p-3" style="border: 1px solid lightgrey;"
+                        (click)="toggleAccordion(2)">
+
+                        <div class="flex flex-row">
+                            <div>
+                                <h3 class=" font-semibold mb-2 cursor-pointer text-red-700">3.How to get
+                                    Emergency assistance?</h3>
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions[2].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions[2].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[2].isOpen" class="mt-4">
+                            <p class="text-sm">Simply call our 24x7 Helpline number and mention your Emergency card
+                                number to the executive to confirm your subscription. Based on your subscription our
+                                executives shall deliver the required services.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 4 -->
+                    <div class="bg-white  rounded-xl p-3" style="border: 1px solid lightgrey;"
+                        (click)="toggleAccordion(3)">
+
+                        <div class="flex flex-row">
+                            <div>
+                                <h3 class=" font-semibold mb-2 cursor-pointer text-red-700">4.How to get a
+                                    free doctor consultation?</h3>
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions[3].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions[3].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[3].isOpen" class="mt-4">
+                            <p class="text-sm">Call our 24x7 Helpline number and mention your Emergency card number to
+                                the executive to confirm your subscription. If your subscription has the benefit of Free
+                                doctor consultation, the executive will immediately connect you to our in-house doctor
+                                for consultation.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 1 -->
+                    <div class="bg-white rounded-xl p-3" style="border: 1px solid lightgrey;"
+                        (click)="toggleAccordion(4)">
+
+                        <div class="flex flex-row">
+                            <div>
+                                <h3 class=" font-semibold mb-2 cursor-pointer text-red-700">5.How to book
+                                    free Emergency Ambulance?</h3>
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions[4].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions[4].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[4].isOpen" class="mt-4">
+                            <p class="text-sm">Call our 24x7 Helpline number and mention your Emergency card number to
+                                the executive to confirm your subscription. If your subscription covers free ambulance,
+                                our executives will arrange a Free ambulance to transfer the patient to the nearest
+                                Hospital. The benefit is applicable only to cardholders, and only in case of an
+                                emergency hospital admission (incident spot to hospital emergency bed). Free ambulance
+                                doesn't apply for regular hospital visits, discharge from the hospital, or
+                                inter-hospital transfers.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 2 -->
+                    <div class="bg-white rounded-xl p-3" style="border: 1px solid lightgrey;"
+                        (click)="toggleAccordion(5)">
+
+                        <div class="flex flex-row">
+                            <div>
+                                <h3 class=" font-semibold mb-2 cursor-pointer text-red-700">6.What if VMEDO
+                                    can’t send a free ambulance?</h3>
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions[5].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions[5].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[5].isOpen" class="mt-4">
+                            <p class="text-sm">If VMEDO cannot arrange a free ambulance (incident spot to a hospital
+                                emergency bed) for its premium subscriber due to the unavailability of VMEDO fleet
+                                nearby, upon confirmation from VMEDO, subscriber can book any private ambulance to take
+                                the patient to the nearest hospital. Ambulance expenses for that particular trip will be
+                                reimbursed by VMEDO to the subscriber upon submission of the bill.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 3 -->
+                    <div class="bg-white rounded-xl p-3" style="border: 1px solid lightgrey;"
+                        (click)="toggleAccordion(6)">
+
+                        <div class="flex flex-row">
+                            <div>
+                                <h3 class=" font-semibold mb-2 cursor-pointer text-red-700">
+                                    7.How to get discounts at the hospital?</h3>
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions[6].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions[6].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[6].isOpen" class="mt-4">
+                            <p class="text-sm">Discounts at the partner hospitals to VMEDO subscribers are applicable
+                                only for the admissions initiated from VMEDO. A discount coupon will be issued from
+                                VMEDO immediately after admission, and the benefit of a discount can be availed during
+                                billing.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 4 -->
+                    <div class="bg-white rounded-xl p-3" style="border: 1px solid lightgrey;"
+                        (click)="toggleAccordion(7)">
+
+                        <div class="flex flex-row">
+                            <div>
+                                <h3 class=" font-semibold mb-2 cursor-pointer text-red-700">
+                                    8.How to get discounts on Non-Emergency ambulance bookings?</h3>
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions[7].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions[7].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[7].isOpen" class="mt-4">
+                            <p class="text-sm">Call our 24x7 Helpline number and mention your emergency card number to
+                                the executive to confirm your subscription. Upon confirmation of your subscription, our
+                                executive will book an ambulance at a discounted price.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 4 -->
+                    <div class="bg-white rounded-xl p-3" style="border: 1px solid lightgrey;"
+                        (click)="toggleAccordion(8)">
+
+                        <div class="flex flex-row">
+                            <div>
+                                <h3 class=" font-semibold mb-2 cursor-pointer text-red-700">
+                                    9.How to get discounts on medical items? </h3>
+                            </div>
+
+                            <div class="ml-auto">
+
+                                <ng-container *ngIf="accordions[8].isOpen">
+                                    <i class="fa-solid fa-minus text-red-700"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!accordions[8].isOpen">
+                                    <i class="fa-solid fa-plus text-red-700"></i>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Accordion Content (Show/Hide based on isOpen state) -->
+                        <div *ngIf="accordions[8].isOpen" class="mt-4">
+                            <p class="text-sm">Log in to our e-commerce portal, and Enter coupon code shared during
+                                registration (via Email) at checkout to get the applicable discount.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Desktop footer section -->
+    <footer class="desktop-footer-section bg-gray-800 text-white py-8 relative bottom-0 left-0 w-full">
+        <div class="container mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- First row - First column (About Company) -->
+            <div>
+              <h3 class="text-lg font-semibold mb-4">About Company</h3>
+  
+              <div style="margin-top: -6%;">
+                <div class="py-2">
+                  <img src="assets/img/logo-white.png" alt="Logo" class="w-36" [routerLink]="'/home'" />
+                </div>
+                <p class="text-sm">
+                  VMEDO is a digital healthcare platform, on a mission to make quality healthcare accessible and affordable to all..
+                </p>
+  
+                <div>
+                  <button>
+                    <p class="hover:text-gray-400 text-red-700 font-medium" [routerLink]="'/info/aboutus'">
+                      Read More..</p>
+                  </button>
+                </div>
+              </div>
+            </div>
+  
+            
+            <!-- First row - Second column (Links) -->
+            <div class="grid grid-rows-7 gap-0">
+              <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/services/emergency-online-doctor-consultation'">
+                    Online Doctor Consultation</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/services/urgent-medical-care-at-home'">
+                    Urgent care at home</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/services/diagnostics-at-home'">
+                    Diagnostics at home</a>
+                </div>
+  
+              </div>
+  
+  
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/services/ambulance-service-india'">
+                    VMEDO Ambulance</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a href="https://store.vmedo.com" class="hover:text-gray-400">
+                    VMEDO Store</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/info/occupational-health-services'">
+                    For Corporates</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a href="https://vmedo.com/first-aid-training/index.html" class="hover:text-gray-400">
+                    First Aid Training</a>
+                </div>
+  
+              </div>
+  
+            </div>
+  
+            <!-- First row - Third column (Links) -->
+            <div class="grid grid-rows-7 gap-0">
+              <h3 class="text-lg font-semibold mb-4">More</h3>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a href="https://vmedo.com/blog" class="hover:text-gray-400">
+                      Blog</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a href="https://academy.vmedo.com" class="hover:text-gray-400">
+                      VMEDO Academy</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a class="hover:text-gray-400" [routerLink]="'/hospitals'">
+                      Emergency Hospital Admission</a> </p>
+                </div>
+  
+              </div>
+  
+              
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a class="hover:text-gray-400" [routerLink]="'/info/aboutus'">
+                      About us</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a href="https://vmedo.com/blog/career-jobs-at-vmedo/" class="hover:text-gray-400">
+                      Career</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a class="hover:text-gray-400" [routerLink]="'/info/partner-with-us'">
+                      Partner with us</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a class="hover:text-gray-400" [routerLink]="'/info/contact-us'">
+                      Contact us</a> </p>
+                </div>
+  
+              </div>
+  
+            </div>
+  
+            <!-- First row - Forth column (Links) -->
+            <div class="grid grid-rows-7 gap-0">
+              <h3 class="text-lg font-semibold">Follow us on</h3>
+              <div class="flex space-x-4">
+                <a href="https://www.facebook.com/Vmedoapp/" class="text-white hover:text-gray-400 text-2xl mr-3"><i
+                    class="fab fa-facebook"></i></a>
+                <a href="https://twitter.com/vmedoapp" class="text-white hover:text-gray-400 text-2xl mr-3"><i
+                    class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/vmedo_app/" class="text-white hover:text-gray-400 text-2xl mr-3"><i
+                    class="fab fa-instagram"></i></a>
+                <a href="https://in.linkedin.com/company/vmedo" class="text-white hover:text-gray-400 text-2xl mr-3"><i
+                    class="fab fa-linkedin"></i></a>
+                <a href="https://www.youtube.com/channel/UClEydLiJCRonhXN7vMf4ikg"
+                  class="text-white hover:text-gray-400 text-2xl mr-3"><i class="fab fa-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+  
+          <div class="flex justify-center mt-8">
+            <div>
+              <h2 class="text-center">"we work to save lives"</h2>
+            </div>
+          </div>
+  
+          <div class="justify-between text-center mt-8 border-t border-gray-700 pt-8">
+            <!-- Second row - First column (Copyright) -->
+            <div>
+              <p>
+                &copy; Copyrights Arera Healthcare and Technologies Pvt Ltd 2024.
+                All rights reserved.
+              </p>
+            </div>
+  
+            <!-- Second row - Second column (Social Media Icons) -->
+            <div class="py-2">
+              <div class="flex flex-row justify-center">
+                <div>
+                  <h3 class="text-sm">
+                    <a href="https://vmedo.com/vmedo-terms.html" class="hover:text-gray-400">
+                      Terms & Conditions</a>
+  
+                  </h3>
+                </div>
+                <div class="px-4">
+                  <h3 class="text-sm">
+                    <a href="https://vmedo.com/vmedo-privacy.html" class="hover:text-gray-400">
+                      Privacy policy</a>
+                  </h3>
+                </div>
+                <div>
+                  <h3 class="text-sm">
+                    <a href="https://vmedo.com/sitemap.xml" class="hover:text-gray-400">
+                      Sitemap</a>
+                  </h3>
+                </div>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+        </div>
+    </div>
+</ng-template>

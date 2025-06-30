@@ -1,0 +1,1344 @@
+<div style="height: calc(100% + 5px);overflow: auto; overflow-x: hidden; background-color: #fdf2ee;">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-lg-12" id="navigation">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand">
+                    <svg class="logo logo-md">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo"></use>
+                    </svg>
+                    <svg [routerLink]="'/home'" class="logo logo-sm">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo-white"></use>
+                    </svg>
+                </a>
+                <div *ngIf="common.auth_token !== undefined && common.auth_token !== null"
+                    class="back pull-right btn btn-sm btn-outline-secondary profile-icon"
+                    [routerLink]="'/dashboard/profile/1'" placement="bottom" ngbTooltip="Profile"
+                    style="margin-right: 40px;">
+                    <svg class="">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user-solid-circle"></use>
+                    </svg>
+                </div>
+                <div class="back pull-right btn btn-sm btn-outline-secondary" [routerLink]="'/home'" placement="bottom"
+                    ngbTooltip="Back">
+                    <svg class="">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-back"></use>
+                    </svg>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- landing page -->
+
+    <div class="container">
+
+        <section class="emid1">
+            <div class="row" style="padding: 16px 0px;">
+
+                <div class="col-sm-7">
+                    <div class="">
+                        <div class="">
+
+                            <div>
+                                <h3 id="skillpeople" style="font-weight: bold;">
+                                    <span style="font-size: 25pt;">This free</span> <br>
+                                    <span style="font-size: 28pt;"> Emergency card</span>
+                                    <br> <span style="font-size: 25pt;">can save your life !</span>
+                                </h3>
+                            </div>
+
+                            <br>
+
+                            <div class="row">
+                 
+
+
+                                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 mobicreateemid">
+
+                                    <button href="#" class="btn btn-success" [disabled]="isLoading"
+                                        (click)="app.OnOpenEmergencyLoginForm('dashboard/profile/2', true)">
+                                        Create free emergency health card
+                                    </button>
+
+                                </div>
+                            </div>
+
+                            <div>
+
+                            </div>
+                        </div>
+                        <!-- eof .slide_description -->
+                    </div>
+                    <!-- eof .slide_description_wrapper -->
+                </div>
+
+
+                <div class="col-sm-5 intro-layer" style="display: flex;
+            justify-content: center;">
+                    <img src="assets/img/EMID_Card_Scan.png" style="width: 100%;" loading="lazy" alt="" class="image">
+                </div>
+
+            </div>
+        </section>
+
+
+
+
+
+
+    </div>
+
+
+
+    <section class="serve">
+        <div class="container">
+            <br>
+            <div class="col-12">
+                <i>
+                    <h3 class="emid-d">“Your health card in Medical emergency”</h3>
+                </i>
+            </div>
+            <hr>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h3 style="color:black; text-align: center;font-weight: bold;">How it works
+                </h3>
+
+            </div>
+
+
+
+            <div class="row mt-4">
+
+                <div class="col-sm-7">
+                    <div class="">
+                        <div class="">
+
+                            <div>
+
+                                <ol style="color: black;">
+                                    <li>
+                                        <strong> Create your card</strong>
+                                        <p>Take the first step of saving your own life. Click the button below, enter
+                                            relevant info, and create your Emergency Card. You will now be able to
+                                            download your card.</p>
+
+                                    </li>
+                                    <li>
+                                        <strong>Carry your card</strong>
+                                        <p>We never know when & where an emergency can occur. So carry the card in your
+                                            wallet. You can also get the emergency card printed and paste the QR code on
+                                            your phone, helmets, and car windshields.</p>
+
+                                    </li>
+                                    <li>During an emergency, any bystander or doctor will scan the card's QR code, and
+                                        access the necessary info to administer the right first aid. They can also
+                                        notify your emergency contacts using the same feature.</li>
+                                </ol>
+                            </div>
+
+                            <br>
+
+                            <div class="row mb-3" style="justify-content: center;">
+
+                                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 mobicreateemid2">
+
+                                    <button href="#" class="btn btn-success" [disabled]="isLoading"
+                                        (click)="app.OnOpenEmergencyLoginForm('dashboard/profile/2', true)">Create free
+                                        emergency health card
+                                    </button>
+
+
+
+                                </div>
+                            </div>
+
+                            <div>
+
+                            </div>
+                        </div>
+                        <!-- eof .slide_description -->
+                    </div>
+                    <!-- eof .slide_description_wrapper -->
+                </div>
+
+
+                <div class="col-sm-5 intro-layer">
+
+                    <iframe width="100%" height="250" src="https://youtube.com/embed/fZMNcp9FGT8" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section class="serve">
+        <div class="">
+            <br>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h3 style="color:black; text-align: center;font-weight: bold;">Access emergency details
+                </h3>
+
+            </div>
+
+            <div class="row mt-4" style="justify-content: center;">
+
+                <div class="container">
+                    <div class="">
+                        <div class="">
+
+                            <div>
+
+                                <div class="test1 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <mat-card class="doctor-consultation-cards">
+
+                                        <div class="mt-3">
+
+
+                                            <strong>
+                                                <h6>In case of emergency you can access emergency details of the victim
+                                                    by clicking on the button below and enter the required
+                                                    credentials(i.e username and pin which can be found on the emergency
+                                                    health card) in order to get the emergency details</h6>
+                                            </strong>
+
+                                            <div class="row" style="justify-content: center;">
+
+                                                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 mobicreateemid2 mt-4">
+
+                                                    <button [routerLink]="'/emid'" class="btn btn-danger"
+                                                        style="background-color: white;color: black;"> Access now
+                                                    </button>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </mat-card>
+                                </div>
+
+
+
+                            </div>
+
+                            <div>
+
+                            </div>
+                        </div>
+                        <!-- eof .slide_description -->
+                    </div>
+                    <!-- eof .slide_description_wrapper -->
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="testimonials-emid">
+        <div class="container">
+
+            <div class="row mt-4" style="padding: 26px 0px;">
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+                    <h3 style="text-align: center; font-weight: bold;font-size: 18pt;"> What people say!!
+                    </h3>
+
+                </div>
+
+
+                <div class="section">
+                    <div class="row">
+                        <div class="col-sm-4 mobipeoplereview" style="display: flex;
+                      justify-content: center;flex-direction: column;">
+
+                            <div style="display: flex;
+                        justify-content: center;">
+
+                                <img src="assets/img/review_12.jpg"
+                                    style="width: 45%;border-radius: 50%; border: 5px solid #ffe86f; box-shadow: 2px 2px #939c01;"
+                                    loading="lazy" width="250" alt="" class="image-2">
+                            </div>
+
+                            <div class="container">
+
+                                <h6 class="mt-4"> "I think this will be a very good solution for aged persons like me.
+                                    If I
+                                    face any emergency
+                                    in a
+                                    remote location, I would like my son to be intimated quickly. I'm happy that an
+                                    organisation
+                                    has
+                                    thought of this problem and come up with a solution."</h6>
+                                <div>
+                                    <h6 style="font-weight: 600;">
+                                        - Sharathkumar Deshpande
+                                    </h6>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-4 mobipeoplereview">
+
+                            <div style="display: flex;
+                        justify-content: center;">
+
+                                <img src="assets/img/review_22.jpg"
+                                    style="width: 45%;border-radius: 50%; border: 5px solid #ffe86f; box-shadow: 2px 2px #939c01;"
+                                    loading="lazy" width="250" alt="">
+                            </div>
+
+                            <div class="container">
+
+                                <h6 class="mt-4"> "I like riding my bike and am part of a bikers club as well. Safety
+                                    becomes very crucial in
+                                    such
+                                    adventurous activity. I am sure this emergency card will save my life when in need."
+                                </h6>
+                                <div>
+                                    <h6 style="font-weight: 600;">
+                                        - Dileep Kumar
+                                    </h6>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-sm-4 mobipeoplereview">
+
+                            <div style="display: flex;
+                        justify-content: center;">
+
+                                <img src="assets/img/review_32.jpg"
+                                    style="width: 45%;border-radius: 50%; border: 5px solid #ffe86f; box-shadow: 2px 2px #939c01;"
+                                    loading="lazy" width="250" alt="">
+                            </div>
+
+                            <div class="container">
+
+                                <h6 class="mt-4">"My friend recommended it to me. I immediately created emergency cards
+                                    for
+                                    myself and my
+                                    family
+                                    because I really care about them. I suggest you all to do it as well."</h6>
+                                <div>
+                                    <h6 style="font-weight: 600;">
+                                        - Shriraj Dargopatil
+                                    </h6>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+    <section class="serve" id="serve1">
+        <div class="container">
+            <br>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h3 style="color:black; text-align: center;font-weight: bold;">Frequently Asked Questions (FAQs)
+                </h3>
+
+            </div>
+
+
+            <div class="row mt-4">
+
+                <div class="col-sm-12">
+                    <div class="">
+                        <div class="">
+
+                            <div>
+
+
+
+                                <ol class="mobile_card">
+                                    <li style="color: black;">
+                                        <mat-accordion class="card" style="color: black;">
+
+                                            <mat-expansion-panel (opened)="panelOpenState = true"
+                                                (closed)="panelOpenState = false">
+                                                <mat-expansion-panel-header>
+                                                    <mat-panel-title>
+                                                        <strong>Why should I create this emergency card?</strong>
+                                                    </mat-panel-title>
+
+                                                </mat-expansion-panel-header>
+                                                <p>One of the reasons for delayed emergency care, after a medical
+                                                    emergency like
+                                                    road accidents, is said to be the information gap.
+                                                    A bystander who wants to help you after the accident is hesitant to
+                                                    provide
+                                                    first aid because he doesn't know your medical history,
+                                                    which is also needed by the doctor to initiate treatment.
+                                                    <br>
+                                                    If you create this
+                                                    emergency card for yourself, with just a scan of the QR code on the
+                                                    card,
+                                                    a bystander can access your critical medical information, and also,
+                                                    call up
+                                                    your emergency contacts and inform about the accident.
+                                                    <br>
+
+                                                    This Emergency Card is a simple solution to bridging the information
+                                                    gap
+                                                    during medical emergencies.
+                                                </p>
+                                            </mat-expansion-panel>
+                                        </mat-accordion>
+
+
+                                    </li>
+
+                                    <br>
+
+                                    <li style="color: black;">
+
+                                        <mat-accordion class="card" style="color: black;">
+
+                                            <mat-expansion-panel (opened)="panelOpenState = true"
+                                                (closed)="panelOpenState = false">
+                                                <mat-expansion-panel-header>
+                                                    <mat-panel-title>
+                                                        <strong>How safe is my data that I provide here?</strong>
+                                                    </mat-panel-title>
+
+                                                </mat-expansion-panel-header>
+                                                <p>First of all, VMEDO collects only the details that are necessary
+                                                    during a
+                                                    medical emergency. VMEDO adheres to all data privacy norms (Link to
+                                                    privacy
+                                                    policy)
+                                                    Also, when someone tries to access your information by scanning the
+                                                    QR code,
+                                                    his/her contact details are gathered are shared with you. So you
+                                                    always know
+                                                    who tried to access your information.</p>
+                                            </mat-expansion-panel>
+                                        </mat-accordion>
+
+
+
+                                    </li>
+
+                                    <br>
+
+                                    <li style="color: black;">
+
+                                        <mat-accordion class="card" style="color: black;">
+
+                                            <mat-expansion-panel (opened)="panelOpenState = true"
+                                                (closed)="panelOpenState = false">
+                                                <mat-expansion-panel-header>
+                                                    <mat-panel-title>
+                                                        <strong>I have created my Emergency Card. What next?</strong>
+                                                    </mat-panel-title>
+
+                                                </mat-expansion-panel-header>
+                                                <p>For the first 10,000 Emergency Cards ever created, VMEDO will send
+                                                    the
+                                                    Emergency Card to your doorstep.
+                                                    <br>
+                                                    The package that you receive will contain the original Emergency
+                                                    Card, which
+                                                    you can keep with you in your wallets, handbags, etc. The package
+                                                    will also
+                                                    contain stickers of the QR codes which you can paste on your phone,
+                                                    helmet
+                                                    and car windshields, so that it is easily visible for a bystander
+                                                    who is
+                                                    trying to help you.
+                                                </p>
+                                            </mat-expansion-panel>
+                                        </mat-accordion>
+
+
+
+
+                                    </li>
+
+                                    <br>
+
+                                    <li style="color: black;">
+                                        <mat-accordion class="card" style="color: black;">
+
+                                            <mat-expansion-panel (opened)="panelOpenState = true"
+                                                (closed)="panelOpenState = false">
+                                                <mat-expansion-panel-header>
+                                                    <mat-panel-title>
+                                                        <strong>Can I create this card for my parents and
+                                                            friends?</strong>
+                                                    </mat-panel-title>
+
+                                                </mat-expansion-panel-header>
+                                                <p>Absolutely. This Emergency Card has been conceptualized to keep you
+                                                    and your family safe. One user can create 5 emergency cards on his
+                                                    own.
+                                                    You can always encourage your extended families and friends to
+                                                    create a card for themselves and then their loved ones too. </p>
+
+                                            </mat-expansion-panel>
+                                        </mat-accordion>
+
+
+                                    </li>
+
+                                    <br>
+
+                                    <li style="color: black;">
+                                        <mat-accordion class="card" style="color: black;">
+
+                                            <mat-expansion-panel (opened)="panelOpenState = true"
+                                                (closed)="panelOpenState = false">
+                                                <mat-expansion-panel-header>
+                                                    <mat-panel-title>
+                                                        <strong>Can I add my insurance details to this emergency
+                                                            card?</strong>
+                                                    </mat-panel-title>
+
+                                                </mat-expansion-panel-header>
+                                                <p>Yes. You can add your insurance policy number to this Emergency Card,
+                                                    which may fasten the admission process & treatment in a hospital or
+                                                    any other medical centre.
+                                                </p>
+                                            </mat-expansion-panel>
+                                        </mat-accordion>
+
+
+                                    </li>
+
+                                    <br>
+
+                                    <li style="color: black;">
+
+                                        <mat-accordion class="card" style="color: black;">
+
+                                            <mat-expansion-panel (opened)="panelOpenState = true"
+                                                (closed)="panelOpenState = false">
+                                                <mat-expansion-panel-header>
+                                                    <mat-panel-title>
+                                                        <strong>Is this card linked to any Govt. Schemes?</strong>
+                                                    </mat-panel-title>
+
+                                                </mat-expansion-panel-header>
+                                                <p>No. The Emergency Card is not linked to any Govt. or any other
+                                                    schemes.
+
+                                                    But one can include their ABHA no. (Ayushman Bharat Health Account
+                                                    no.) with this Emergency Card so that it is easier for a medical
+                                                    professional to access your previous medical history.
+                                                </p>
+                                            </mat-expansion-panel>
+                                        </mat-accordion>
+
+
+
+                                    </li>
+
+
+
+
+                                </ol>
+
+
+
+
+                            </div>
+
+                            <br>
+
+
+
+                            <div>
+
+                            </div>
+                        </div>
+                        <!-- eof .slide_description -->
+                    </div>
+                    <!-- eof .slide_description_wrapper -->
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="searchemergencycard" hidden>
+        <section id="serve" style="padding: 52px 0px;">
+            <div class="row body emergencyid">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="row panel">
+                        <div class="col-12 col-sm-6 col-md-6 col-xl-6"
+                            style="display: flex; align-items: center; justify-content: center;">
+                            <span style="margin-top: 10px; color: #000000; font-size: 19px; text-align: center;">
+                                <span *ngIf="!searchedEmergencyCard" style="color: white;">Access Emergency Informations
+                                    <br>to save a lives!</span>
+                                <strong *ngIf="searchedEmergencyCard">Emergency Details !</strong>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row panel" *ngIf="!searchedEmergencyCard"
+                        style="width: 95%; margin-right: 17%; margin-left: 3%;">
+                        <div class="col-12 col-sm-12 col-md-6 col-xl-6">
+
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12" *ngIf="!isHideSearch">
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 no-padding card"
+                                            style="margin-right: 5px;">
+                                            <div class="text-control">
+                                                <svg>
+                                                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-idcard">
+                                                    </use>
+                                                </svg>
+                                                <input type="text" placeholder="Enter emergency id"
+                                                    [(ngModel)]="txtSearch">
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="col-12 col-sm-12 col-md-5 col-lg-5 no-padding search card srch align-center">
+                                            <div class="text-control">
+                                                <svg>
+                                                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-key">
+                                                    </use>
+                                                </svg>
+                                                <input type="text" placeholder="Pin" [(ngModel)]="txtPin"
+                                                    (keypress)="common.AllowOnlyNumbers($event)">
+                                            </div>
+                                            <button type="button"
+                                                class="btn btn-sm btn-outline-secondary rd-button search2"
+                                                (click)="OnClickSearch()">
+                                                <svg style="height: 20px; width: 20px;">
+                                                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-search">
+                                                    </use>
+                                                    <title>Search</title>
+                                                </svg>
+                                                <span style="margin-left: 10px;">Get details</span>
+                                            </button>
+                                        </div>
+                                        <div
+                                            class="col-12 col-sm-12 col-md-1 col-lg-1 no-padding search search-md srch align-center">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                                (click)="OnClickSearch()">
+                                                <svg>
+                                                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-search">
+                                                    </use>
+                                                    <title>Search</title>
+                                                </svg>
+                                                <span style="margin-left: 10px;">Get details</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row panel" *ngIf="searchedEmergencyCard">
+                        <div class="col-12 col-sm-12 col-md-6 col-xl-6  searchedCard">
+
+                            <div class="row no-padding">
+                                <div
+                                    class="col-12 col-sm-12 col-md-12 col-xl-12 align-center personal-details no-padding">
+                                    <div class="img-container">
+                                        <div class="img-wrapper">
+                                            <img *ngIf="common.IsFile(searchedEmergencyCard.profilepic)"
+                                                [src]="searchedEmergencyCard.profilepic" />
+                                            <img *ngIf="!common.IsFile(searchedEmergencyCard.profilepic)"
+                                                src="./assets/img/no-image.jpg" />
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 10px;">
+
+                                        <span class="name">{{searchedEmergencyCard.pname}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row panel" *ngIf="searchedEmergencyCard">
+                        <div class="col-12 col-sm-12 col-md-6 col-xl-6 card searchedCard">
+                            <div class="row no-padding" style="justify-content: center;">
+                                <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding primary-contact">
+                                    <span>Personal Details</span>
+                                    <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding">
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Emergency Id</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">{{searchedEmergencyCard.emid}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Pin</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">{{searchedEmergencyCard.pin}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Birth Date</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">
+                                                {{searchedEmergencyCard.pDob.split('T')[0]}}</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Gender</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">
+                                                {{searchedEmergencyCard.pGender}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Blood Group</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">
+                                                {{searchedEmergencyCard.pbloodgroup}}</div>
+                                        </div>
+
+                                        <div class="row" *ngIf="searchedEmergencyCard && searchedEmergencyCard.abha">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">ABHA Number</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">{{searchedEmergencyCard.abha}}
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Organ Donor</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">
+                                                {{searchedEmergencyCard.organdoner
+                                                === true ? 'Yes' : 'No'}}</div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row panel"
+                        *ngIf="searchedEmergencyCard && (searchedEmergencyCard.pcontName || searchedEmergencyCard.pcontMobile)">
+                        <div class="col-12 col-sm-12 col-md-6 col-xl-6 card searchedCard">
+                            <div class="row no-padding" style="justify-content: center;"
+                                *ngIf="searchedEmergencyCard.pcontName || searchedEmergencyCard.pcontMobile">
+                                <div
+                                    class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding primary-contact secondary-contact">
+                                    <span>Primary Contact</span>
+                                    <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding">
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Name</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">
+                                                {{searchedEmergencyCard.pcontName}}</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Contact</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">
+                                                {{searchedEmergencyCard.pcontMobile}}</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="call-now"
+                                                (click)="OnClickCall(searchedEmergencyCard.pcontMobile)">
+                                                <svg>
+                                                    <use
+                                                        xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-phone-call">
+                                                    </use>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row panel"
+                        *ngIf="searchedEmergencyCard && (searchedEmergencyCard.scontName || searchedEmergencyCard.scontMobile)">
+                        <div class="col-12 col-sm-12 col-md-6 col-xl-6 card searchedCard">
+                            <div class="row no-padding" style="justify-content: center;"
+                                *ngIf="searchedEmergencyCard.scontName || searchedEmergencyCard.scontMobile">
+                                <div
+                                    class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding primary-contact secondary-contact">
+                                    <span>Secondary Contact</span>
+                                    <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding">
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Name</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">
+                                                {{searchedEmergencyCard.scontName}}</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Contact</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">
+                                                {{searchedEmergencyCard.scontMobile}}</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="call-now"
+                                                (click)="OnClickCall(searchedEmergencyCard.scontMobile)">
+                                                <svg>
+                                                    <use
+                                                        xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-phone-call">
+                                                    </use>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row panel"
+                        *ngIf="searchedEmergencyCard && (searchedEmergencyCard.insuranceprovider || searchedEmergencyCard.policynumber)">
+                        <div class="col-12 col-sm-12 col-md-6 col-xl-6 card searchedCard">
+                            <div class="row no-padding" style="justify-content: center;"
+                                *ngIf="searchedEmergencyCard.insuranceprovider || searchedEmergencyCard.policynumber">
+                                <div
+                                    class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding primary-contact secondary-contact">
+                                    <span>Insurance Details</span>
+                                    <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding">
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Insurance Provider</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">
+                                                {{searchedEmergencyCard.insuranceprovider}}</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Policy Number</div>
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">
+                                                {{searchedEmergencyCard.policynumber}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row panel" *ngIf="searchedEmergencyCard && searchedEmergencyCard.medicalcondition">
+                        <div class="col-12 col-sm-12 col-md-6 col-xl-6 card searchedCard">
+                            <div class="row no-padding" style="justify-content: center;"
+                                *ngIf="searchedEmergencyCard.medicalcondition">
+                                <div
+                                    class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding primary-contact secondary-contact">
+                                    <span>Medical Condition</span>
+                                    <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                                                {{searchedEmergencyCard.medicalcondition}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row panel" *ngIf="searchedEmergencyCard && searchedEmergencyCard.emergencydrug">
+                        <div class="col-12 col-sm-12 col-md-6 col-xl-6 card searchedCard">
+                            <div class="row no-padding" style="justify-content: center;"
+                                *ngIf="searchedEmergencyCard.emergencydrug">
+                                <div
+                                    class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding primary-contact secondary-contact">
+                                    <span>Emergency Drugs</span>
+                                    <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                                                {{searchedEmergencyCard.emergencydrug}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+
+
+
+
+    <div class="main-footer" style="font-weight: 200;">
+
+        <div class="container mom8">
+
+            <div class="row">
+
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 mb-3">
+
+                    <div class="mcare-foot-about footer-box">
+                        <h4>
+
+                            About VMEDO
+
+                        </h4>
+                        <p class="about-vmedo">
+                            VMEDO is a digital healthcare platform, on a mission to make quality healthcare accessible and affordable to all..
+                            <br>
+                            <a [routerLink]="'/info/aboutus'" class="know" style="color: #fff;">View More. . .</a>
+
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+
+                    <div class="mcare-foot-about footer-box">
+                        <h4>
+
+                            Quick Links
+
+                        </h4>
+
+                        <ul class="lst">
+
+                            <li><a href="https://academy.vmedo.com"><i class="fa fa-chevron-right"></i>VMEDO
+                                    Academy</a></li>
+                             <li><a href="https://store.vmedo.com"><i class="fa fa-chevron-right"></i>VMEDO Store</a>
+                </li>
+
+                           
+                <li><a [routerLink]="'/services/ambulance-service-india'"><i class="fa fa-chevron-right"></i>VMEDO
+                    Ambulance</a></li>
+                              <li><a [routerLink]="'/info/occupational-health-services'"><i class="fa fa-chevron-right"></i>For
+                    Corporates</a></li>
+
+                                <li><a href="https://vmedo.com/first-aid-training/index.html"><i class="fa fa-chevron-right"></i>First
+                    Aid Training</a></li>
+
+                            <li><a href="https://hospital.vmedo.com"><i class="fa fa-chevron-right"></i>Hospital
+                                    login</a></li>
+
+                                    <li><a [routerLink]="'/services/find-blood-donor'"><i class="fa fa-chevron-right"></i>Find blood donors</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+
+                    <div class="mcare-foot-address footer-box">
+                        <h4>More</h4>
+                        <ul class="lst">
+                            <li><a href="https://www.vmedo.com/blog/"><i class="fa fa-chevron-right"></i> Blog</a></li>
+
+                            <li><a [routerLink]="'/info/aboutus'"><i class="fa fa-chevron-right"></i> About Us</a>
+                            </li>
+                            <li><a href="https://vmedo.com/blog/join-our-team-vmedo/"><i
+                                        class="fa fa-chevron-right"></i> Career</a></li>
+
+                           <li><a [routerLink]="'/info/partner-with-us'"><i class="fa fa-chevron-right"></i> Partner
+                    With Us</a></li>
+                          <li><a [routerLink]="'/info/contact-us'"><i class="fa fa-chevron-right"></i> Contact
+                    Us</a></li>
+
+
+
+
+                        </ul>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+
+                    <div class="mcare-foot-tweets footer-box">
+
+                        <h4>
+
+                            Subscribe
+
+                        </h4>
+
+
+                        <div class="follow-us">
+                            <a href="" class="follow-us-text">Follow Us On</a>
+                        </div>
+                        <ul class="foot-social">
+                            <li><a href="https://www.facebook.com/vmedohealthcare"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://twitter.com/vmedoapp"><i class="fa fa-twitter"></i></a>
+                            </li>
+
+                            <li><a href="https://www.linkedin.com/company/vmedo"><i class="fa fa-linkedin"
+                                        aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.instagram.com/vmedo_healthcare/"><i class="fa fa-instagram"
+                                        aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.youtube.com/c/Bloodforsureapp/featured"><i
+                                        class="fa fa-youtube"></i></a></li>
+                        </ul>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <h5 style="text-align: center; font-weight:500;color:white;margin-top: 15px;">
+                "we work to save lives"</h5>
+        </div>
+    </div>
+    <div class="sub-footer mb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                    <p class="text-content copy-content">
+                        © Copyrights <span class="copyrights" href="index.html" style="color: #dc1f26;">Arera
+                            Healthcare and Technologies Pvt Ltd</span> 2021. All rights reserved.
+                    </p>
+                    <div class="terms-conditions">
+                        <a href="vmedo-terms.html">Terms and Condition</a> | <a href="vmedo-privacy.html">
+                            Privacy </a> | <a href="https://vmedo.com/sitemap.xml"> Sitemap </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row widget-menu">
+        <div class="col-4 col-md-4 col-sm-4 col-lg-4" >
+         
+          <div *ngIf="!common.auth_token">
+            <svg (click)="app.OnOpenLoginForm('/dashboard/profile')"  >
+              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-key1"></use>
+            </svg>
+          </div>
+         
+          <div *ngIf="common.auth_token">
+            <svg [routerLink]="getDashboardLink()">
+              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-user-1"></use>
+            </svg>
+          </div>
+          
+      
+          <!-- Profile -->
+      
+          <div>
+            {{ common.auth_token ? 'Profile' : 'Login' }}
+          </div>
+      
+        </div>
+        <div class="col-4 col-md-4 col-sm-4 col-lg-4"
+        >
+      <svg [routerLink]="'/home'">
+       <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-home"></use>
+      </svg>
+      Home
+      </div>
+        <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+          <svg [routerLink]="'/services/more'">
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-navigation-more"></use>
+          </svg>
+          More
+        </div>
+      </div>
+
+
+    <ng-template #emidOtplogin let-modal>
+        <div class="modal-body">
+            <div class="row logo">
+                <!-- <span>VMEDO</span> -->
+                <label (click)="CloseOTPLoginModal();">
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-cross"></use>
+                    </svg>
+                </label>
+            </div>
+            <div class="row title">
+                <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                    <div class="card" style="padding: 2px;">
+                        <svg style="height: 55px; width: 55px;">
+                            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-profile"></use>
+                        </svg>
+                    </div>
+                    <!-- Validate -->
+                    <span style="color: #000;
+                text-align: center;
+                font-size: 18px;
+                margin-top: 10px;">Please verify your Identity to<br>access Emergency Information</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-xl-12 card">
+                    <div class="text-control" [ngClass]="{'error': lblMobileNo !== undefined}">
+                        <svg>
+                            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-phone1"></use>
+                        </svg>
+                        <input type="text" placeholder="Mobile No" [disabled]="isOTPSent" [(ngModel)]="txtMobileNo"
+                            (ngModelChange)="OnLoginControlsTextChanged('txtMobileNo', $event)">
+                        <!-- <span class="error-line" placement="bottom" ngbTooltip="{{lblMobileNo}}">{{lblMobileNo}}</span> -->
+                        <svg>
+                            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-warning"></use>
+                            <title>{{lblMobileNo}}</title>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="isOTPSent === true">
+                <div class="col-12 col-sm-12 col-md-12 col-xl-12 card">
+                    <div class="text-control" [ngClass]="{'error': lblOTP !== undefined}">
+                        <svg>
+                            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-key3"></use>
+                        </svg>
+                        <input type="text" placeholder="OTP" [(ngModel)]="txtOTP" [disabled]="!isOTPSent"
+                            (ngModelChange)="OnLoginControlsTextChanged('txtOTP', $event)">
+                        <!-- <span class="error-line" placement="bottom" ngbTooltip="{{lblOTP}}">{{lblOTP}}</span> -->
+                        <svg>
+                            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-warning"></use>
+                            <title>{{lblOTP}}</title>
+                        </svg>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="row controls">
+                <div class="col-12 col-sm-12 col-md-12 col-xl-12 register">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="isOTPSent === false"
+                        (click)="OnClickSendOTP();">Send OTP</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="isOTPSent === true"
+                        (click)="OnClickValidateOTP();">Validate</button>
+                    <!-- <button type="button" class="btn btn-sm btn-outline-secondary" (click)="CloseOTPLoginModal();">Cancel</button> -->
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #createID let-modal>
+        <div class="modal-body">
+            <div class="row logo">
+                <span>VMEDO</span>
+            </div>
+            <div class="row title">
+                <div class="col-12 col-sm-12 col-md-12 col-xl-12 createID">
+                    <div class="emergencyid photo" style="padding: 0; margin: 0; border: none; border-radius: none;">
+                        <div>
+                            <img [src]="profileImage[0].src" [alt]="profileImage[0].caption" class="img2"
+                                for="img-upload" *ngIf="profileImage.length > 0 && profileImage[0].src !== undefined">
+                            <label class="img-upload" *ngIf="profileImage.length === 0">
+                                <svg>
+                                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user"></use>
+                                    <title>Image</title>
+                                </svg>
+                            </label>
+                        </div>
+                        <span>
+                            <input type="file" id="img-upload" accept="image/*" (change)="OnImageUpload($event)"
+                                [hidden]="true">
+                            <label for="img-upload" class="img-upload">
+                                <svg>
+                                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-plus"></use>
+                                    <title>Image</title>
+                                </svg>
+                                <span>Add Image</span>
+                            </label>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row createID no-padding">
+                <ul ngbNav #nav="ngbNav" [(activeId)]="activeTabId" class="nav-tabs  no-padding">
+                    <li [ngbNavItem]="1">
+                        <ng-template ngbNavContent>
+                            <div class="col-12 col-sm-12 col-md-12 col-xl-12 createID no-padding">
+                                <div>
+                                    <p>Personal Details</p>
+                                </div>
+                                <div class="pos-rel">
+                                    <input type="text" placeholder="Name" [(ngModel)]="txtName"
+                                        (ngModelChange)="OnTextChanged('txtName', $event)">
+                                    <span class="error-line" placement="bottom"
+                                        ngbTooltip="{{lblName}}">{{lblName}}</span>
+                                </div>
+                                <div class="date pos-rel">
+                                    <input type="text" placeholder="Birth date" ngbDatepicker #d="ngbDatepicker"
+                                        (click)="d.toggle()" [autoClose]="false"
+                                        [minDate]="{year: 1950, month:1, day: 1}" [maxDate]="maxDate" readonly
+                                        [(ngModel)]="txtDOB" (ngModelChange)="OnTextChanged('txtDOB', $event)">
+                                    <span class="error-line" placement="bottom"
+                                        ngbTooltip="{{lblDOB}}">{{lblDOB}}</span>
+                                </div>
+                                <div class="combobox pos-rel" ngbDropdown>
+                                    <input type="text" placeholder="Blood group" id="dropdownBloodGroup"
+                                        ngbDropdownToggle readonly [(ngModel)]="txtBloodGroup"
+                                        (ngModelChange)="OnTextChanged('txtBloodGroup', $event)">
+                                    <span class="error-line" placement="bottom"
+                                        ngbTooltip="{{lblBloodGroup}}">{{lblBloodGroup}}</span>
+                                    <div ngbDropdownMenu aria-labelledby="dropdownBloodGroup">
+                                        <div ngbDropdownItem *ngFor="let group of bloodGroups"
+                                            (click)="txtBloodGroup = group; OnTextChanged('txtBloodGroup', $event);">
+                                            {{group}}</div>
+                                    </div>
+                                    <svg class="dropmenu nomargin" ngbDropdownToggle>
+                                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-dropmenu"></use>
+                                    </svg>
+                                </div>
+                                <div class="combobox pos-rel" ngbDropdown>
+                                    <input type="text" placeholder="Gender" id="dropdownGender" ngbDropdownToggle
+                                        readonly [(ngModel)]="txtGender"
+                                        (ngModelChange)="OnTextChanged('txtGender', $event)">
+                                    <span class="error-line" placement="bottom"
+                                        ngbTooltip="{{lblGender}}">{{lblGender}}</span>
+                                    <div ngbDropdownMenu aria-labelledby="dropdownGender">
+                                        <div ngbDropdownItem *ngFor="let gender of genders"
+                                            (click)="txtGender = gender; OnTextChanged('txtGender', $event);">{{gender}}
+                                        </div>
+                                    </div>
+                                    <svg class="dropmenu nomargin" ngbDropdownToggle>
+                                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-dropmenu"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </li>
+                    <li [ngbNavItem]="2">
+                        <ng-template ngbNavContent>
+                            <div class="col-12 col-sm-12 col-md-12 col-xl-12 createID no-padding">
+                                <div>
+                                    <p>Primary Contact</p>
+                                </div>
+
+                                <div class=" pos-rel">
+                                    <input type="text" placeholder="Name" [(ngModel)]="txtPrimaryContactName"
+                                        (ngModelChange)="OnTextChanged('txtPrimaryContactName', $event)">
+                                    <span class="error-line" placement="bottom"
+                                        ngbTooltip="{{lblPrimaryContactName}}">{{lblPrimaryContactName}}</span>
+                                </div>
+                                <div class=" pos-rel">
+                                    <input type="text" placeholder="Mobile no" [(ngModel)]="txtPrimaryContactNo"
+                                        (ngModelChange)="OnTextChanged('txtPrimaryContactNo', $event)"
+                                        (keypress)="common.AllowOnlyNumbers($event)">
+                                    <span class="error-line" placement="bottom"
+                                        ngbTooltip="{{lblPrimaryContactNo}}">{{lblPrimaryContactNo}}</span>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </li>
+                    <li [ngbNavItem]="3">
+                        <ng-template ngbNavContent>
+                            <div class="col-12 col-sm-12 col-md-12 col-xl-12 createID no-padding">
+                                <div>
+                                    <p>Secondary Contact</p>
+                                </div>
+
+                                <div class=" pos-rel">
+                                    <input type="text" placeholder="Name" [(ngModel)]="txtSecondaryContactName"
+                                        (ngModelChange)="OnTextChanged('txtSecondaryContactName', $event)">
+                                    <span class="error-line" placement="bottom"
+                                        ngbTooltip="{{lblSecondaryContactName}}">{{lblSecondaryContactName}}</span>
+                                </div>
+                                <div class=" pos-rel">
+                                    <input type="text" placeholder="Mobile no" [(ngModel)]="txtSecondaryContactNo"
+                                        (ngModelChange)="OnTextChanged('txtSecondaryContactNo', $event)"
+                                        (keypress)="common.AllowOnlyNumbers($event)">
+                                    <span class="error-line" placement="bottom"
+                                        ngbTooltip="{{lblSecondaryContactNo}}">{{lblSecondaryContactNo}}</span>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </li>
+                    <li [ngbNavItem]="4">
+                        <ng-template ngbNavContent>
+                            <div class="col-12 col-sm-12 col-md-12 col-xl-12 createID no-padding">
+                                <div>
+                                    <p>Medical Details</p>
+                                </div>
+                                <div class=" pos-rel">
+                                    <textarea cols="5" rows="5" placeholder="Medical condition"
+                                        [(ngModel)]="txtInsuranceMedicalCondition"
+                                        (ngModelChange)="OnTextChanged('txtInsuranceMedicalCondition', $event)"></textarea>
+                                    <span class="error-line" style="top: 135px;" placement="bottom"
+                                        ngbTooltip="{{lblInsuranceMedicalCondition}}">{{lblInsuranceMedicalCondition}}</span>
+                                </div>
+                                <div class=" pos-rel">
+                                    <textarea cols="5" rows="5" placeholder="Emergency drugs"
+                                        [(ngModel)]="txtInsuranceEmergencyDrugs"
+                                        (ngModelChange)="OnTextChanged('txtInsuranceEmergencyDrugs', $event)"></textarea>
+                                    <span class="error-line" style="top: 135px;" placement="bottom"
+                                        ngbTooltip="{{lblInsuranceEmergencyDrugs}}">{{lblInsuranceEmergencyDrugs}}</span>
+                                </div>
+                                <div class="combobox pos-rel" ngbDropdown>
+                                    <input type="text" placeholder="Provider" [(ngModel)]="txtInsuranceProvider"
+                                        (ngModelChange)="OnTextChanged('txtInsuranceProvider', $event)">
+                                    <span class="error-line" placement="bottom"
+                                        ngbTooltip="{{lblInsuranceProvider}}">{{lblInsuranceProvider}}</span>
+                                </div>
+                                <div class=" pos-rel">
+                                    <input type="text" placeholder="Policy number" [(ngModel)]="txtInsurancePolicyNo"
+                                        (ngModelChange)="OnTextChanged('txtInsurancePolicyNo', $event)">
+                                    <span class="error-line" placement="bottom"
+                                        ngbTooltip="{{lblInsurancePolicyNo}}">{{lblInsurancePolicyNo}}</span>
+                                </div>
+                                <div class="organdonor">
+                                    <p>
+                                        <input type="checkbox" id="organdonor" [(ngModel)]="chkOrganDonor">
+                                        <label for="organdonor">Organ donor</label>
+                                    </p>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </li>
+                </ul>
+
+                <div [ngbNavOutlet]="nav" class="mt-2 full-width"></div>
+            </div>
+            <div class="row controls">
+                <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="activeTabId > 1"
+                        (click)="OnClickBack()">Back</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="activeTabId < 4"
+                        (click)="OnClickNext()">Next</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary rd-button" *ngIf="activeTabId === 4"
+                        (click)="OnClickSubmit()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </ng-template>

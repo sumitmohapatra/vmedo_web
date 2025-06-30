@@ -1,0 +1,462 @@
+.body{
+    height: calc(100% - 115px);
+    overflow: auto;
+  }
+  
+  .navbar a.navbar-brand{
+    color: #ffffff;
+    font-weight: 700;
+    margin-left: 5px;
+  }
+  
+  .premium-text{
+    margin-left: 25%;
+  }
+  
+  .cardsDesign{
+  
+    height: 60px;
+    background-color: #ffffff;
+    color: black;
+    border: 2px solid #ffffff;
+    border-radius: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);
+  
+  }
+   
+  @media screen and (max-width: 767px) and (min-width: 377px)
+  {
+  
+    .text-style{
+      font-weight: 500;
+      font-size: 16px;
+    }
+  
+  
+      .premium-text{
+        margin-left: 0%;
+        margin-top: 45%;
+      }
+  
+      
+  
+      .navbar{
+        background: #ffffff !important;
+    }
+    .navbar-brand{
+        color: #ce2424 !important; margin-bottom: -3px;
+    }
+  
+    .profile-body{
+      height: calc(100% - 115px);
+      overflow: auto;
+      overflow: hidden;
+  }
+  
+    #boxPosition{
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      margin-top: 11%;
+    }
+  
+  
+      .navbar{
+          background: #ffffff !important;
+      }
+      .navbar-brand{
+          color: #ce2424 !important; margin-bottom: -3px;
+      }
+    
+      .widget-menu,
+      .widget-menu > div{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 60px;
+          background: #ffffff;
+          font-size: 12px;
+      }
+    
+      .widget-menu > div > svg{
+          height: 20px;
+          width: 20px;
+          fill: #666666;
+          outline: none;
+      }
+    
+      .widget-menu > div:last-child > svg{
+          transform: rotate(-90deg);
+      }
+    
+      .widget-menu > div > svg:hover{
+          fill: #ce2424;
+      }
+  
+    }
+  
+    @media (min-width: 768px) {
+  
+      .text-style{
+        font-weight: 500;
+        font-size: 16px;
+      }
+      
+      .widget-menu,
+      .widget-menu > div{
+          display: none !important;
+      }
+  
+      #boxPosition{
+        width: 30%;
+        text-align: center;
+        margin-top: 4%;
+      }
+    }
+  
+    @media screen and (max-width: 376px) and (min-width: 280px)
+  {
+  
+    .text-style{
+      font-weight: 500;
+      font-size: 14px;
+    }
+  
+    .cardsDesign{
+  
+      height: 60px;
+      background-color: #ffffff;
+      color: black;
+      border: 2px solid #ffffff;
+      border-radius: 17px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);
+    
+    }
+  
+    
+    .premium-text{
+      margin-left: 0%;
+      /* margin-top: 45%; */
+    }
+  
+    .navbar{
+      background: #ffffff !important;
+  }
+  .navbar-brand{
+      color: #ce2424 !important; margin-bottom: -3px;
+  }
+  
+  .profile-body{
+    height: calc(100% - 115px);
+    overflow: auto;
+    overflow: hidden;
+  }
+  
+  #boxPosition{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 11%;
+  }
+  
+  
+    .navbar{
+        background: #ffffff !important;
+    }
+    .navbar-brand{
+        color: #ce2424 !important; margin-bottom: -3px;
+    }
+  
+    .widget-menu,
+    .widget-menu > div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 60px;
+        background: #ffffff;
+        font-size: 12px;
+    }
+  
+    .widget-menu > div > svg{
+        height: 20px;
+        width: 20px;
+        fill: #666666;
+        outline: none;
+    }
+  
+    .widget-menu > div:last-child > svg{
+        transform: rotate(-90deg);
+    }
+  
+    .widget-menu > div > svg:hover{
+        fill: #ce2424;
+    }
+  
+  }
+
+  .man {
+    display: flex; /* Use flex display for the container */
+  }
+  
+  .box1, .box2 {
+    flex: 1; /* Distribute available space equally between the two boxes */
+    padding: 20px;
+    border: 1px solid #ccc;
+  }
+  
+  .box1 {
+    background-color: lightblue;
+  }
+  
+  .box2 {
+    background-color: lightgreen;
+  }
+  
+  .text-style-corporate{
+    text-align: center;
+  }
+  
+  .center {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    height: 14vh;           /* Adjust the height as needed */
+  }
+  
+  .molo{
+    margin-top: -50px;
+  }
+  
+  
+  .imagestyle1{
+    height: 110px;
+    width: 120px;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 5px solid rgb(233,229,229);
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .intr{
+    border-radius: 3%;
+    
+    border-style:groove;
+  }
+  
+.img2{
+  height: 130px;
+  width: 130px;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 5px solid rgb(233,229,229);
+  background-size: cover;
+  background-position: center center;
+  margin-bottom: 10px;
+}
+
+
+  
+
+  @media screen and (max-width: 768px) and (min-width: 280px) {
+    .imagestyle1{
+      margin-left: 210px;
+    }
+   
+  }
+
+
+  @media screen and (max-width: 767px) and (min-width: 370px){
+    .premium{
+      margin-top: -50px;
+      margin-left: 35px;
+    }
+    .text-style{
+      font-weight: 500;
+      font-size: 17px;
+      margin-left: 25px;
+    }
+    .imagestyleone{
+    margin-top: 5px;
+    height: 35px;
+    width: 35px;
+  }
+  .imagestyleoneone{
+    margin-top: 10px;
+    height: 35px;
+    width: 35px;
+  }
+    .imagestyle{
+      height: 20px;
+      width: 20px;
+      margin-top: 17px;
+    }
+    .premium-name-1{
+      text-align: initial;
+      font-weight: 500;
+    }
+    .premium-icon{
+      height: 30px;
+      width: 30px;
+      margin-top: -48px;
+      margin-left: -30px;
+    }
+    .imagestyletwo{
+      height: 20px;
+      width: 20px;
+      margin-top: -5px;
+    }
+    .upgrade-premium-button{
+      font-size: 19px;
+      padding: 3%;
+      background-color: #ce2424;
+      color: white;
+    }
+    .premium-name{
+      margin-top: -10px;
+    }
+  }
+  
+  @media screen and (max-width: 369px) and (min-width: 280px){
+    .premium{
+      margin-top: 1px;
+      margin-left: 25px;
+    }
+    
+    .text-style{
+      font-weight: 500;
+      font-size: 12px;
+      margin-left: 30px;
+    }
+    .photo .img2{
+      height: 80px;
+      width: 80px;
+    }
+    .imagestyleone{
+      height: 40px;
+      width: 40px;
+    }
+    .imagestyleoneone{
+      margin-top: 10px;
+      height: 40px;
+      width: 40px;
+    }
+    .imagestyle{
+      margin-top: -20px;
+    }
+    .imagestyle{
+      height: 20px;
+      width: 20px;
+     margin-top: 10px;
+    }
+    .premium{
+      margin-top: -10px;
+    }
+    .premium-name-1{
+      text-align: initial;
+      font-weight: 500;
+      font-size: 12px;
+    }
+    .premium-text-one{
+      font-size: 12px;
+      margin-top: 5px;
+    }
+    .premium-icon{
+      height: 30px;
+      width: 30px;
+      margin-top: -10px;
+      margin-left: -40px;
+    }
+    .imagestyletwo{
+      height: 20px;
+      width: 20px;
+      margin-top: -5px;
+    }
+    .upgrade-premium-button{
+      font-size: 15px;
+      padding-left: 2%;
+      padding-right: 2%;
+      padding-top: 1%;
+      padding-bottom: 1%;
+      background-color: #ce2424;
+      color: white;
+    }
+    .premium-name{
+      margin-top: 6px;
+      margin-left: -10px;
+    
+    }
+  }
+  /* 
+  .text-style{
+    font-size: 17px;
+  } */
+  @media screen and (min-width: 767px) {
+    .premium-button{
+      color: gold;
+    }
+    .imagestyleone{
+      height: 57px;
+      width: 57px;
+     
+    }
+    .imagestyleoneone{
+      margin-top: 5px;
+      height: 55px;
+      width: 55px;
+    }
+    .cardsDesign{
+  
+      height: 70px;
+      background-color: #ffffff;
+      color: black;
+      border: 2px solid #ffffff;
+      border-radius: 17px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);
+    
+    }
+    .imagestyle{
+      height: 20px;
+      width: 20px;
+      margin-top: 17px;
+    }
+    .imagestyletwo{
+      height: 20px;
+      width: 20px;
+      margin-top: -1px;
+    }
+    .premium-name-1{
+      text-align: initial;
+      font-weight: 500;
+    }
+    .premium-icon{
+      height: 30px;
+      width: 30px;
+      margin-top: -20px;
+      
+    }
+    .upgrade-premium-button{
+      font-size: 19px;
+      padding: 3%;
+      background-color: #ce2424;
+      color: white;
+    }
+    .premium-name{
+      margin-top: 5px;
+    }
+  }
+
+  .highlighted-icon {
+    color: red; /* You can adjust the style as needed */
+  }

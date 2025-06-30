@@ -1,0 +1,119 @@
+.navbar{
+    width: 100%;
+    background-color: #ce2424 !important;
+    display: inline-block;
+    display: flex;
+}
+
+.navbar a.navbar-brand{
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.navbar a.navbar-brand:hover{
+    color: #ffffff;
+}
+
+.navbar svg.login{
+    height: 25px;
+    width: 25px;
+    margin: 7px 5px 0 0;
+    border-radius: 20px;
+    float: right;
+    /* position: absolute;
+    right: 60px; */
+    cursor: pointer;
+    fill: rgb(0,0,0,0.5);
+    border: 2px solid rgb(0,0,0,0.5);
+}
+
+.navbar svg.login:hover{
+    fill: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+.navbar .navbar-collapse{
+    position: absolute;
+    /* position: relative; */
+    z-index: 100;
+    top: 56px;
+    left: 0px;
+    width: 100%;
+    padding: 0px 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.navbar .navbar-collapse a{
+    color: #d3d3d3 !important;
+    padding-left: 0 !important;
+    margin-right: 20px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.navbar .navbar-collapse a:hover{
+    color: #ffffff !important;
+    /* text-shadow: 0 2px 3px #333333; */
+}
+
+.navbar .navbar-collapse a svg{
+    height: 15px;
+    width: 15px;
+    fill: #d3d3d3;
+    margin-right: 10px;
+}
+
+.navbar .navbar-collapse a:hover svg{
+    fill: #ffffff;
+}
+
+.navbar .navbar-toggler{
+    border: none !important;
+    float: right;
+}
+
+.navbar-collapse .navbar-nav .logo{
+    color: #ffffff;
+}
+
+
+.navbar .back{
+    /* width: 100px; */
+    padding: 2px 5px;
+    margin: 7px 5px 0 0;
+    background: #ffffff;
+    border: 2px solid #af1e1e;
+    float: right;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    height: 30px;
+    width: 30px;
+    border: none !important;
+    background: none !important;
+    border-radius: none !important;
+}
+
+.navbar .back:hover{
+    border: 2px solid #ffffff;
+    background: #ce2424;
+}
+
+.navbar .back svg{
+    height: 20px;
+    width: 20px;
+    /* position: absolute;
+    right: 60px; */
+    fill: #ce2424;
+    /* fill: rgb(0,0,0,0.5); */
+    /* border: 2px solid rgb(0,0,0,0.5); */
+    fill: #333 !important;
+}
+
+.navbar .back:hover svg{
+    fill: #ffffff;
+}

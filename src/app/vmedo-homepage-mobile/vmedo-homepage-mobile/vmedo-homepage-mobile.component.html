@@ -1,0 +1,243 @@
+<div class="h-screen overflow-y-auto pb-10">
+    <!-- Mobile navbar -->
+    <nav class="flex items-center justify-between bg-red-700 p-2"
+      style="position: fixed; top: 0; left: 0; right: 0; z-index: 999">
+      <button class="text-white focus:outline-none focus:text-white" (click)="toggleSideMenu()">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+      <img src="assets/img/logo-white.png" alt="Logo" class="h-8 w-auto pl-3" />
+    
+      
+            <!-- Mobile navbar login -->
+    
+            <div>
+              <div *ngIf="common.auth_token">
+    
+                  <p class="text-white font-normal" (click)="app.OnOpenLoginForm('/dashboard/profile')">Profile</p>
+    
+                </div>
+          
+                <div *ngIf="!common.auth_token">
+                  <p class="text-white font-normal" (click)="app.OnOpenLoginForm('/dashboard/profile')">Login</p>
+                </div>
+          </div>
+    
+           <!-- Mobile navbar -->
+    
+    </nav>
+    
+    <div class="home-mobile-container mt-5">
+      <!--Mobile Side Menu -->
+    
+      <div [ngClass]="{ 'side-menu-open': isSideMenuOpen }"
+        class="side-menu bg-white shadow-2xl text-gray-800 fixed left-0 h-full w-60 transition-all duration-300 ease-in-out z-10">
+        <!-- Side Menu Content -->
+        <ul class="py-3">
+          <li class="px-4 py-2 hover:bg-gray-50">
+            <a class="font-medium block hover:no-underline hover:text-red-700" (click)="toggleServices2()">Healthcare
+              Services <i *ngIf="!isOpen2" class="fa-solid fa-chevron-down"></i> <i *ngIf="isOpen2"
+                class="fa-solid fa-chevron-up"></i> </a>
+            <!-- Display services if isOpen is true -->
+            <ul *ngIf="isOpen2" class="pl-2 py-2">
+              <li class="text-sm pt-2 block hover:no-underline hover:text-red-700"
+                [routerLink]="'/services/emergency-online-doctor-consultation'"><i class="fa-solid fa-caret-right"></i> Doctor Consultation</li>
+              <li class="text-sm pt-3 block hover:no-underline hover:text-red-700"
+                [routerLink]="'/services/ambulance-service-india'"><i class="fa-solid fa-caret-right"></i> VMEDO Ambulance</li>
+              <li class="text-sm pt-3 block hover:no-underline hover:text-red-700"
+                [routerLink]="'/services/urgent-medical-care-at-home'"><i class="fa-solid fa-caret-right"></i> Urgent care at home</li>
+              <li class="text-sm pt-3 block hover:no-underline hover:text-red-700"
+                [routerLink]="'/services/diagnostics-at-home'"><i class="fa-solid fa-caret-right"></i> Labtest and scans</li>
+              <li class="text-sm pt-3 block hover:no-underline hover:text-red-700" [routerLink]="'/hospitals'"><i class="fa-solid fa-caret-right"></i> Hospital
+                admission</li>
+              <li class="text-sm pt-3 block hover:no-underline hover:text-red-700"
+                onclick="window.location.href='https://store.vmedo.com/'"><i class="fa-solid fa-caret-right"></i> VMEDO Store</li>
+            </ul>
+          </li>
+    
+          <li class="px-4 py-2 hover:bg-red-50">
+            <a class="font-medium block hover:no-underline hover:text-red-700"
+              [routerLink]="'/info/occupational-health-services'">For Corporates</a>
+          </li>
+    
+          <!-- Mobile Signout -->
+    
+          <li *ngIf="common.auth_token" class="px-4 py-2 hover:bg-red-50">
+    
+            <div>
+                <p class="font-normal text-red-700" (click)="OnClickLogout()">Signout</p>
+              </div>
+          </li>
+    
+          <!-- Mobile signout -->
+    
+    
+        </ul>
+      </div>
+    
+    
+      <!-- Mobile hero section -->
+    
+      <section class="mobile-hero-section">
+        <div class="bg-gray-100 hero-banner-card-mobile" style="height: auto; overflow: hidden; width: fit-content;">
+          <video [autoplay]="true" [muted]="true" [loop]="true" [playsInline]="true"
+            class="min-w-full min-h-full object-cover lg:min-w-auto">
+            <source src="assets/images/website-images/mobile_banner_1.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </section>
+      
+      <!-- Mobile VMEDO Services -->
+      <app-mobile-vmedo-services2></app-mobile-vmedo-services2>
+    
+      <!-- Mobile subscription section -->
+      <section class="mobile-subscription-section px-3 bg-white pb-3 pt-2">
+        <div class="bg-red-300 subscription-banner-mobile rounded-xl">
+          <img src="assets/images/website-images/subscription-banner-mobile.png" alt="Image Description"
+            class="w-full h-full rounded-xl object-cover" [routerLink]="'/subscription'" />
+        </div>
+      </section>
+    
+      <!-- section division -->
+      <div class="m-2"></div>
+    
+      <!-- Mobile about us -->
+      <app-mobile-about-us></app-mobile-about-us>
+    
+      <!-- section division -->
+      <div class="m-2"></div>
+    
+      <!-- Mobile mini banners -->
+      <section class="mobile_mini_banners py-3 pl-3 bg-white">
+        <swiper [config]="vmedo_mini_banners_mobile">
+          <ng-template swiperSlide>
+            <div class="bg-gray-100 mini_banners-card_mobile rounded-xl">
+              <img src="assets/images/website-images/banners/mini_banner_mobile_1.png" alt="Banner 1"
+                class="w-full h-full object-cover rounded-md" [routerLink]="'/subscription'"/>
+            </div>
+          </ng-template>
+          <ng-template swiperSlide>
+            <div class="bg-gray-100 mini_banners-card_mobile rounded-xl">
+              <img src="assets/images/website-images/banners/mini_banner_mobile_2.png" alt="Banner 1"
+                class="w-full h-full object-cover rounded-md" [routerLink]="'/services/diagnostics-at-home'"/>
+            </div>
+          </ng-template>
+          <ng-template swiperSlide>
+            <div class="bg-gray-100 mini_banners-card_mobile rounded-xl">
+              <img src="assets/images/website-images/banners/mini_banner_mobile_3.png" alt="Banner 1"
+                class="w-full h-full object-cover rounded-md" onclick="window.location.href='https://store.vmedo.com/'"/>
+            </div>
+          </ng-template>
+          <ng-template swiperSlide>
+            <div class="bg-gray-100 mini_banners-card_mobile rounded-xl">
+              <img src="assets/images/website-images/banners/mini_banner_mobile_4.png" alt="Banner 1"
+                class="w-full h-full object-cover rounded-md" onclick="window.location.href='https://academy.vmedo.com/'" />
+            </div>
+          </ng-template>
+        </swiper>
+      </section>
+    
+      <!-- section division -->
+      <div class="m-2"></div>
+    
+      <!-- Mobile Urgent care at home -->
+      <app-mobile-urgent-care></app-mobile-urgent-care>
+    
+      <!-- section division -->
+      <div class="m-2"></div>
+    
+      <!-- Mobile Diagnostics care at home -->
+      <app-mobile-diagnostics></app-mobile-diagnostics>
+    
+      <!-- Mobile ambulance banner -->
+      <section class="Ambulance-banner-section-mobile py-4 flex justify-center bg-white">
+        <div class="ambulance-banner-card-mobile rounded-xl bg-gray-200 content-center">
+          <img src="assets/images/website-images/banners/homepage_banner_mobile_1.png" alt="Image Description"
+            class="w-full h-full rounded-xl object-cover" [routerLink]="'/services/ambulance-service-india'"/>
+        </div>
+      </section>
+    
+      <!-- Mobile VMEDO Store -->
+      <app-mobile-vmedo-store></app-mobile-vmedo-store>
+    
+      <!-- Mobile VMEDO Store 2 -->
+      <app-mobile-vmedo-store1></app-mobile-vmedo-store1>
+    
+      <!-- Mobile doctor consultation banner  -->
+      <section class="Doctor-consultation-section-mobile py-4 bg-white flex justify-center">
+        <div class="doctor-consultation-card-mobile rounded-xl bg-gray-200 content-center">
+          <img src="assets/images/website-images/banners/homepage_banner_mobile_2.png" alt="Image Description"
+            class="w-full h-full rounded-xl object-cover" [routerLink]="'/services/emergency-online-doctor-consultation'"/>
+        </div>
+      </section>
+    
+      <!-- Mobile review section -->
+      <app-mobile-review></app-mobile-review>
+    
+      <!-- section division -->
+      <div class="m-2"></div>
+    
+      <!-- Mobile awards and achievements banner -->
+      <app-mobile-awards></app-mobile-awards>
+    
+      <!-- Mobile social media banner -->
+      <!-- <section class="Social-media-section-mobile py-3 flex justify-center bg-white">
+        <div class="social-media-banner-card-mobile rounded-md bg-gray-200">
+          <img src="assets/images/website-images/social-media-banner-mobile.png" alt="Image Description"
+            class="w-fit h-full rounded-md object-cover" />
+        </div>
+      </section> -->
+    
+      <!-- section division -->
+      <div class="m-2"></div>
+    
+      <!-- Mobile media coverage section -->
+      <app-mobile-media-coverage></app-mobile-media-coverage>
+    </div>
+    
+    <!-- Mobile footer section -->
+    <app-mobile-footer></app-mobile-footer>
+    
+    </div>
+    
+    <!-- Mobile widget section -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white py-2.5 px-2 flex justify-around shadow-lg z-10">
+    <!-- Profile -->
+    <div class="flex flex-col items-center" (click)="selectIcon(0)" [ngClass]="{
+        'text-red-500': selectedIndex === 0,
+        'text-black': selectedIndex !== 0
+      }">
+      <i class="fas fa-user text-lg"></i>
+      <p class="text-xs pt-1" style="font-size: 11px">Profile</p>
+    </div>
+    <!-- Home -->
+    <div class="flex flex-col items-center" (click)="selectIcon(1)" [ngClass]="{
+        'text-red-500': selectedIndex === 1,
+        'text-black': selectedIndex !== 1
+      }" [routerLink]="'/home'">
+      <i class="fas fa-home text-lg"></i>
+      <p class="text-xs pt-1" style="font-size: 11px">Home</p>
+    </div>
+    <!-- Store -->
+    <div class="flex flex-col items-center" (click)="selectIcon(2)" [ngClass]="{
+        'text-red-500': selectedIndex === 2,
+        'text-black': selectedIndex !== 2
+      }">
+      <i class="fas fa-store text-lg"></i>
+      <p class="text-xs pt-1" style="font-size: 11px">Store</p>
+    </div>
+    <!-- More -->
+    <!-- <div class="flex flex-col items-center" (click)="selectIcon(3)"
+      [ngClass]="{'text-red-500': selectedIndex === 3, 'text-black': selectedIndex !== 3}">
+      <i class="fas fa-ellipsis-h text-lg"></i>
+      <p class="text-xs" style="font-size: 11px;">More</p>
+    </div> -->
+    
+    <div class="flex flex-col items-center" (click)="togglePopup()">
+      <i class="fas fa-ellipsis-h text-lg"></i>
+      <p class="text-xs pt-1" style="font-size: 11px">More</p>
+    </div>
+    </div>
+    
+    <!-- Mobile VMEDO services popup section -->
+    <app-mobile-vmedo-services></app-mobile-vmedo-services>

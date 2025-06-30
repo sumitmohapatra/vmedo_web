@@ -1,0 +1,31 @@
+.create-emid,
+.create-emid:hover,
+.create-emid:active,
+.create-emid:focus{
+    background: #30fb2f !important;
+    /* border: 1px solid green; */
+    color: #000 !important;
+    box-shadow: 1px 2px 3px #ccc !important;
+    width: 280px;
+    border: none !important;
+}
+
+
+.register button{
+    background: #ce2424;
+    border: 1px solid #ce2424;
+    /* color: #ffffff !important; */
+}
+
+.register button:disabled,
+.register button[disabled]{
+    color: #ce2424 !important;
+    background: #ffffff !important;
+}
+
+.register button:hover,
+.register button:active,
+.register button:focus{
+    /* background: #ffffff !important;
+    color: #ce2424 !important; */
+}

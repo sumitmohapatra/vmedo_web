@@ -1,0 +1,551 @@
+
+
+<div class="page-loader" [hidden]="!statusLoader">
+    <svg *ngIf="!onlyBackdrop">
+        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-spinner2"></use>
+    </svg>
+  </div>
+  
+  <ng-template #status let-modal>
+    <div class="modal-body">
+        <div class="row logo">
+            <span style="text-align: center;">VMEDO</span>
+        </div>
+  
+        <div *ngIf="statusType === 'modal-pop-up'">
+                  
+        </div>
+        <div class="row title">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+  
+                
+  
+                <div class="success" *ngIf="statusType === 'success'">
+                    <svg ngbAutofocus>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-checkmark"></use>
+                    </svg>
+                </div>
+                <div class="failed" *ngIf="statusType === 'failed'">
+                    <svg ngbAutofocus>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-cross"></use>
+                    </svg>
+                </div>
+                <div class="info" *ngIf="statusType === 'info'">
+                    <svg ngbAutofocus>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-info"></use>
+                    </svg>
+                </div>
+                <div class="warn" *ngIf="statusType === 'warn'">
+                    <svg ngbAutofocus>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-warn"></use>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="row message">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12" [innerHTML]="statusMessage"></div>
+        </div>
+        <div class="row controls">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                <button type="button" id="btnOK" class="btn btn-sm btn-outline-secondary" (click)="modal.close('OK');">OK</button>
+                <button type="button" *ngIf="statusType === 'warn'" id="btnCancel" class="btn btn-sm btn-outline-secondary" (click)="modal.close('Cancel');">Cancel</button>
+            </div>
+        </div>
+    </div>
+  </ng-template>
+  
+  <ng-template #contact let-modal>
+    <div class="modal-body">
+        <div class="row logo">
+            <!-- <span>VMEDO</span> -->
+            <label (click)="modal.close('Cancel');">
+                <svg>
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-cross"></use>
+                </svg>
+            </label>
+        </div>
+        <div class="row title">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12" style="color: #000000; font-size: 16px;">
+                <div style="border: 2px solid #ff637a;">
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-contact-book"></use>
+                    </svg>
+                </div>
+                <span style="margin-top: 10px;">Are you sure to make a call?</span>
+            </div>
+        </div>
+        <div class="row contact">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                <div class="row align-center" *ngFor="let contact of contacts">
+                    <div class="col-10 col-sm-10 col-md-10 col-xl-10" style="border: 1px solid #ff637a">
+                        <span style="color: #ff637a;">{{contact.name}}</span>
+                        <div>
+                            <span>{{contact.number}}</span>
+                            <a href="tel:{{contact.number}}" id="eContact">
+                                <button type="button" class="btn btn-sm btn-outline-secondary call-button">
+                                    <svg class="">
+                                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-phone"></use>
+                                    </svg>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+    </div>
+  </ng-template>
+  
+  <ng-template #login let-modal>
+    <div class="modal-body">
+        <div class="row logo">
+            <!-- <span>VMEDO</span> -->
+            <label (click)="modal.close('Cancel');">
+                <svg>
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-cross"></use>
+                </svg>
+            </label>
+        </div>
+        <div class="row title">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                
+                Login to VMEDO
+            </div>
+        </div>
+        <!-- <div class="row no-padding" *ngIf="loginType === 'user'">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblLoginId !== undefined}">
+                <div class="text-control">
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user"></use>
+                    </svg>
+                    <input type="text" [readonly]="isReadOnly" (click)="onInputClick()"  placeholder="Enter your Email Address" [(ngModel)]="txtLoginId" (ngModelChange)="OnTextChanged('txtLoginId', $event)">
+                    <span class="error-line" placement="bottom" ngbTooltip="{{lblLoginId}}">{{lblLoginId}}</span>
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-warning"></use>
+                        <title>{{lblLoginId}}</title>
+                    </svg>
+                </div>
+            </div>
+        </div> -->
+        <!-- <div class="row no-padding" *ngIf="loginType === 'user'">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblLoginPass !== undefined}">
+                <div class="text-control">
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-lock-closed"></use>
+                    </svg>
+                    <input type="password" placeholder="Enter Password" [(ngModel)]="txtLoginPass" (ngModelChange)="OnTextChanged('txtLoginPass', $event)">
+                    <span class="error-line" placement="bottom" ngbTooltip="{{lblLoginPass}}">{{lblLoginPass}}</span>
+  
+                </div>
+            </div>
+        </div> -->
+        <div class="row no-padding"  (click)="onInputClick()" hidden>
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" >
+                <div class="text-control" >
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-mobile2"></use>
+                    </svg>
+                     
+                    <input type="text" [readonly]="isReadOnly" >
+                 
+  
+                </div>
+            </div>
+        </div>
+        
+        <div class="row no-padding" *ngIf="loginType === 'otp'" (click)="onInputClick()">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 card"  [ngClass]="{'error': lblMobileNo !== undefined}">
+                <div class="text-control" >
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-mobile2"></use>
+                    </svg>
+                     
+                    <input type="text" placeholder="Enter your registered mobile no" [(ngModel)]="txtMobileNo" [disabled]="isOTPSent" (ngModelChange)="OnTextChanged('txtMobileNo', $event)" (keypress)="common.AllowOnlyNumbers($event)">
+                    <span class="error-line" placement="bottom" ngbTooltip="{{lblMobileNo}}">{{lblMobileNo}}</span>
+  
+                </div>
+            </div>
+        </div>
+        <div class="row no-padding" *ngIf="loginType === 'otp' && isOTPSent === true">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblOTP !== undefined}">
+                <div class="text-control">
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-eye"></use>
+                    </svg>
+                    <input type="text" placeholder="OTP" [(ngModel)]="txtOTP" [disabled]="!isOTPSent" (ngModelChange)="OnTextChanged('txtOTP', $event)">
+                    <span class="error-line" placement="bottom" ngbTooltip="{{lblOTP}}">{{lblOTP}}</span>
+  
+                </div>
+            </div>
+  
+        </div>
+  
+  <div class="row">
+  
+    <div class="col-12 col-sm-12 col-md-12 col-xl-12" *ngIf="IsEnableUserLogin" style="justify-content: flex-end;">
+  
+           <a class="register" (click)="OpenForgotPasswordModal();" *ngIf="loginType === 'user'" style="font-size: 13px;color: #ce2424;">Forgot Password ?</a>
+          
+       </div>
+  
+  </div>
+  
+  
+        <div class="row ">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 register">
+                <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="loginType === 'otp' && isOTPSent === false" (click)="OnClickSendOTP();" style="color: white;">Login</button>
+  
+                <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="isOTPSent === true" (click)="OnClickOTPLogin();" [routerLink]="getDashboardLink()" style="color: white" >Login</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="loginType === 'user'" (click)="OnClickLogin();"  style="color: white;">Login</button>
+                <a class="register" *ngIf="loginType === 'user'" style="padding: 0 7px; text-decoration: none;"> or </a>
+                <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="loginType === 'user'" (click)="loginType = 'otp'" style="background: #ffffff;color: #ce2424;">Login through OTP</button>
+  
+            </div>
+  
+            <!-- create account button -->
+  
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 mt-3 ">
+  
+               
+                
+               
+               <button style="text-wrap: nowrap;" *ngIf="IsEnableUserLogin" (click)="OnOpenRegisterForm();"  class="btn-new"><i class="fa fa-user-plus mr-2"></i>New user ? create new account<i class="fa fa-chevron-right ml-2"></i></button>
+  
+            </div>
+            <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 mt-3">
+
+                
+                <button type="button" class="c-login"  (click)="OnOpennCorpLoginForm()" style=" text-align: center;"><i class="fa fa-building mr-2"></i>Corporate Employee? Login here<i class="fa fa-chevron-right ml-2"></i></button>
+            </div>
+           
+  
+  
+            <!-- Terms and Conditions -->
+  
+            <div class="row title mt-3">
+                <div class="col-12 col-sm-12 col-md-12 col-xl-12" style="font-size: 12px;">
+                  
+                    By Login you agree to VMEDO's <a href="https://vmedo.com/vmedo-terms.html">"Terms and Conditions of Use"</a> 
+                </div>
+            </div>
+  
+        </div>
+    </div>
+  </ng-template>
+
+  <!-- corporate login modal -->
+
+  <ng-template #corporatelogin let-modal>
+    <div class="modal-body">
+        <div class="row logo">
+            <!-- <span>VMEDO</span> -->
+            <label (click)="modal.close('Cancel');">
+                <svg>
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-cross"></use>
+                </svg>
+            </label>
+        </div>
+        <div class="row title">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                <div class="card" style="padding: 20px; border-radius: 50%;">
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-key"></use>
+                        <title>Login</title>
+                    </svg>
+                </div>
+                Corporate Employee Login
+            </div>
+        </div>
+      
+        <div class="row no-padding"  (click)="onInputClick()" hidden>
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" >
+                <div class="text-control" >
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-mobile2"></use>
+                    </svg>
+                     
+                    <input type="text" [readonly]="isReadOnly" >
+                 
+  
+                </div>
+            </div>
+        </div>
+        <div class="row no-padding" *ngIf="loginCorpType === 'CorpOTP'">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblCorpMobileNo !== undefined}">
+                <div class="text-control">
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-mobile2"></use>
+                    </svg>
+                    <input (click)="onInputClick()" type="text" placeholder="Enter your registered mobile no" [(ngModel)]="txtCorpMobileNo" [disabled]="isOTPSent" (ngModelChange)="OnTextChanged('txtCorpMobileNo', $event)" (keypress)="common.AllowOnlyNumbers($event)">
+                    <span class="error-line" placement="bottom" ngbTooltip="{{lblCorpMobileNo}}">{{lblCorpMobileNo}}</span>
+  
+                </div>
+            </div>
+        </div>
+        <div class="row no-padding" *ngIf="loginCorpType === 'CorpOTP' && isCorpOTPSent === true">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblCorpOTP !== undefined}">
+                <div class="text-control">
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-eye"></use>
+                    </svg>
+                    <input type="text" placeholder="OTP" [(ngModel)]="txtCorpOTP" [disabled]="!isCorpOTPSent" (ngModelChange)="OnCorpTextChanged('txtCorpOTP', $event)">
+                    <span class="error-line" placement="bottom" ngbTooltip="{{lblCorpOTP}}">{{lblCorpOTP}}</span>
+  
+                </div>
+            </div>
+  
+        </div>
+  
+
+  
+        <div class="row controls">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 register">
+                <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="loginCorpType === 'CorpOTP' && isCorpOTPSent === false" (click)="OnClickSendCorpOTP();" style="color: white;">Send OTP</button>
+  
+                <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="isCorpOTPSent === true" (click)="OnClickCorpOTPLogin();" style="color: white" >Login</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="loginCorpType === 'user'" (click)="OnClickCorpLogin();" style="color: white;">Login</button>
+                <a class="register" *ngIf="loginCorpType === 'user'" style="padding: 0 7px; text-decoration: none;"> or </a>
+                <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="loginCorpType === 'user'" (click)="loginCorpType = 'CorpOTP'" style="background: #ffffff;color: #ce2424;">Login through OTP</button>
+  
+            </div>
+  
+      
+  
+  
+            <!-- Terms and Conditions -->
+  
+            <div class="row title mt-3">
+                <div class="col-12 col-sm-12 col-md-12 col-xl-12" style="font-size: 12px;">
+                  
+                    By Login you agree to VMEDO's <a href="https://vmedo.com/vmedo-terms.html">"Terms and Conditions of Use"</a> 
+                </div>
+            </div>
+  
+        </div>
+    </div>
+  </ng-template>
+
+
+
+  <!-- corporate login modal -->
+
+
+  
+  <ng-template #register let-modal>
+    <div class="modal-body register-modal">
+        <div class="row logo">
+            <!-- <span>VMEDO</span> -->
+            <label (click)="modal.close('Cancel');">
+                <svg>
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-cross"></use>
+                </svg>
+            </label>
+        </div>
+        <div class="row title">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12" style="display: flex;justify-content: center;text-align: center;">
+            
+                Hey ! <br>
+                <p style="font-size: 15px;">We are excited to have you onboard.</p>
+            </div>
+        </div>
+        <div class="row no-padding" style="margin-top: -15px;">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblRegUserName !== undefined}">
+                <div class="text-control">
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user"></use>
+                    </svg>
+                    <input type="text" placeholder="Enter your name" [(ngModel)]="txtRegUserName" (ngModelChange)="OnTextChanged('txtRegUserName', $event)" [disabled]="isOTPSentOnRegister">
+                    <span class="error-line" placement="bottom" ngbTooltip="{{lblRegUserName}}">{{lblRegUserName}}</span>
+                    <!-- <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-warning"></use>
+                        <title>{{lblRegUserName}}</title>
+                    </svg> -->
+                </div>
+            </div>
+        </div>
+        <div class="row no-padding">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblRegEmailId !== undefined}">
+                <div class="text-control">
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-at-symbol"></use>
+                    </svg>
+                    <input type="text" placeholder="Enter your email ID" [(ngModel)]="txtRegEmailId" (ngModelChange)="OnTextChanged('txtRegEmailId', $event)" [disabled]="isOTPSentOnRegister">
+                    <span class="error-line" placement="bottom" ngbTooltip="{{lblRegEmailId}}">{{lblRegEmailId}}</span>
+  
+                </div>
+            </div>
+        </div>
+        <div class="row no-padding">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblRegMobileNo !== undefined}">
+                <div class="text-control">
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-mobile2"></use>
+                    </svg>
+                    <input type="text" placeholder="Enter your mobile no" [(ngModel)]="txtRegMobileNo" (ngModelChange)="OnTextChanged('txtRegMobileNo', $event)" (keypress)="common.AllowOnlyNumbers($event)" [disabled]="isOTPSentOnRegister">
+                    <span class="error-line" placement="bottom" ngbTooltip="{{lblRegMobileNo}}">{{lblRegMobileNo}}</span>
+  
+                </div>
+            </div>
+        </div>
+        <div class="row no-padding" *ngIf="isOTPSentOnRegister">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblRegOTP !== undefined}">
+                <div class="text-control">
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-eye3"></use>
+                    </svg>
+                    <input type="text" placeholder="OTP" [(ngModel)]="txtRegOTP" (ngModelChange)="OnTextChanged('txtRegOTP', $event)" (keypress)="common.AllowOnlyNumbers($event)">
+                    <span class="error-line" placement="bottom" ngbTooltip="{{lblRegOTP}}">{{lblRegOTP}}</span>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row no-padding">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" >
+                <div class="text-control">
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-lock-closed"></use>
+                    </svg>
+                    <input type="password" placeholder="Create new password" [(ngModel)]="txtRegNewPassword" (ngModelChange)="OnTextChanged('txtRegNewPassword', $event)" [disabled]="isOTPSentOnRegister">
+                    <span class="error-line" placement="bottom" ngbTooltip="{{lblRegNewPassword}}">{{lblRegNewPassword}}</span>
+  
+                </div>
+            </div>
+        </div> -->
+        <div class="form-check mt-2" style="">
+            
+            
+            <div class="row title">
+                <div class="col" style="font-size: 12px;padding: 0%;">
+                    <input type="checkbox" class="form-check-input" id="check2" name="option2" value="something" required style="margin-right: 290px;margin-top: -20px;">
+                    By clicking on register you agree to VMEDO's <a href="https://vmedo.com/vmedo-terms.html">"Terms and Conditions of Use"</a> 
+                </div>
+            </div>
+          </div>
+        
+  
+        <div class="row controls" *ngIf="!isOTPSentOnRegister">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                <button type="button" class="btn btn-sm btn-outline-secondary" (click)="OnClickSendOTPOnRegister();">Register</button>
+            </div>
+        </div>
+       
+        <div class="row controls" *ngIf="isOTPSentOnRegister && !isMobileVerified">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                <button type="button" class="btn btn-sm btn-outline-secondary" (click)="OnClickVerifyOTPOnRegister();">Register</button>
+            </div>
+        </div>
+        
+        
+        
+  
+    </div>
+  
+   
+  
+  </ng-template>
+  
+  <ng-template #forgotPassword let-modal>
+    <div class="modal-body register-modal">
+        <div class="row logo">
+            <label (click)="modal.close('Cancel');">
+                <svg>
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-cross"></use>
+                </svg>
+            </label>
+        </div>
+        <div class="row title">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                <div class="card" style="padding: 20px; border-radius: 50%;">
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-lock-closed"></use>
+                    </svg>
+                </div>
+                Forgot Password
+            </div>
+        </div>
+        <div class="row no-padding">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblForgotMobileNo !== undefined}">
+                <div class="text-control">
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user"></use>
+                    </svg>
+                    <input type="text" placeholder="Mobile No" [(ngModel)]="txtForgotMobileNo" (ngModelChange)="OnTextChanged('txtForgotMobileNo', $event)" (keypress)="common.AllowOnlyNumbers($event)">
+                    <span class="error-line" placement="bottom" ngbTooltip="{{lblForgotMobileNo}}">{{lblForgotMobileNo}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row controls">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                <button type="button" class="btn btn-sm btn-outline-secondary" (click)="OnClickSubmitForgotPassword();">Submit</button>
+            </div>
+        </div>
+    </div>
+  </ng-template>
+  
+  <ng-template #changePassword let-modal>
+    <div class="modal-body change-pwd-modal">
+        <div class="row logo">
+            <label (click)="modal.close('Cancel');">
+                <svg>
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-cross"></use>
+                </svg>
+            </label>
+        </div>
+        <div class="row title">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                <div class="card" style="padding: 20px; border-radius: 50%;">
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-key"></use>
+                    </svg>
+                </div>
+                Change Password
+            </div>
+        </div>
+        <div class="row no-padding">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblOldPassword !== undefined}">
+                <div class="text-control">
+                  <svg>
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-eye-minus3"></use>
+                  </svg>
+  
+                <input type="password" placeholder="Old password" [(ngModel)]="txtOldPassword" (ngModelChange)="OnModelValueChanged('txtOldPassword', $event);">
+                <span class="error-line" placement="bottom" ngbTooltip="{{lblOldPassword}}">{{lblOldPassword}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row no-padding">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblNewPassword !== undefined}">
+                <div class="text-control">
+                  <svg>
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-eye-plus3"></use>
+                  </svg>
+  
+                <input type="password" placeholder="New password" [(ngModel)]="txtNewPassword" (ngModelChange)="OnModelValueChanged('txtNewPassword', $event);">
+                <span class="error-line" placement="bottom" ngbTooltip="{{lblNewPassword}}">{{lblNewPassword}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row no-padding">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblConfPassword !== undefined}">
+                <div class="text-control">
+                  
+                  <svg>
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-eye3"></use>
+                  </svg>
+  
+                <input type="password" placeholder="Confirm password" [(ngModel)]="txtConfPassword" (ngModelChange)="OnModelValueChanged('txtConfPassword', $event);">
+                <span class="error-line" placement="bottom" ngbTooltip="{{lblConfPassword}}">{{lblConfPassword}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row controls">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 register">
+                <button type="button" class="btn btn-sm btn-outline-secondary" (click)="OnClickUpdatePassword()">Update</button>
+            </div>
+        </div>
+    </div>
+  </ng-template>
+  
+  
+  
+  <router-outlet></router-outlet>

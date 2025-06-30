@@ -1,0 +1,3135 @@
+<div class="container-fluid" style="height: calc(100% + 5px);">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-lg-12" id="navigation">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand">
+            <svg class="logo logo-md" style="height: 20px; width: 100px;">
+              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo"></use>
+            </svg>
+            <svg [routerLink]="'/home'" class="logo logo-sm" style="height: 30px; width: 100px;">
+              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo-white"></use>
+            </svg>
+          </a>
+          <div *ngIf="common.auth_token !== undefined && common.auth_token !== null"
+            class="profile-icon back pull-right btn btn-sm btn-outline-secondary" [routerLink]="'/dashboard/corporate/1'"
+            placement="bottom" ngbTooltip="Profile" style="margin-right: 40px;">
+            <svg class="">
+              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user-solid-circle"></use>
+            </svg>
+          </div>
+          <div class="back pull-right btn btn-sm btn-outline-secondary" [routerLink]="'/dashboard/corporate'"
+            placement="bottom" ngbTooltip="Back">
+            <svg class="">
+              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-back"></use>
+            </svg>
+          </div>
+        </nav>
+      </div>
+    </div>
+  
+  
+    <!-- Mobile Version-Personal details -->
+  
+  
+    <div class="row profile-body v-all">
+      <mat-card class="col-12 col-sm-12 col-md-4 col-lg-4 l10 h-100">
+        <mat-card class="l1" hidden>
+          <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs top-nav">
+            <li [ngbNavItem]="1" [ngClass]="{'selected': active === 1}">
+              <a ngbNavLink *ngIf="active !== 1" style="border: 2px solid red;">Personal Details</a>
+              <a ngbNavLink *ngIf="active === 1">Personal Details</a>
+              <ng-template ngbNavContent>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 profile-body-card">
+   
+                  <mat-card class="row l6 profile-body-card-form">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                      <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 photo">
+                          <div>
+                            <img [src]="profileImage[0].src" [alt]="profileImage[0].caption" class="img2" for="img-upload"
+                              *ngIf="profileImage.length > 0 && profileImage[0].src !== undefined">
+                            <label class="img-upload" *ngIf="profileImage.length === 0">
+                              <svg>
+                                <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-profile">
+                                </use>
+                              </svg>
+                            </label>
+                          </div>
+                          <span>
+                            <input type="file" id="img-upload" accept="image/*" (change)="OnProfileImageUpload($event)"
+                              [hidden]="true">
+                            <label for="img-upload" class="img-upload">
+                              <svg>
+                                <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-pencil">
+                                </use>
+                                <title>Profile Image</title>
+                              </svg>
+                              <span>Edit Profile Photo</span>
+                            </label>
+                          </span>
+                          <a class="change-password" (click)="app.OnClickChangePassword()">
+                            <svg>
+                              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-lock-closed">
+                              </use>
+                            </svg>
+                            Change password
+                          </a>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12 card"
+                          [ngClass]="{'error': lblName !== undefined}">
+                          <div class="text-control">
+                            <svg>
+                              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-user">
+                              </use>
+                            </svg>
+  
+                            <input type="text" placeholder="Name" [(ngModel)]="txtName"
+                              (ngModelChange)="OnTextChanged('txtName', $event)">
+                            <span class="error-line" placement="bottom" ngbTooltip="{{lblName}}">{{lblName}}</span>
+                   
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12 card"
+                          [ngClass]="{'error': lblEmail !== undefined}">
+                          <div class="text-control">
+                            <svg>
+                              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-envelope">
+                              </use>
+                            </svg>
+  
+                            <input type="text" placeholder="Email id" [(ngModel)]="txtEmail"
+                              (ngModelChange)="OnTextChanged('txtEmail', $event)">
+                            <span class="error-line" placement="bottom" ngbTooltip="{{lblEmail}}">{{lblEmail}}</span>
+                 
+                            <svg *ngIf="profileInfo && profileInfo.isemailverified && txtEmail" style="height: 15px !important; width: 15px !important; fill: #09961c !important;
+                                                        position: relative !important; display: inline !important; ">
+                              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-checkmark">
+                              </use>
+                              <title>Email verified.</title>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12"
+                          *ngIf="(!profileInfo || !profileInfo.isemailverified) && txtEmail">
+                          <div class="text-control" style="justify-content: flex-end;">
+                            <a style="color: #ce2424; font-size: 10px; text-decoration: underline; cursor: pointer;"
+                              (click)="OnClickVerifyEmail()">Email not verified, click here to
+                              verify !</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12 card"
+                          [ngClass]="{'error': lblPhone !== undefined}">
+                          <div class="text-control">
+                            <svg>
+                              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-phone-call">
+                              </use>
+                            </svg>
+  
+                            <input type="text" placeholder="Phone" [(ngModel)]="txtPhone"
+                              (ngModelChange)="OnTextChanged('txtPhone', $event)" readonly>
+                            <span class="error-line" placement="bottom" ngbTooltip="{{lblPhone}}">{{lblPhone}}</span>
+                    
+                            <svg *ngIf="txtPhone" style="height: 15px !important; width: 15px !important; fill: #09961c !important;
+                                                        position: relative !important; display: inline !important; ">
+                              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-checkmark">
+                              </use>
+                              <title>Mobile number verified.</title>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12 card"
+                          [ngClass]="{'error': lblDOB !== undefined}">
+                          <div class="text-control">
+                            <svg>
+                              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-calender">
+                              </use>
+                            </svg>
+  
+                            <input type="text" placeholder="DOB" [(ngModel)]="txtDOB"
+                              (ngModelChange)="OnTextChanged('txtDOB', $event)" ngbDatepicker #d="ngbDatepicker"
+                              [minDate]="{year: 1950, month:1, day: 1}" [maxDate]="maxDate" (click)="d.toggle()">
+                            <span class="error-line" placement="bottom" ngbTooltip="{{lblDOB}}">{{lblDOB}}</span>
+    
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12 card"
+                          [ngClass]="{'error': lblGender !== undefined}">
+                          <div class="text-control cmbbox ddlist" ngbDropdown>
+                            <svg>
+                              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-gender">
+                              </use>
+                            </svg>
+                            <input type="text" placeholder="Gender" [(ngModel)]="txtGender"
+                              (ngModelChange)="OnTextChanged('txtGender', $event)" id="dropdownGender" ngbDropdownToggle
+                              readonly>
+                            <span class="error-line" placement="bottom" ngbTooltip="{{lblGender}}">{{lblGender}}</span>
+                            <div ngbDropdownMenu aria-labelledby="dropdownGender">
+                              <div ngbDropdownItem (click)="txtGender = 'Male'; OnTextChanged('txtGender', undefined);">
+                                Male</div>
+                              <div ngbDropdownItem (click)="txtGender = 'Female'; OnTextChanged('txtGender', undefined);">
+                                Female</div>
+                              <div ngbDropdownItem (click)="txtGender = 'Others'; OnTextChanged('txtGender', undefined);">
+                                Others</div>
+                            </div>
+                            <svg class="dropdown" style="display: block !important;">
+                              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-cheveron-down">
+                              </use>
+                            </svg>
+                  
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" 
+                        [ngClass]="{'error': lblempbg !== undefined}">
+                          <div class="text-control cmbbox ddlist" ngbDropdown>
+                            <svg>
+                              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-blood-drop"></use>
+                            </svg>
+                            <input type="text" placeholder="Blood group" [(ngModel)]="txtempbg" (ngModelChange)="OnTextChanged('txtempbg', $event)"
+                               id="dropdownBloodGroup3" ngbDropdownToggle
+                              readonly>
+                            <span class="error-line" placement="bottom" ngbTooltip="{{lblempbg}}">{{lblempbg}}</span>
+                            <div ngbDropdownMenu aria-labelledby="dropdownGender">
+                              <div ngbDropdownItem (click)="txtempbg = 'A+'; OnTextChanged('txtempbg', undefined);">
+                                A+</div>
+                              <div ngbDropdownItem (click)="txtempbg = 'B+'; OnTextChanged('txtempbg', undefined);">
+                                B+</div>
+                              <div ngbDropdownItem (click)="txtempbg = 'AB+'; OnTextChanged('txtempbg', undefined);">
+                                AB+</div>
+                                <div ngbDropdownItem (click)="txtempbg = 'A-'; OnTextChanged('txtempbg', undefined);">
+                                  A-</div>
+                                  <div ngbDropdownItem (click)="txtempbg = 'B-'; OnTextChanged('txtempbg', undefined);">
+                                    B-</div>
+                                    <div ngbDropdownItem (click)="txtempbg = 'AB+'; OnTextChanged('txtempbg', undefined);">
+                                      AB+</div>
+                                      <div ngbDropdownItem (click)="txtempbg = 'O+'; OnTextChanged('txtempbg', undefined);">
+                                        O+</div>
+                                        <div ngbDropdownItem (click)="txtempbg = 'O-'; OnTextChanged('txtempbg', undefined);">
+                                          O-</div>
+                            </div>
+                            <svg class="dropdown" style="display: block !important;">
+                              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-cheveron-down">
+                              </use>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row controls">
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12 register">
+                          <!-- <button type="button" class="btn btn-sm btn-outline-secondary" [disabled]="!profileInfo || !profileInfo.isemailverified" (click)="OnClickUpdate()">Update</button> -->
+                          <button type="button" class="btn btn-sm btn-outline-secondary"
+                            (click)="OnClickCorpUpdate()">Update</button>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-card>
+  
+                </div>
+              </ng-template>
+            </li>
+
+            <!-- mobile version - emergency cards -->
+  
+            <li [ngbNavItem]="2" [ngClass]="{'selected': active === 2}">
+              <a ngbNavLink *ngIf="active !== 2" style="border: 2px solid red;">Emergency Cards</a>
+              <a ngbNavLink *ngIf="active === 2" (onload)="OnClickCreateID()">Emergency Cards</a>
+              <ng-template ngbNavContent>
+                <mat-card class="col-12 col-sm-12 col-md-12 col-lg-12 l2 profile-body-card"
+                  style="background-color: #ededed;    padding-top: 0px;">
+  
+  
+  
+                  <div class="row" *ngIf="emergencyIDs.length < 5">
+  
+                    <div class="col-12 col-sm-12 col-md-12 col-xl-12" style="margin: 5px 0;">
+                      <label style="font-weight: 500;font-size: 20px;display: flex;justify-content: center;margin-left: -5px;">Manage
+                        Emergency Cards
+                      </label>
+                      <div class="manage" style="position: absolute;top: 15%;left: 83%;padding: 0;">
+                        <span (click)="OpeninfoModal()" class="info-symbol">&#x2139;</span>
+                      </div>
+                    </div>
+  
+                    <div class="col-12 col-sm-12 col-md-12 col-xl-12" style="margin: 5px 0;">
+                      
+  
+                    </div>
+                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                      
+                        <h6 style="text-align: center;">You have created {{creditsused}}/{{totcredits}} emergency cards</h6>
+                       
+                    </div>
+  
+                    <div class="row mb-2" style="display: flex;justify-content: center;">
+  
+                      <div class="col-7 mb-2">
+  
+                        <button class="button-create" style="font-size: 15px; background-color: #ce2424; color: white;" mat-raised-button
+                          (click)="OnClickCreateID()">
+  
+                          + Add new emergency card</button>
+  
+                      </div>
+  
+                    </div>
+  
+                  </div>
+  
+                  <div class="row" *ngIf="emergencyIDs.length === 5">
+  
+  
+  
+                    <div class="col-12 col-sm-12 col-md-12 col-xl-12 mt-1" style="margin: 5px 0;">
+                      <label style="font-size: 14px; font-weight: 300;font-weight: 500;">You have reached the maximum
+                        limit of 5 Family emergency health cards</label>
+  
+                    </div>
+  
+  
+  
+                  </div>
+  
+  
+                  <div class="row profile-body-card-form emrgncy"
+                    [ngClass]="{'emid-ht-1': emergencyIDs.length < 5, 'emid-ht-2': emergencyIDs.length === 5}">
+                    <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+  
+                      <div class="row" *ngIf="emergencyIDs.length > 0">
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding"
+                          *ngFor="let emID of emergencyIDs;let i = index;">
+  
+                          <mat-card class="mb-4" style="padding: 0px;
+  
+                        background-color: #ffffff;
+                        background-image: #ffffff;
+                        /* background-color: #ffffff; */
+                        color: black;
+                        margin: 0px 6px;
+                        border: 0.5px solid rgb(255, 2, 2);
+                        box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);
+                        border-radius: 15px;">
+  
+                            <div class="row">
+  
+                              <div class="col-3 mt-1">
+                               
+                              </div>
+  
+                              <div class="col">
+  
+                                <div class="row mt-2">
+  
+                                  <div class="col-4 container mt-3" style="padding: 0px;">
+  
+                                    <div class="row mb-1"
+                                    style="font-size: 25px; font-weight: 500;padding: 1px 0px 0px 23px;">
+                                    <div>
+                                      <span style="color: #000000;margin-left: -80px;">
+                                        {{emID.pname}}
+                                      </span>
+                                    </div>
+
+
+
+
+                                  </div>
+  
+                                    <div class="row mt-1">
+  
+  
+  
+                                      <div class="col info" style="text-align: left;margin-left: -60px;">
+  
+                                        <div>
+                                          <span style="font-weight: 500;">Card No</span> - {{emID.id}}
+                                        </div>
+                                      </div>
+
+                                      
+  
+  
+                                    </div>
+                                    <div class="row mt-1">
+                                      <div class="col info" style="text-align: left;margin-left: -60px;">
+  
+                                        <div>
+                                          <span style="font-weight: 500;text-wrap: nowrap;">Card Type - Corporate</span> 
+                                        </div>
+                                      </div>
+  
+                                    </div>
+                                  </div>
+  
+                                
+  
+                                  <div class="col">
+  
+  
+  
+                                    <div style="padding: 7px 0px 0px 0px;margin-left: 35px;">
+
+                                    
+
+                                      <div class="mt-3" >
+
+
+                                        <img routerLink="" routerLinkActive="active"
+                                        src="assets\images\emid_images\premium-icon-card.png" style="height: 20px;width: 20px;margin-bottom: 5px;margin-left: -2px;margin-right: 2px;"
+                                        onerror="" alt="User Image">
+
+                                        <span style="font-weight: 500;">Premium &nbsp;</span><br>
+                                        
+
+                                       
+
+                                      </div>
+
+
+
+
+                                      
+
+
+
+
+                                    </div>
+  
+                                  </div>
+  
+                                </div>
+
+  
+  
+                              </div>
+  
+                            </div>
+  
+                    
+  
+  
+                            <div class="container row ml-3 mt-4">
+  
+  
+                        
+  
+                            </div>
+  
+  
+                            <div class="row ml-2 info-controls">
+
+                              <div class="col-6 controls-info">
+  
+                                <button class=" info-controls" (click)="OnClickViewEmergencyCard(emID)"
+                                   mat-raised-button color="primary"
+                                  style="background-color: #ce2424;margin-left: 85px;position: relative;top: -20px;">View Card Details</button>
+  
+  
+  
+  
+  
+  
+  
+                              </div>
+  
+                              
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+                            </div>
+  
+                          </mat-card>
+  
+  
+                          <div id="download" style="display: none;">
+                            <img #canvas>
+                            <a #downloadLink></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </mat-card>
+  
+              </ng-template>
+            </li>
+  
+            <!-- mobile version - Blood donation -->
+            <li [ngbNavItem]="3" [ngClass]="{'selected': active === 3}">
+              <a ngbNavLink *ngIf="active !== 3" style="border: 2px solid red;">Blood Donation</a>
+              <a ngbNavLink *ngIf="active === 3">Blood Donation</a>
+              <ng-template ngbNavContent>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 profile-body-card">
+  
+                  <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-xl-12 card em-card" style="margin: 5px 0;">
+                      <label>Available for blood donations</label>
+                      <span style="align-items: center; right: -7px; background: none;">
+                       
+                        <div class="toggle-switch align-center">
+                          <!-- <label>No</label> -->
+                          <label class="switch">
+                            <input type="checkbox" [disabled]="!chkBloodDonor" [(ngModel)]="IsDonorAvailable"
+                              (click)="OpennewfeatureModal()"> 
+                              <!-- (ngModelChange)="OnChangeDonorAvailability()" -->
+                            <span class="slider round"></span>
+                          </label>
+                          <!-- <label>Yes</label> -->
+                        </div>
+                      </span>
+                    </div>
+                  </div>
+  
+                  <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-xl-12 card em-card" style="margin: 5px 0;">
+                      <label>Add new blood donations</label>
+                      <span placement="left" ngbTooltip="Edit" style="padding: 5px; margin-right: 30px;"
+                        *ngIf="chkBloodDonor" (click)="OnClickUpdateDonor()">
+                        <svg style="margin-right: 0;">
+                          <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-pencil"></use>
+                        </svg>
+                      </span>
+                      <span placement="left" ngbTooltip="Register As Blood Donor" style="padding: 5px;"
+                        *ngIf="!chkBloodDonor" (click)="OnClickRegisterAsDonor()">
+                        <svg style="margin-right: 0;">
+                          <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-plus"></use>
+                        </svg>
+                      </span>
+                      <span placement="left" ngbTooltip="New Blood Donation" style="padding: 5px;" *ngIf="chkBloodDonor"
+                        (click)="OnClickNewBloodDonation(false)">
+                        <svg style="margin-right: 0;">
+                          <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-plus" style="fill:#ce2424;"></use>
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+  
+                  <div class="row profile-body-card-form"
+                    style="padding-top: 0; border-radius: 4px; height: calc(100% - 105px);">
+                    <div class="col-12 col-sm-12 col-md-12 col-xl-12 h-100">
+                      <div class="row contact">
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" style="width: 100%; max-width: 100%;"
+                          *ngIf="chkBloodDonor">
+                          <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-flex">
+  
+                              <div class="row">
+                                <div class="name col-5 col-sm-5 col-md-5 col-xl-5" style="font-weight: bold;">Blood Group
+                                  :</div>
+                                <div class="name col-7 col-sm-7 col-md-7 col-xl-7" style="color: #ce2424;">{{donorDetails
+                                  === undefined ||
+                                  donorDetails.bGroup === undefined ? '' :
+                                  donorDetails.bGroup}}</div>
+                              </div>
+                              <div class="row">
+                                <div class="name col-5 col-sm-5 col-md-5 col-xl-5" style="font-weight: bold;">Total
+                                  donations :</div>
+                                <div class="name col-7 col-sm-7 col-md-7 col-xl-7" style="color: #ce2424;">{{donorDetails
+                                  === undefined ||
+                                  donorDetails.tcount === undefined ? '' :
+                                  donorDetails.tcount}}</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+  
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12 card"
+                          style="width: 100%; max-width: 100%; background-color: #36cd37;" *ngIf="!chkBloodDonor">
+  
+  
+                          <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-flex"
+                              style="color: #000000; padding: 0 5px; font-weight: 600;" *ngIf="!chkBloodDonor"
+                              (click)="OnClickRegisterAsDonor()">
+                              Click here to register as a blood donor !!
+                            </div>
+                          </div>
+  
+  
+                        </div>
+  
+  
+  
+  
+  
+  
+  
+                      </div>
+  
+                      <div class="row" *ngIf="donations && donations.length > 0" style="height: calc(100% - 72px);">
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12 tab card"
+                          style="overflow: auto; border-radius: 4px;width: 100%; max-width: 100%; height: calc(100% - 4px);">
+                          <table class="table table-striped h-100" style="margin-bottom: 0;">
+                            <thead>
+                              <tr>
+                                <!-- <th scope="col">Sl.No.</th> -->
+                                <th scope="col">Date</th>
+                                <th scope="col">Location</th>
+                                <!-- <th scope="col">Image</th> -->
+                                <th scope="col">Comments</th>
+                                <th scope="col">Actions</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let donation of donations;let i = index">
+                                <!-- <td>{{i+1}}</td> -->
+                                <td>{{donation.donated_on.split('T')[0]}}</td>
+                                <td>{{donation.location}}</td>
+  
+                                <td>
+                                  {{donation.description}}
+                                </td>
+                                <td>
+                                  <svg (click)="OnEditDonation(donation)" style="margin-right: 5px; cursor: pointer;">
+                                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-pencil">
+                                    </use>
+                                    <title>Edit</title>
+                                  </svg>
+                                  <svg (click)="OnDeleteDonation(donation)" style="cursor: pointer;">
+                                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-trash">
+                                    </use>
+                                    <title>Delete</title>
+                                  </svg>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td colspan="5" *ngIf="!donations || donations.length === 0">No
+                                  records found</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+              </ng-template>
+            </li>
+          </ul>
+        </mat-card>
+        <div [ngbNavOutlet]="nav" class="mt-2" style="height: calc(100% - 10px)"></div>
+      </mat-card>
+    </div>
+  
+  <!-- PC version -->
+  
+    <div class="row profile-body v-profile">
+      <mat-card class="col-12 col-sm-12 col-md-12 col-lg-12 h-100 dome">
+        <div class="row h-100">
+          <mat-card class="col-12 col-sm-12 col-md-4 col-lg-4 profile-body-card h-100 dome1">
+            <div class="row profile-body-card-form">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 photo">
+                    <div>
+                      <img [src]="profileImage[0].src" [alt]="profileImage[0].caption" class="img2" for="img-upload"
+                        *ngIf="profileImage.length > 0 && profileImage[0].src !== undefined">
+                      <label class="img-upload" *ngIf="profileImage.length === 0">
+                        <svg>
+                          <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-profile">
+                          </use>
+                        </svg>
+                      </label>
+                    </div>
+                    <span>
+                      <input type="file" id="img-upload" accept="image/*" (change)="OnProfileImageUpload($event)"
+                        [hidden]="true">
+                      <label for="img-upload" class="img-upload">
+                        <svg>
+                          <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-pencil"></use>
+                          <title>Profile Image</title>
+                        </svg>
+                        <span>Edit Profile Photo</span>
+                      </label>
+                    </span>
+                    <a class="change-password" (click)="app.OnClickChangePassword()">
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-lock-closed"></use>
+                      </svg>
+                      Change password
+                    </a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblName !== undefined}">
+                    <div class="text-control">
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-user"></use>
+                      </svg>
+  
+                      <input type="text" placeholder="Name" [(ngModel)]="txtName"
+                        (ngModelChange)="OnTextChanged('txtName', $event)">
+                      <span class="error-line" placement="bottom" ngbTooltip="{{lblName}}">{{lblName}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblEmail !== undefined}">
+                    <div class="text-control">
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-envelope"></use>
+                      </svg>
+  
+                      <input type="text" placeholder="Email id" [(ngModel)]="txtEmail"
+                        (ngModelChange)="OnTextChanged('txtEmail', $event)">
+                      <span class="error-line" placement="bottom" ngbTooltip="{{lblEmail}}">{{lblEmail}}</span>
+  
+                      <svg *ngIf="profileInfo && profileInfo.isemailverified && txtEmail" style="height: 15px !important; width: 15px !important; fill: #09961c !important;
+                                                position: relative !important; display: inline !important; ">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-checkmark"></use>
+                        <title>Email verified.</title>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12"
+                    *ngIf="(!profileInfo || !profileInfo.isemailverified) && txtEmail">
+                    <div class="text-control" style="justify-content: flex-end;">
+                      <a style="color: #ce2424; font-size: 10px; text-decoration: underline; cursor: pointer;"
+                        (click)="OnClickVerifyEmail()">Email not verified, click here to verify
+                        !</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblPhone !== undefined}">
+                    <div class="text-control">
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-phone-call"></use>
+                      </svg>
+  
+                      <input type="text" placeholder="Phone" [(ngModel)]="txtPhone"
+                        (ngModelChange)="OnTextChanged('txtPhone', $event)" readonly>
+                      <span class="error-line" placement="bottom" ngbTooltip="{{lblPhone}}">{{lblPhone}}</span>
+                      <svg *ngIf="txtPhone" style="height: 15px !important; width: 15px !important; fill: #09961c !important;
+                                                        position: relative !important; display: inline !important; ">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-checkmark"></use>
+                        <title>Mobile number verified.</title>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" 
+                  [ngClass]="{'error': lblempbg !== undefined}">
+                    <div class="text-control cmbbox ddlist" ngbDropdown>
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-blood-drop"></use>
+                      </svg>
+                      <input type="text" placeholder="Blood group" [(ngModel)]="txtempbg" (ngModelChange)="OnTextChanged('txtempbg', $event)"
+                         id="dropdownBloodGroup3" ngbDropdownToggle
+                        readonly>
+                      <span class="error-line" placement="bottom" ngbTooltip="{{lblempbg}}">{{lblempbg}}</span>
+                      <div ngbDropdownMenu aria-labelledby="dropdownGender">
+                        <div ngbDropdownItem (click)="txtempbg = 'A+'; OnTextChanged('txtempbg', undefined);">
+                          A+</div>
+                        <div ngbDropdownItem (click)="txtempbg = 'B+'; OnTextChanged('txtempbg', undefined);">
+                          B+</div>
+                        <div ngbDropdownItem (click)="txtempbg = 'AB+'; OnTextChanged('txtempbg', undefined);">
+                          AB+</div>
+                          <div ngbDropdownItem (click)="txtempbg = 'A-'; OnTextChanged('txtempbg', undefined);">
+                            A-</div>
+                            <div ngbDropdownItem (click)="txtempbg = 'B-'; OnTextChanged('txtempbg', undefined);">
+                              B-</div>
+                              <div ngbDropdownItem (click)="txtempbg = 'AB+'; OnTextChanged('txtempbg', undefined);">
+                                AB+</div>
+                                <div ngbDropdownItem (click)="txtempbg = 'O+'; OnTextChanged('txtempbg', undefined);">
+                                  O+</div>
+                                  <div ngbDropdownItem (click)="txtempbg = 'O-'; OnTextChanged('txtempbg', undefined);">
+                                    O-</div>
+                      </div>
+                      <svg class="dropdown" style="display: block !important;">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-cheveron-down">
+                        </use>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblDOB !== undefined}">
+                    <div class="text-control">
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-calender"></use>
+                      </svg>
+  
+                      <input type="text" placeholder="DOB" [(ngModel)]="txtDOB"
+                        (ngModelChange)="OnTextChanged('txtDOB', $event)" ngbDatepicker #d="ngbDatepicker"
+                        [minDate]="{year: 1950, month:1, day: 1}" [maxDate]="maxDate" (click)="d.toggle()">
+                      <span class="error-line" placement="bottom" ngbTooltip="{{lblDOB}}">{{lblDOB}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblGender !== undefined}">
+                    <div class="text-control cmbbox ddlist" ngbDropdown>
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-gender"></use>
+                      </svg>
+                      <input type="text" placeholder="Gender" [(ngModel)]="txtGender"
+                        (ngModelChange)="OnTextChanged('txtGender', $event)" id="dropdownGender" ngbDropdownToggle
+                        readonly>
+                      <span class="error-line" placement="bottom" ngbTooltip="{{lblGender}}">{{lblGender}}</span>
+                      <div ngbDropdownMenu aria-labelledby="dropdownGender">
+                        <div ngbDropdownItem (click)="txtGender = 'Male'; OnTextChanged('txtGender', undefined);">
+                          Male</div>
+                        <div ngbDropdownItem (click)="txtGender = 'Female'; OnTextChanged('txtGender', undefined);">
+                          Female</div>
+                        <div ngbDropdownItem (click)="txtGender = 'Others'; OnTextChanged('txtGender', undefined);">
+                          Others</div>
+                      </div>
+                      <svg class="dropdown" style="display: block !important;">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-cheveron-down">
+                        </use>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="row controls">
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 register">
+                    <!-- <button type="button" class="btn btn-sm btn-outline-secondary" [disabled]="!profileInfo || !profileInfo.isemailverified" (click)="OnClickUpdate()">Update</button> -->
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      (click)="OnClickCorpUpdate()">Update</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card>
+          <mat-card class="col-12 col-sm-12 col-md-4 col-lg-4 profile-body-card dome2">
+            <div class="row" style="width: 100%;" >
+              <div class="col-12 col-sm-12 col-md-12 col-xl-12 card em-card" *ngIf="credavail > 0" style="background-color: #ffffff;box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);">
+                <label>Create New Emergency Card</label>
+                <span placement="left" style="background-color: #ce2424;" ngbTooltip="New Emergency Id" (click)="OnClickCreateID()">
+                 
+                  <span style="color: #ffffff;">Create <strong>+</strong></span>
+                </span>
+              </div>
+  
+              <div class="col-12 col-sm-12 col-md-12 col-xl-12 card em-card" style="margin: 5px 0;box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);">
+          
+                   <div class="col-lg-1 col-md-1 col-sm-1 col-xl-1">
+                    <svg class="ccard">
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-credit-card"></use>
+                    </svg>
+                   </div>
+                   <div class="col-lg-11 col-md-11 col-sm-11 col-xl-11 mt-1 ml-3">
+                    <h6 style="text-align: center;">You have created {{creditsused}}/{{totcredits}} emergency cards</h6>
+                   </div>
+                   
+                   
+               
+  
+              </div>
+              
+
+              
+            </div>
+            
+            
+            <div class="row profile-body-card-form"
+              [ngClass]="{'emid-ht-1': emergencyIDs.length < 5, 'emid-ht-2': emergencyIDs.length === 5}">
+              <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                <div class="row" *ngIf="emergencyIDs.length > 0">
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding"
+                    *ngFor="let emID of emergencyIDs;let i = index;">
+                    <div class="card1" #screen [id]="i+'-'+emID.pname">
+                      
+                      <div class="row ml-5">
+
+                        <div class="col col-12 section-2 wf-section" style="padding-right: 0px;">
+            
+                            <div class="card " style="height: 55mm; width: 85mm;background-color: #eadd24;">
+                
+                              <div class="container">
+                
+                                <div class="row Top-Heading" style="background-color: #ce2424; height: 8mm;">
+                
+                                  <div class="col-5" style="background-color: #eadd24; height: 7.5mm;">
+                
+                                    <img src="assets/images/emid_images/vmedologoemid.png" style="width: 90%;" />
+                
+                                    <div style="position: absolute; top: 0; right: 0px; width: 0; height: 8mm; border-top: 7.5mm solid transparent; border-right: 7.5mm solid #ce2424;"></div>
+                
+                                  </div>
+                
+                                  <div class="col-7" style="display: flex; align-items: center; justify-content: center; color: white;">
+                
+                                    <div style="font-size: 9px; text-align: center;">
+                                      EMERGENCY HEALTH CARD
+                                    </div>
+                
+                                  </div>
+                                </div>
+                
+                                <div class="row Main-content" style="height: 30mm;">
+                
+                                  <div class="col-7 member-details" style="font-size: 11px; padding-left: 31px; padding-top: 17px;">
+                
+                                    
+                                   
+                                    <div class="row member-name" style="height: 5mm; font-weight: 600; color: #a11e1e;">
+                
+                                      Name -  {{ emID.pname }}
+                
+                                    </div>
+                
+                                    <div class="row Card-No" style="height: 5mm; font-weight: 600; color: #a11e1e;">
+                
+                                      Card No - {{ emID.emid }}
+                
+                                    </div>
+                
+                                    <div class="row Card-Type" style="height: 5mm; font-weight: 600; color: #a11e1e;">
+                
+                                      Card Type - Corporate
+                
+                                    </div>
+                
+                                    <div class="row Card-Type" style="height: 5mm; font-weight: 600; color: #a11e1e;">
+                
+                                      Company - {{ orgName }}
+                
+                                    </div>
+                                   
+                
+                                  </div>
+                
+                                  <div class="col-5 QR-Code">
+                
+                                    <div class="row" style=" padding-left: 12px; padding-top: 4px; display: flex; align-items: center; flex-direction: row; flex-wrap: nowrap;">
+                
+                                      <img src="assets/images/emid_images/premium-icon-card.png" style="width: 18%; padding: 0px;" />
+                                    
+                                      <span style="font-size: 12px; padding-left: 8px;">Premium</span>
+                                    
+                                    </div>
+                                    
+                                    <div class="qrcodeImage">
+                                      <qrcode
+                                        [qrdata]='userDataUrl'
+                                        [allowEmptyString]="true"
+                                        [colorDark]="'#000000'"
+                                        [colorLight]="'#eadd24'"
+                                        [elementType]="'canvas'"
+                                        [errorCorrectionLevel]="'M'"
+                                        [scale]="1"
+                                        [margin]="1"
+                                        [width]="85"
+                                      ></qrcode>
+                                    </div>
+
+                
+                                  </div>
+                
+                
+                                </div>
+                
+                                <div class="row Description" style="height: 11mm;">
+                
+                                  <div class="col-9" style="font-size: 9px; padding-top: 4px;padding-right: 6px;">
+                                    In case of emergency, Scan the QR Code and get the emergency details of the user
+                                  </div>
+                
+                                </div>
+                
+                                <div class="row Bottom-Heading" style="height: 5.5mm;background-color: #ce2424;">
+                
+                                  <div class="col-8" style="display: flex; align-items: center; justify-content: center; color: white;padding-right: 0px;">
+                
+                                    <div style="font-size: 10px; text-align: center;">
+                                      24x7 Medical Emergency Assistance
+                                    </div>
+                
+                
+                
+                                  </div>
+                
+                
+                
+                                  <div class="col-4" style="display: flex; align-items: center; justify-content: flex-start; color: white;padding: 0px;">
+                
+                                    <div style="font-size: 11px; text-align: left;">
+                
+                                      <img src="assets/images/emid_images/Mobile-Icon.png" style="width: 12%;" />
+                
+                                      9343-18-0000
+                                    </div>
+                
+                                  </div>
+                
+                                </div>
+                
+                
+                              </div>
+                
+                
+                            </div>
+                
+                
+                          </div>
+            
+            
+            
+                          
+                      </div>
+                    </div>
+
+                  
+                    <button class="mb-3 mt-3 info-controls controls-one" (click)="OnClickViewEmergencyCard(emID)"
+                    mat-raised-button color="primary"
+                    style="background-color: #ffffff;margin-left: 140px;color: #ce2424;border-style:solid;border-color: #ce2424;font-weight: 500;">View Card
+                    Details</button>
+                 
+                  
+                    <div id="download" style="display: none;">
+                      <img #canvas>
+                      <a #downloadLink></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card>
+          <mat-card class="col-12 col-sm-12 col-md-4 col-lg-4 profile-body-card dome3">
+            <div class="row" style="width: 100%;">
+              <div class="col-12 col-sm-12 col-md-12 col-xl-12 card em-card" style="margin: 5px 0;box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);">
+                <label>Available for blood donations</label>
+                <span style="align-items: center; right: -7px; background: none;">
+                  <div class="toggle-switch align-center">
+                    <label class="switch">
+                      <input type="checkbox" [disabled]="!chkBloodDonor" [(ngModel)]="IsDonorAvailable"
+                        (ngModelChange)="OnChangeDonorAvailability()">
+                      <span class="slider round"></span>
+                    </label>
+                  </div>
+                </span>
+              </div>
+            </div>
+            <div class="row" style="width: 100%;">
+              <div class="col-12 col-sm-12 col-md-12 col-xl-12 card em-card" style="margin: 0;box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);">
+                <label>Add new blood donations</label>
+                <span placement="left" ngbTooltip="Edit" style="padding: 5px; margin-right: 30px;" *ngIf="chkBloodDonor"
+                  (click)="OnClickUpdateDonor()">
+                  <svg style="margin-right: 0;">
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-pencil"></use>
+                  </svg>
+                </span>
+                <span placement="left" ngbTooltip="Register As Blood Donor" style="padding: 5px;" *ngIf="!chkBloodDonor"
+                  (click)="OnClickRegisterAsDonor()">
+                  <svg style="margin-right: 0;">
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-plus"></use>
+                  </svg>
+  
+                </span>
+                <span placement="left" ngbTooltip="New Blood Donation" style="padding: 5px;" *ngIf="chkBloodDonor"
+                  (click)="OnClickNewBloodDonation(false)">
+                  <svg style="margin-right: 0;">
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-plus" style="fill:#ce2424 ;"></use>
+                  </svg>
+                </span>
+              </div>
+            </div>
+  
+            <div class="row profile-body-card-form"
+              style="padding-top: 0; border-radius: 4px; min-height: calc(100% - 100px);max-height: calc(100% - 100px);">
+              <div class="col-12 col-sm-12 col-md-12 col-xl-12 h-100 ">
+                <div class="row contact">
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" style="width: 100%; max-width: 100%;box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);"
+                    *ngIf="chkBloodDonor">
+                    <div class="row">
+                      <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-flex">
+                        <div class="row">
+                          <div class="name col-5 col-sm-5 col-md-5 col-xl-5" style="font-weight: bold;">Blood Group :
+                          </div>
+                          <div class="name col-7 col-sm-7 col-md-7 col-xl-7" style="color: #ce2424;">{{txtempbg}}</div>
+                        </div>
+                        <div class="row">
+                          <div class="name col-5 col-sm-5 col-md-5 col-xl-5" style="font-weight: bold;">Total donations :
+                          </div>
+                          <div class="name col-7 col-sm-7 col-md-7 col-xl-7" style="color: #ce2424;">{{donorDetails ===
+                            undefined ||
+                            donorDetails.tcount === undefined ? '' : donorDetails.tcount}}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+  
+  
+  
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 card"
+                    style="width: 100%; max-width: 100%; background-color: #36cd37;" *ngIf="!chkBloodDonor">
+                    <div class="row">
+                      <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-flex"
+                        style="color: #000000; padding: 0 5px; font-weight: 600;" *ngIf="!chkBloodDonor"
+                        (click)="OnClickRegisterAsDonor()">
+  
+                        Click here to register as a blood donor !!!
+                      </div>
+                    </div>
+                  </div>
+  
+  
+                </div>
+  
+  
+  
+  
+                <div class="row" *ngIf="donations && donations.length > 0">
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 tab card"
+                    style="overflow: auto; border-radius: 4px;width: 100%; max-width: 100%; height: 320px;">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th scope="col">Date</th>
+                          <th scope="col">Location</th>
+                          <th scope="col">Comments</th>
+                          <th scope="col">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let donation of donations;let i = index">
+                          <td>{{donation.donated_on.split('T')[0]}}</td>
+                          <td>{{donation.location}}</td>
+                          <td>
+                            {{donation.description}}
+                          </td>
+                          <td>
+                            <svg (click)="OnEditDonation(donation)" style="margin-right: 5px; cursor: pointer;">
+                              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-pencil">
+                              </use>
+                              <title>Edit</title>
+                            </svg>
+                            <svg (click)="OnDeleteDonation(donation)" style="cursor: pointer;">
+                              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-trash">
+                              </use>
+                              <title>Delete</title>
+                            </svg>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="5" *ngIf="!donations || donations.length === 0">No records
+                            found</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </mat-card>
+    </div>
+    <div class="row profile-body v-profile" style="display: none;">
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4 v-profile">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 profile-body-card">
+            <div class="row profile-body-card-header align-v-top align-h-left">
+              <p class="align-v-center align-h-left">
+                <svg style="cursor: pointer;" (click)="collapsePersonalDetails.toggle()"
+                  [attr.aria-expanded]="!isCollapsedPersonalDetails">
+                  <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user"></use>
+                </svg>
+  
+                <label style="padding: 0; margin: 0; color: #ffffff; cursor: pointer;"
+                  (click)="collapsePersonalDetails.toggle()" [attr.aria-expanded]="!isCollapsedPersonalDetails">Personal
+                  Details</label>
+              </p>
+            </div>
+            <div class="row profile-body-card-form" #collapsePersonalDetails="ngbCollapse"
+              [(ngbCollapse)]="isCollapsedPersonalDetails">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 photo">
+                    <div>
+                      <img [src]="profileImage[0].src" [alt]="profileImage[0].caption" class="img2" for="img-upload"
+                        *ngIf="profileImage.length > 0 && profileImage[0].src !== undefined">
+                      <label class="img-upload" *ngIf="profileImage.length === 0">
+                        <svg>
+                          <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user"></use>
+                          <title>Profile Image</title>
+                        </svg>
+                      </label>
+                    </div>
+                    <span>
+                      <input type="file" id="img-upload" accept="image/*" (change)="OnProfileImageUpload($event)"
+                        [hidden]="true">
+                      <label for="img-upload" class="img-upload">
+                        <svg>
+                          <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-plus"></use>
+                          <title>Profile Image</title>
+                        </svg>
+                        <span>Add Profile Image</span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblName !== undefined}">
+                    <div class="text-control">
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user"></use>
+                      </svg>
+  
+                      <input type="text" placeholder="Name" [(ngModel)]="txtName"
+                        (ngModelChange)="OnTextChanged('txtName', $event)">
+                      <span class="error-line" placement="bottom" ngbTooltip="{{lblName}}">{{lblName}}</span>
+                      <!-- <svg>
+                                            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-warning"></use>
+                                            <title>{{lblName}}</title>
+                                        </svg> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblEmail !== undefined}">
+                    <div class="text-control">
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-at-symbol"></use>
+                      </svg>
+  
+                      <input type="text" placeholder="Email id" [(ngModel)]="txtEmail"
+                        (ngModelChange)="OnTextChanged('txtEmail', $event)">
+                      <span class="error-line" placement="bottom" ngbTooltip="{{lblEmail}}">{{lblEmail}}</span>
+  
+  
+  
+                      <svg *ngIf="profileInfo && profileInfo.isemailverified && txtEmail" style="height: 15px !important; width: 15px !important; fill: #09961c !important;
+                                                      position: relative !important; display: inline !important; ">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-checkmark"></use>
+                        <title>Email verified.</title>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12"
+                    *ngIf="(!profileInfo || !profileInfo.isemailverified) && txtEmail">
+                    <div class="text-control" style="justify-content: flex-end;">
+                      <a style="color: #ce2424; font-size: 10px; text-decoration: underline; cursor: pointer;"
+                        (click)="OnClickVerifyEmail()">Email not verified, click here to verify
+                        !</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblPhone !== undefined}">
+                    <div class="text-control">
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-mobile2"></use>
+                      </svg>
+  
+                      <input type="text" placeholder="Phone" [(ngModel)]="txtPhone"
+                        (ngModelChange)="OnTextChanged('txtPhone', $event)" readonly>
+                      <span class="error-line" placement="bottom" ngbTooltip="{{lblPhone}}">{{lblPhone}}</span>
+                    
+                      <svg *ngIf="txtPhone" style="height: 15px !important; width: 15px !important; fill: #09961c !important;
+                                                          position: relative !important; display: inline !important; ">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-checkmark"></use>
+                        <title>Mobile number verified.</title>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblDOB !== undefined}">
+                    <div class="text-control">
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-calendar"></use>
+                      </svg>
+  
+                      <input type="text" placeholder="DOB" [(ngModel)]="txtDOB"
+                        (ngModelChange)="OnTextChanged('txtDOB', $event)" ngbDatepicker #d="ngbDatepicker"
+                        [minDate]="{year: 1950, month:1, day: 1}" [maxDate]="maxDate" (click)="d.toggle()">
+                      <span class="error-line" placement="bottom" ngbTooltip="{{lblDOB}}">{{lblDOB}}</span>
+                     
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblGender !== undefined}">
+                    <div class="text-control cmbbox ddlist" ngbDropdown>
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-adjust"></use>
+                      </svg>
+                      <input type="text" placeholder="Gender" [(ngModel)]="txtGender"
+                        (ngModelChange)="OnTextChanged('txtGender', $event)" id="dropdownGender" ngbDropdownToggle
+                        readonly>
+                      <span class="error-line" placement="bottom" ngbTooltip="{{lblGender}}">{{lblGender}}</span>
+                      <div ngbDropdownMenu aria-labelledby="dropdownGender">
+                        <div ngbDropdownItem (click)="txtGender = 'Male'; OnTextChanged('txtGender', undefined);">
+                          Male</div>
+                        <div ngbDropdownItem (click)="txtGender = 'Female'; OnTextChanged('txtGender', undefined);">
+                          Female</div>
+                        <div ngbDropdownItem (click)="txtGender = 'Others'; OnTextChanged('txtGender', undefined);">
+                          Others</div>
+                      </div>
+                      <svg class="dropdown" style="display: block !important;">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-cheveron-down">
+                        </use>
+                      </svg>
+                    
+                    </div>
+                  </div>
+                </div>
+                <div class="row controls">
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      (click)="OnClickCorpUpdate()">Update</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4 v-emergency">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 profile-body-card">
+            <div class="row profile-body-card-header align-v-top align-h-left">
+              <p class="align-v-center align-h-left">
+                <svg style="cursor: pointer;" (click)="collapseEmergencyCards.toggle()"
+                  [attr.aria-expanded]="!isCollapsedEmergencyCards">
+                  <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-idcard"></use>
+                </svg>
+                <label style="padding: 0; margin: 0; color: #ffffff; cursor: pointer;"
+                  (click)="collapseEmergencyCards.toggle()" [attr.aria-expanded]="!isCollapsedEmergencyCards">Emergency
+                  Cards</label>
+  
+                <span placement="left" ngbTooltip="New Emergency Id" (click)="OnClickCreateID()">
+                  <svg>
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-plus"></use>
+                  </svg>
+                </span>
+              </p>
+            </div>
+            <div class="row profile-body-card-form" style="background: #f8f8f8;"
+              [ngClass]="{'profile-body-card-height': !isCollapsedEmergencyCards}" #collapseEmergencyCards="ngbCollapse"
+              [(ngbCollapse)]="isCollapsedEmergencyCards">
+              <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                <div class="row" *ngIf="emergencyIDs.length === 0" style="padding: 0 15px 10px 15px;">
+                  No records found
+                </div>
+                <div class="row" *ngIf="emergencyIDs.length > 0">
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12" *ngFor="let emID of emergencyIDs;let i = index;">
+                    <div class="card qrCard2" #screen [id]="i+'-'+emID.pname">
+                      <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12 align-h-left align-v-top">
+                          <div>
+                            <div class="row">
+                              <div class="title">VMEDO</div>
+                            </div>
+                            <div class="row">
+                              <div class="emid">EMERGENCY CARD</div>
+                            </div>
+                            <div class="row">
+                              <div class="message">In case of emergency, Scan the QR Code or
+                                open the link and enter the pin to get critical emergency
+                                details of the user</div>
+                            </div>
+                          </div>
+                          <div class="code">
+                            <qrcode [qrdata]="emID.emidUrl" [allowEmptyString]="true" [cssClass]="'center'"
+                              [colorDark]="'#212529ff'" [colorLight]="'#F6F6F6FF'" [elementType]="'url'"
+                              [errorCorrectionLevel]="'M'" [margin]="0" [scale]="1" [width]="80">
+                            </qrcode>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row details">
+                        <div class="col-8 col-sm-8 col-md-8 col-xl-8 align-h-left align-v-center">
+                          <ul>
+                            <li>
+                             
+                              <img src="./../assets/icon/png/user.png" />
+                              <span>{{emID.pname}}</span>
+                            </li>
+                          
+                            <li style="margin-top: -5px;">
+                              <span>Url &nbsp;&nbsp;&nbsp;: vmedo.com/{{emID.emid}}</span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="col-2 col-sm-2 col-md-2 col-xl-2 align-h-left align-v-center">
+                        </div>
+                        <div class="col-2 col-sm-2 col-md-2 col-xl-2 align-h-left align-v-center">
+                     
+                          <img src="./../assets/icon/png/medical-cross.png" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card qrCard2 qrCard2-back" #screen [id]="i+'-'+emID.pname+'-sac'"
+                      style="height: 235px; width: 100% !important;">
+                      <div class="row qaz1">
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12 align-center">
+                          <span class="title">VMEDO.COM</span>
+                        </div>
+                      </div>
+                      <div class="row qaz2">
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12 align-h-left align-v-center">
+                          <ol class="rules">
+                            <li>Scan the card or enter link in your browser and enter 4 digit
+                              pin to get emergency contacts and critical medical information
+                              of the user.</li>
+                            <li>Enter your mobile number and followed by OTP to access Emergency
+                              Information.</li>
+                            <li>Once information is accessed, Message along with location and
+                              Your number will be sent to emergency contacts.</li>
+                            <li>All the information related to the emergency id is created by
+                              the user or his gaurdian, vmedo will not be held responsible for
+                              wrong information and any form of technical issues.</li>
+                            <li>Your are accepting for all the terms of vmedo and abide to force
+                              measure clause by accessing the information.</li>
+                            <li>Incase of Ambulance Requirement you can Call 112 or VMEDO
+                              Ambulance.</li>
+                          </ol>
+                        </div>
+                      </div>
+                      <div class="row details qaz3">
+                        <div class="col-2 col-sm-2 col-md-2 col-xl-2 align-h-left align-v-center">
+                       
+                          <img class="ambulance" src="./../../../assets/img/ambulance.png">
+                        </div>
+                        <div class="col-8 col-sm-8 col-md-8 col-xl-8 align-h-left align-v-center">
+                          <div class="contact">
+                            <div class="title">VMEDO AMBULANCE</div>
+                            <div class="call">
+                           
+                              <img class="call" src="./../../../assets/img/call.png">
+                              9343-18-0000
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-2 col-sm-2 col-md-2 col-xl-2 align-h-left align-v-center">
+                    
+                          <img src="./../assets/icon/png/medical-cross.png" />
+                        </div>
+                      </div>
+                    </div>
+  
+  
+                    <div class="align-h-right align-v-top qrCard2Controls">
+                      <span (click)="OnClickEditEmergencyCard(emID)">
+                        <svg>
+                          <use xlink:href="./../assets/icon/svg/symbol-defs.svg#icon-pencil">
+                          </use>
+                          <title>Edit</title>
+                        </svg>
+                        Edit
+                      </span>
+                      <span (click)="OnClickDownloadEmergencyCard(i+'-'+emID.pname)">
+                        <svg>
+                          <use xlink:href="./../assets/icon/svg/symbol-defs.svg#icon-download3">
+                          </use>
+                          <title>Download</title>
+                        </svg>
+                        Download
+                      </span>
+                    </div>
+  
+  
+                    <div id="download" style="display: none;">
+                      <img #canvas>
+                      <a #downloadLink></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4 v-blooddonor">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 profile-body-card">
+            <div class="row profile-body-card-header align-v-top align-h-left">
+              <p class="align-v-center align-h-left">
+                <svg style="cursor: pointer;" (click)="collapseBloodDonors.toggle()"
+                  [attr.aria-expanded]="!isCollapsedBloodDonors">
+                  <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-blood-donor"></use>
+                </svg>
+                <label style="padding: 0; margin: 0; color: #ffffff; cursor: pointer;"
+                  (click)="collapseBloodDonors.toggle()" [attr.aria-expanded]="!isCollapsedBloodDonors">Blood
+                  Donations</label>
+                <span placement="left" ngbTooltip="Edit" style="margin-right: 30px;" *ngIf="chkBloodDonor"
+                  (click)="OnClickUpdateDonor()">
+                  <svg>
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-pencil"></use>
+                  </svg>
+                </span>
+                <span placement="left" ngbTooltip="Register As Blood Donor" *ngIf="!chkBloodDonor"
+                  (click)="OnClickRegisterAsDonor()">
+                  <svg>
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-plus"></use>
+                  </svg>
+                </span>
+                <span placement="left" ngbTooltip="New Blood Donation" *ngIf="chkBloodDonor"
+                  (click)="OnClickNewBloodDonation(false)">
+                  <svg>
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-plus"></use>
+                  </svg>
+                </span>
+              </p>
+            </div>
+            <div class="row profile-body-card-form" style="overflow-x: auto; padding-top: 0;"
+              [ngClass]="{'profile-body-card-height': !isCollapsedBloodDonors}" #collapseBloodDonors="ngbCollapse"
+              [(ngbCollapse)]="isCollapsedBloodDonors">
+              <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+  
+                <div class="row contact" style="padding: 15px 5px;">
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12" *ngIf="chkBloodDonor">
+                    <div class="row">
+                      <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-flex">
+  
+                        <div class="row">
+                          <div class="name col-5 col-sm-5 col-md-5 col-xl-5" style="font-weight: bold;">Blood Group :
+                          </div>
+                          <div class="name col-7 col-sm-7 col-md-7 col-xl-7">{{donorDetails ===
+                            undefined || donorDetails.bGroup === undefined ? '' :
+                            donorDetails.bGroup}}</div>
+                        </div>
+                        <div class="row">
+                          <div class="name col-5 col-sm-5 col-md-5 col-xl-5" style="font-weight: bold;">Total donations :
+                          </div>
+                          <div class="name col-7 col-sm-7 col-md-7 col-xl-7">{{donorDetails ===
+                            undefined || donorDetails.tcount === undefined ? '' :
+                            donorDetails.tcount}}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12" *ngIf="!chkBloodDonor">
+                    <div class="row">
+                      <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-flex"
+                        style="color: #000000; padding: 0 5px; font-weight: 600;" *ngIf="!chkBloodDonor"
+                        (click)="OnClickRegisterAsDonor()">
+                        Click here to register as a blood donor
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" style="height: 45px; margin-top: -15px;">
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 align-v-center" style="margin-bottom: -5px;">
+                    <label style="padding: 0 10px 0 0; margin-bottom: 0;">Available as Blood Donor
+                      :</label>
+                    <div class="toggle-switch align-center">
+                      <label>No</label>
+                      <label class="switch">
+                        <input type="checkbox" [disabled]="!chkBloodDonor" [(ngModel)]="IsDonorAvailable"
+                          (ngModelChange)="OnChangeDonorAvailability()">
+                        <span class="slider round"></span>
+                      </label>
+                      <label>Yes</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" style="padding: 10px 15px;" *ngIf="donations && donations.length > 0">
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 tab" style="overflow: auto;">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <!-- <th scope="col">Sl.No.</th> -->
+                          <th scope="col">Date</th>
+                          <th scope="col">Location</th>
+                          <!-- <th scope="col">Image</th> -->
+                          <th scope="col">Comments</th>
+                          <th scope="col">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let donation of donations;let i = index">
+                          <!-- <td>{{i+1}}</td> -->
+                          <td>{{donation.donated_on.split('T')[0]}}</td>
+                          <td>{{donation.location}}</td>
+  
+                          <td>
+                            {{donation.description}}
+                          </td>
+                          <td>
+                            <svg (click)="OnEditDonation(donation)" style="margin-right: 5px; cursor: pointer;">
+                              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-pencil">
+                              </use>
+                              <title>Edit</title>
+                            </svg>
+                            <svg (click)="OnDeleteDonation(donation)" style="cursor: pointer;">
+                              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-trash">
+                              </use>
+                              <title>Delete</title>
+                            </svg>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="5" *ngIf="!donations || donations.length === 0">No records
+                            found</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+    <div class="row widget-menu">
+      <div class="col-4 col-md-4 col-sm-4 col-lg-4"
+      [ngClass]="{ 'highlighted-icon': isCurrentRoute('/dashboard/corporate/1') || isCurrentRoute('/dashboard/corporate/2') || isCurrentRoute('/dashboard/corporate/3') }">
+        <svg [routerLink]="getDashboardLink()">
+          <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-user-1"></use>
+        </svg>
+        <div>
+          {{ common.auth_token ? 'Profile' : 'Login' }}
+        </div>
+  
+      </div>
+      <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+        <svg [routerLink]="'/home'">
+          <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-home"></use>
+        </svg>
+        Home
+      </div>
+      <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+        <svg [routerLink]="'/services/more'">
+          <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-navigation-more"></use>
+        </svg>
+        More
+      </div>
+    </div>
+  
+    <div class="row footer">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+          <div class="col-6 col-sm-6 col-md-6 col-lg-6">&copy; Copyrights Arera Healthcare and Technologies Pvt
+            Ltd 2022. All rights reserved.</div>
+          <div class="col-6 col-sm-6 col-md-6 col-lg-6">.&nbsp;<span>.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #createID let-modal>
+    <div class="modal-body">
+      <div class="row logo">
+      
+        <label (click)="modal.close('Cancel');">
+          <svg>
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-cross"></use>
+          </svg>
+        </label>
+  
+      </div>
+  
+  
+      <div class="row title">
+       
+      </div>
+      <div class="row createID no-padding  mt-3">
+        <ul ngbNav #nav="ngbNav" [(activeId)]="activeTabId" class="nav-tabs  no-padding">
+          <li [ngbNavItem]="1">
+            <ng-template ngbNavContent>
+              <div class="col-12 col-sm-12 col-md-12 col-xl-12 createID createID1 no-padding">
+  
+  
+                <div>
+                  <p
+                    style="background-color: #f1f1f1;border-color: #f1f1f1;color:black;font-size: 15px;display: flex;text-align: center;justify-content: center;margin-top: -20px;font-weight: 500;">
+                    Step [1/4]</p>
+                </div>
+                <div>
+                  <p
+                    style="background-color: #f1f1f1;border-color: #f1f1f1;color:red;font-size: 25px;display: flex;text-align: center;justify-content: center;margin-top: -20px;font-weight: 500;">
+                    Personal Details</p>
+                </div>
+                <div class="mb-2" style="display: flex;justify-content: center;text-align: center;">
+                  <span style="font-size: 12PX;">Please enter personal details of the card member </span>
+                </div>
+                <div class="pos-rel align-center card"
+                  [ngClass]="{'error': lblCardNumber !== undefined && !IsCardAvailable}">
+                  <div class="text-control">
+  
+  
+                    <input type="text" placeholder="Create emergency id* (eg:priya12)"
+                      (keypress)="common.DisableSpecialCharOnKeyPress($event)" [(ngModel)]="txtCardNumber"
+                      (ngModelChange)="OnTextChanged('txtCardNumber', $event)" readonly hidden>
+                    <span class="error-line" placement="bottom" [ngClass]="{'success': IsCardAvailable}"
+                      ngbTooltip="{{lblCardNumber}}">{{lblCardNumber}}</span>
+                  
+                  </div>
+                </div>
+                <div class="pos-rel card" [ngClass]="{'error': lblCardName !== undefined}">
+                  <div class="text-control">
+                    <svg>
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user"></use>
+                    </svg>
+  
+                    <input type="text" placeholder="Enter cardholder's name*"
+                      (keypress)="common.DisableSpecialCharOnKeyPress($event)" [(ngModel)]="txtCardName"
+                      (ngModelChange)="OnTextChanged('txtCardName', $event)">
+                    <span class="error-line" placement="bottom" ngbTooltip="{{lblCardName}}">{{lblCardName}}</span>
+                 
+                  </div>
+                </div>
+  
+  
+  
+                <div class=" pos-rel card" [ngClass]="{'error': lblMemberContactNo !== undefined}">
+                  <div class="text-control">
+                    <svg>
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-mobile2"></use>
+                    </svg>
+  
+                    <input type="text" placeholder="Mobile no*" [(ngModel)]="txtMemberContactNo"
+                      (ngModelChange)="OnTextChanged('txtMemberContactNo', $event)"
+                      (keypress)="common.AllowOnlyNumbers($event)">
+                    <span class="error-line" placement="bottom"
+                      ngbTooltip="{{lblMemberContactNo}}">{{lblMemberContactNo}}</span>
+                   
+                  </div>
+                </div>
+  
+  
+  
+  
+  
+  
+                <div class="date pos-rel card" [ngClass]="{'error': lblCardDOB !== undefined}">
+                  <div class="text-control">
+                    <svg>
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-calendar"></use>
+                    </svg>
+  
+                    <input type="text" placeholder="Birth date*" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()"
+                      [minDate]="{year: 1950, month:1, day: 1}" [maxDate]="maxDate" readonly [(ngModel)]="txtCardDOB"
+                      (ngModelChange)="OnTextChanged('txtCardDOB', $event)">
+                    <span class="error-line" placement="bottom" ngbTooltip="{{lblCardDOB}}">{{lblCardDOB}}</span>
+                  
+                  </div>
+                </div>
+                <div class="combobox pos-rel card" [ngClass]="{'error': lblCardBloodGroup !== undefined}">
+                  <div class="text-control cmbbox ddlist" ngbDropdown>
+                    <svg>
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-droplet"></use>
+                    </svg>
+  
+                    <input type="text" placeholder="Blood group*" id="dropdownBloodGroup" ngbDropdownToggle readonly
+                      [(ngModel)]="txtCardBloodGroup" (ngModelChange)="OnTextChanged('txtCardBloodGroup', $event)">
+                    <span class="error-line" placement="bottom"
+                      ngbTooltip="{{lblCardBloodGroup}}">{{lblCardBloodGroup}}</span>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBloodGroup">
+                      <div ngbDropdownItem *ngFor="let group of bloodGroups"
+                        (click)="txtCardBloodGroup = group; OnTextChanged('txtCardBloodGroup', $event);">
+                        {{group}}</div>
+                    </div>
+                    <svg class="dropdown" style="display: block !important;">
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-cheveron-down"></use>
+                    </svg>
+  
+                  </div>
+                </div>
+                <div class="combobox pos-rel card" [ngClass]="{'error': lblCardGender !== undefined}">
+                  <div class="text-control cmbbox ddlist" ngbDropdown>
+                    <svg>
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-adjust"></use>
+                    </svg>
+  
+                    <input type="text" placeholder="Gender*" id="dropdownGender" ngbDropdownToggle readonly
+                      [(ngModel)]="txtCardGender" (ngModelChange)="OnTextChanged('txtCardGender', $event)">
+                    <span class="error-line" placement="bottom" ngbTooltip="{{lblCardGender}}">{{lblCardGender}}</span>
+                    <div ngbDropdownMenu aria-labelledby="dropdownGender">
+                      <div ngbDropdownItem *ngFor="let gender of genders"
+                        (click)="txtCardGender = gender; OnTextChanged('txtCardGender', $event);">
+                        {{gender}}</div>
+                    </div>
+                    <svg class="dropdown" style="display: block !important;">
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-cheveron-down"></use>
+                    </svg>
+  
+  
+                  </div>
+                </div>
+                <div class="row controls">
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 register">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="activeTabId < 4"
+                    (click)="OnClickNext()">Next</button>
+                  </div>
+                </div>
+  
+              </div>
+            </ng-template>
+          </li>
+          <li [ngbNavItem]="2">
+            <ng-template ngbNavContent>
+              <div class="col-12 col-sm-12 col-md-12 col-xl-12 createID no-padding">
+  
+                <div class="row mb-2">
+  
+                  <div>
+                    <p
+                      style="background-color: #f1f1f1;border-color: #f1f1f1;color:black;font-size: 15px;display: flex;text-align: center;justify-content: center;margin-top: -20px;font-weight: 500;">
+                      Step [2/4]</p>
+                  </div>
+                  <div>
+                    <p
+                      style="background-color: #f1f1f1;border-color: #f1f1f1;color:red;font-size: 25px;display: flex;text-align: center;justify-content: center;margin-top: -15px;font-weight: 500;text-wrap: nowrap;">
+                      Emergency contacts</p>
+                  </div>
+                  <div class="mb-2" style="display: flex;justify-content: center;text-align: center;">
+                    <span style="font-size: 12PX;"> In case of emergency, people/doctor can call these numbers</span>
+                  </div>
+  
+  
+  
+  
+  
+  
+                  
+                </div>
+  
+  
+  
+                <div class=" pos-rel card" [ngClass]="{'error': lblPrimaryContactName !== undefined}">
+                  <div class="text-control">
+                    <svg>
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user"></use>
+                    </svg>
+  
+                    <input type="text" placeholder="Guardian Name"
+                      (keypress)="common.DisableSpecialCharOnKeyPress($event)" [(ngModel)]="txtPrimaryContactName"
+                      (ngModelChange)="OnTextChanged('txtPrimaryContactName', $event)">
+                    <span class="error-line" placement="bottom"
+                      ngbTooltip="{{lblPrimaryContactName}}">{{lblPrimaryContactName}}</span>
+                  
+                  </div>
+                </div>
+                <div class=" pos-rel card" [ngClass]="{'error': lblPrimaryContactNo !== undefined}">
+                  <div class="text-control">
+                    <svg>
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-mobile2"></use>
+                    </svg>
+  
+                    <input type="text" placeholder="Guardian Mobile no" [(ngModel)]="txtPrimaryContactNo"
+                      (ngModelChange)="OnTextChanged('txtPrimaryContactNo', $event)"
+                      (keypress)="common.AllowOnlyNumbers($event)">
+                    <span class="error-line" placement="bottom"
+                      ngbTooltip="{{lblPrimaryContactNo}}">{{lblPrimaryContactNo}}</span>
+                  
+                  </div>
+                </div>
+  
+                <div *ngIf="showsecondaryguardians">
+                  <div class=" pos-rel card" [ngClass]="{'error': lblSecondaryContactName !== undefined}">
+                    <div class="text-control">
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user"></use>
+                      </svg>
+  
+                      <input type="text" placeholder="Guardian Name 2 (optional)"
+                        (keypress)="common.DisableSpecialCharOnKeyPress($event)" [(ngModel)]="txtSecondaryContactName"
+                        (ngModelChange)="OnTextChanged('txtSecondaryContactName', $event)">
+                      <span class="error-line" placement="bottom"
+                        ngbTooltip="{{lblSecondaryContactName}}">{{lblSecondaryContactName}}</span>
+  
+                    </div>
+                  </div>
+  
+                  <div class=" pos-rel card" [ngClass]="{'error': lblSecondaryContactNo !== undefined}">
+                    <div class="text-control">
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-mobile2"></use>
+                      </svg>
+  
+                      <input type="text" placeholder="Guardian Mobile no (optional)" [(ngModel)]="txtSecondaryContactNo"
+                        (ngModelChange)="OnTextChanged('txtSecondaryContactNo', $event)"
+                        (keypress)="common.AllowOnlyNumbers($event)">
+                      <span class="error-line" placement="bottom"
+                        ngbTooltip="{{lblSecondaryContactNo}}">{{lblSecondaryContactNo}}</span>
+                    
+                    </div>
+                  </div>
+                </div>
+  
+                <div style="color:#ce2424; display: flex;text-align: center;justify-content: center;"
+                  (click)="togglesecondaryguardians()" *ngIf="!isDivClicked">Add Another Guardian+</div>
+  
+                  <div class="row controls">
+                    <div class="col-12 col-sm-12 col-md-12 col-xl-12 register">
+                      <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="activeTabId < 4 && areFieldsFilled()"
+                       (click)="OnClickNext()">Next</button>
+                       <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="activeTabId < 4 && !areFieldsFilled()"
+                       (click)="OnClickNext()">Skip</button>
+                    </div>
+                    <div style="color:#ce2424; display: flex;text-align: center;justify-content: center;margin-top: 5px;"
+                    *ngIf="activeTabId > 1" (click)="OnClickBack()">
+                    < back</div>
+                  </div>
+  
+              </div>
+            </ng-template>
+          </li>
+      
+  
+          <li [ngbNavItem]="3">
+            <ng-template ngbNavContent>
+              <div class="col-12 col-sm-12 col-md-12 col-xl-12 createID no-padding">
+  
+                <div class="row mb-2">
+  
+                  <div>
+                    <p
+                      style="background-color: #f1f1f1;border-color: #f1f1f1;color:black;font-size: 15px;display: flex;text-align: center;justify-content: center;margin-top: -20px;font-weight: 500;">
+                      Step [3/4]</p>
+                  </div>
+                  <div>
+                    <p
+                      style="background-color: #f1f1f1;border-color: #f1f1f1;color:red;font-size: 25px;display: flex;text-align: center;justify-content: center;margin-top: -15px;font-weight: 500;margin-left: 60px;margin-right: 45px;text-wrap: nowrap;">
+                      Medical Details</p>
+                  </div>
+                  <div class="mb-2" style="display: flex;justify-content: center;text-align: center;">
+                    <span style="font-size: 12PX;"> These details will help the doctor/first aider make the right
+                      decisions during
+                      emergencies</span>
+                  </div>
+  
+  
+  
+  
+                </div>
+  
+  
+                <div class=" pos-rel card" [ngClass]="{'error': lblInsuranceMedicalCondition !== undefined}">
+                  <div class="text-control">
+                    <svg style="top: 20px;">
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-file-text"></use>
+                    </svg>
+  
+                    <textarea cols="5" rows="3" (keypress)="common.DisableSpecialCharOnKeyPress($event)"
+                      placeholder="Medical condition or medical history (eg: Diabetic, Epilepsy)"
+                      [(ngModel)]="txtInsuranceMedicalCondition"
+                      (ngModelChange)="OnTextChanged('txtInsuranceMedicalCondition', $event)"></textarea>
+                    <span class="error-line" style="top: 135px;" placement="bottom"
+                      ngbTooltip="{{lblInsuranceMedicalCondition}}">{{lblInsuranceMedicalCondition}}</span>
+                 
+                  </div>
+                </div>
+                <div class=" pos-rel card" [ngClass]="{'error': lblInsuranceEmergencyDrugs !== undefined}">
+                  <div class="text-control">
+                    <svg style="top: 20px;">
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-file-text"></use>
+                    </svg>
+  
+                    <textarea cols="5" rows="3" (keypress)="common.DisableSpecialCharOnKeyPress($event)"
+                      placeholder="Emergency drugs for above medical conditions" [(ngModel)]="txtInsuranceEmergencyDrugs"
+                      (ngModelChange)="OnTextChanged('txtInsuranceEmergencyDrugs', $event)"></textarea>
+                    <span class="error-line" style="top: 135px;" placement="bottom"
+                      ngbTooltip="{{lblInsuranceEmergencyDrugs}}">{{lblInsuranceEmergencyDrugs}}</span>
+  
+                
+                  </div>
+                </div>
+  
+  
+                <div *ngIf="showsecondarymedicaldetails">
+                  <div class="combobox pos-rel card" [ngClass]="{'error': lblInsuranceProvider !== undefined}">
+                    <div class="text-control cmbbox ddlist" ngbDropdown>
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-file-text"></use>
+                      </svg>
+  
+                      <input type="text" placeholder="Insurance provider (optional)"
+                        (keypress)="common.DisableSpecialCharOnKeyPress($event)" [(ngModel)]="txtInsuranceProvider"
+                        (ngModelChange)="OnTextChanged('txtInsuranceProvider', $event)">
+                      <span class="error-line" placement="bottom"
+                        ngbTooltip="{{lblInsuranceProvider}}">{{lblInsuranceProvider}}</span>
+                     
+                    </div>
+                  </div>
+  
+  
+  
+  
+                  <div class=" pos-rel card" [ngClass]="{'error': lblInsurancePolicyNo !== undefined}">
+                    <div class="text-control">
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-file-text"></use>
+                      </svg>
+  
+                      <input type="text" placeholder="Policy number (optional)"
+                        (keypress)="common.DisableSpecialCharOnKeyPress($event)" [(ngModel)]="txtInsurancePolicyNo"
+                        (ngModelChange)="OnTextChanged('txtInsurancePolicyNo', $event)">
+                      <span class="error-line" placement="bottom"
+                        ngbTooltip="{{lblInsurancePolicyNo}}">{{lblInsurancePolicyNo}}</span>
+                  
+                    </div>
+                  </div>
+  
+                  <!-- ABHA NUMBER  -->
+  
+                  <div class="combobox pos-rel card" [ngClass]="{'error': lblAbhaNumber!== undefined}">
+                    <div class="text-control cmbbox ddlist" ngbDropdown>
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-file-text"></use>
+                      </svg>
+  
+                      <textarea cols="5" rows="2" (keypress)="common.DisableSpecialCharOnKeyPress($event)"
+                        placeholder="ABHA number (Govt health ID number , optional)" [(ngModel)]="txtAbhaNumber"
+                        (ngModelChange)="OnTextChanged('txtAbhaNumber', $event)"></textarea>
+  
+  
+                      <span class="error-line" placement="bottom" ngbTooltip="{{lblAbhaNumber}}">{{lblAbhaNumber}}</span>
+  
+                    </div>
+                  </div>
+  
+  
+                  <div class="organdonor">
+                    <p>
+                      <input type="checkbox" id="organdonor" [(ngModel)]="chkOrganDonor">
+                      <label for="organdonor">Organ donor</label>
+                    </p>
+                  </div>
+                </div>
+  
+                <div style="color:#ce2424; display: flex;text-align: center;justify-content: center;"
+                  (click)="togglesecondarymedicaldetails()" *ngIf="!isDivOneClicked">Add Additional details +</div>
+  
+                  <div class="row controls">
+                    <div class="col-12 col-sm-12 col-md-12 col-xl-12 register">
+                      <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="activeTabId < 4 && FieldsFilled()"
+                       (click)="OnClickNext()">Next</button>
+                       <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="activeTabId < 4 && !FieldsFilled()"
+                       (click)="OnClickNext()">Skip</button>
+                    </div>
+                    <div style="color:#ce2424; display: flex;text-align: center;justify-content: center;margin-top: 5px;"
+                    *ngIf="activeTabId > 1" (click)="OnClickBack()">
+                    < back</div>
+                  </div>
+  
+              </div>
+            </ng-template>
+          </li>
+  
+          <!-- postal code -->
+          <li [ngbNavItem]="4">
+            <ng-template ngbNavContent>
+              <div class="col-12 col-sm-12 col-md-12 col-xl-12 createID no-padding">
+  
+                <div class="row mb-2">
+  
+  
+                  <div>
+                    <p
+                      style="background-color: #f1f1f1;border-color: #f1f1f1;color:black;font-size: 15px;display: flex;text-align: center;justify-content: center;margin-top: -20px;font-weight: 500;">
+                      Step [4/4]</p>
+                  </div>
+                  <div>
+                    <p
+                      style="background-color: #f1f1f1;border-color: #f1f1f1;color:red;font-size: 25px;display: flex;text-align: center;justify-content: center;margin-top: -15px;font-weight: 500;margin-left: 60px;margin-right: 45px;text-wrap: nowrap;">
+                      Postal address</p>
+                  </div>
+                  <div class="mb-2" style="display: flex;justify-content: center;text-align: center;">
+                    <span style="font-size: 12PX;"> To receive a free printed copy of the family health card, please
+                      provide your detailed
+                      address</span>
+                  </div>
+  
+  
+  
+  
+  
+  
+                </div>
+  
+  
+  
+  
+  
+                <div class=" pos-rel card" [ngClass]="{'error': lblPostalAddress !== undefined}">
+                  <div class="text-control">
+                    <svg style="top: 20px;">
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-file-text"></use>
+                    </svg>
+  
+  
+  
+                    <input type="text" placeholder="Door/house/flat number" [(ngModel)]="txtPostalAddress"
+                      (ngModelChange)="OnTextChanged('txtPostalAddress', $event)">
+  
+                    <span class="error-line" placement="bottom"
+                      ngbTooltip="{{lblPostalAddress}}">{{lblPostalAddress}}</span>
+  
+                  </div>
+                </div>
+  
+  
+                <div class=" pos-rel card" [ngClass]="{'error': lblEhouseNo !== undefined}">
+                  <div class="text-control">
+                    <svg style="top: 20px;">
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-file-text"></use>
+                    </svg>
+  
+  
+                    <input type="text" placeholder="Area/Street/Landmark" [(ngModel)]="txtEhouseNo"
+                      (ngModelChange)="OnTextChanged('txtEhouseNo', $event)">
+  
+                    <span class="error-line" placement="bottom" ngbTooltip="{{lblEhouseNo}}">{{lblEhouseNo}}</span>
+  
+                  </div>
+                </div>
+  
+  
+                <div class=" pos-rel card" [ngClass]="{'error': lblEcity !== undefined}">
+                  <div class="text-control">
+                    <svg style="top: 20px;">
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-file-text"></use>
+                    </svg>
+  
+  
+  
+                    <input type="text" placeholder="City" [(ngModel)]="txtEcity"
+                      (ngModelChange)="OnTextChanged('txtEcity', $event)">
+  
+                    <span class="error-line" placement="bottom" ngbTooltip="{{lblEcity}}">{{lblEcity}}</span>
+  
+                  </div>
+                </div>
+  
+  
+                <div class=" pos-rel card" [ngClass]="{'error': lblEstate !== undefined}">
+                  <div class="text-control">
+                    <svg style="top: 20px;">
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-file-text"></use>
+                    </svg>
+  
+  
+                    <input type="text" placeholder="State" [(ngModel)]="txtEstate"
+                      (ngModelChange)="OnTextChanged('txtEstate', $event)">
+  
+                    <span class="error-line" placement="bottom" ngbTooltip="{{lblEstate}}">{{lblEstate}}</span>
+  
+                  </div>
+                </div>
+  
+  
+                <div class="pos-rel card" [ngClass]="{'error': lblPostalPincode !== undefined}">
+                  <div class="text-control">
+                    <svg>
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-file-text"></use>
+                    </svg>
+  
+                    <input type="text" placeholder="pincode" [(ngModel)]="txtPostalPincode"
+                      (ngModelChange)="OnTextChanged('txtPostalPincode', $event)"
+                      (keypress)="common.AllowOnlyNumbers($event)">
+  
+  
+  
+                    <span class="error-line" placement="bottom"
+                      ngbTooltip="{{lblPostalPincode}}">{{lblPostalPincode}}</span>
+  
+                  </div>
+                </div>
+                <div class="row controls">
+                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 register">
+                    <button type="button" class="btn btn-sm btn-outline-secondary rd-button" *ngIf="activeTabId === 4"
+                (click)="OnClickCreateSubmit()">Submit</button>
+                
+                  </div>
+                  <div style="color:#ce2424; display: flex;text-align: center;justify-content: center;margin-top: 5px;"
+                  *ngIf="activeTabId > 1" (click)="OnClickBack()">
+                  < back</div>
+                </div>
+              </div>
+            </ng-template>
+          </li>
+  
+  
+        </ul>
+  
+  
+  
+  
+        <div [ngbNavOutlet]="nav" class="mt-2 full-width"></div>
+      </div>
+  
+  
+      </div>
+  </ng-template>
+
+
+  <ng-template #editID let-modal>
+    <div class="modal-body">
+      <div class="row logo">
+       
+        <label (click)="OnClickOpenviewProfileDetailsModal()">
+          <svg>
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-cross"></use>
+          </svg>
+        </label>
+  
+      </div>
+  
+  
+      <div class="row title">
+        <div class="col-12 col-sm-12 col-md-12 col-xl-12 createID">
+         
+        </div>
+      </div>
+      <div class="row createID no-padding  mt-3">
+        <ul ngbNav #nav="ngbNav" [(activeId)]="activeTabId" class="nav-tabs  no-padding">
+          <li [ngbNavItem]="1">
+            <ng-template ngbNavContent>
+              <div class="col-12 col-sm-12 col-md-12 col-xl-12 createID createID1 no-padding">
+  
+  
+                <div>
+                  <p
+                    style="background-color: #f1f1f1;border-color: #f1f1f1;color:black;font-size: 15px;display: flex;text-align: center;justify-content: center;margin-top: -20px;font-weight: 500;">
+                    Step [1/4]</p>
+                </div>
+                <div>
+                  <p
+                    style="background-color: #f1f1f1;border-color: #f1f1f1;color:red;font-size: 25px;display: flex;text-align: center;justify-content: center;margin-top: -20px;font-weight: 500;">
+                    Personal Details</p>
+                </div>
+                <div class="mb-2" style="display: flex;justify-content: center;text-align: center;">
+                  <span style="font-size: 12PX;">Please enter personal details of the card member </span>
+                </div>
+                <div class="pos-rel align-center card"
+                  [ngClass]="{'error': lblCardNumber !== undefined && !IsCardAvailable}">
+                  <div class="text-control">
+  
+  
+                    <input type="text" placeholder="Create emergency id* (eg:priya12)"
+                      (keypress)="common.DisableSpecialCharOnKeyPress($event)" [(ngModel)]="txtCardNumber"
+                      (ngModelChange)="OnTextChanged('txtCardNumber', $event)" readonly hidden>
+                    <span class="error-line" placement="bottom" [ngClass]="{'success': IsCardAvailable}"
+                      ngbTooltip="{{lblCardNumber}}">{{lblCardNumber}}</span>
+                   
+                  </div>
+                </div>
+                <div class="pos-rel card" [ngClass]="{'error': lblCardName !== undefined}">
+                  <div class="text-control">
+                    <svg>
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user"></use>
+                    </svg>
+  
+                    <input type="text" placeholder="Enter cardholder's name*"
+                      (keypress)="common.DisableSpecialCharOnKeyPress($event)" [(ngModel)]="txtCardName"
+                      (ngModelChange)="OnTextChanged('txtCardName', $event)">
+                    <span class="error-line" placement="bottom" ngbTooltip="{{lblCardName}}">{{lblCardName}}</span>
+                  
+                  </div>
+                </div>
+  
+  
+  
+                <div class=" pos-rel card" [ngClass]="{'error': lblMemberContactNo !== undefined}">
+                  <div class="text-control">
+                    <svg>
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-mobile2"></use>
+                    </svg>
+  
+                    <input type="text" placeholder="Mobile no*" [(ngModel)]="txtMemberContactNo"
+                      (ngModelChange)="OnTextChanged('txtMemberContactNo', $event)"
+                      (keypress)="common.AllowOnlyNumbers($event)">
+                    <span class="error-line" placement="bottom"
+                      ngbTooltip="{{lblMemberContactNo}}">{{lblMemberContactNo}}</span>
+                    <!-- <svg>
+                                <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-warning"></use>
+                                <title>{{lblPrimaryContactNo}}</title>
+                            </svg> -->
+                  </div>
+                </div>
+  
+  
+  
+  
+  
+  
+                <div class="date pos-rel card" [ngClass]="{'error': lblCardDOB !== undefined}">
+                  <div class="text-control">
+                    <svg>
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-calendar"></use>
+                    </svg>
+  
+                    <input type="text" placeholder="Birth date*" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()"
+                      [minDate]="{year: 1950, month:1, day: 1}" [maxDate]="maxDate" readonly [(ngModel)]="txtCardDOB"
+                      (ngModelChange)="OnTextChanged('txtCardDOB', $event)">
+                    <span class="error-line" placement="bottom" ngbTooltip="{{lblCardDOB}}">{{lblCardDOB}}</span>
+                  
+                  </div>
+                </div>
+                <div class="combobox pos-rel card" [ngClass]="{'error': lblCardBloodGroup !== undefined}">
+                  <div class="text-control cmbbox ddlist" ngbDropdown>
+                    <svg>
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-droplet"></use>
+                    </svg>
+  
+                    <input type="text" placeholder="Blood group*" id="dropdownBloodGroup" ngbDropdownToggle readonly
+                      [(ngModel)]="txtCardBloodGroup" (ngModelChange)="OnTextChanged('txtCardBloodGroup', $event)">
+                    <span class="error-line" placement="bottom"
+                      ngbTooltip="{{lblCardBloodGroup}}">{{lblCardBloodGroup}}</span>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBloodGroup">
+                      <div ngbDropdownItem *ngFor="let group of bloodGroups"
+                        (click)="txtCardBloodGroup = group; OnTextChanged('txtCardBloodGroup', $event);">
+                        {{group}}</div>
+                    </div>
+                    <svg class="dropdown" style="display: block !important;">
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-cheveron-down"></use>
+                    </svg>
+  
+                  </div>
+                </div>
+                <div class="combobox pos-rel card" [ngClass]="{'error': lblCardGender !== undefined}">
+                  <div class="text-control cmbbox ddlist" ngbDropdown>
+                    <svg>
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-adjust"></use>
+                    </svg>
+  
+                    <input type="text" placeholder="Gender*" id="dropdownGender" ngbDropdownToggle readonly
+                      [(ngModel)]="txtCardGender" (ngModelChange)="OnTextChanged('txtCardGender', $event)">
+                    <span class="error-line" placement="bottom" ngbTooltip="{{lblCardGender}}">{{lblCardGender}}</span>
+                    <div ngbDropdownMenu aria-labelledby="dropdownGender">
+                      <div ngbDropdownItem *ngFor="let gender of genders"
+                        (click)="txtCardGender = gender; OnTextChanged('txtCardGender', $event);">
+                        {{gender}}</div>
+                    </div>
+                    <svg class="dropdown" style="display: block !important;">
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-cheveron-down"></use>
+                    </svg>
+  
+  
+                  </div>
+                </div>
+  
+                
+  
+              </div>
+            </ng-template>
+          </li>
+          <li [ngbNavItem]="2">
+            <ng-template ngbNavContent>
+              <div class="col-12 col-sm-12 col-md-12 col-xl-12 createID no-padding">
+  
+                <div class="row mb-2">
+  
+                  <div>
+                    <p
+                      style="background-color: #f1f1f1;border-color: #f1f1f1;color:black;font-size: 15px;display: flex;text-align: center;justify-content: center;margin-top: -20px;font-weight: 500;">
+                      Step [2/4]</p>
+                  </div>
+                  <div>
+                    <p
+                      style="background-color: #f1f1f1;border-color: #f1f1f1;color:red;font-size: 25px;display: flex;text-align: center;justify-content: center;margin-top: -15px;font-weight: 500;text-wrap: nowrap;">
+                      Emergency contacts</p>
+                  </div>
+                  <div class="mb-2" style="display: flex;justify-content: center;text-align: center;">
+                    <span style="font-size: 12PX;"> In case of emergency, people/doctor can call these numbers</span>
+                  </div>
+  
+  
+  
+  
+  
+  
+                 
+                </div>
+  
+  
+  
+                <div class=" pos-rel card" [ngClass]="{'error': lblPrimaryContactName !== undefined}">
+                  <div class="text-control">
+                    <svg>
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user"></use>
+                    </svg>
+  
+                    <input type="text" placeholder="Guardian Name"
+                      (keypress)="common.DisableSpecialCharOnKeyPress($event)" [(ngModel)]="txtPrimaryContactName"
+                      (ngModelChange)="OnTextChanged('txtPrimaryContactName', $event)" >
+                    <span class="error-line" placement="bottom"
+                      ngbTooltip="{{lblPrimaryContactName}}">{{lblPrimaryContactName}}</span>
+                   
+                  </div>
+                </div>
+                <div class=" pos-rel card" [ngClass]="{'error': lblPrimaryContactNo !== undefined}">
+                  <div class="text-control">
+                    <svg>
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-mobile2"></use>
+                    </svg>
+  
+                    <input type="text" placeholder="Guardian Mobile no" [(ngModel)]="txtPrimaryContactNo"
+                      (ngModelChange)="OnTextChanged('txtPrimaryContactNo', $event)"
+                      (keypress)="common.AllowOnlyNumbers($event)">
+                    <span class="error-line" placement="bottom"
+                      ngbTooltip="{{lblPrimaryContactNo}}">{{lblPrimaryContactNo}}</span>
+                  
+                  </div>
+                </div>
+  
+                <div *ngIf="showsecondaryguardians">
+                  <div class=" pos-rel card" [ngClass]="{'error': lblSecondaryContactName !== undefined}">
+                    <div class="text-control">
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user"></use>
+                      </svg>
+  
+                      <input type="text" placeholder="Guardian Name 2 (optional)"
+                        (keypress)="common.DisableSpecialCharOnKeyPress($event)" [(ngModel)]="txtSecondaryContactName"
+                        (ngModelChange)="OnTextChanged('txtSecondaryContactName', $event)">
+                      <span class="error-line" placement="bottom"
+                        ngbTooltip="{{lblSecondaryContactName}}">{{lblSecondaryContactName}}</span>
+  
+                    </div>
+                  </div>
+  
+                  <div class=" pos-rel card" [ngClass]="{'error': lblSecondaryContactNo !== undefined}">
+                    <div class="text-control">
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-mobile2"></use>
+                      </svg>
+  
+                      <input type="text" placeholder="Guardian Mobile no (optional)" [(ngModel)]="txtSecondaryContactNo"
+                        (ngModelChange)="OnTextChanged('txtSecondaryContactNo', $event)"
+                        (keypress)="common.AllowOnlyNumbers($event)">
+                      <span class="error-line" placement="bottom"
+                        ngbTooltip="{{lblSecondaryContactNo}}">{{lblSecondaryContactNo}}</span>
+                    
+                    </div>
+                  </div>
+                </div>
+  
+                <div style="color:#ce2424; display: flex;text-align: center;justify-content: center;"
+                  (click)="togglesecondaryguardians()" *ngIf="!isDivClicked">Add Another Guardian+</div>
+  
+  
+  
+              </div>
+            </ng-template>
+          </li>
+    
+  
+          <li [ngbNavItem]="3">
+            <ng-template ngbNavContent>
+              <div class="col-12 col-sm-12 col-md-12 col-xl-12 createID no-padding">
+  
+                <div class="row mb-2">
+  
+                  <div>
+                    <p
+                      style="background-color: #f1f1f1;border-color: #f1f1f1;color:black;font-size: 15px;display: flex;text-align: center;justify-content: center;margin-top: -20px;font-weight: 500;">
+                      Step [3/4]</p>
+                  </div>
+                  <div>
+                    <p
+                      style="background-color: #f1f1f1;border-color: #f1f1f1;color:red;font-size: 25px;display: flex;text-align: center;justify-content: center;margin-top: -15px;font-weight: 500;margin-left: 50px;margin-right: 45px;text-wrap: nowrap;">
+                      Medical Details</p>
+                  </div>
+                  <div class="mb-2" style="display: flex;justify-content: center;text-align: center;">
+                    <span style="font-size: 12PX;"> These details will help the doctor/first aider make the right
+                      decisions during
+                      emergencies</span>
+                  </div>
+  
+  
+  
+  
+                  <!-- <span  style="font-size: 12PX;"> <span class="info-symbol">&#x2139;</span> These details will help the doctor/first aider make the right decisions during emergencies</span>  -->
+                </div>
+  
+  
+                <div class=" pos-rel card" [ngClass]="{'error': lblInsuranceMedicalCondition !== undefined}">
+                  <div class="text-control">
+                    <svg style="top: 20px;">
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-file-text"></use>
+                    </svg>
+  
+                    <textarea cols="5" rows="3" (keypress)="common.DisableSpecialCharOnKeyPress($event)"
+                      placeholder="Medical condition or medical history (eg: Diabetic, Epilepsy)"
+                      [(ngModel)]="txtInsuranceMedicalCondition"
+                      (ngModelChange)="OnTextChanged('txtInsuranceMedicalCondition', $event)" ></textarea>
+                    <span class="error-line" style="top: 135px;" placement="bottom"
+                      ngbTooltip="{{lblInsuranceMedicalCondition}}">{{lblInsuranceMedicalCondition}}</span>
+                    <!-- <svg>
+                                <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-warning"></use>
+                                <title>{{lblInsuranceMedicalCondition}}</title>
+                            </svg> -->
+                  </div>
+                </div>
+                <div class=" pos-rel card" [ngClass]="{'error': lblInsuranceEmergencyDrugs !== undefined}">
+                  <div class="text-control">
+                    <svg style="top: 20px;">
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-file-text"></use>
+                    </svg>
+  
+                    <textarea cols="5" rows="3" (keypress)="common.DisableSpecialCharOnKeyPress($event)"
+                      placeholder="Emergency drugs for above medical conditions" [(ngModel)]="txtInsuranceEmergencyDrugs"
+                      (ngModelChange)="OnTextChanged('txtInsuranceEmergencyDrugs', $event)"></textarea>
+                    <span class="error-line" style="top: 135px;" placement="bottom"
+                      ngbTooltip="{{lblInsuranceEmergencyDrugs}}">{{lblInsuranceEmergencyDrugs}}</span>
+  
+                    <!-- <svg>
+                                <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-warning"></use>
+                                <title>{{lblInsuranceEmergencyDrugs}}</title>
+                            </svg> -->
+                  </div>
+                </div>
+  
+  
+                <div *ngIf="showsecondarymedicaldetails">
+                  <div class="combobox pos-rel card" [ngClass]="{'error': lblInsuranceProvider !== undefined}">
+                    <div class="text-control cmbbox ddlist" ngbDropdown>
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-file-text"></use>
+                      </svg>
+  
+                      <input type="text" placeholder="Insurance provider (optional)"
+                        (keypress)="common.DisableSpecialCharOnKeyPress($event)" [(ngModel)]="txtInsuranceProvider"
+                        (ngModelChange)="OnTextChanged('txtInsuranceProvider', $event)">
+                      <span class="error-line" placement="bottom"
+                        ngbTooltip="{{lblInsuranceProvider}}">{{lblInsuranceProvider}}</span>
+                      <!-- <svg>
+                                  <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-warning"></use>
+                                  <title>{{lblInsuranceProvider}}</title>
+                              </svg> -->
+                    </div>
+                  </div>
+  
+  
+  
+  
+                  <div class=" pos-rel card" [ngClass]="{'error': lblInsurancePolicyNo !== undefined}">
+                    <div class="text-control">
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-file-text"></use>
+                      </svg>
+  
+                      <input type="text" placeholder="Policy number (optional)"
+                        (keypress)="common.DisableSpecialCharOnKeyPress($event)" [(ngModel)]="txtInsurancePolicyNo"
+                        (ngModelChange)="OnTextChanged('txtInsurancePolicyNo', $event)">
+                      <span class="error-line" placement="bottom"
+                        ngbTooltip="{{lblInsurancePolicyNo}}">{{lblInsurancePolicyNo}}</span>
+                      <!-- <svg>
+                                  <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-warning"></use>
+                                  <title>{{lblInsurancePolicyNo}}</title>
+                              </svg> -->
+                    </div>
+                  </div>
+  
+                  <!-- ABHA NUMBER  -->
+  
+                  <div class="combobox pos-rel card" [ngClass]="{'error': lblAbhaNumber!== undefined}">
+                    <div class="text-control cmbbox ddlist" ngbDropdown>
+                      <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-file-text"></use>
+                      </svg>
+  
+                      <textarea cols="5" rows="2" (keypress)="common.DisableSpecialCharOnKeyPress($event)"
+                        placeholder="ABHA number (Govt health ID number , optional)" [(ngModel)]="txtAbhaNumber"
+                        (ngModelChange)="OnTextChanged('txtAbhaNumber', $event)"></textarea>
+  
+  
+                      <span class="error-line" placement="bottom" ngbTooltip="{{lblAbhaNumber}}">{{lblAbhaNumber}}</span>
+  
+                    </div>
+                  </div>
+  
+  
+                  <div class="organdonor">
+                    <p>
+                      <input type="checkbox" id="organdonor" [(ngModel)]="chkOrganDonor">
+                      <label for="organdonor">Organ donor</label>
+                    </p>
+                  </div>
+                </div>
+  
+                <div style="color:#ce2424; display: flex;text-align: center;justify-content: center;"
+                  (click)="togglesecondarymedicaldetails()" *ngIf="!isDivOneClicked">Add Additional details +</div>
+  
+  
+  
+              </div>
+            </ng-template>
+          </li>
+  
+          <!-- postal code -->
+          <li [ngbNavItem]="4">
+            <ng-template ngbNavContent>
+              <div class="col-12 col-sm-12 col-md-12 col-xl-12 createID no-padding">
+  
+                <div class="row mb-2">
+  
+  
+                  <div>
+                    <p
+                      style="background-color: #f1f1f1;border-color: #f1f1f1;color:black;font-size: 15px;display: flex;text-align: center;justify-content: center;margin-top: -20px;font-weight: 500;">
+                      Step [4/4]</p>
+                  </div>
+                  <div>
+                    <p
+                      style="background-color: #f1f1f1;border-color: #f1f1f1;color:red;font-size: 25px;display: flex;text-align: center;justify-content: center;margin-top: -15px;font-weight: 500;margin-left: 60px;margin-right: 45px;text-wrap: nowrap;">
+                      Postal address</p>
+                  </div>
+                  <div class="mb-2" style="display: flex;justify-content: center;text-align: center;">
+                    <span style="font-size: 12PX;"> To receive a free printed copy of the family health card, please
+                      provide your detailed
+                      address</span>
+                  </div>
+  
+  
+  
+  
+  
+                  <!-- <span  style="font-size: 12PX;">  <span class="info-symbol">&#x2139;</span> These details will help the doctor/first aider make the right decisions during emergencies</span>  -->
+  
+                </div>
+  
+  
+  
+  
+  
+                <div class=" pos-rel card" [ngClass]="{'error': lblPostalAddress !== undefined}">
+                  <div class="text-control">
+                    <svg style="top: 20px;">
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-file-text"></use>
+                    </svg>
+  
+  
+  
+                    <input type="text" placeholder="Door/house/flat number" [(ngModel)]="txtPostalAddress"
+                      (ngModelChange)="OnTextChanged('txtPostalAddress', $event)" >
+  
+                    <span class="error-line" placement="bottom"
+                      ngbTooltip="{{lblPostalAddress}}">{{lblPostalAddress}}</span>
+  
+                  </div>
+                </div>
+  
+  
+                <div class=" pos-rel card" [ngClass]="{'error': lblEhouseNo !== undefined}">
+                  <div class="text-control">
+                    <svg style="top: 20px;">
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-file-text"></use>
+                    </svg>
+  
+  
+                    <input type="text" placeholder="Area/Street/Landmark" [(ngModel)]="txtEhouseNo"
+                      (ngModelChange)="OnTextChanged('txtEhouseNo', $event)">
+  
+                    <span class="error-line" placement="bottom" ngbTooltip="{{lblEhouseNo}}">{{lblEhouseNo}}</span>
+  
+                  </div>
+                </div>
+  
+  
+                <div class=" pos-rel card" [ngClass]="{'error': lblEcity !== undefined}">
+                  <div class="text-control">
+                    <svg style="top: 20px;">
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-file-text"></use>
+                    </svg>
+  
+  
+  
+                    <input type="text" placeholder="City" [(ngModel)]="txtEcity"
+                      (ngModelChange)="OnTextChanged('txtEcity', $event)">
+  
+                    <span class="error-line" placement="bottom" ngbTooltip="{{lblEcity}}">{{lblEcity}}</span>
+  
+                  </div>
+                </div>
+  
+  
+                <div class=" pos-rel card" [ngClass]="{'error': lblEstate !== undefined}">
+                  <div class="text-control">
+                    <svg style="top: 20px;">
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-file-text"></use>
+                    </svg>
+  
+  
+                    <input type="text" placeholder="State" [(ngModel)]="txtEstate"
+                      (ngModelChange)="OnTextChanged('txtEstate', $event)">
+  
+                    <span class="error-line" placement="bottom" ngbTooltip="{{lblEstate}}">{{lblEstate}}</span>
+  
+                  </div>
+                </div>
+  
+  
+                <div class="pos-rel card" [ngClass]="{'error': lblPostalPincode !== undefined}">
+                  <div class="text-control">
+                    <svg>
+                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-file-text"></use>
+                    </svg>
+  
+                    <input type="text" placeholder="pincode" [(ngModel)]="txtPostalPincode"
+                      (ngModelChange)="OnTextChanged('txtPostalPincode', $event)"
+                      (keypress)="common.AllowOnlyNumbers($event)">
+  
+  
+  
+                    <span class="error-line" placement="bottom"
+                      ngbTooltip="{{lblPostalPincode}}">{{lblPostalPincode}}</span>
+  
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </li>
+  
+  
+        </ul>
+  
+        
+  
+  
+        <div [ngbNavOutlet]="nav" class="mt-2 full-width"></div>
+      </div>
+      <div class="row controls">
+        <div class="col-12 col-sm-12 col-md-12 col-xl-12 register">
+  
+  
+          <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="activeTabId < 4"
+            (click)="OnClickNext()">Next</button>
+  
+          <button type="button" class="btn btn-sm btn-outline-secondary rd-button" *ngIf="activeTabId === 4"
+            (click)="OnClickEditSubmit()">Submit</button>
+          <!-- <button type="button" class="btn btn-sm btn-outline-secondary" (click)="modal.close('Cancel');">Cancel</button> -->
+        </div>
+        <div style="color:#ce2424; display: flex;text-align: center;justify-content: center;margin-top: 5px;"
+          *ngIf="activeTabId > 1" (click)="OnClickBack()">
+          < back</div>
+  
+        </div>
+  
+      </div>
+  </ng-template>
+  
+  <!-- OnClickCorpSubmit -->
+  
+  
+  <ng-template #donation let-modal>
+    <div class="modal-body">
+      <div class="row logo">
+        <!-- <span>VMEDO</span> -->
+        <label (click)="modal.close('Cancel');">
+          <svg>
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-cross"></use>
+          </svg>
+        </label>
+      </div>
+      <div class="row title">
+        <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+          <div class="card" style="padding: 20px; border-radius: 50%;">
+            <svg>
+              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-aid-kit"></use>
+              <title>{{isDonationEdit === true ? 'Update' : 'New'}} Donation</title>
+            </svg>
+          </div>
+          {{isDonationEdit === true ? 'Update' : 'New'}} Donation
+        </div>
+      </div>
+      <div class="row no-padding">
+        <div class="col-12 col-sm-12 col-md-12 col-xl-12 date pos-rel card"
+          [ngClass]="{'error': lblDonationDate !== undefined}">
+          <div class="text-control">
+            <svg>
+              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-calendar"></use>
+            </svg>
+  
+            <input type="text" placeholder="Date" [(ngModel)]="txtDonationDate"
+              (ngModelChange)="OnTextChanged('txtDonationDate', $event)" ngbDatepicker #d="ngbDatepicker"
+              [minDate]="{year: 1950, month:1, day: 1}" [maxDate]="maxDate" (click)="d.toggle()" readonly>
+            <span class="error-line" placement="bottom" ngbTooltip="{{lblDonationDate}}">{{lblDonationDate}}</span>
+            <!-- <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-warning"></use>
+                        <title>{{lblDonationDate}}</title>
+                    </svg> -->
+          </div>
+        </div>
+      </div>
+      <div class="row location no-padding">
+        <div class="col-12 col-sm-12 col-md-12 col-xl-12 pos-rel card"
+          [ngClass]="{'error': lblDonationLocation !== undefined}">
+          <div class="text-control">
+            <svg>
+              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-location"></use>
+            </svg>
+  
+            <input type="text" placeholder="Location" (keypress)="common.DisableSpecialCharOnKeyPress($event)"
+              [(ngModel)]="txtDonationLocation" [ngbTypeahead]="search" (focus)="focus$.next($any($event).target.value)"
+              (click)="click$.next($any($event).target.value)" #instance="ngbTypeahead">
+            <span class="error-line" placement="bottom"
+              ngbTooltip="{{lblDonationLocation}}">{{lblDonationLocation}}</span>
+            <!-- <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-warning"></use>
+                        <title>{{lblDonationLocation}}</title>
+                    </svg> -->
+          </div>
+        </div>
+      </div>
+      <div class="row no-padding">
+        <div class="col-12 col-sm-12 col-md-12 col-xl-12 pos-rel card"
+          [ngClass]="{'error': lblDonationComments !== undefined}">
+          <div class="text-control">
+            <svg style="top: 23px;">
+              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-chat-bubble-dots"></use>
+            </svg>
+  
+            <textarea placeholder="Comments" cols="5" rows="5" [(ngModel)]="txtDonationComments"
+              (ngModelChange)="OnTextChanged('txtDonationComments', $event)"></textarea>
+            <span class="error-line" placement="bottom"
+              ngbTooltip="{{lblDonationComments}}">{{lblDonationComments}}</span>
+            <!-- <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-warning"></use>
+                        <title>{{lblDonationComments}}</title>
+                    </svg> -->
+          </div>
+        </div>
+      </div>
+      <div class="row controls">
+        <div class="col-12 col-sm-12 col-md-12 col-xl-12 register">
+          <button type="button" class="btn btn-sm btn-outline-secondary"
+            (click)="OnClickSubmitNewBloodDonation()">{{isDonationEdit === true ? 'Update' : 'Submit'}}</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary" (click)="modal.close('Cancel');">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  
+  
+  <ng-template #registerAsDonor let-modal>
+    <div class="modal-body">
+      <div class="row logo">
+        <!-- <span>VMEDO</span> -->
+        <label (click)="modal.close('Cancel');">
+          <svg>
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-cross"></use>
+          </svg>
+        </label>
+      </div>
+      <div class="row title">
+        <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+          <div class="card" style="padding: 20px; border-radius: 50%;">
+            <svg>
+              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user"></use>
+            </svg>
+          </div>
+          <!-- {{donorEntityType === 'add' ? 'Register As Blood Donor' : 'Update Blood Donor'}} -->
+          {{!chkBloodDonor ? 'Register As Blood Donor' : 'Update Blood Donor'}}
+        </div>
+      </div>
+  
+      <div class="row location no-padding">
+        <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblDonorLocation !== undefined}">
+          <div class="text-control">
+            <svg>
+              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-location"></use>
+            </svg>
+  
+            <input type="text" placeholder="Location" (keypress)="common.DisableSpecialCharOnKeyPress($event)"
+              [(ngModel)]="txtDonorLocation"
+              (ngModelChange)="OnTextChanged('txtDonorLocation', $event); OnSelectDonorLocation(txtDonorLocation);"
+              [ngbTypeahead]="searchLocation" (focus)="focus$.next($any($event).target.value)"
+              (click)="click$.next($any($event).target.value)" #instance="ngbTypeahead">
+            <span class="error-line" placement="bottom" ngbTooltip="{{lblDonorLocation}}">{{lblDonorLocation}}</span>
+  
+          </div>
+        </div>
+      </div>
+      <div class="row bloodgroup no-padding">
+        <div class="col-12 col-sm-12 col-md-12 col-xl-12 combobox card"
+          [ngClass]="{'error': lblDonorBloodGroup !== undefined}">
+          <div class="text-control" ngbDropdown>
+            <svg>
+              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-droplet"></use>
+            </svg>
+  
+            <input type="text" style="cursor: pointer;" placeholder="Blood group" id="dropdownBloodGroup2"
+              [(ngModel)]="txtDonorBloodGroup" (ngModelChange)="OnTextChanged('txtDonorBloodGroup', $event)"
+              ngbDropdownToggle readonly>
+            <span class="error-line" placement="bottom" ngbTooltip="{{lblDonorBloodGroup}}">{{lblDonorBloodGroup}}</span>
+            <div ngbDropdownMenu aria-labelledby="dropdownBloodGroup2">
+              <div ngbDropdownItem *ngFor="let group of bloodGroups"
+                (click)="txtDonorBloodGroup = group; OnTextChanged('txtDonorBloodGroup', undefined);">
+                {{group}}</div>
+            </div>
+            <svg class="dropdown" ngbDropdownToggle style="display: block !important;">
+              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-cheveron-down"></use>
+            </svg>
+  
+          </div>
+        </div>
+      </div>
+      <div class="row controls">
+        <div class="col-12 col-sm-12 col-md-12 col-xl-12 register">
+          <!-- <button type="button" class="btn btn-sm btn-outline-secondary" (click)="OnClickRegisterDonor()">{{donorEntityType === 'add' ? 'Register' : 'Update' }}</button> -->
+          <button type="button" class="btn btn-sm btn-outline-secondary" (click)="OnClickRegisterDonor()">{{!chkBloodDonor
+            ? 'Register' : 'Update' }}</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary" (click)="modal.close('Cancel');">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  
+  <ng-template #emidVisitors let-modal>
+    <div class="modal-body" style="max-height: calc(100vh - 15px); overflow: auto; font-size: 12px;">
+      <div class="row logo">
+        <!-- <span>VMEDO</span> -->
+        <label (click)="modal.close('Cancel');">
+          <svg>
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-cross"></use>
+          </svg>
+        </label>
+      </div>
+      <div class="row title">
+        <div class="col-12 col-sm-12 col-md-12 col-xl-12" style="font-size: 14px;">
+          <div class="card" style="padding: 20px; border-radius: 50%;margin-bottom: 10px !important;">
+            <svg>
+              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-emergency-id"></use>
+            </svg>
+          </div>
+          Emergency ID Profile Visitors
+        </div>
+      </div>
+      <div class="row no-padding">
+        <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" style="padding: 0;">
+          <div class="row" style="width: 100%; font-weight: 600;">
+            <div class="col-4 col-sm-4 col-md-4 col-xl-4" style="padding: 10px 15px 0 15px; justify-content: flex-start;">
+              Visited On</div>
+            <div class="col-4 col-sm-4 col-md-4 col-xl-4" style="padding: 10px 15px 0 15px; justify-content: flex-start;">
+              Name</div>
+            <div class="col-4 col-sm-4 col-md-4 col-xl-4" style="padding: 10px 15px 0 15px;">Contact No</div>
+          </div>
+          <div class="row" style="width: 100%;">
+            <div class="no-padding" style="width: 100%;
+                      height: calc(100vh - 245px);
+                      overflow: auto;
+                      display: flex;
+                      flex-direction: column;
+                      align-items: flex-start;
+                      justify-content: flex-start;
+                      font-size: 11px;">
+              <div class="row profile-visitor" style="width: 100%;" *ngFor="let visitor of visitors;">
+                <div class="col-4 col-sm-4 col-md-4 col-xl-4" style="justify-content: flex-start;">
+                  {{visitor.visited_on | date:'medium'}}</div>
+                <div class="col-4 col-sm-4 col-md-4 col-xl-4" style="justify-content: flex-start;">
+                  {{visitor.vname}}</div>
+                <div class="col-4 col-sm-4 col-md-4 col-xl-4">{{visitor.vmobile}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  
+  <ng-template #information let-modal>
+    <div class="modal-body">
+      <div class="row logo">
+        <span style="display:flex; justify-content:center;text-align: center;">VMEDO</span>
+        <span style="font-size: 75%; margin: 7px;display:flex; justify-content:center;text-align: center;">What is emergency card ?</span>
+        <label (click)="modal.close('Cancel');">
+          <svg>
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-cross"></use>
+          </svg>
+        </label>
+  
+      </div>
+  
+  
+      <div class="row title">
+        <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+          <ul style="font-size: 65%;color: black;">
+            <li >
+            
+              Creating an emergency card allows bystanders to access your medical information and inform your emergency contacts using the card's QR code, bridging the information gap during critical situations.
+            </li>
+            <li class="mt-2">
+              Subscribers or cardholders can contact VMEDO and provide their card number to receive assistance during medical emergencies, such as ambulance booking, doctor consultations, and lab tests.
+            </li>
+          </ul>
+  
+  
+  
+          <br>
+          
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+
+  <!-- new feature rolling out soon -->
+
+  <ng-template #newfeature let-modal>
+    <div class="modal-body">
+      <div class="row logo">
+        <span style="display:flex; justify-content:center;text-align: center;">VMEDO</span>
+        
+        <label (click)="modal.close('Cancel');">
+          <svg>
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-cross"></use>
+          </svg>
+        </label>
+  
+      </div>
+  
+  
+      <div class="row title">
+        <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+          
+          
+  
+  <p style="display: flex;text-align: center;justify-content: center;color: #000;font-size: 15px;font-weight: 500;">Feature to be rolled out soon</p>
+  
+         
+          
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  
+  <!-- view profile details modal -->
+  
+  <ng-template #viewProfileDetails let-modal>
+    <div class="modal-body" style="max-height: calc(100vh - 15px); overflow: auto; font-size: 12px;">
+      <div class="row logo">
+        <!-- <span>VMEDO</span> -->
+        <label (click)="CloseviewProfileDetailsModal()">
+          <svg>
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-cross"></use>
+          </svg>
+        </label>
+      </div>
+      <div class="row title">
+        <div class="row title">
+          <div class="circle-wrap">
+            <div class="circle">
+              <div class="mask full-1">
+                <div class="fill-1"></div>
+              </div>
+              <div class="mask half">
+                <div class="fill-1"></div>
+              </div>
+              <div class="inside-circle">
+                <p class="insidecircle">{{completionPercentage}}%</p>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <div class="row no-padding" style="margin-top: -20px;">
+        
+        <h5 class="mt-3" style="font-size: 15px;display: flex;justify-content: center;text-align: center;">Emergency card details updated</h5>
+        <div class="row" style="width: 100%;">
+          <div class="col-12">
+            <mat-card (click)="OnClickoneNext(txtCardNumber)" style="margin-left: 5px;margin-right: 5px;box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);border-radius: 10px;" class="col-5">
+              <img class="personladetails" src="assets\Profile-home\profile\personal-details.png" alt="" style="height: 45px;width: 45px;border-radius: 10%;margin-left: 34px;">
+              <p class="fs-10 mt-1" style="display: flex;text-align: center;justify-content: center;font-weight: 800;">
+                Personal <br> Details</p>
+            </mat-card>
+            <mat-card (click)="OnClicktwoNext(txtCardNumber)" class="col-5" style="margin-left: 5px;margin-right: 5px;box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);border-radius: 10px;">
+              <img src="assets\Profile-home\profile\emergency-contacts.png" class="personladetails" alt="" style="height: 50px;width: 50px;border-radius: 10%;margin-left: 34px;">
+              <p class="fs-10 mt-1" style="display: flex;text-align: center;justify-content: center;font-weight: 800;">
+                Emergency <br> Contacts</p>
+            </mat-card>
+          </div>
+
+        </div>
+        <div class="row" style="width: 100%;">
+          <div class="col-12">
+            <mat-card (click)="OnClickthreeNext(txtCardNumber)" style="margin-left: 5px;margin-right: 5px;box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);border-radius: 10px;"
+              class="col-5">
+              <img src="assets\Profile-home\profile\medical-details.png" alt="" class="personladetails" style="height: 50px;width: 50px;border-radius: 10%;margin-left: 30px;">
+              <p class="fs-10 mt-1" style="display: flex;text-align: center;justify-content: center;font-weight: 800;">
+                Medical <br> Details</p>
+            </mat-card>
+            <mat-card (click)="OnClickfourNext(txtCardNumber)" class="col-5"
+              style="margin-left: 5px;margin-right: 5px;box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);border-radius: 10px;">
+              <img src="assets\Profile-home\profile\postal-address.png" class="personladetails" alt="" style="height: 50px;width: 50px;border-radius: 10%;margin-left: 30px;">
+              <p class="fs-10 mt-1" style="display: flex;text-align: center;justify-content: center;font-weight: 800;">
+                Postal <br> Address</p>
+            </mat-card>
+          </div>
+
+          <!-- <button (click)="OnClickTotalVisitors(txtCardNumber)">View Visitors</button> -->
+
+
+
+
+
+          <!-- <span (click)="OnClickDeleteEmergencyCard(emID)" style="color: #000 !important;">
+            <svg style="fill: #888 !important;">
+              <use xlink:href="./../assets/icon/svg/symbol-defs.svg#icon-trash"></use>
+              <title>Delete</title>
+            </svg>
+            Delete
+          </span> -->
+
+        </div>
+        <div class="row mt-1" (click)="OnClicklDownloadEmergencyCardID(profileID)" style="width: 70%;">
+          <div class="col-3">
+            <img src="assets\Profile-home\profile\download.png" alt="" style="height: 15px;width: 15px;">
+          </div>
+          <div class="col-6">
+            <span style="font-size: 15px;text-wrap: nowrap;margin-top: 4px;">Download your Card</span>
+          </div>
+          <div class="col-3">
+            <img class="" src="assets\Profile-home\profile\skip.png" style="height: 13px;width: 13px;"
+            onerror="" alt="User Image">
+          </div>
+        </div>
+
+        <div class="row mt-1" (click)="OnClickViewProfileDetails()" style="width: 70%;">
+          <div class="col-3">
+            <img src="assets\Profile-home\profile\view-profile.png" alt="" style="height: 15px;width: 15px;">
+          </div>
+          <div class="col-6">
+            <span style="font-size: 15px;text-wrap: nowrap;margin-top: 4px;">View profile visitors</span>
+          </div>
+          <div class="col-3">
+            <img class="" src="assets\Profile-home\profile\skip.png" style="height: 13px;width: 13px;"
+            onerror="" alt="User Image">
+          </div>
+        </div>
+
+        <div class="row mt-1" (click)="OnClickDeleteEmergencyCard(txtCardNumber)" style="width: 70%;">
+          <div class="col-3">
+            <img src="assets\Profile-home\profile\delete-emergency-card.png" alt="" style="height: 15px;width: 15px;">
+          </div>
+          <div class="col-6">
+            <span style="font-size: 15px;text-wrap: nowrap;margin-top: 4px;">Delete selected card</span>
+          </div>
+          <div class="col-3">
+            <img class="" src="assets\Profile-home\profile\skip.png" style="height: 13px;width: 13px;"
+            onerror="" alt="User Image">
+          </div>
+        </div>
+        
+        
+      </div>
+    </div>
+  </ng-template>
+
+
+  

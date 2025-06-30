@@ -1,0 +1,964 @@
+<div class="container-fluid" style="height: calc(100% + -71px);">
+
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-lg-12" id="navigation">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand">
+          <svg class="logo logo-md" style="height: 20px; width: 100px;">
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo"></use>
+          </svg>
+          <svg [routerLink]="'/home'" class="logo logo-sm" style="height: 30px; width: 100px;">
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo-white"></use>
+          </svg>
+        </a>
+        <div *ngIf="common.auth_token !== undefined && common.auth_token !== null"
+          class="profile-icon back pull-right btn btn-sm btn-outline-secondary" [routerLink]="'/dashboard/corporate/1'"
+          placement="bottom" ngbTooltip="Profile" style="margin-right: 40px;">
+          <svg class="">
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user-solid-circle"></use>
+          </svg>
+        </div>
+        <div class="back pull-right btn btn-sm btn-outline-secondary" [routerLink]="'/dashboard/corporate/2'"
+          placement="bottom" ngbTooltip="Back">
+          <svg class="">
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-back"></use>
+          </svg>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <div class="row body">
+
+    <div id="htmlData" #hi>
+      <div class="container">
+        <div class="section wf-section">
+          <img src="assets/img/emcard_logo.png" loading="lazy" style="height: 3cm;width: 6.5cm;margin-top: 1cm;" alt=""
+            class="image">
+        </div>
+        <div class="wf-section">
+          <h4 class="heading" style="font-size: 15pt;margin-top: 0.292in;margin-bottom: 0.0px;font-weight: 500;">WITH
+            YOU
+            WHEN YOU NEED THE MOST</h4>
+        </div>
+
+        <div class="todocolor" style="font-size: 8.8pt;margin-bottom: 0.157in;margin-top: 0.469in;">To do: <span
+            class="text-span">Carry the Emergency Card in your bag or wallet.
+            Paste the QR code stickers on your mobile phones, bike helmets, and car windshield.</span>
+        </div>
+
+        <div class="todocolor" style="font-size: 8.8pt;margin-bottom: 0.414in;">Benefit: <span class="text-span">During
+            medical emergencies, bystanders, first responders, or
+            doctors can scan the QR to get your critical medical information,administer the right first aid, notify your
+            emergency contacts, and hence save your life !<br> <br></span>
+        </div>
+
+        <div class="container">
+
+          <div class="row" style="margin-bottom: 37%;">
+            <div class="col col-5">
+
+              <div class="text-block-2" style="font-size: 13pt;">For Mobile / Laptop / Keychain</div>
+
+
+              <div class="section-2 wf-section">
+
+
+                <div class="mobilesquareoutline">
+
+
+                  <div id="mobilesquarered" style="margin-top: 2%;">
+
+                    <span class="mobiletextcolor">MEDICAL EMERGENCY ?</span>
+
+                  </div>
+
+
+                  <div id="mobileqrcodeimage">
+
+                    <qrcode [qrdata]=userDataUrl [colorLight]="'#fff669'" [margin]="0" [colorDark]="'#212529ff'"
+                      [width]="65">
+                    </qrcode>
+
+
+
+                  </div>
+
+
+
+                </div>
+
+
+
+
+              </div>
+
+
+
+              <!-- Bike or helmet QR code -->
+
+
+              <div class="wf-section">
+
+
+                <div class="text-block-3" style="font-size: 11pt; margin-right: 0%; margin-bottom: -8px;">For Bike /
+                  Helmet</div>
+              </div>
+
+
+              <div class="section-3 wf-section" style=" margin-right: -7%; margin-top: 1%;">
+
+                <div id="bikesquareoutline">
+
+
+
+
+
+                  <div id="bikesquarered">
+
+                    <span class="biketextcolor" style="font-size: 10px;">IN CASE OF MEDICAL EMERGENCY</span>
+
+                  </div>
+
+
+                  <div id="bikescanqrcode">
+
+                    <span>SCAN QR CODE</span>
+
+                  </div>
+
+                  <div id="bikeqrcodeimage">
+
+                    <qrcode [qrdata]=userDataUrl [colorLight]="'#fff669'" [margin]="0" [colorDark]="'#212529ff'"
+                      [width]="120">
+                    </qrcode>
+
+
+
+                  </div>
+
+                  <div id="biketext">
+
+                    <span>For bike or helmet</span>
+
+                  </div>
+
+                  <div id="bikescanusername">
+
+                    <!-- <span>{{emid}}</span> -->
+                    <span class="bikescanusernamecolor" style="letter-spacing: 1px;"> <strong>{{emid}}</strong> </span>
+
+
+                  </div>
+
+
+                  <div id="bikesquarered2">
+
+                    <span class="biketextcolor2" style="letter-spacing: 1px;">VMEDO.COM</span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+
+
+            </div>
+
+
+            <div class="col col-7">
+              <div class="text-block-4" style="font-size: 13pt; margin-right: 1%;">For Car Windshield</div>
+
+              <!-- QR Code Template -->
+
+              <div class="section-4 wf-section" style="margin-top: 0%; margin-left: 4%;">
+
+                <div id="squareoutline">
+
+
+                  <div id="squarered">
+
+                    <span class="textcolor">IN CASE OF MEDICAL EMERGENCY</span>
+
+                  </div>
+
+
+
+                  <div id="scanqrcode">
+
+                    <span>SCAN QR CODE</span>
+
+                  </div>
+
+                  <div id="qrcodeimage">
+
+                    <qrcode [qrdata]=userDataUrl [colorLight]="'#fff669'" [colorDark]="'#212529ff'" [margin]="0"
+                      [width]="220">
+                    </qrcode>
+
+
+
+                  </div>
+
+                  <div id="cartext">
+
+                    <span>For car windshield</span>
+
+                  </div>
+
+
+                  <div>
+
+
+
+                    <div id="scanusername">
+
+                      <!-- <span>{{emid}}</span> -->
+                      <span class="scanusernamecolor" style="letter-spacing: 1px;"> <strong>{{emid}}</strong> </span>
+
+
+                    </div>
+
+                  </div>
+
+
+                  <div id="squarered2">
+
+                    <span class="textcolor2" style="letter-spacing: 2px;">VMEDO.COM</span>
+
+                  </div>
+
+                </div>
+
+
+
+              </div>
+
+
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+
+    </div>
+
+
+    <div id="htmlData2" #hii>
+      <div class="container" style="border: 17px solid #ffffff; padding: 0px;">
+
+        <div class="container" style="border: 10px solid #bb1717;">
+
+          <span style="font-size: 12px;">Card number - {{slNo}}</span>
+
+
+
+          <div class="letterlogo">
+            <img src="assets/img/vmedologo.png" loading="lazy" style="height: 1.5cm; margin-top: -1%;margin-left: 32%;"
+              alt="" class="image">
+          </div>
+
+          <!-- If the user is a premium member -->
+
+          <div *ngIf="isPaidMember">
+            <div class="lettertext" style="margin-top: 1%;font-size:12.5px;padding: 0px 27px;">
+
+              <p style="font-weight: 600;">Hello {{username}},</p>
+
+              <p>Welcome to VMEDO! You are now covered under the VMEDO Emergency Subscription. Now you have ensured
+                guaranteed Emergency assistance 24x7 across India.</p>
+
+              <!-- Information Table -->
+
+
+              <table class="blueTable">
+                <tbody>
+                  <tr>
+                    <td>
+                      <div style="font-weight: 600;">
+                        Subscription Type
+                      </div>
+
+                      <div>
+                        Premium
+                      </div>
+                    </td>
+
+                    <td>
+                      <div style="font-weight: 600;">
+                        Subscription date
+                      </div>
+
+                      <div>
+                        {{subscribedDate | date:'dd/MM/yyyy'}}
+                      </div>
+                    </td>
+
+                    <td>
+                      <div style="font-weight: 600;">
+                        Subscribed By
+                      </div>
+
+                      <div>
+                        {{txtName}}
+                      </div>
+                    </td>
+
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div style="font-weight: 600;">
+                        Package name
+                      </div>
+
+                      <div>
+                        {{package_Name}}
+                      </div>
+                    </td>
+
+                    <td>
+                      <div style="font-weight: 600;">
+                        Valid till
+                      </div>
+
+                      <div>
+                        {{pckage_validity | date:'dd/MM/yyyy'}}
+
+                      </div>
+                    </td>
+
+                    <td>
+                      <div style="font-weight: 600;">
+                        Card number
+                      </div>
+
+                      <div>
+                        {{slNo}}
+                      </div>
+                    </td>
+
+                  </tr>
+
+
+                </tbody>
+
+              </table>
+
+
+              <div class="mt-2">
+
+                <span><strong>Steps to Follow: </strong></span>
+
+                <div class="mt-1">
+                  <span>1. Please cut the Emergency Health Card attached below and keep it in your wallet, purse, etc
+                    for easy </span>
+
+                  <div>
+                    &nbsp;&nbsp; accessibility.
+                  </div>
+                </div>
+
+                <div class="mt-1">
+                  <span>2. In case of any Medical Emergency, you can call VMEDO Helpline - 9343180000 directly and
+                    mention the</span>
+
+                  <div>
+                    &nbsp;&nbsp; Emergency health card number to get Emergency assistance and membership benefits.
+                  </div>
+
+                </div>
+
+              </div>
+
+
+
+              <!-- VMEDO OnBoarding Kit -->
+
+              <div class="mt-2">
+                <p><strong>Onboarding Kit: </strong></p>
+              </div>
+
+
+
+              <table class="OnboardTable">
+                <tbody>
+                  <tr>
+                    <td>
+
+                      <div>
+                        For 24x7 Medical Assistance
+                      </div>
+
+                    </td>
+
+                    <td>
+
+                      <div>
+                        Ambulance bookings, hospital
+
+
+                      </div>
+
+                      <div>
+                        information, doctor consultation
+                      </div>
+
+                    </td>
+
+                    <td>
+
+                      <div>
+                        Call VMEDO Helpline
+                      </div>
+
+                      <div>
+                        +91-9343180000
+                      </div>
+                    </td>
+
+                  </tr>
+                  <tr>
+                    <td>
+
+                      <div>
+                        Basic First aid training
+                      </div>
+                    </td>
+                    <td>
+                      <div>
+                        Get trained in Basic First aid skills
+                      </div>
+                      <div>
+                        get 50% discount on the course
+                      </div>
+
+                      <div style="font-weight: 600;">
+                        (USE CODE: SUB50)
+                      </div>
+                    </td>
+
+                    <td>
+
+                      <div>
+                        Follow the link below
+                      </div>
+
+                      <div>
+                        <a href=" https://bit.ly/41NSzii " style="color: black;"> https://bit.ly/41NSzii </a>
+                      </div>
+                    </td>
+
+
+                  </tr>
+                  <tr>
+                    <td>
+                      <div>
+                        Medical supply purchase
+                      </div>
+                    </td>
+                    <td>
+                      <div>
+                        Get a 5% additional discount Flat
+
+
+
+                      </div>
+
+                      <div>
+                        discount on your every purchase at
+                      </div>
+
+                      <div>
+                        the VMEDO store
+                      </div>
+
+                      <div style="font-weight: 600;">
+                        (USE CODE: SUBSCRIBE5)
+                      </div>
+                    </td>
+
+
+                    <td>
+
+                      <div>
+                        Follow the link below
+                      </div>
+
+                      <div>
+                        <a href=" https://store.vmedo.com/" style="color: black;"> https://store.vmedo.com/</a>
+                      </div>
+                    </td>
+
+                  </tr>
+                  <tr>
+                    <td>
+                      <div>
+                        Free Doctor consultation
+                      </div>
+                    </td>
+                    <td>
+                      <div>
+                        Unlimited online doctor
+                      </div>
+
+                      <div>
+                        consultation
+                      </div>
+                    </td>
+                    <td>
+
+                      <div>
+                        Call VMEDO Helpline
+                      </div>
+
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div>
+                        Discounts on Hospital bills, Ambulance and Health checkups
+                      </div>
+                    </td>
+                    <td>
+                      <div>
+                        Get discounts on hospital bills at
+                      </div>
+
+                      <div>
+                        vmedo partnered hospitals,
+                      </div>
+
+                      <div>
+                        ambulances and health checkups
+                      </div>
+                    </td>
+                    <td>
+                      <div>
+                        Call VMEDO Helpline
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+
+              <div class="mt-2">
+                <div>
+
+                  Please check VMEDO Terms and condition for more details : https://vmedo.com/vmedo-terms.html
+                </div>
+                <div>
+                  Hope you never have to use this subscription, but hey, if you have to, VMEDO will be there for you,
+                  always!
+                </div>
+
+              </div>
+
+
+              <div class="lettersignature">
+                <img src="assets\images\new_images\welcome_signature.png" loading="lazy" style="    height: 1.2cm;
+              width: 3.5cm;
+              margin-top: 0cm;
+              margin-left: -4%;" alt="" class="image">
+              </div>
+
+              <div class="letterregards mt-2 mb-1">
+
+                <div style="font-size: 12px; margin-left: 1%;">
+                  Praveen Gowdru
+                </div>
+
+                <div style="font-size: 12px; margin-left: 1%;">
+                  CEO, VMEDO
+                </div>
+
+              </div>
+
+
+
+
+
+            </div>
+          </div>
+
+
+
+
+
+         
+
+          <!-- *ngIf="isEmployee" -->
+          <div>
+            <!-- cover letter goes here -->
+          </div>
+
+        </div>
+
+
+        <div class="wf-section">
+          <img src="assets/img/line2.png" style="height: 22px;width: 100%;margin-top: 0.1in;" loading="lazy" alt="">
+        </div>
+
+        <div class="container">
+          <div class="row">
+
+            <div class="col col-6 section-2 wf-section" style="padding-right: 0px;">
+
+                <div class="card qrCard2" style="height: 55mm; width: 85mm;">
+    
+                  <div class="container">
+    
+                    <div class="row Top-Heading" style="background-color: #ce2424; height: 8mm;">
+    
+                      <div class="col-5" style="background-color: #eadd24; height: 7.5mm;">
+    
+                        <img src="assets/images/emid_images/vmedologoemid.png" style="width: 90%;" />
+    
+                        <div style="position: absolute; top: 0; right: 0px; width: 0; height: 8mm; border-top: 7.5mm solid transparent; border-right: 7.5mm solid #ce2424;"></div>
+    
+                      </div>
+    
+                      <div class="col-7" style="display: flex; align-items: center; justify-content: center; color: white;">
+    
+                        <div style="font-size: 9px; text-align: center;">
+                          EMERGENCY HEALTH CARD
+                        </div>
+    
+                      </div>
+                    </div>
+    
+                    <div class="row Main-content" style="height: 30mm;">
+    
+                      <div class="col-7 member-details" style="font-size: 11px; padding-left: 31px; padding-top: 17px;">
+    
+                        
+                       
+                        <div class="row member-name" style="height: 5mm; font-weight: 600; color: #a11e1e;">
+    
+                          Name -  {{ username }}
+    
+                        </div>
+    
+                        <div class="row Card-No" style="height: 5mm; font-weight: 600; color: #a11e1e;">
+    
+                          Card No - {{ slNo }}
+    
+                        </div>
+    
+                        <div class="row Card-Type" style="height: 5mm; font-weight: 600; color: #a11e1e;">
+    
+                          Card Type - Corporate
+    
+                        </div>
+    
+                        <div class="row Card-Type" style="height: 5mm; font-weight: 600; color: #a11e1e;">
+    
+                          Company - {{ orgName }}
+    
+                        </div>
+                       
+    
+                      </div>
+    
+                      <div class="col-5 QR-Code">
+    
+                        <div class="row" style=" padding-left: 12px; padding-top: 4px; display: flex; align-items: center; flex-direction: row; flex-wrap: nowrap;">
+    
+                          <img src="assets/images/emid_images/premium-icon-card.png" style="width: 18%; padding: 0px;" />
+                        
+                          <span style="font-size: 12px; padding-left: 8px;">Premium</span>
+                        
+                        </div>
+                        
+                        <div class="qrcodeImage">
+                          <qrcode
+                            [qrdata]='userDataUrl'
+                            [allowEmptyString]="true"
+                            [colorDark]="'#000000'"
+                            [colorLight]="'#eadd24'"
+                            [elementType]="'canvas'"
+                            [errorCorrectionLevel]="'M'"
+                            [scale]="1"
+                            [margin]="1"
+                            [width]="85"
+                          ></qrcode>
+                        </div>
+    
+               
+                      </div>
+    
+    
+                    </div>
+    
+                    <div class="row Description" style="height: 11mm;">
+    
+                      <div class="col-9" style="font-size: 9px; padding-top: 4px;padding-right: 6px;">
+                        In case of emergency, Scan the QR Code and get the emergency details of the user
+                      </div>
+    
+                    </div>
+    
+                    <div class="row Bottom-Heading" style="height: 5.5mm;background-color: #ce2424;">
+    
+                      <div class="col-8" style="display: flex; align-items: center; justify-content: center; color: white;padding-right: 0px;">
+    
+                        <div style="font-size: 10px; text-align: center;">
+                          24x7 Medical Emergency Assistance
+                        </div>
+    
+    
+    
+                      </div>
+    
+    
+    
+                      <div class="col-4" style="display: flex; align-items: center; justify-content: flex-start; color: white;padding: 0px;">
+    
+                        <div style="font-size: 11px; text-align: left;">
+    
+                          <img src="assets/images/emid_images/Mobile-Icon.png" style="width: 12%;" />
+    
+                          9343-18-0000
+                        </div>
+    
+                      </div>
+    
+                    </div>
+    
+    
+                  </div>
+    
+    
+                </div>
+    
+    
+              </div>
+
+
+
+              <div class="col col-6 section-2 wf-section" style="padding-left: 0px; margin-left: -22px;">
+
+                <div class="card qrCard2 qrCard2-back" #screen style="height: 55mm; width: 85mm;">
+    
+                  <div class="container">
+    
+                    <div class="row Top-Heading"
+                      style="background-color: #ce2424; height: 8mm; display: flex; align-items: center; justify-content: center; color: white;">
+    
+                      <div>
+    
+                        <div style="font-size: 11px; text-align: center;">
+                          CARD BENEFITS*
+                        </div>
+    
+                      </div>
+    
+                    </div>
+    
+                    <div class="row  Main-content" style="height: 41mm;">
+    
+                      <div class="container">
+    
+                        <div class="row premium-heading" style="height: 6.2mm;  display: flex;  align-items: center; justify-content: center;">
+    
+                          <div style="font-size: 11px; text-align: center;" >
+    
+                            (Only For Premium Card Member)
+    
+                          </div>
+    
+      
+                        </div>
+    
+                        <div class="container" style="text-align: left;">
+    
+                          <div class="row premium-heading" style="height: 5.6mm; display: flex; align-items: left; justify-content: left;">
+    
+                            <div style="font-size: 11px;  text-align: left;">
+      
+                              &#10003; 24x7 emergency assistance
+      
+                            </div>
+      
+        
+                          </div>
+      
+      
+                          <div class="row premium-heading" style="height: 5.6mm; display: flex; align-items: left; justify-content: left;">
+      
+                            <div style="font-size: 11px; text-align: left;">
+      
+                              &#10003; Unlimited & free doctor consultation
+      
+                            </div>
+      
+        
+                          </div>
+      
+                          <div class="row premium-heading" style="height: 5.6mm;  display: flex; align-items: left; justify-content: left;">
+      
+                            <div style="font-size: 11px; text-align: left;">
+      
+                              &#10003; Free emergency ambulance
+      
+                            </div>
+      
+        
+                          </div>
+      
+                          <div class="row premium-heading" style="height: 5.6mm; display: flex; align-items: left; justify-content: left;">
+      
+                            <div style="font-size: 11px; text-align: left;">
+      
+                              &#10003; Discount on non emergency ambulance
+      
+                            </div>
+      
+        
+                          </div>
+      
+                          <div class="row premium-heading" style="height: 5.6mm; display: flex; align-items: left; justify-content: left;">
+      
+                            <div style="font-size: 11px; text-align: left;">
+      
+                              &#10003; Discount on hospital bills
+      
+                            </div>
+      
+        
+                          </div>
+      
+                          <div class="row premium-heading" style="height: 5.6mm; display: flex; align-items: left; justify-content: left;">
+      
+                            <div style="font-size: 11px; text-align: left;">
+      
+                              &#10003; Discount on lab tests and medical supplies
+      
+                            </div>
+      
+        
+                          </div>
+    
+                        </div>
+    
+                
+    
+    
+                      </div>
+    
+                   
+    
+    
+                   
+    
+    
+                    </div>
+    
+                    <div class="row Bottom-Heading" style="height: 5.5mm;background-color: #ce2424;">
+    
+                      <div class="col-4" style="display: flex; align-items: center; justify-content: center; color: white;">
+    
+                        <div style="font-size: 10px; text-align: center;">
+    
+                          <img src="assets/images/emid_images/Globe-Icon.png" style="width: 15%;" />
+    
+                          vmedo.com
+                        </div>
+    
+    
+    
+                      </div>
+    
+    
+    
+                      <div class="col-5" style="display: flex; align-items: center; justify-content: center; color: white;">
+    
+                        <div style="font-size: 10px; text-align: left;">
+    
+                          <img src="assets/images/emid_images/Mobile-Icon.png" style="width: 12%;" />
+                          9343-18-0000
+                        </div>
+    
+                      </div>
+    
+                      <div class="col-3" style="display: flex; align-items: center; justify-content: center; color: white;">
+    
+                        <div style="font-size: 8.5px; text-align: left;">
+                          T&C apply
+                        </div>
+    
+                      </div>
+    
+    
+    
+                    </div>
+    
+                  </div>
+    
+    
+                </div>
+    
+              </div>
+          </div>
+        </div>
+
+
+
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <!-- mobile version download button -->
+  <div class="col-md-4 ">
+    <div class="text-right mt-4 mb-4">
+      <button class="btn bt-small btn-danger btn-block" (click)="openCombinedPDF()">Downloading health card please
+        wait..</button>
+    </div>
+  </div>
+
+  <div class="row widget-menu">
+    <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+      <svg [routerLink]="'dashboard/profile/1'">
+        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-user-1"></use>
+      </svg>
+      <div>
+        {{ common.auth_token ? 'Profile' : 'Login' }}
+      </div>
+
+      <!-- Profile -->
+    </div>
+    <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+      <svg [routerLink]="'/home'">
+        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-home"></use>
+      </svg>
+      Home
+    </div>
+    <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+      <svg [routerLink]="'/services/more'">
+        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-navigation-more"></use>
+      </svg>
+      More
+    </div>
+  </div>
+
+  <div class="row footer">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="row">
+        <div class="col-6 col-sm-6 col-md-6 col-lg-6">&copy; Copyrights Arera Healthcare and Technologies Pvt
+          Ltd 2022. All rights reserved.</div>
+        <div class="col-6 col-sm-6 col-md-6 col-lg-6">.&nbsp;<span>.</span></div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

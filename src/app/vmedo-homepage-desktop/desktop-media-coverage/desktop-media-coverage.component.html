@@ -1,0 +1,59 @@
+<section class="media-coverage-section-desktop bg-white py-8 px-16">
+    <div>
+      <h2 class="text-3xl py-2 pl-8 font-medium">Media coverage</h2>
+    </div>
+
+    <div class="px-5 py-6">
+      <swiper [config]="vmedo_media_desktop" class="px-6">
+        <ng-template swiperSlide>
+          <!-- Card 1 -->
+          <div class="media-card bg-white rounded-lg shadow-md">
+            <img src="assets\new-images\images\images\vmedo-index-page-republic-tv.png" alt="Image 1"
+              class="w-full h-full object-cover rounded-md" />
+          </div>
+        </ng-template>
+
+        <ng-template swiperSlide>
+          <!-- Card 2 -->
+          <div class="media-card bg-white rounded-lg shadow-md">
+            <img src="assets\new-images\images\images\vmedo-index-page-public-tv.jpg" alt="Image 2"
+              class="w-full h-full object-cover rounded-md"
+              onclick="window.location.href='https://www.youtube.com/watch?v=U314LBhM1_g'" />
+          </div>
+        </ng-template>
+
+        <ng-template swiperSlide>
+          <!-- Card 3 -->
+          <div class="media-card bg-white rounded-lg shadow-md">
+            <img src="assets\new-images\images\images\vmedo-index-page-your-story.jpg" alt="Image 3"
+              class="w-full h-full object-cover rounded-md"
+              onclick="window.location.href='https://yourstory.com/2018/02/healthcare-startup-vmedo/amp'" />
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="media-card bg-white rounded-lg shadow-md">
+            <img src="assets\new-images\images\images\vmedo-index-page-deccan-herald.png" alt="Image 4"
+              class="w-full h-full object-cover rounded-md"
+              onclick="window.location.href='https://www.deccanherald.com/metrolife/medical-emergency-app-helping-713536.html'" />
+          </div>
+        </ng-template>
+
+        <ng-template swiperSlide>
+          <div class="media-card bg-white rounded-lg shadow-md">
+            <img src="assets/images/website-images/vmedo-media-4.png" alt="Image 4"
+              class="w-full h-full object-cover rounded-md"
+              onclick="window.location.href='https://www.thenewsminute.com/karnataka/how-bengaluru-duo-helping-people-get-better-access-emergency-services-india-94741'" />
+          </div>
+        </ng-template>
+
+        <ng-template swiperSlide>
+          <div class="media-card bg-white rounded-lg shadow-md">
+            <img src="assets/images/website-images/vmedo-media-5.png" alt="Image 4"
+              class="w-full h-full object-cover rounded-md"
+              onclick="window.location.href='https://indiamedtoday.com/jeeva-rakshak-foundation-vmedo-to-provide-emergency-ambulance-services/'" />
+          </div>
+        </ng-template>
+
+      </swiper>
+    </div>
+  </section>

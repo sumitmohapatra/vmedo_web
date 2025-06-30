@@ -1,0 +1,381 @@
+{
+    "home": {
+        "title": "VMEDO",
+        "caption": "<b>We care about your health</b>. It’s normal to feel anxiety and uncertainty about a widespread health concern in our community like COVID-19, and to be upset or anxious about changes and interruptions to everyday life.<br>All of our crisis lines are operating as usual, and seeking support over the phone is a great way to practice social distancing.<br>At Lines for Life, we are all about a healthy community – so as we go about our mission, we are watching developments with the COVID-19 virus closely and working with our partners at the Oregon Health Authority and the Centers for Disease Control.",
+        "copyright": "&copy; 2022, All Rights Reserved",
+        "poweredby": "www.xyz.com"
+    },
+    "regex": {
+        "username": {
+            "pattern": "^[a-zA-Z][a-zA-Z0-9_-\\s]{5,32}$",
+            "message": "User name must be alpha-numeric, start with alphabet, special characters allowed are - and _, within 6-32 characters"
+        },
+        "password": {
+            "pattern": "^\\w{6,32}\\b",
+            "message": "Password must be alpha-numeric and with in 6-32 character"
+        },
+        "email": {
+            "pattern":"^(([^<>()[\\]\\\\.,;:\\s@\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
+            "message":"Please enter valid email id !"
+        },
+        "mobile": {
+            "pattern":"^(\\+\\d{1,2}\\s?)?1?\\-?\\.?\\s?\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$",
+            "message":"Mobile number must be 10 digits"
+        },
+        "age": {
+            "pattern": "^(12[0]|1[01][0-9]|[1-9]?[0-9])$",
+            "message":"Age must be between 1-120 !"
+        },
+        "pin-code": {
+            "pattern": "^[1-9][0-9]{5}$",
+            "message":"PIN Code must be maximum 6 digits !"
+        },
+        "string": {
+            "pattern": "^((.|\n)*){6,300}$",
+            "message":"Value must be between 6-300 characters !"
+        },
+        "short-string": {
+            "pattern2": "^[\\w\\-\\s]{6,300}$",
+            "pattern": "^.{6,300}$",
+            "message":"Value must be between 6-300 characters !"
+        },
+        "short-string2": {
+            "pattern2": "^[\\w\\-\\s]{3,100}$",
+            "pattern": "^.{3,100}$",
+            "message":"Value must be between 3-100 characters !"
+        },
+        "otp": {
+            "pattern": "^[0-9]{6,6}$",
+            "message":"Please enter valid OTP !"
+        }
+    },
+    "api": {
+        "baseUrl": "https://apitest.vmedo.com",
+        "user": {
+            "auth": {
+                "url": "/api/auth/RefreshToken",
+                "method": "POST"
+            },
+            "otp": {
+                "url": "/api/auth/GenerateLoginOTP",
+                "method": "POST"
+            },
+            "login": {
+                "url": "/api/auth/Userauthentication",
+                "method": "POST"
+            },
+            "otpLogin": {
+                "url": "/api/auth/UserauthenticationOTP",
+                "method": "POST"
+            },
+            "register": {
+                "url": "/api/user/RegisterUser",
+                "method": "POST"
+            },
+            "fetchProfile": {
+                "url": "/api/user/Fetchuserprofile?UserID=",
+                "method": "GET"
+            },
+            "updateProfile": {
+                "url": "/api/user/UpdateProfileDetails",
+                "method": "POST"
+            },
+            "updateBloodDonationStatus": {
+                "url": "/api/user/UpdateBloodDonationStatus",
+                "method": "POST"
+            },
+            "generateRegisterOTP":{
+                "url": "/api/auth/GenerateRegisterOTP",
+                "method": "POST"
+            },
+            "authenticateRegisterOTP":{
+                "url": "/api/auth/UserauthenticateRegisterOTP",
+                "method": "POST"
+            },
+            "changePassword":{
+                "url": "/api/user/UserChangepassword",
+                "method": "POST"
+            },
+            "forgetPassword":{
+                "url": "/api/auth/ForgetPassword?UMobile=",
+                "method": "GET"
+            },
+            "verifyEmail":{
+                "url": "/api/user/SendVerificationEmail?UserID=",
+                "method": "GET"
+            },
+
+            "package":{
+                "url":"/api/user/FetchSubscriptionPackagedetails",
+                "method":"GET"
+            },
+            "packagePayment":{
+                "url":"/api/user/ValidateCouponDetails",
+                "method":"POST"
+            }
+            
+        },
+        "corp":{
+            "corpotp":{
+                "url": "/api/auth/GenerateCorporateLoginOTP",
+                "method":"POST"
+            },
+            "corpotplogin":{
+                "url": "/api/auth/CorporateauthenticationOTP",
+                "method":"POST"
+            },
+            "fetchcorpdetails":{
+                "url":"/api/corporate/FetchProfileDetails?empid=",
+                "method":"GET"
+            },
+            "updatecorpdetails":{
+                "url":"/api/corporate/UpdateProfileDetails",
+                "method":"POST"
+            },
+            "generateemid":{
+                "url":"/api/corporate/GenerateEmergencyID",
+                "method":"POST"
+            },
+            "updateemid":{
+                "url":"/api/corporate/UpdateEmergencyID",
+                "method":"POST"
+            }
+        },
+        "hospital": {
+            "register": {
+                "url": "/api/hospital/RegisterHospital",
+                "method": "POST"
+            },
+            "fetchDetails": {
+                "url": "/api/user/UserHospitalList",
+                "method": "GET"
+            },
+            "fetchDetailsById": {
+                "url": "/api/hospital/GetAllHospitalDetails?HospitalID=",
+                "method": "GET"
+            },
+            "fetchDetailsByUserId": {
+                "url": "/api/user/GetAllHospitalDetailsByUser?UserID=",
+                "method": "GET"
+            },
+            "searchHospitalByLocation": {
+                "url": "/api/user/UserSearchHospitalList?location=<location>&EType=<EType>&hcity=<hcity>&latt=<latt>&longi=<longi>",
+                "method": "GET"
+            },
+            "fetchBed": {
+                "url": "/api/hospital/GetAllHospitalBedType",
+                "method": "GET"
+            },
+            "updateBed": {
+                "url": "/api/hospital/UpdateHospitalBed",
+                "method": "POST"
+            },
+            "updateStatus": {
+                "url": "/api/hospital/UpdateHospitalStatus",
+                "method": "POST"
+            },
+            "fetchSpecializationInfo": {
+                "url": "/api/hospital/GetAllHospitalSpelizationandEmergency?Rtype=1",
+                "method": "GET"
+            },
+            "fetchEmergencyInfo": {
+                "url": "/api/hospital/GetAllHospitalSpelizationandEmergency?Rtype=2",
+                "method": "GET"
+            },
+            "addPatientEnquiry": {
+                "url": "/api/user/PatentEnqueryform",
+                "method": "POST"
+            },
+            "callPatientEnquiry": {
+                "url": "/api/user/PatentEnqueryByCall",
+                "method": "POST"
+            },
+            "fetchReview": {
+                "url": "/api/hospital/GetHospitalreview?HospitalID=",
+                "method": "GET"
+            },
+            "fetchReviewByUser": {
+                "url": "/api/user/GetHospitalreviewbyuser?HospitalID=<HospitalID>&UserID=<UserID>",
+                "method": "GET"
+            },
+            "editReview": {
+                "url": "/api/user/EditHospitalreview",
+                "method": "POST"
+            },
+            "updateReview": {
+                "url": "/api/user/AddHospitalreview",
+                "method": "POST"
+            },
+            "updateProfileVisitor": {
+                "url": "/api/user/HospitalProfileVisitor",
+                "method": "POST"
+            },
+            "fetchHospitalImages": {
+                "url": "/api/hospital/FetchhospitalImages?HospitalID=",
+                "method": "GET"
+            }
+        },
+        "bloodDonor": {
+            "fetchAllDonors": {
+                "url": "/api/user/GetAllBloodDonerList",
+                "method": "GET"
+            },
+            "fetchDonorDetails": {
+                "url": "/api/user/FetchBlooddonerdetails?UserID=",
+                "method": "GET"
+            },
+            "searchDonorsByLocation": {
+                "url": "/api/user/SearchBloodDonerList?Location=",
+                "method": "GET"
+            },
+            "searchDonorsByBloodGroup": {
+                "url": "/api/user/SearchBloodDonerList?Bgroup=",
+                "method": "GET"
+            },
+            "searchDonors": {
+                "url": "/api/user/SearchBloodDonerList?Location=<location>&Bgroup=<bgroup>",
+                "method": "GET"
+            },
+            "searchDonors2": {
+                "url": "/api/user/SearchUserBloodDonerList",
+                "method": "POST"
+            },
+            "addDonor": {
+                "url": "/api/user/RegisterBloodDoner",
+                "method": "POST"
+            },
+            "updateDonor": {
+                "url": "/api/user/EditRegisterBloodDoner",
+                "method": "POST"
+            },
+            "fetchAllDonations": {
+                "url": "/api/user/GetAllBloodDonationList?UserID=",
+                "method": "GET"
+            },
+            "fetchMobile": {
+                "url": "/api/user/GetBloodDonerMobile?UserID=",
+                "method": "GET"
+            },
+            "addDonation": {
+                "url": "/api/user/ADDBloodDonation",
+                "method": "POST"
+            },
+            "editDonation": {
+                "url": "/api/user/EditBloodDonation",
+                "method": "POST"
+            },
+            "deleteDonation": {
+                "url": "/api/user/DeleteBloodDonation?ID=",
+                "method": "GET"
+            }
+        },
+        "emergency": {
+            "searchCard":{
+                "url": "/api/user/SearchEmergencyID?EMID=<EMID>&EPin=<EPin>",
+                "method": "GET"
+            },
+            "fetchCards": {
+                "url": "/api/user/FetchEmergencyID?UserID=",
+                "method": "GET"
+            },
+            "addCard": {
+                "url": "/api/user/GenerateEmergencyID",
+                "method": "POST"
+            },
+            "updateCard": {
+                "url": "/api/user/UpdateEmergencyID",
+                "method": "POST"
+            },
+            "deleteCard": {
+                "url": "/api/user/DeleteEmergencyID?EID=",
+                "method": "GET"
+            },
+            "profileVisitor": {
+                "url": "/api/User/EMIDProfileVisitor",
+                "method": "POST"
+            },
+            "fetchProfileVisitor": {
+                "url": "/api/user/FetchEIDVisitor?EMID=",
+                "method": "GET"
+            },
+            "validateCard": {
+                "url": "/api/user/ValidateEMID?EMID=",
+                "method": "GET"
+            },
+            "validateCardWithPin": {
+                "url": "/api/auth/ValidateEMID?EMID=<emid>&PIN=<pin>",
+                "method": "GET"
+            },
+            "fetchOtp": {
+                "url": "/api/auth/GenerateEMIDOTP",
+                "method": "POST"
+            },
+            "fetchCardDetails": {
+                "url": "/api/auth/UserauthenticationEMIDOTP",
+                "method": "POST"
+            }
+        },
+        "common":{
+            "fetchLocationByName": {
+                "url": "/api/user/GetLocationsBYInput?inputvalue=",
+                "method": "GET"
+            },
+            "fetchLocationByPlaceId": {
+                "url": "/api/user/GetLocationDetailsByPlaceID?placeId=",
+                "method": "GET"
+            },
+            "fetchBanner": {
+                "url": "/api/auth/GetAllSitebanner",
+                "method": "GET"
+            },
+            "SubscribePackages":{
+            "url":"/api/common/GetAllSupscriptionPackage",
+            "method":"GET"
+        } 
+        }
+    },
+    "links": {
+        "pages": {
+            "ambulance": "https://vmedo.com/ambulance-service-india.html",
+            "training": "https://academy.vmedo.com/",
+            "medicalSupply": "https://store.vmedo.com",
+            "firstaidtraining":"https://vmedo.com/first-aid-training/index.html",
+
+
+            "more": {
+                "blogs":"https://www.vmedo.com/blog/",
+                "corporates": "https://vmedo.com/corporate.html",
+                "partners": "https://vmedo.com/partnership.html",
+                "about": "https://vmedo.com/aboutus.html",
+                "contact": "https://vmedo.com/contact.html",
+                "jobs": "https://vmedo.com/blog/career-jobs-at-vmedo/",
+                "hospitallogin":"https://hospital.vmedo.com/hospitallogin",
+                "vmedopartnerapp":"https://play.google.com/store/apps/details?id=com.areratech.partnerapp",
+                "termsandcondition":"https://vmedo.com/vmedo-terms.html",
+                "freeambulance":"https://vmedo.com/freeambulance/index.html"
+
+            },
+            "social": {
+                "whatsapp": "https://wa.me/+919343180000",
+                "linkedin": "https://www.linkedin.com/company/vmedo",
+                "youtube": "https://www.youtube.com/c/Bloodforsureapp/featured",
+                "facebook": "https://www.facebook.com/vmedohealthcare",
+                "instagram": "https://www.instagram.com/vmedo_healthcare/",
+                "twitter": "https://twitter.com/vmedoapp"
+            },
+
+            "blog": {
+                "blog1": "https://vmedo.com/blog/first-aid-for-epilepsyseizures/",
+                "blog2": "https://vmedo.com/blog/know-aspirin-intake-can-kill/",
+                "blog3": "https://vmedo.com/blog/first-aid-broken-bone/"
+                
+            }
+
+
+        }
+    },
+    "bloodgroups": ["A+","B+","O+","AB+","A-","B-","O-","AB-"],
+    "genders": ["Male","Female","Others"],
+    "relations": ["Father","Mother","Son", "Daughter", "Spouse"],
+    "maxReviewOnHospital": 1
+}

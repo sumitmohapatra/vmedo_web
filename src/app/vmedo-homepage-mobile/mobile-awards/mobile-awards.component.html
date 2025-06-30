@@ -1,0 +1,26 @@
+<section class="Achievement-section-mobile py-4 bg-white">
+    <div class="pb-3 px-3">
+      <h2 class="font-medium">Awards and achievements</h2>
+    </div>
+
+    <swiper [config]="vmedo_achievements_mobile" class="pl-3">
+      <ng-template swiperSlide>
+        <div class="achievement-card-mobile rounded-md bg-gray-200">
+          <img src="assets/images/website-images/award-1.png" alt="Image Description"
+            class="w-full h-full rounded-md object-cover" />
+        </div>
+      </ng-template>
+      <ng-template swiperSlide>
+        <div class="achievement-card-mobile rounded-md bg-gray-200">
+          <img src="assets/images/website-images/award-2.png" alt="Image Description"
+            class="w-full h-full rounded-md object-cover" />
+        </div>
+      </ng-template>
+      <ng-template swiperSlide>
+        <div class="achievement-card-mobile rounded-md bg-gray-200">
+          <img src="assets/images/website-images/award-3.png" alt="Image Description"
+            class="w-full h-full rounded-md object-cover" />
+        </div>
+      </ng-template>
+    </swiper>
+  </section>

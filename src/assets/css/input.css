@@ -1,0 +1,28 @@
+input[type=text],
+ input[type=password],
+ textarea{
+    border: none;
+    outline: none;
+    margin: 5px 0;
+    width: 100%;
+    color: #666666;
+    background: #f1f1f1;
+    padding: 10px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.192);
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    z-index: 1000;
+}
+
+ input[type=text]:hover,
+ input[type=text]:focus,
+ input[type=text]:active,
+ input[type=password]:hover,
+ input[type=password]:focus,
+ input[type=password]:active,
+ textarea:hover,
+ textarea:focus,
+ textarea:active{
+    background: #ececec;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.199);
+}

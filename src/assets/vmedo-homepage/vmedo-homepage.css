@@ -1,0 +1,498 @@
+/* component.styles.css */
+
+/* common css for all the pages */
+
+.no-container {
+    padding: 0;
+    margin: 0;
+  }
+  
+  
+  
+  .mini_banners-card {
+    width: 394px;
+    height: 211px;
+  }
+  
+  .mini_banners-card_mobile {
+    width: 277px;
+    height: 156px;
+  }
+  
+  .mini_banners-card_mobile2 {
+    width: 377px;
+    height: 156px;
+  }
+  
+  .care-at-home-card {
+    height: 200px;
+    width: 200px;
+  }
+  
+  .medical-supply-card {
+    height: 280px;
+    width: 200px;
+    border: 1px solid lightgrey;
+  }
+  
+  .vmedo-store-desktop-card {
+    height: 200px;
+    width: 200px;
+    border: 1px solid lightgrey;
+  }
+  
+  .ambulance-banner-card {
+    width: 1232px;
+    height: 411px;
+  }
+  
+  .ambulance-banner-card-mobile{
+    width: 360px;
+    height: 360px;
+  }
+  
+  .doctor-consultation-card-mobile{
+    width: 360px;
+    height: 360px;
+  }
+  
+  .achievement-card-mobile{
+    width: 150px;
+    height: 150px;
+  }
+  
+  .social-media-banner-card-mobile{
+    width: 360px;
+    height: 150px;
+  }
+  
+  .hero-banner-card-mobile{
+  width: 409px;
+  height: 312px;
+  }
+  
+  .subscription-banner-mobile{
+    width: auto;
+    height: 180px;
+    }
+    
+  
+  .social-media-banner-card {
+    width: 1232px;
+    height: 211px;
+  }
+  
+  .image-hover:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  
+  @import "~@fortawesome/fontawesome-free/css/all.css";
+  
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+  
+  :host {
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+  
+  .home-container {
+    max-width: none !important;
+    /* Override the global container width */
+    background-color: rgb(255, 255, 255);
+  }
+  
+  .home-mobile-container {
+    max-width: none !important;
+    /* Override the global container width */
+    /* background-color: rgb(255, 255, 255); */
+    background-color: rgba(245,245,245,1.00);
+  }
+  
+  :root {
+    --base-font-size: 16px;
+    /* Define custom property for base font size */
+  }
+
+  .section {
+    margin-bottom: 20px;
+    /* Base section spacing */
+  }
+  
+  .section+.section {
+    margin-bottom: 32px;
+    /* Next section spacing */
+  }
+  
+  .section+.section+.section {
+    margin-bottom: 52px;
+    /* Subsequent section spacing */
+  }
+  
+  /* Adjust as needed for more sections */
+  
+  /* Custom scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 5px;
+    /* Width of the scrollbar */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    /* Background color of the scrollbar track */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #ccc;
+    /* Color of the scrollbar thumb */
+    border-radius: 5px;
+    /* Border radius of the scrollbar thumb */
+  }
+  
+  
+  /* Add this CSS to your component's CSS file or globally */
+  .side-menu {
+    transform: translateX(-100%);
+  }
+  
+  .side-menu-open {
+    transform: translateX(0);
+  }
+  
+  .vmedo-more-card-mobile {
+    height: 60%;
+    width: 93%;
+    margin-bottom: -40%;
+    background-color: white;
+  }
+  
+  .footer-container {
+    max-width: none !important;
+  }
+  
+  
+  
+  .swiper-pagination {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .swiper-pagination-bullet {
+    background-color: black;
+  }
+  
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: black;
+  }
+  
+  .swiper-button-next,
+  .swiper-button-prev {
+    text-rendering: auto;
+  }
+  
+  .emergency-care-at-home-card-mobile{
+    height: 140px;
+    width: 140px;
+  }
+  
+  .emergency-care-at-home-card {
+    height: auto;
+    width: 200px;
+    border: 1px solid lightgrey;
+    padding: 20px;
+    margin: auto;
+    text-align: center;
+    transition: transform 0.3s ease;
+    /* Add transition for smooth effect */
+  }
+  
+  .emergency-care-at-home-card:hover {
+  
+    transform: scale(.97);
+    /* Scale the card to 110% of its original size on hover */
+  }
+  
+  .swiper-container-margin-bottom {
+    margin-bottom: 20px;
+  }
+  
+  .our-lab-services-card {
+    height: 200px;
+    width: 500px;
+    border: 1px solid lightgrey;
+    padding: 20px;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .our-lab-services-mobile-card {
+    height: 150px;
+    width: 300px;
+    border: 1px solid lightgrey;
+    padding: 20px;
+    margin: auto;
+    text-align: center;
+  }
+  
+  
+  .vmedo-store-card {
+    height: 150px;
+    width: 300px;
+    border: 1px solid lightgrey;
+    padding: 20px;
+    margin: auto;
+    text-align: center;
+    transition: transform 0.3s ease;
+    /* Add transition for smooth effect */
+  }
+  
+  .vmedo-store-card:hover {
+  
+    transform: scale(.97);
+    /* Scale the card to 110% of its original size on hover */
+  }
+  
+  .vmedo-store-mobile-card {
+    height: 140px;
+    width: 260px;
+    border: 1px solid lightgrey;
+    padding: 20px;
+    margin: auto;
+    text-align: center;
+    transition: transform 0.3s ease;
+    /* Add transition for smooth effect */
+  }
+  
+  .medical-supply-mobile-card{
+    width: 145px;
+    height: 172px;
+    border: 1px solid lightgrey;
+    padding: 20px;
+    margin: auto;
+    text-align: center;
+    }
+  
+  
+    .what-people-say-about-us-card-desktop {
+      height: 370px;
+      width: 300px;
+      border: 1px solid lightgrey;
+      padding: 20px;
+      margin: auto;
+      text-align: center;
+      transition: border-color 0.3s ease;
+      /* Add transition for smooth effect */
+    }
+    
+    .what-people-say-about-us-card-desktop:hover {
+      border-color: rgb(94, 10, 10);
+      /* Change border color to red on hover */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      /* Box shadow */
+    }
+  
+    .what-people-say-about-us-card-desktop2 {
+      height: 450px;
+      width: 300px;
+      border: 1px solid lightgrey;
+      padding: 20px;
+      margin: auto;
+      text-align: center;
+      transition: border-color 0.3s ease;
+      /* Add transition for smooth effect */
+    }
+    
+    .what-people-say-about-us-card-desktop2:hover {
+      border-color: rgb(94, 10, 10);
+      /* Change border color to red on hover */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      /* Box shadow */
+    }
+  
+    .what-people-say-about-us-card2 {
+      height: 450px;
+      width: 300px;
+      border: 1px solid lightgrey;
+      padding: 20px;
+      margin: auto;
+      text-align: center;
+      transition: border-color 0.3s ease;
+      /* Add transition for smooth effect */
+    }
+    
+    .what-people-say-about-us-card2:hover {
+      border-color: rgb(94, 10, 10);
+      /* Change border color to red on hover */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      /* Box shadow */
+    }
+  
+  
+  .what-people-say-about-us-card {
+    height: 370px;
+    width: 300px;
+    border: 1px solid lightgrey;
+    padding: 20px;
+    margin: auto;
+    text-align: center;
+    transition: border-color 0.3s ease;
+    /* Add transition for smooth effect */
+  }
+  
+  .what-people-say-about-us-card:hover {
+    border-color: rgb(94, 10, 10);
+    /* Change border color to red on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Box shadow */
+  }
+  
+  .hero-section-swiper-container {
+    width: 1300px;
+    height: 400px;
+    margin: auto;
+  }
+  
+  .hero-section-swiper-container2 {
+    width: 1300px;
+    height: 400px;
+    margin: auto;
+  }
+  
+  .about-us-section-swiper-container2 {
+    /* width: 1300px;
+    height: 170px; */
+    margin: auto;
+  }
+  
+  .hero-section-swiper-container-mobile {
+    width: 400px;
+    height: 200px;
+    margin: auto;
+  }
+  
+  .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .media-card {
+    height: 100px;
+    width: 100px;
+  }
+  
+  .media-card-mobile {
+    height: 80px;
+    width: 80px;
+  }
+  /* .vmedo-services-card{
+    height: 170px;
+    width: 170px;
+    border: 1px solid lightgrey;
+    padding: 20px;
+    margin: auto;
+    text-align: center;
+  } */
+  
+  .vmedo-services-card2 {
+    height: 150px;
+    width: 150px;
+    border: 1px solid lightgrey;
+    padding: 20px;
+    margin: auto;
+    text-align: center;
+    transition: border-color 0.3s ease;
+    /* Add transition for smooth effect */
+    transition: transform 0.3s ease;
+    /* Add transition for smooth effect */
+  }
+  
+  .vmedo-services-card2:hover {
+    border-color: rgb(94, 10, 10);
+    /* Change border color to red on hover */
+    transform: scale(.97);
+    /* Scale the card to 110% of its original size on hover */
+  }
+  
+  .vmedo-services-card {
+    height: 170px;
+    width: 170px;
+    border: 1px solid lightgrey;
+    padding: 20px;
+    margin: auto;
+    text-align: center;
+    transition: border-color 0.3s ease;
+    /* Add transition for smooth effect */
+    transition: transform 0.3s ease;
+    /* Add transition for smooth effect */
+  }
+  
+  .vmedo-services-card:hover {
+    border-color: rgb(94, 10, 10);
+    /* Change border color to red on hover */
+    transform: scale(.97);
+    /* Scale the card to 110% of its original size on hover */
+  }
+  
+  .vmedo-service-card-mobile {
+    border: 0.85px solid lightgrey;
+    transition: border-color 0.3s ease;
+    /* Add transition for smooth effect */
+    transition: transform 0.3s ease;
+    /* Add transition for smooth effect */
+  }
+  
+  .vmedo-service-card-mobile:hover {
+    border: 1.4px solid #DC2626;
+    transform: scale(.97);
+    /* Scale the card to 110% of its original size on hover */
+  }
+  
+  
+  
+  .vmedo-about-us-card-mobile {}
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 120%;
+    left: -140%;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 8px 0;
+    width: 55rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    z-index: 10;
+    display: block;
+  }
+  
+  
+  .dropdown-menu a {
+    display: block;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.2s;
+  }
+  
+  .dropdown-menu a:hover {
+    background-color: #f3f4f6;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    /* Add transition for smooth effect */
+    transform: scale(.97);
+    /* Scale the card to 110% of its original size on hover */
+    font-weight: 500;
+    color: rgb(94, 10, 10);
+  }
+  
+  
+  .navigation-menu:hover {
+    color: rgb(94, 10, 10);
+  }
+  
+  
+  

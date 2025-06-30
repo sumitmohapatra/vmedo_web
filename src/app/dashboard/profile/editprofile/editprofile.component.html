@@ -1,0 +1,99 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-lg-12" id="navigation">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand">VMEDO</a>
+                <div class="back pull-right btn btn-sm btn-outline-secondary" [routerLink]="'/dashboard/profile/1'"
+                    placement="bottom" ngbTooltip="Back">
+                    <svg class="">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-back"></use>
+                    </svg>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="row body profile">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="row panel">
+                <div class="col-12 col-sm-6 col-md-4 col-xl-4 card">
+                    <div class="row title">
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                            <div>
+                                <svg>
+                                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-profile"></use>
+                                    <title>Profile</title>
+                                </svg>
+                            </div>
+                            Profile
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                            <input type="text" placeholder="User name">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                            <input type="text" placeholder="Email id">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                            <input type="text" placeholder="Phone">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                            <input type="text" placeholder="DOB" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12" ngbDropdown>
+                            <input type="text" placeholder="Gender" id="dropdownGender" ngbDropdownToggle>
+                            <div ngbDropdownMenu aria-labelledby="dropdownGender">
+                                <div ngbDropdownItem>Male</div>
+                                <div ngbDropdownItem>Female</div>
+                                <div ngbDropdownItem>Others</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12 combobox" ngbDropdown>
+                            <input type="text" placeholder="Location" id="dropdownLocation" ngbDropdownToggle readonly>
+                            <div ngbDropdownMenu aria-labelledby="dropdownLocation">
+                                <div ngbDropdownItem>Cuttack</div>
+                                <div ngbDropdownItem>Puri</div>
+                                <div ngbDropdownItem>Bhubaneswar</div>
+                                <div ngbDropdownItem>Khordha</div>
+                                <div ngbDropdownItem>Nayagarh</div>
+                                <div ngbDropdownItem>Salepur</div>
+                                <div ngbDropdownItem>Jagatsinghpur</div>
+                                <div ngbDropdownItem>Bhadrak</div>
+                                <div ngbDropdownItem>Jajpur</div>
+                            </div>
+                            <svg class="dropmenu" ngbDropdownToggle>
+                                <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-dropmenu"></use>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="row controls">
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Save</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row footer">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="row">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6">&copy;Copyrights Arera Healthcare and Technologies Pvt Ltd
+                    2022. All rights reserved.</div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6">.&nbsp;<span>.</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+

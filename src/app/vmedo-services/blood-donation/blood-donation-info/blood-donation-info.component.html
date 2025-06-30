@@ -1,0 +1,153 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-lg-12" id="navigation">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand">
+                    <svg class="logo logo-md">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo"></use>
+                    </svg>
+                    <svg [routerLink]="'/home'" class="logo logo-sm">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo-white"></use>
+                    </svg>
+                </a>
+                <div class="back pull-right btn btn-sm btn-outline-secondary" [routerLink]="'/dashboard/blooddonation'"
+                    placement="bottom" ngbTooltip="Back">
+                    <svg class="">
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-back"></use>
+                    </svg>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="row body blooddonation">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="row panel">
+                <div class="col-12 col-sm-12 col-md-12 col-xl-12 card">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12 create">
+                            <div>
+                                <svg>
+                                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-aid-kit"></use>
+                                    <title>Blood donation</title>
+                                </svg>
+                            </div>
+                            <span>Blood donation</span>
+                        </div>
+                    </div>
+                    <div class="row align-v-top">
+                        <div class="col-12 col-sm-12 col-md-12 col-xl-12 tab">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Sl.No.</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Location</th>
+                                        <th scope="col">Image</th>
+                                        <th scope="col">Comments</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <ng-container *ngIf="!isLoading; else elseTemplate">
+                                        <tr *ngFor="let donation of donations;let i = index">
+                                            <td>{{i+1}}</td>
+                                            <td>{{donation.donated_on.split('T')[0]}}</td>
+                                            <td>{{donation.location}}</td>
+                                            <td>
+                                                <svg>
+                                                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-image">
+                                                    </use>
+                                                    <title>Image</title>
+                                                </svg>
+                                            </td>
+                                            <td>
+                                                {{donation.description}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5" *ngIf="!donations || donations.length === 0">No records
+                                                found</td>
+                                        </tr>
+                                    </ng-container>
+                                    <ng-template #elseTemplate>
+                                        <tr style="background: none;">
+                                            <td colspan="5" style="background: none;">
+                                                <ngx-skeleton-loader appearance="line" animation="progress"
+                                                    [theme]="{ height: '35px','margin-bottom': '-5px'}"></ngx-skeleton-loader>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5">
+                                                <ngx-skeleton-loader appearance="line" animation="progress"
+                                                    [theme]="{ height: '35px','margin-bottom': '-5px'}"></ngx-skeleton-loader>
+                                            </td>
+                                        </tr>
+                                    </ng-template>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row register">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <button type="button" class="btn btn-sm btn-outline-secondary" (click)="OnClickNewDonation()">New
+                Donation</button>
+        </div>
+    </div>
+    <div class="row footer">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="row">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6">&copy;Copyrights Arera Healthcare and Technologies Pvt Ltd
+                    2022. All rights reserved.</div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6">&nbsp;<span></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #donation let-modal>
+    <div class="modal-body">
+        <div class="row logo">
+            <span>VMEDO</span>
+        </div>
+        <div class="row title">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                <div>
+                    <svg>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-aid-kit"></use>
+                        <title>New Donation</title>
+                    </svg>
+                </div>
+                New Donation
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                <input type="text" placeholder="Date" [(ngModel)]="txtDate" ngbDatepicker #d="ngbDatepicker"
+                    (click)="d.toggle()" readonly>
+                <span class="error-line" placement="bottom" ngbTooltip="{{lblDate}}">{{lblDate}}</span>
+            </div>
+        </div>
+        <div class="row location">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                <input type="text" placeholder="Location" [(ngModel)]="txtLocation">
+                <span class="error-line" placement="bottom" ngbTooltip="{{lblLocation}}">{{lblLocation}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                <textarea placeholder="Comments" cols="5" rows="5" [(ngModel)]="txtComments"></textarea>
+                <span class="error-line" placement="bottom" ngbTooltip="{{lblComments}}">{{lblComments}}</span>
+            </div>
+        </div>
+        <div class="row controls">
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                <button type="button" class="btn btn-sm btn-outline-secondary" (click)="OnClickSubmit()">Submit</button>
+            </div>
+        </div>
+    </div>
+</ng-template>

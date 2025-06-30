@@ -1,0 +1,1971 @@
+<div *ngIf="isMobile; else desktopContent">
+    <div class="h-screen overflow-y-auto pb-10">
+        <!-- Mobile navbar -->
+        <nav class="flex items-center justify-between bg-red-500 p-2"
+            style="position: fixed; top: 0; left: 0; right: 0; z-index: 999">
+            <button class="text-white focus:outline-none focus:text-white" (click)="toggleSideMenu()">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+            <img src="assets/img/logo-white.png" alt="Logo" class="h-8 w-auto pl-3" [routerLink]="'/home'" />
+
+            <!-- Mobile navbar login -->
+
+            <div>
+                <div *ngIf="common.auth_token">
+
+                    <p class="text-white font-normal" (click)="app.OnOpenLoginForm('/dashboard/profile')">Profile</p>
+
+                  </div>
+            
+                  <div *ngIf="!common.auth_token">
+                    <p class="text-white font-normal" (click)="app.OnOpenLoginForm('/dashboard/profile')">Login</p>
+                  </div>
+            </div>
+
+             <!-- Mobile navbar -->
+
+
+        </nav>
+
+        <div class="home-mobile-container mt-5">
+
+            <!--Mobile Side Menu -->
+            <div [ngClass]="{ 'side-menu-open': isSideMenuOpen }"
+        class="side-menu bg-white shadow-2xl text-gray-800 fixed left-0 h-full w-60 transition-all duration-300 ease-in-out z-10">
+        <!-- Side Menu Content -->
+        <ul class="py-3">
+          <li class="px-4 py-2 hover:bg-gray-50">
+            <a class="font-medium block hover:no-underline hover:text-red-700" (click)="toggleServices2()">Healthcare
+              Services <i *ngIf="!isOpen2" class="fa-solid fa-chevron-down"></i> <i *ngIf="isOpen2"
+                class="fa-solid fa-chevron-up"></i> </a>
+            <!-- Display services if isOpen is true -->
+            <ul *ngIf="isOpen2" class="pl-2 py-2">
+              <li class="text-sm pt-2 block hover:no-underline hover:text-red-700"
+                [routerLink]="'/services/emergency-online-doctor-consultation'"><i class="fa-solid fa-caret-right"></i> Doctor Consultation</li>
+              <li class="text-sm pt-3 block hover:no-underline hover:text-red-700"
+                [routerLink]="'/services/ambulance-service-india'"><i class="fa-solid fa-caret-right"></i> VMEDO Ambulance</li>
+              <li class="text-sm pt-3 block hover:no-underline hover:text-red-700"
+                [routerLink]="'/services/urgent-medical-care-at-home'"><i class="fa-solid fa-caret-right"></i> Urgent care at home</li>
+              <li class="text-sm pt-3 block hover:no-underline hover:text-red-700"
+                [routerLink]="'/services/diagnostics-at-home'"><i class="fa-solid fa-caret-right"></i> Labtest and scans</li>
+              <li class="text-sm pt-3 block hover:no-underline hover:text-red-700" [routerLink]="'/hospitals'"><i class="fa-solid fa-caret-right"></i> Hospital
+                admission</li>
+              <li class="text-sm pt-3 block hover:no-underline hover:text-red-700"
+                onclick="window.location.href='https://store.vmedo.com/'"><i class="fa-solid fa-caret-right"></i> VMEDO Store</li>
+            </ul>
+          </li>
+
+          <li class="px-4 py-2 hover:bg-red-50">
+            <a class="font-medium block hover:no-underline hover:text-red-700"
+              [routerLink]="'/info/occupational-health-services'">For Corporates</a>
+          </li>
+
+          <!-- Mobile Signout -->
+
+          <li *ngIf="common.auth_token" class="px-4 py-2 hover:bg-red-50">
+
+            <div>
+                <p class="font-normal text-red-700" (click)="OnClickLogout()">Signout</p>
+              </div>
+          </li>
+
+          <!-- Mobile signout -->
+
+
+        </ul>
+      </div>
+
+            <section class="hero-section-mobile container mx-auto py-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-lg font-normal text-gray-600 mb-3"> Driving Positive Change in Healthcare through </h3>
+                        <h2 class="text-2xl  font-semibold mb-2">
+                    
+                            Empathy, Excellence and Innovation!
+
+                        </h2>
+                        
+                        
+                    </div>
+                    <div class="text-center">
+                        <iframe class="intro-layer1" width="95%" height="200"
+                            src="https://www.youtube.com/embed/1d-wcv5VC5s" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mobile about us  -->
+            <section class="about-us-mobile-section px-3 py-4 mb-4 bg-red-50">
+
+                <div class="grid grid-cols-1 gap-3 bg-red-50 rounded-md">
+                    <div
+                        class="vmedo-about-us-card-mobile bg-white rounded-xl flex items-center justify-center flex-col">
+                        <div class="grid grid-cols-4 gap-4 p-3">
+                            <!-- First column: Image -->
+                            <div class="flex flex-col justify-center  items-center">
+                                <img src="assets/images/website-images/Icons/mission.png" alt="Banner 4"
+                                    style="width: 80%" class="rounded-md" />
+                            </div>
+
+                            <!-- Second column: Heading and Content -->
+                            <div class="flex flex-col justify-center col-span-3">
+                                <!-- Heading -->
+                                <p class="text-left text-red-700 font-bold mb-2">Mission</p>
+
+                                <!-- Content -->
+                                <div>
+
+                                    <p class="text-xs text-left text-black">Drive innovation in Healthcare to make it
+                                        more accessible and affordable</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Second card -->
+                    <div
+                        class="vmedo-about-us-card-mobile bg-white rounded-xl flex items-center justify-center flex-col">
+                        <!-- Image (2/5 of the card's height) -->
+
+                        <div class="grid grid-cols-4 gap-4 p-3">
+                            <!-- First column: Image -->
+                            <div class="flex flex-col justify-center items-center">
+                                <img src="assets/images/website-images/Icons/vision.png" alt="Banner 4"
+                                    style="width: 80%" class="rounded-md" />
+                            </div>
+
+                            <!-- Second column: Heading and Content -->
+                            <div class="flex flex-col justify-center col-span-3">
+                                <!-- Heading -->
+                                <p class="text-left text-red-700 font-bold mb-2">Vision</p>
+
+                                <!-- Content -->
+                                <div>
+                                    <p class="text-xs text-left text-black"> To be a Global leader in Healthcare
+                                        innovation </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+
+            <!-- Mobile Urgent care at home -->
+            <section class="content-section-mobile py-4 px-3">
+
+                <!-- <div class="pb-3 pt-4">
+                    <h2 class="font-medium">The problem</h2>
+                </div> -->
+
+                <div class="py-2 px-3">
+                    At Vmedo, we are committed to revolutionizing healthcare accessibility and delivery, empowering
+                    individuals to take control of their health journey with convenience, transparency, and compassion.
+                    We offer a comprehensive platform that connects users with a wide range of healthcare services, from
+                    on-demand ambulance and home healthcare services to online doctor consultations and medical
+                    diagnostics.
+                    With a focus on innovation and technology, we strive to simplify the healthcare experience, making
+                    it easier for patients to access quality care whenever and wherever they need it.
+
+                </div>
+
+            </section>
+
+            <!-- Desktop about us section -->
+            <section class="Our-Impact py-4">
+
+                <div class="px-4 pb-3">
+                    <h2 class="font-medium">Our Impact</h2>
+                </div>
+
+
+                <div
+                    class="about-us-section-swiper-container2 bg-white rounded-lg p-6 grid grid-cols-3 md:grid-cols-4 gap-6">
+                    <!-- Card 1 -->
+
+                    <div class="bg-white rounded-lg text-center flex flex-col items-center">
+
+                        <div>
+                            <img src="assets/images/website-images/Icons/People-trained2.png" alt="Banner 4"
+                                class="rounded-md" style="width: 65%;" />
+                        </div>
+
+                        <p class="text-lg font-semibold mb-2 text-red-700 pt-2">50,000+</p>
+                        <p class="text-xs text-gray-600">People trained in life-saving skills
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white rounded-lg text-center flex flex-col items-center">
+
+                        <div class="text-center">
+                            <img src="assets/images/website-images/Icons/People-assisted2.png" alt="Banner 4"
+                                class="rounded-md" style="width: 65%;" />
+                        </div>
+                        <p class="text-lg font-semibold mb-2 text-red-700 pt-2">6,00,000+</p>
+                        <p class="text-xs text-gray-600">People assisted during Medical Emergencies
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-white rounded-lg  text-center flex flex-col items-center">
+                        <div>
+                            <img src="assets/images/website-images/Icons/Jobs-created2.png" alt="Banner 4"
+                                class="rounded-md" style="width: 65%;" />
+                        </div>
+                        <p class="text-lg font-semibold mb-2 text-red-700 pt-2">300+</p>
+                        <p class="text-xs text-gray-600"> Jobs created
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+
+
+            <!-- Mobile doctor consultation banner  -->
+            <section class="our-journey-section py-4 bg-white">
+
+                <div class="px-4 pb-4">
+                    <h2 class="font-medium">Our Journey</h2>
+                </div>
+
+                <div class="px-4">
+                    <img src="assets/images/website-images/Our-Journey-Mobile.jpeg" alt="Image Description"
+                        class="w-full h-full rounded-xl object-cover" />
+                </div>
+
+            </section>
+
+
+            <section class="container mx-auto py-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h2 class="text-2xl font-semibold mb-4">
+                            Our Team
+                        </h2>
+                        <h3 class="text-md mb-2 px-3">
+                            <div>
+                                "Our dedicated team at Vmedo is driven by a simple yet powerful motto: 
+                                <span class="font-medium">'We work to save
+                                    lives.'</span>  With passion and commitment, we strive every day to make a difference in
+                                healthcare accessibility and delivery, ensuring that every individual has access to
+                                timely Healthcare when they need it most."
+
+                            </div>
+                        </h3>
+                    </div>
+                    <div>
+                        <img class="w-full h-auto rounded-3xl"
+                            src="assets\new-images\images\images\about\vmedo-about-OurTeam.jpg"
+                            alt="Urgent Care Image" />
+                    </div>
+
+                    <div class="text-center">
+                        <a href="https://vmedo.com/blog/career-jobs-at-vmedo/" class="hover:text-gray-400"> 
+                        <button
+                            style="padding:.7rem 2rem;background:#ffffff;color:#dc2626;font-weight:600;border-radius:.375rem;border:2px solid #dc2626;transition:all .3s ease-in-out;">
+                            Join our Team
+                        </button>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mobile-section bg-white py-4 px-3">
+
+                <div class="pb-3">
+                    <h2 class="font-medium">Leadership Team</h2>
+                </div>
+
+                <div class="pb-3 px-2">
+                    <h3>"Meet our Maverick leadership team who gave up an easy corporate lifestyle
+                        to solve a problem that affects each one of us"</h3>
+                </div>
+                <div class="flex justify-center items-center text-center">
+                    <div class="grid grid-cols-1 gap-4">
+
+                        <div class="Team1">
+
+
+                            <!-- Image -->
+                            <div class="text-center flex justify-center">
+                                <img src="assets\new-images\images\images\vmedo-about-praveengowda.jpg" alt="Your Image"
+                                    class="w-1/2 h-auto" />
+                            </div>
+                            <!-- Text and Subtext -->
+                            <div class="mt-2">
+                                <h2 class="text-lg font-bold">Praveen Gowdru</h2>
+
+
+                                <div class="flex justify-center py-1">
+                                    <div class="flex flex-row text-center">
+                                        <div class="icon">
+                                            <a href="https://www.linkedin.com/in/praveengarera/" class="text-xl"><i class="fab fa-linkedin  blue-icon"></i></a>
+
+                                        </div>
+                                        <p class="text-sm ml-1 mt-1">CEO and Co-Founder</p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                        <div class="Team2 mt-2">
+
+
+                            <!-- Image -->
+                            <div class="text-center flex justify-center">
+                                <img src="assets\new-images\images\images\vmedo-about-darshan.jpg" alt="Your Image"
+                                    class="w-1/2 h-auto rounded-full" />
+                            </div>
+                            <!-- Text and Subtext -->
+
+                            <div class="mt-2">
+                                <h2 class="text-lg font-bold">Darshan M K </h2>
+
+
+                                <div class="flex justify-center py-1">
+                                    <div class="flex flex-row text-center">
+                                        <div class="icon">
+                                            <a href="https://www.linkedin.com/in/darshan-m-k-74973348" class="text-xl"><i class="fab fa-linkedin  blue-icon"></i></a>
+
+                                        </div>
+                                        <p class="text-sm ml-1 mt-1">COO and Co-Founder</p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="Team2 mt-2">
+
+                            <!-- Image -->
+                            <div class="text-center flex justify-center">
+                                <img src="assets\new-images\images\images\vmedo-about-akhilesh-deshpandey.jpg"
+                                    alt="Your Image" class="w-1/2 h-auto rounded-full" />
+                            </div>
+                            <!-- Text and Subtext -->
+
+                            <div class="mt-2">
+                                <h2 class="text-lg font-bold">Akhilesh Deshpandey </h2>
+
+
+                                <div class="flex justify-center py-1">
+                                    <div class="flex flex-row text-center">
+                                        <div class="icon">
+                                            <a href="https://www.linkedin.com/in/akhilesh-deshpande-26088595" class="text-xl"><i class="fab fa-linkedin  blue-icon"></i></a>
+
+                                        </div>
+                                        <p class="text-sm ml-1 mt-1">Co-Founder Head Marketing</p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- <section class="mobile-section bg-white py-4 px-3">
+
+                <div class="pb-3">
+                    <h2 class="font-medium">Advisory Board</h2>
+                </div>
+
+                <div class="pb-3">
+                    <h3 class="font-medium pb-3 px-2">"With years of valuable experience in the healthcare industry, and
+                        their belief in us as an investment our team of advisors come in to guide us & show us the right
+                        path."</h3>
+                </div>
+                <div class="flex justify-center items-center text-center">
+                    <div class="grid grid-cols-1 gap-4">
+
+                        <div class="Team1">
+
+
+                          
+                            <div class="text-center flex justify-center">
+                                <img src="assets\new-images\images\images\vmedo-about-dr-purushothama.jpg"
+                                    alt="Your Image" class="w-1/2 h-auto rounded-full" />
+                            </div>
+                     
+
+                            <div>
+                                <h2 class="text-lg font-bold">DR Purushothama K R</h2>
+
+
+                                <div class="flex justify-center py-1">
+                                    <div class="flex flex-row text-center">
+                                        <div class="icon">
+                                            <a href="#" class="text-xl"><i class="fab fa-linkedin  blue-icon"></i></a>
+
+                                        </div>
+                                        <p class="text-sm ml-1 mt-1">Advisor</p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="Team2 mt-2">
+
+
+                   
+                            <div class="text-center flex justify-center">
+                                <img src="assets\new-images\images\images\vmedo-about-trainer-Dr-SJ-Prasanna-Kumar.jpg"
+                                    alt="Your Image" class="w-1/2 h-auto rounded-full" />
+                            </div>
+                           
+
+                            <div>
+                                <h2 class="text-lg font-bold"> DR Prasanna Kumar S J</h2>
+
+
+                                <div class="flex justify-center py-1">
+                                    <div class="flex flex-row text-center">
+                                        <div class="icon">
+                                            <a href="#" class="text-xl"><i class="fab fa-linkedin  blue-icon"></i></a>
+
+                                        </div>
+                                        <p class="text-sm ml-1 mt-1">Advisor</p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="Team2 mt-2">
+
+
+                       
+                            <div class="text-center flex justify-center">
+                                <img src="assets\new-images\images\images\vmedo-about-trainer-dr-pramodh-r-k.jpg"
+                                    alt="Your Image" class="w-1/2 h-auto rounded-full" />
+                            </div>
+                         
+
+                            <div>
+                                <h2 class="text-lg font-bold">DR Pramodh R K</h2>
+
+
+                                <div class="flex justify-center py-1">
+                                    <div class="flex flex-row text-center">
+                                        <div class="icon">
+                                            <a href="#" class="text-xl"><i class="fab fa-linkedin  blue-icon"></i></a>
+
+                                        </div>
+                                        <p class="text-sm ml-1 mt-1">Advisor</p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+
+            <!-- Mobile awards and achievements banner -->
+            <section class="Achievement-section-mobile py-4 bg-white">
+                <div class="pb-3 px-3">
+                    <h2 class="font-medium">Awards and achievements</h2>
+                </div>
+
+                <swiper [config]="vmedo_achievements_mobile" class="pl-3">
+                    <ng-template swiperSlide>
+                        <div class="achievement-card-mobile rounded-md bg-gray-200">
+                            <img src="assets/images/website-images/award-1.png" alt="Image Description"
+                                class="w-full h-full rounded-md object-cover" />
+                        </div>
+                    </ng-template>
+                    <ng-template swiperSlide>
+                        <div class="achievement-card-mobile rounded-md bg-gray-200">
+                            <img src="assets/images/website-images/award-2.png" alt="Image Description"
+                                class="w-full h-full rounded-md object-cover" />
+                        </div>
+                    </ng-template>
+                    <ng-template swiperSlide>
+                        <div class="achievement-card-mobile rounded-md bg-gray-200">
+                            <img src="assets/images/website-images/award-3.png" alt="Image Description"
+                                class="w-full h-full rounded-md object-cover" />
+                        </div>
+                    </ng-template>
+                </swiper>
+            </section>
+
+
+            <!-- Mobile media coverage section -->
+            <section class="media-coverage-mobile-section bg-white py-6 px-3">
+                <div class="pb-3">
+                    <h2 class="font-medium">Media coverage</h2>
+                </div>
+
+                <div>
+                    <div class="grid grid-cols-3 md:grid-cols-4 gap-10 px-3 pl-2">
+                        <!-- Card 1 -->
+                        <div class="media-card-mobile bg-white rounded-lg shadow-md">
+                            <img src="assets\new-images\images\images\vmedo-index-page-republic-tv.png" alt="Image 1"
+                                class="w-full h-full object-cover rounded-md" onclick="window.location.href=''" />
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="media-card-mobile bg-white rounded-lg shadow-md">
+                            <img src="assets\new-images\images\images\vmedo-index-page-public-tv.jpg" alt="Image 2"
+                                class="w-full h-full object-cover rounded-md"
+                                onclick="window.location.href='https://www.youtube.com/watch?v=U314LBhM1_g'" />
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="media-card-mobile bg-white rounded-lg shadow-md">
+                            <img src="assets\new-images\images\images\vmedo-index-page-your-story.jpg" alt="Image 3"
+                                class="w-full h-full object-cover rounded-md"
+                                onclick="window.location.href='https://yourstory.com/2018/02/healthcare-startup-vmedo/amp'" />
+                        </div>
+                        <!-- Card 4 -->
+                        <div class="media-card-mobile bg-white rounded-lg shadow-md">
+                            <img src="assets\new-images\images\images\vmedo-index-page-deccan-herald.png" alt="Image 4"
+                                class="w-full h-full object-cover rounded-md"
+                                onclick="window.location.href='https://www.deccanherald.com/metrolife/medical-emergency-app-helping-713536.html'" />
+                        </div>
+                        <!-- Card 5 -->
+                        <div class="media-card-mobile bg-white rounded-lg shadow-md">
+                            <img src="assets/images/website-images/vmedo-media-4.png" alt="Image 3"
+                                class="w-full h-full object-cover rounded-md"
+                                onclick="window.location.href='https://yourstory.com/2018/02/healthcare-startup-vmedo/amp'" />
+                        </div>
+                        <!-- Card 6 -->
+                        <div class="media-card-mobile bg-white rounded-lg shadow-md">
+                            <img src="assets/images/website-images/vmedo-media-5.png" alt="Image 4"
+                                class="w-full h-full object-cover rounded-md"
+                                onclick="window.location.href='https://www.deccanherald.com/metrolife/medical-emergency-app-helping-713536.html'" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Mobile review section -->
+            <section class="what-people-say-about-us-mobile-section px-3 py-4 bg-white">
+                <div class="pb-3">
+                    <h2 class="font-medium">Our Google Reviews</h2>
+                </div>
+
+                <swiper [config]="vmedo_review_mobile">
+
+                    <ng-template swiperSlide>
+                        <div class="what-people-say-about-us-card bg-white rounded-3xl shadow-md p-2 custom-hover">
+                            <div class="flex justify-center items-center py-2" style="height: 20%">
+                                <img src="assets/images/website-images/Icons/Google-logo.png" alt="Person Image"
+                                    style="border-radius: 50%; height: 100%" />
+                            </div>
+
+                            <div class="flex justify-center items-center py-2">
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                            </div>
+
+                            <div class="overflow-auto py-2" style="height: 55%">
+                                <p class="text-sm h-full p-2">
+                                    "VMEDO is a game-changer in emergency healthcare. Their
+                                    platform simplifies access to vital services like doctor
+                                    consultations and ambulance bookings, ensuring timely help
+                                    during critical situations. Highly recommended!"
+                                </p>
+                            </div>
+                            <div class="h-12 flex justify-center items-center" style="height: 5%">
+                                <p class="font-medium text-red-900">Vikram Kumar</p>
+                            </div>
+                        </div>
+                    </ng-template>
+
+
+                    <ng-template swiperSlide>
+                        <div class="what-people-say-about-us-card bg-white rounded-3xl shadow-md p-2 custom-hover">
+                            <div class="flex justify-center items-center py-2" style="height: 20%">
+                                <img src="assets/images/website-images/Icons/Google-logo.png" alt="Person Image"
+                                    style="border-radius: 50%; height: 100%" />
+                            </div>
+
+                            <div class="flex justify-center items-center py-2">
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                            </div>
+
+                            <div class="mt-1"></div>
+
+                            <div class="overflow-auto py-2" style="height: 55%">
+                                <p class="text-sm h-full p-2">
+                                    "VMEDO is a lifesaver! With their seamless technology
+                                    platform, I can access emergency medical services instantly.
+                                    It's a must-have for peace of mind during any medical crisis."
+                                </p>
+                            </div>
+                            <div class="h-12 flex justify-center items-center" style="height: 5%">
+                                <p class="font-medium text-red-900">Arjun kumar</p>
+                            </div>
+                        </div>
+                    </ng-template>
+
+
+
+                    <ng-template swiperSlide>
+                        <div class="what-people-say-about-us-card bg-white rounded-3xl shadow-md p-2 custom-hover">
+                            <div class="flex justify-center items-center py-2" style="height: 20%">
+                                <img src="assets/images/website-images/Icons/Google-logo.png" alt="Person Image"
+                                    style="border-radius: 50%; height: 100%" />
+                            </div>
+
+                            <div class="flex justify-center items-center py-2">
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                            </div>
+
+                            <div class="overflow-auto py-2" style="height: 55%">
+                                <p class="text-sm h-full p-2">
+                                    "Impressed with VMEDO's dedication to emergency care. Their
+                                    platform connects me with doctors, ambulances, and hospitals
+                                    swiftly. A reliable solution for quick and affordable medical
+                                    assistance."
+                                </p>
+                            </div>
+                            <div class="h-20 flex justify-center items-center" style="height: 5%">
+                                <p class="font-medium text-red-900">Suman Kalyani</p>
+                            </div>
+                        </div>
+                    </ng-template>
+
+
+                </swiper>
+
+                <div class="pt-4 pb-2 flex flex-row justify-center">
+                    <h3 class="font-medium text-blue-600"> <a href="https://maps.app.goo.gl/Hbz8HoAxTEgHAkdS9" class="text-blue-600">View
+                            more Google reviews <i class="fa-solid fa-arrow-right text-blue-600"> </i></a></h3>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Mobile footer section -->
+    <footer class="mobile-footer-section bg-gray-800 text-white py-8 relative bottom-0 left-0 w-full mb-12">
+        <div class="container mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <h3 class="text-lg font-semibold mb-3">Follow us on</h3>
+              <div class="flex space-x-4">
+                <a href="https://www.facebook.com/vmedohealthcare" class="text-white hover:text-gray-400 text-3xl mr-1"><i class="fab fa-facebook"></i></a>
+                <a href="https://twitter.com/vmedoapp" class="text-white hover:text-gray-400 text-3xl mr-1"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/vmedo_healthcare/" class="text-white hover:text-gray-400 text-3xl mr-1"><i class="fab fa-instagram"></i></a>
+                <a href="https://in.linkedin.com/company/vmedo" class="text-white hover:text-gray-400 text-3xl mr-1"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.youtube.com/channel/UClEydLiJCRonhXN7vMf4ikg" class="text-white hover:text-gray-400 text-3xl mr-1"><i class="fab fa-youtube"></i></a>
+              </div>
+            </div>
+  
+            <div class="py-2">
+              <h3 class="text-lg font-semibold mb-3">About Company</h3>
+              <p>
+                VMEDO is a digital healthcare platform, on a mission to make quality healthcare accessible and affordable to all..
+              </p>
+  
+              <div>
+                <button>
+                  <p class="text-red-600 font-medium" [routerLink]="'/info/aboutus'">
+                    Read More..</p>
+                </button>
+              </div>
+            </div>
+  
+            <!-- First row - First column (About Company) -->
+  
+            <!-- First row - Second column (Links) -->
+            <div class="grid grid-rows-7 gap-0">
+              <h3 class="text-lg font-semibold mb-3">Quick Links</h3>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/services/emergency-online-doctor-consultation'">
+                    Online Doctor Consultation</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/services/urgent-medical-care-at-home'">
+                    Urgent care at home</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/services/diagnostics-at-home'">
+                    Diagnostics at home</a>
+                </div>
+  
+              </div>
+  
+  
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/services/ambulance-service-india'">
+                    VMEDO Ambulance</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a href="https://store.vmedo.com" class="hover:text-gray-400">
+                    VMEDO Store</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/info/occupational-health-services'">
+                    For Corporates</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a href="https://vmedo.com/first-aid-training/index.html" class="hover:text-gray-400">
+                    First Aid Training</a>
+                </div>
+  
+              </div>
+  
+            </div>
+            <!-- First row - Third column (Links) -->
+            <div class="grid grid-rows-7 gap-0 py-2">
+              <h3 class="text-lg font-semibold mb-3">More</h3>
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a href="https://vmedo.com/blog" class="hover:text-gray-400">
+                      Blog</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a href="https://academy.vmedo.com" class="hover:text-gray-400">
+                      VMEDO Academy</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a class="hover:text-gray-400" [routerLink]="'/hospitals'">
+                      Emergency Hospital Admission</a> </p>
+                </div>
+  
+              </div>
+  
+              
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a class="hover:text-gray-400" [routerLink]="'/info/aboutus'">
+                      About us</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a href="https://vmedo.com/blog/career-jobs-at-vmedo/" class="hover:text-gray-400">
+                      Career</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a class="hover:text-gray-400" [routerLink]="'/info/partner-with-us'">
+                      Partner with us</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a class="hover:text-gray-400" [routerLink]="'/info/contact-us'">
+                      Contact us</a> </p>
+                </div>
+  
+              </div>
+            </div>
+          </div>
+  
+          <div class="flex justify-center mt-8">
+            <div>
+              <h2 class="text-center">"we work to save lives"</h2>
+            </div>
+          </div>
+  
+          <div class="text-center mt-8 mb-8 border-t border-gray-700 pt-8">
+            <!-- Second row - First column (Copyright) -->
+            <div>
+              <p>
+                &copy; Arera Healthcare and Technologies Pvt Ltd
+                <br />
+                All rights reserved.
+              </p>
+            </div>
+            <!-- Second row - Second column (Social Media Icons) -->
+            <div class="mt-3">
+              <div class="flex flex-row justify-center">
+  
+                <div>
+                  <h3 class="text-sm">
+                    <a href="https://vmedo.com/vmedo-privacy.html" class="hover:text-gray-400">
+                      Privacy policy</a>
+                  </h3>
+                </div>
+  
+                <div class="px-4">
+                  <h3 class="text-sm">
+                    <a href="https://vmedo.com/vmedo-terms.html" class="hover:text-gray-400">
+                      Terms & Conditions</a>
+  
+                  </h3>
+                </div>
+                
+                <div>
+                  <h3 class="text-sm">
+                    <a href="https://vmedo.com/sitemap.xml" class="hover:text-gray-400">
+                      Sitemap</a>
+                  </h3>
+                </div>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    <!-- Mobile widget section -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white py-2.5 px-2 flex justify-around rounded-xl shadow-lg z-10">
+        <div class="flex flex-col items-center">
+            <span> 
+                    <button  [routerLink]="'/info/contact-us'"
+                        style="padding:.7rem 5rem;background:#dc2626;color:#fff;font-weight:600;border-radius:.375rem;border:1px solid transparent;transition:all .3s ease-in-out;"
+                        onmouseover="this.style.borderColor='#dc2626';this.style.background='#fff';this.style.color='#dc2626';"
+                        onmouseout="this.style.borderColor='transparent';this.style.background='#dc2626';this.style.color='#fff';">
+                        Contact Us
+                    </button>
+                </span>
+        </div>
+
+       
+    </div>
+
+    <!-- Mobile VMEDO services popup section -->
+    <div *ngIf="showPopup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10"
+        (click)="togglePopup()">
+        <!-- Card content here -->
+        <div class="vmedo-more-card-mobile bg-white-500 rounded-lg shadow-md items-center overflow-hidden"
+            (click)="$event.stopPropagation()">
+            <div class="text-center py-4">
+                <h3 class="font-medium text-red-700">VMEDO Services</h3>
+            </div>
+
+            <!-- Grid container with 3 rows and 3 columns -->
+            <div class="grid grid-cols-3 gap-4 px-4">
+                <!-- Grid items -->
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    [routerLink]="'/services/emergency-online-doctor-consultation'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-1.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">
+                            Instant <br />
+                            doctor consultation
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    [routerLink]="'/services/ambulance-service-india'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-2.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">
+                            Book Emergency Ambulance
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    [routerLink]="'/services/urgent-medical-care-at-home'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-4.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">
+                            Urgent medical care at home
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    [routerLink]="'/services/labs'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-8.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">
+                            Lab tests and scans
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    onclick="window.location.href='https://store.vmedo.com'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-1.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">
+                            Healthcare products
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    [routerLink]="'/hospitals'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-3.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">
+                            Hospital admission
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    onclick="window.location.href='https://academy.vmedo.com'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-6.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">VMEDO Academy</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    [routerLink]="'/services/find-blood-donor'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-7.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">Find blood donor</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-md shadow-md flex flex-col items-center justify-center p-2"
+                    [routerLink]="'/info/occupational-health-services'">
+                    <div class="h-14">
+                        <img src="assets\images\new_images\service-mobile-1.png" alt="Image"
+                            class="max-h-full max-w-full" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-medium" style="font-size: 10px">VMEDO-Corporate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<ng-template #desktopContent>
+    <div class="h-screen overflow-y-auto" style="margin: 0px">
+
+        <!-- Desktop navigation section -->
+        <nav class="bg-white flex justify-between items-center p-3">
+            <!-- Left section with company logo -->
+            <div class="flex items-center">
+                <img src="assets/img/vmedologo.png" alt="Company Logo" class="h-8 w-auto mr-4" [routerLink]="'/home'" style="height: 50px;" />
+            </div>
+
+             <!-- Middle section with navigation menus -->
+             <ul class="flex space-x-6 mr-5">
+                
+                <li>
+                    <div class="relative">
+                        <a 
+                            class="navigation-menu font-medium hover:font-bold hover:no-underline transition duration-200" (click)="toggleDropdownDesktop()">
+                            Healthcare-services
+
+                            <i *ngIf="isDropdownDesktopOpen" class="fa-solid fa-chevron-up"></i>
+                            <i *ngIf="!isDropdownDesktopOpen" class="fa-solid fa-chevron-down"></i>
+                        
+                        </a>
+
+
+                            <div class="dropdown-menu" *ngIf="isDropdownDesktopOpen">
+
+                                <div class="">
+                                  <div class="grid grid-cols-4 gap-4 p-4">
+                                    <!-- First row -->
+                                    <div class="col-span-1">
+                                      <p class="font-semibold mb-2">Doctor Consultation</p>
+                                      <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                        [routerLink]="'/services/emergency-online-doctor-consultation'">General Physician</a>
+                                      <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                        [routerLink]="'/services/emergency-online-doctor-consultation'">Emergency Physician</a>
+                                      <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                        [routerLink]="'/services/emergency-online-doctor-consultation'">Second opinion</a>
+                                      <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                        [routerLink]="'/services/emergency-online-doctor-consultation'">Pediatricion</a>
+                                      <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                        [routerLink]="'/services/emergency-online-doctor-consultation'">Orthopedic</a>
+                                    </div>
+                                    <div class="col-span-1">
+                                      <p class="font-semibold mb-2">VMEDO Ambulance</p>
+                                      <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                        [routerLink]="'/services/ambulance-service-india'">Emergency Ambulance</a>
+                                      <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                        [routerLink]="'/services/ambulance-service-india'">Non Emergency Ambulance</a>
+                                      <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                        [routerLink]="'/services/ambulance-service-india'">Patient transport vehicle</a>
+                                      <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                        [routerLink]="'/services/ambulance-service-india'">Ambulance for rent</a>
+                                      <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                        [routerLink]="'/services/ambulance-service-india'">Ambulance for events</a>
+                                    </div>
+                                    <div class="col-span-1">
+                                      <p class="font-semibold mb-2">Urgent care at home</p>
+                                      <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                        [routerLink]="'/services/urgent-medical-care-at-home'">Dressing at home</a>
+                                      <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                        [routerLink]="'/services/urgent-medical-care-at-home'">Bandaging at home</a>
+              
+                                      <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                        [routerLink]="'/services/urgent-medical-care-at-home'">Injection/IV fluids at home</a>
+                                      <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                        [routerLink]="'/services/urgent-medical-care-at-home'">Minor illness or injuries at home</a>
+                                      <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                        [routerLink]="'/services/urgent-medical-care-at-home'">Blood test at home</a>
+                                    </div>
+                                    <div class="col-span-1">
+                                      <p class="font-semibold mb-2">Labtest and scans</p>
+                                      <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                        [routerLink]="'/services/diagnostics-at-home'">Checkups</a>
+                                      <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                        [routerLink]="'/services/diagnostics-at-home'">Labtests</a>
+                                      <a class="block text-sm text-gray-500 hover:text-gray-900"
+                                        [routerLink]="'/services/diagnostics-at-home'">Scans</a>
+                                    </div>
+              
+              
+                                    <div class="col-span-1">
+                                      <p class="font-semibold mb-2">Hospital admission</p>
+                                      <a class="text-sm block text-gray-500 hover:text-gray-900"
+                                        [routerLink]="'/hospitals'">Emergency hospital admission</a>
+              
+                                    </div>
+                                    <div class="col-span-1">
+                                      <p class="font-semibold mb-2">VMEDO Store</p>
+                                      <a class="text-sm block text-gray-500 hover:text-gray-900"
+                                      onclick="window.location.href='https://store.vmedo.com/'">Hospital Equipments</a>
+                                      <a class="text-sm block text-gray-500 hover:text-gray-900"
+                                      onclick="window.location.href='https://store.vmedo.com/'">Medical supplies</a>
+                                    </div>
+              
+              
+                                    <div class="col-span-2">
+                                      <div class="rounded-xl">
+                                        <img src="assets/images/website-images/mini_banner_1.png" alt="Image Description"
+                                          class="w-4/5 h-full rounded-xl object-cover" />
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+              
+              
+              
+                              </div>
+
+
+                    </div>
+                </li>
+             
+                
+                <li>
+                    <a class="navigation-menu font-medium hover:text-red-700 hover:font-bold hover:no-underline transition duration-200"
+                        [routerLink]="'/info/occupational-health-services'">VMEDO for Corporates</a>
+                </li>
+            </ul>
+
+            <!-- Right section with login -->
+ 
+            <div class="flex flex-row" *ngIf="common.auth_token">
+                <div>
+                    <button class="px-4 py-2 bg-red-700 text-white font-semibold rounded-md hover:bg-red-600" (click)="app.OnOpenLoginForm('/dashboard/profile')">
+                        <span >Profile</span>  
+                    </button>
+                </div>
+    
+                <div>
+                    <button class="px-4 py-2 bg-white text-red-700 font-semibold rounded-md hover:bg-red-600" (click)="OnClickLogout()">
+                        <span >Signout</span>  
+                    </button>
+                </div>
+
+            </div>
+
+           
+            <div *ngIf="!common.auth_token">
+                <button class="px-4 py-2 bg-red-700 text-white font-semibold rounded-md hover:bg-red-600" (click)="app.OnOpenLoginForm('/dashboard/profile')">
+                    <span >Login</span>  
+                </button>
+            </div>
+
+
+
+        </nav>
+
+        <div class="home-container">
+
+            <!-- Desktop academy section -->
+            <section class="vmedo-academy-section-desktop bg-white py-10 px-8">
+                <!-- Second section -->
+                <div class="container mx-auto flex flex-col md:flex-row items-center px-5">
+                    <div class="text-content md:order-1 md:w-3/5 md:pr-10">
+                        <h2 class="text-3xl font-bold mb-4">
+                            <span class="text-xl font-normal">Driving Positive Change in Healthcare through</span> <br>
+                            Empathy, Excellence and Innovation!
+
+                        </h2>
+
+                    </div>
+                    <div class="image-container md:order-2 md:w-2/5 md:pl-10">
+
+                        <iframe class="intro-layer1" width="95%" height="200" src="https://www.youtube.com/embed/1d-wcv5VC5s"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Desktop about us section -->
+            <section class="vmedo-about-us-section-desktop py-10 px-8">
+                <div
+                    class="about-us-section-swiper-container2 bg-red-50 rounded-lg p-6 grid grid-cols-2 md:grid-cols-2 gap-6">
+
+                    <!-- Card 1 -->
+
+                    <div class="bg-white rounded-xl p-3 text-center">
+                        <!-- Image (2/5 of the card's height) -->
+                        <div style="display: flex; justify-content: center">
+                            <img src="assets/images/website-images/Icons/mission.png" alt="Banner 4" style="width: 10%"
+                                class="rounded-md" />
+                        </div>
+                        <h2 class="text-lg font-semibold py-2 text-red-700">Mission</h2>
+                        <p class="text-sm text-gray-600"> Drive innovation in Healthcare to make it more accessible and
+                            affordable
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+
+                    <div class="bg-white rounded-xl p-3 text-center">
+                        <!-- Image (2/5 of the card's height) -->
+                        <div style="display: flex; justify-content: center">
+                            <img src="assets/images/website-images/Icons/vision.png" alt="Banner 4" style="width: 10%"
+                                class="rounded-md" />
+                        </div>
+                        <h2 class="text-lg font-semibold py-2 text-red-700">Vision</h2>
+                        <p class="text-sm text-gray-600">To be a Global leader in Healthcare innovation
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+
+
+            <section class="why-vmedo-section py-6 px-8">
+                <!-- <div class="py-4 px-5">
+                    <h2 class="font-medium">The problem</h2>
+                </div> -->
+
+                <div class="px-14">
+
+                    <div class="py-2">
+                        <p>At Vmedo, we are committed to revolutionizing healthcare accessibility and delivery,
+                            empowering individuals to take control of their health journey with convenience,
+                            transparency, and compassion.We offer a comprehensive platform that connects users with a wide range of healthcare
+                            services, from on-demand ambulance and home healthcare services to online doctor
+                            consultations and medical diagnostics.With a focus on innovation and technology, we strive to simplify the healthcare experience,
+                            making it easier for patients to access quality care whenever and wherever they need it.</p>
+                    </div>
+
+                  
+
+                </div>
+
+
+            </section>
+
+
+            <!-- Other services section -->
+            <section class="how-it-works-section py-6 px-8">
+                <h2 class="font-medium mb-4 pl-8">Our Impact</h2>
+
+                <div
+                    class="about-us-section-swiper-container2 px-16 bg-white rounded-lg grid grid-cols-2 md:grid-cols-3 gap-6">
+                    <!-- Card 1 -->
+                    <div class="bg-white rounded-lg p-4 text-center flex flex-col items-center">
+
+                        <div>
+                            <img src="assets/images/website-images/Icons/People-trained2.png" alt="Banner 4"
+                                class="rounded-md" style="width: 75%;" />
+                        </div>
+
+
+                        <h2 class="text-lg font-semibold mb-2 text-red-700 pt-2">
+                            50,000+
+                        </h2>
+                        <p class="text-sm text-gray-600">
+                            People trained in life-saving skills
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white rounded-lg p-4 text-center flex flex-col items-center">
+
+                        <div>
+                            <img src="assets/images/website-images/Icons/People-assisted2.png" alt="Banner 4"
+                                class="rounded-md" style="width: 75%;" />
+                        </div>
+
+
+                        <h2 class="text-lg font-semibold mb-2 text-red-700 pt-2">
+                            6,00,000+
+                        </h2>
+                        <p class="text-sm text-gray-600">
+                            People assisted during Medical Emergencies
+
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-white rounded-lg p-4 text-center flex flex-col items-center">
+
+                        <div>
+                            <img src="assets/images/website-images/Icons/Jobs-created2.png" alt="Banner 4"
+                                class="rounded-md" style="width: 75%;" />
+                        </div>
+
+                        <h2 class="text-lg font-semibold mb-2 text-red-700 pt-2">
+                            300+
+                        </h2>
+                        <p class="text-sm text-gray-600">
+                            Jobs created
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+             <!-- Vmedo banner section  -->
+             <section class="Ambulance-banner-section py-6 px-8  justify-center">
+
+                <h2 class="font-medium mb-4 pl-8">Our Journey</h2>
+
+                <div class="flex flex-row justify-center">
+                    <div class="ambulance-banner-card rounded-xl bg-gray-200">
+                        <img src="assets/images/website-images/Our-Journey.png" alt="Image Description"
+                            class="w-full h-full rounded-xl object-cover" />
+                    </div>
+                </div>
+
+               
+            </section>
+
+
+
+            <!-- Desktop hero section -->
+            <section class="vmedo-hero-section-desktop bg-white py-10 px-8">
+
+                <h2 class="font-medium mb-4 pl-8">Our Team</h2>
+
+                <!-- Second section -->
+                <div class="container mx-auto flex flex-col md:flex-row items-center px-5">
+
+                    <div class="text-content md:order-1 md:w-2/3 md:pr-10">
+
+                        <!-- Adjust heading -->
+                        <p class="text-lg mb-4">
+                            "Our dedicated team at Vmedo is driven by a simple yet powerful motto: 
+                            <span class="font-medium">'We work to save lives.'</span>  With passion and commitment, we strive every day to make a difference in healthcare
+                            accessibility and delivery, ensuring that every individual has access to timely Healthcare
+                            when they need it most."
+                        </p>
+
+                        <!-- Adjust subheading -->
+                        <a href="https://vmedo.com/blog/career-jobs-at-vmedo/" class="hover:text-gray-400">
+                            <button style="
+                            padding: 0.5rem 1rem;
+                            background-color: #dc2626;
+                            color: #fff;
+                            font-weight: 600;
+                            border-radius: 0.375rem;
+                            border: 1px solid transparent;
+                            transition: all 0.3s ease-in-out;
+                          " onmouseover="this.style.borderColor = '#dc2626'; this.style.backgroundColor = '#fff'; this.style.color = '#dc2626';"
+                                        onmouseout="this.style.borderColor = 'transparent'; this.style.backgroundColor = '#dc2626'; this.style.color = '#fff';">
+                                        Join Our Team
+                                    </button></a>
+
+                       
+                    </div>
+                    <div class="image-container md:order-2 md:w-1/3 md:pl-10">
+                        <img src="assets\new-images\images\images\about\vmedo-about-OurTeam.jpg" alt="Second Image"
+                            class="w-full h-auto" />
+                        <!-- Adjust image -->
+                    </div>
+                </div>
+            </section>
+
+            <section class="VMEDO-Team-Section py-10 px-8">
+                <section class="why-vmedo-section">
+                    <h2 class="font-medium mb-4 pl-8">Leadership Team</h2>
+
+                    <div class="px-7">
+
+                        <div class="px-7">
+
+                            <div class="py-2">
+                                <p>"Meet our Maverick leadership team who gave up an easy corporate lifestyle to solve a
+                                    problem that affects each one of us"</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-4 gap-4 px-7 pt-6">
+                            <!-- Column 1 -->
+                            <div class="column text-center">
+                                <img src="assets\new-images\images\images\vmedo-about-praveengowda.jpg" alt="Image 1"
+                                    class="mx-auto w-4/6 h-auto" />
+
+                                <div class="mt-3">
+                                    <h3 class="font-bold">Praveen Gowdru</h3>
+
+
+                                    <div class="flex justify-center py-1">
+                                        <div class="flex flex-row text-center">
+                                            <div class="icon">
+                                                <a href="https://www.linkedin.com/in/praveengarera/" class="text-xl"><i
+                                                        class="fab fa-linkedin  blue-icon"></i></a>
+
+                                            </div>
+                                            <p class="text-sm ml-1 mt-1">CEO and Co-Founder</p>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <!-- <h2 class="text-lg font-bold">Praveen Gowdru</h2>
+                                <p class="text-sm">CEO and Co-Founder</p> -->
+                            </div>
+
+                            <!-- Column 2 -->
+                            <div class="column text-center">
+                                <img src="assets\new-images\images\images\vmedo-about-darshan.jpg" alt="Image 2"
+                                    class="mx-auto w-4/6 h-auto rounded-full" />
+
+                                <div class="mt-3">
+                                    <h3 class="font-bold">Darshan M K </h3>
+
+
+                                    <div class="flex justify-center py-1">
+                                        <div class="flex flex-row text-center">
+                                            <div class="icon">
+                                                <a href="https://www.linkedin.com/in/darshan-m-k-74973348" class="text-xl"><i
+                                                        class="fab fa-linkedin  blue-icon"></i></a>
+
+                                            </div>
+                                            <p class="text-sm ml-1 mt-1">COO and Co-Founder</p>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                            <!-- Column 3 -->
+                            <div class="column text-center">
+                                <img src="assets\new-images\images\images\vmedo-about-akhilesh-deshpandey.jpg"
+                                    alt="Image 3" class="mx-auto w-4/6 h-auto rounded-full" />
+
+                                <div class="mt-3">
+                                    <h3 class="font-bold">Akhilesh Deshpandey</h3>
+
+
+                                    <div class="flex justify-center py-1">
+                                        <div class="flex flex-row text-center">
+                                            <div class="icon">
+                                                <a href="https://www.linkedin.com/in/akhilesh-deshpande-26088595" class="text-xl"><i
+                                                        class="fab fa-linkedin  blue-icon"></i></a>
+
+                                            </div>
+                                            <p class="text-sm ml-1 mt-1">Co-Founder Head Marketing</p>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </section>
+
+            
+            </section>
+
+
+            <!-- Desktop Awards & Achievements section -->
+            <section class="Awards-achievements-Section py-6 px-8 bg-white">
+                <h2 class="font-medium mb-4 pl-8">Awards and Achievements</h2>
+
+                <div class="rounded-3xl">
+                    <img src="assets/images/website-images/awards-banner.png" alt="Image Description"
+                        class="mx-auto w-4/5 h-full rounded-3xl object-cover" />
+                </div>
+            </section>
+
+            <!-- Desktop Media Coverage Section -->
+            <section class="media-coverage-section-desktop bg-white py-12 px-8">
+                <h2 class="font-medium mb-4 pl-8">Media Coverage</h2>
+
+                <div class="px-5">
+                    <swiper [config]="vmedo_media_desktop" class="px-6">
+                        <ng-template swiperSlide>
+                            <!-- Card 1 -->
+                            <div class="media-card bg-white rounded-lg shadow-md">
+                                <img src="assets\new-images\images\images\vmedo-index-page-republic-tv.png"
+                                    alt="Image 1" class="w-full h-full object-cover rounded-md" />
+                            </div>
+                        </ng-template>
+                        <ng-template swiperSlide>
+                            <!-- Card 2 -->
+                            <div class="media-card bg-white rounded-lg shadow-md">
+                                <img src="assets\new-images\images\images\vmedo-index-page-public-tv.jpg" alt="Image 2"
+                                    class="w-full h-full object-cover rounded-md"
+                                    onclick="window.location.href='https://www.youtube.com/watch?v=U314LBhM1_g'" />
+                            </div>
+                        </ng-template>
+                        <ng-template swiperSlide>
+                            <!-- Card 3 -->
+                            <div class="media-card bg-white rounded-lg shadow-md">
+                                <img src="assets\new-images\images\images\vmedo-index-page-your-story.jpg" alt="Image 3"
+                                    class="w-full h-full object-cover rounded-md"
+                                    onclick="window.location.href='https://yourstory.com/2018/02/healthcare-startup-vmedo/amp'" />
+                            </div>
+                        </ng-template>
+                        <ng-template swiperSlide>
+                            <div class="media-card bg-white rounded-lg shadow-md">
+                                <img src="assets\new-images\images\images\vmedo-index-page-deccan-herald.png"
+                                    alt="Image 4" class="w-full h-full object-cover rounded-md"
+                                    onclick="window.location.href='https://www.deccanherald.com/metrolife/medical-emergency-app-helping-713536.html'" />
+                            </div>
+                        </ng-template>
+
+                        <ng-template swiperSlide>
+                            <div class="media-card bg-white rounded-lg shadow-md">
+                                <img src="assets/images/website-images/vmedo-media-4.png" alt="Image 4"
+                                    class="w-full h-full object-cover rounded-md"
+                                    onclick="window.location.href='https://www.thenewsminute.com/karnataka/how-bengaluru-duo-helping-people-get-better-access-emergency-services-india-94741'" />
+                            </div>
+                        </ng-template>
+
+                        <ng-template swiperSlide>
+                            <div class="media-card bg-white rounded-lg shadow-md">
+                                <img src="assets/images/website-images/vmedo-media-5.png" alt="Image 4"
+                                    class="w-full h-full object-cover rounded-md"
+                                    onclick="window.location.href='https://indiamedtoday.com/jeeva-rakshak-foundation-vmedo-to-provide-emergency-ambulance-services/'" />
+                            </div>
+                        </ng-template>
+                    </swiper>
+                </div>
+            </section>
+
+            <!-- Desktop review section -->
+            <section class="what-people-say-about-us-section-desktop py-6 px-8 bg-white">
+
+                <h2 class="font-medium mb-4 pl-8">Our Google Reviews</h2>
+
+                <div class="px-14">
+                    <swiper [config]="vmedo_review_desktop">
+                        <ng-template swiperSlide>
+                            <div
+                                class="what-people-say-about-us-card-desktop bg-white rounded-3xl shadow-md p-2 custom-hover">
+                                <div class="flex justify-center items-center py-2" style="height: 20%">
+                                    <img src="assets/images/website-images/Icons/Google-logo.png" alt="Person Image"
+                                        style="border-radius: 50%; height: 100%" />
+                                </div>
+
+                                <div class="flex justify-center items-center py-2">
+                                    <i class="fas fa-star text-yellow-500"></i>
+                                    <i class="fas fa-star text-yellow-500"></i>
+                                    <i class="fas fa-star text-yellow-500"></i>
+                                    <i class="fas fa-star text-yellow-500"></i>
+                                    <i class="fas fa-star text-yellow-500"></i>
+                                </div>
+
+
+                                <div class="overflow-auto py-2" style="height: 55%">
+                                    <h3 class="text-sm h-full p-3">
+                                        "VMEDO is a lifesaver! With their seamless technology
+                                        platform, I can access emergency medical services instantly.
+                                        It's a must-have for peace of mind during any medical crisis."
+                                    </h3>
+                                </div>
+                                <div class="h-20 flex justify-center items-center" style="height: 5%">
+                                    <p class="font-medium text-red-900">Arjun kumar</p>
+                                </div>
+                            </div>
+                        </ng-template>
+
+                        <ng-template swiperSlide>
+                            <div
+                                class="what-people-say-about-us-card-desktop bg-white rounded-3xl shadow-md p-2 custom-hover">
+                                <div class="flex justify-center items-center py-2" style="height: 20%">
+                                    <img src="assets/images/website-images/Icons/Google-logo.png" alt="Person Image"
+                                        style="border-radius: 50%; height: 100%" />
+                                </div>
+
+                                <div class="flex justify-center items-center py-2">
+                                    <i class="fas fa-star text-yellow-500"></i>
+                                    <i class="fas fa-star text-yellow-500"></i>
+                                    <i class="fas fa-star text-yellow-500"></i>
+                                    <i class="fas fa-star text-yellow-500"></i>
+                                    <i class="fas fa-star text-yellow-500"></i>
+                                </div>
+
+
+                                <div class="overflow-auto py-2" style="height: 55%">
+                                    <h3 class="text-sm h-full p-3">
+                                        "VMEDO is a game-changer in emergency healthcare. Their
+                                        platform simplifies access to vital services like doctor
+                                        consultations and ambulance bookings, ensuring timely help
+                                        during critical situations. Highly recommended!"
+                                    </h3>
+                                </div>
+                                <div class="h-20 flex justify-center items-center" style="height: 5%">
+                                    <p class="font-medium text-red-900">Vikram</p>
+                                </div>
+                            </div>
+                        </ng-template>
+
+
+                        <ng-template swiperSlide>
+                            <div
+                                class="what-people-say-about-us-card-desktop bg-white rounded-3xl shadow-md p-2 custom-hover">
+                                <div class="flex justify-center items-center py-2" style="height: 20%">
+                                    <img src="assets/images/website-images/Icons/Google-logo.png" alt="Person Image"
+                                        style="border-radius: 50%; height: 100%" />
+                                </div>
+
+                                <div class="flex justify-center items-center py-2">
+                                    <i class="fas fa-star text-yellow-500"></i>
+                                    <i class="fas fa-star text-yellow-500"></i>
+                                    <i class="fas fa-star text-yellow-500"></i>
+                                    <i class="fas fa-star text-yellow-500"></i>
+                                    <i class="fas fa-star text-yellow-500"></i>
+                                </div>
+
+
+                                <div class="overflow-auto py-2" style="height: 55%">
+                                    <h3 class="text-sm h-full p-3">
+                                        "Impressed with VMEDO's dedication to emergency care. Their
+                                        platform connects me with doctors, ambulances, and hospitals
+                                        swiftly. A reliable solution for quick and affordable medical
+                                        assistance."
+                                    </h3>
+                                </div>
+                                <div class="h-20 flex justify-center items-center" style="height: 5%">
+                                    <p class="font-medium text-red-900">Suman Kalyani</p>
+                                </div>
+                            </div>
+                        </ng-template>
+
+                    </swiper>
+                </div>
+
+                <div class="mt-2 pt-6 pb-2 flex flex-row px-12 justify-center">
+                    <h3 class="font-medium text-blue-600"><a href="https://maps.app.goo.gl/Hbz8HoAxTEgHAkdS9" class="text-blue-600">View more
+                            Google reviews <i class="fa-solid fa-arrow-right text-blue-600"> </i></a></h3>
+                </div>
+
+            </section>
+
+
+            <!-- Desktop footer section -->
+    <footer class="desktop-footer-section bg-gray-800 text-white py-8 relative bottom-0 left-0 w-full">
+        <div class="container mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- First row - First column (About Company) -->
+            <div>
+              <h3 class="text-lg font-semibold mb-4">About Company</h3>
+  
+              <div style="margin-top: -6%;">
+                <div class="py-2">
+                  <img src="assets/img/logo-white.png" alt="Logo" class="w-36" [routerLink]="'/home'" />
+                </div>
+                <p class="text-sm">
+                  VMEDO is a digital healthcare platform, on a mission to make quality healthcare accessible and affordable to all..
+                </p>
+  
+                <div>
+                  <button>
+                    <p class="hover:text-gray-400 text-red-700 font-medium" [routerLink]="'/info/aboutus'">
+                      Read More..</p>
+                  </button>
+                </div>
+              </div>
+            </div>
+  
+            
+            <!-- First row - Second column (Links) -->
+            <div class="grid grid-rows-7 gap-0">
+              <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/services/emergency-online-doctor-consultation'">
+                    Online Doctor Consultation</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/services/urgent-medical-care-at-home'">
+                    Urgent care at home</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/services/diagnostics-at-home'">
+                    Diagnostics at home</a>
+                </div>
+  
+              </div>
+  
+  
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/services/ambulance-service-india'">
+                    VMEDO Ambulance</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a href="https://store.vmedo.com" class="hover:text-gray-400">
+                    VMEDO Store</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a class="hover:text-gray-400" [routerLink]="'/info/occupational-health-services'">
+                    For Corporates</a>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <a href="https://vmedo.com/first-aid-training/index.html" class="hover:text-gray-400">
+                    First Aid Training</a>
+                </div>
+  
+              </div>
+  
+            </div>
+  
+            <!-- First row - Third column (Links) -->
+            <div class="grid grid-rows-7 gap-0">
+              <h3 class="text-lg font-semibold mb-4">More</h3>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a href="https://vmedo.com/blog" class="hover:text-gray-400">
+                      Blog</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a href="https://academy.vmedo.com" class="hover:text-gray-400">
+                      VMEDO Academy</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a class="hover:text-gray-400" [routerLink]="'/hospitals'">
+                      Emergency Hospital Admission</a> </p>
+                </div>
+  
+              </div>
+  
+              
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a class="hover:text-gray-400" [routerLink]="'/info/aboutus'">
+                      About us</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a href="https://vmedo.com/blog/career-jobs-at-vmedo/" class="hover:text-gray-400">
+                      Career</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a class="hover:text-gray-400" [routerLink]="'/info/partner-with-us'">
+                      Partner with us</a> </p>
+                </div>
+  
+              </div>
+  
+              <div class="flex flex-row text-sm">
+                <div>
+                  <i class="fa-solid fa-greater-than text-sm"></i>
+                </div>
+                <div class="ml-2">
+                  <p> <a class="hover:text-gray-400" [routerLink]="'/info/contact-us'">
+                      Contact us</a> </p>
+                </div>
+  
+              </div>
+  
+            </div>
+  
+            <!-- First row - Forth column (Links) -->
+            <div class="grid grid-rows-7 gap-0">
+              <h3 class="text-lg font-semibold">Follow us on</h3>
+              <div class="flex space-x-4">
+                <a href="https://www.facebook.com/vmedohealthcare" class="text-white hover:text-gray-400 text-2xl mr-3"><i
+                    class="fab fa-facebook"></i></a>
+                <a href="https://twitter.com/vmedoapp" class="text-white hover:text-gray-400 text-2xl mr-3"><i
+                    class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/vmedo_healthcare/" class="text-white hover:text-gray-400 text-2xl mr-3"><i
+                    class="fab fa-instagram"></i></a>
+                <a href="https://in.linkedin.com/company/vmedo" class="text-white hover:text-gray-400 text-2xl mr-3"><i
+                    class="fab fa-linkedin"></i></a>
+                <a href="https://www.youtube.com/channel/UClEydLiJCRonhXN7vMf4ikg"
+                  class="text-white hover:text-gray-400 text-2xl mr-3"><i class="fab fa-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+  
+          <div class="flex justify-center mt-8">
+            <div>
+              <h2 class="text-center">"we work to save lives"</h2>
+            </div>
+          </div>
+  
+          <div class="justify-between text-center mt-8 border-t border-gray-700 pt-8">
+            <!-- Second row - First column (Copyright) -->
+            <div>
+              <p>
+                &copy; Copyrights Arera Healthcare and Technologies Pvt Ltd 2024.
+                All rights reserved.
+              </p>
+            </div>
+  
+            <!-- Second row - Second column (Social Media Icons) -->
+            <div class="py-2">
+              <div class="flex flex-row justify-center">
+                <div>
+                  <h3 class="text-sm">
+                    <a href="https://vmedo.com/vmedo-terms.html" class="hover:text-gray-400">
+                      Terms & Conditions</a>
+  
+                  </h3>
+                </div>
+                <div class="px-4">
+                  <h3 class="text-sm">
+                    <a href="https://vmedo.com/vmedo-privacy.html" class="hover:text-gray-400">
+                      Privacy policy</a>
+                  </h3>
+                </div>
+                <div>
+                  <h3 class="text-sm">
+                    <a href="https://vmedo.com/sitemap.xml" class="hover:text-gray-400">
+                      Sitemap</a>
+                  </h3>
+                </div>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+        </div>
+
+    </div>
+</ng-template>
