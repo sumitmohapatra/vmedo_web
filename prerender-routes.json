@@ -1,10 +1,11 @@
 [
-    "/home",
-    "/emid",
-    "/subscription",
-    "/info",
-    "/services",
-    "/dashboard",
-    "/emergency",
-    "/hospitals"
-  ]
+  "/mobile",
+  "/desktop",
+  "/emid",
+  "/subscription",
+  "/info",
+  "/services",
+  "/dashboard",
+  "/emergency",
+  "/hospitals"
+]
