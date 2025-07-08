@@ -104,3 +104,9 @@
       white-space: nowrap;
     }
   }
+
+  .form-check-input {
+    position: absolute;
+    margin-top: .3rem;
+    margin-left: -1.25rem;
+}

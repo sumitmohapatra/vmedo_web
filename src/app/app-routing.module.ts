@@ -8,20 +8,20 @@ import { DeviceRedirectComponent } from './device-redirect/device-redirect.compo
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: DeviceRedirectComponent
   },
+  // {
+  //   path: 'home',
+  //   loadChildren: () => import('./vmedo-homepage/vmedo-homepage.module').then(m => m.VmedoHomepageModule)
+  // },
   {
-    path: 'home',
-    loadChildren: () => import('./vmedo-homepage/vmedo-homepage.module').then(m => m.VmedoHomepageModule)
-  },
-  {
-    path: 'mobile',
+    path: 'home/mobile',
     loadChildren: () =>
       import('./vmedo-homepage-mobile/vmedo-homepage-mobile.module').then((m) => m.VmedoHomepageMobileModule),
   },
   {
-    path: 'desktop',
+    path: 'home/desktop',
     loadChildren: () =>
       import('./vmedo-homepage-desktop/vmedo-homepage-desktop.module').then((m) => m.VmedoHomepageDesktopModule),
   },
@@ -50,9 +50,14 @@ const routes: Routes = [
   {
     path: 'emid', loadChildren: () => import('./emid-module/emid-module.module').then(m => m.EmidModuleModule)
   },
-  
-  
-
+  {
+    path: 'agent', loadChildren: () => import('./agent/agent.module').then(m => m.AgentModule)
+  },
+  {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full',
+  },
   {
     path: '**', // Catch-all route
     component: PagenotfoundComponent // Replace 'NotFoundComponent' with the component you want to display for invalid paths

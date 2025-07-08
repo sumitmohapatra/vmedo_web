@@ -158,6 +158,7 @@
     font-size: var(--base-font-size);
     /* Use custom property for base font size */
     line-height: 1.5;
+    margin-bottom: 1rem;
     /* Example line height */
   }
   

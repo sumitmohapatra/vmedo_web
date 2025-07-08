@@ -457,7 +457,7 @@
   
   .vmedo-about-us-card-mobile {}
   
-  .dropdown-menu {
+  /* .dropdown-menu {
     position: absolute;
     top: 120%;
     left: -140%;
@@ -482,13 +482,11 @@
     background-color: #f3f4f6;
     text-decoration: none;
     transition: transform 0.3s ease;
-    /* Add transition for smooth effect */
     transform: scale(.97);
-    /* Scale the card to 110% of its original size on hover */
     font-weight: 500;
     color: rgb(94, 10, 10);
   }
-  
+   */
   
   .navigation-menu:hover {
     color: rgb(94, 10, 10);

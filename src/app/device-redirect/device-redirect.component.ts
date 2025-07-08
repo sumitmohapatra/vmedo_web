@@ -11,6 +11,6 @@ export class DeviceRedirectComponent implements OnInit {
 
   ngOnInit(): void {
     const isMobile = /Android|webOS|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth < 768;
-    this.router.navigateByUrl(isMobile ? '/mobile' : '/desktop');
+    this.router.navigate([isMobile ? 'home/mobile' : 'home/desktop']);
   }
 }

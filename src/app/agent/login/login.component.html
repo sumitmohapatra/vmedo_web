@@ -1,0 +1,47 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-100 relative z-0 px-2 sm:px-0">
+    <div class="max-w-sm w-full p-6 rounded-lg border border-red-300 bg-white bg-opacity-90">
+      
+      <!-- Company Logo at the top -->
+      <div class="flex justify-center mb-6">
+        <img
+          src="assets/images/emid_images/vmedologoemid.png"
+          alt="Company Logo"
+          class="w-[250px]"
+        />
+      </div>
+  
+      <!-- Login Form -->
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <label class="block mb-2 text-sm font-semibold text-red-800">Phone Number</label>
+        <div class="flex">
+          <span
+            class="inline-flex items-center px-3 text-sm bg-red-100 border border-r-0 border-red-300 rounded-l-md text-red-700"
+          >
+            +91
+          </span>
+          <input
+            type="tel"
+            formControlName="phone"
+            maxlength="10"
+            class="rounded-r-md border border-red-300 text-red-900 text-sm focus:ring-red-500 focus:border-red-500 block w-full p-2.5"
+            placeholder="Enter 10-digit phone number"
+          />
+        </div>
+        <div
+          *ngIf="loginForm.get('phone')?.invalid && loginForm.get('phone')?.touched"
+          class="text-red-500 text-sm mt-1"
+        >
+          Please enter a valid 10-digit phone number.
+        </div>
+  
+        <button
+          type="submit"
+          [disabled]="loginForm.invalid"
+          class="mt-4 w-full bg-red-600 text-white py-2 rounded hover:bg-red-700 transition"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+  

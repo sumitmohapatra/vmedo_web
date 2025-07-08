@@ -1,0 +1,37 @@
+<div class="max-w-4xl mx-auto p-4">
+    <app-stepper
+      [steps]="['Personal Info', 'Account Info', 'Confirmation']"
+      [currentStep]="currentStep"
+      (stepChanged)="currentStep = $event"
+    ></app-stepper>
+  
+    <div class="mt-6 p-6 bg-white rounded-lg shadow">
+      <ng-container [ngSwitch]="currentStep">
+        <app-basic-info *ngSwitchCase="0"></app-basic-info>
+        <app-account-info *ngSwitchCase="1"></app-account-info>
+        <app-payment *ngSwitchCase="2"></app-payment>
+      </ng-container>
+    </div>
+
+    <div class="flex justify-between mt-6">
+        <button
+          class="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300"
+          (click)="prevStep()"
+          [disabled]="currentStep === 0"
+        >
+          Previous
+        </button>
+  
+        <button
+          class="px-4 py-2 rounded text-white"
+          [ngClass]="{
+            'bg-blue-500 hover:bg-blue-600': currentStep < steps.length - 1,
+            'bg-green-500 hover:bg-green-600': currentStep === steps.length - 1
+          }"
+          (click)="currentStep === steps.length - 1 ? submit() : nextStep()"
+        >
+          {{ currentStep === steps.length - 1 ? 'Submit' : 'Next' }}
+        </button>
+    </div>
+  </div>
+  
