@@ -9,21 +9,7 @@ import { DeviceRedirectComponent } from './device-redirect/device-redirect.compo
 const routes: Routes = [
   {
     path: 'home',
-    component: DeviceRedirectComponent
-  },
-  // {
-  //   path: 'home',
-  //   loadChildren: () => import('./vmedo-homepage/vmedo-homepage.module').then(m => m.VmedoHomepageModule)
-  // },
-  {
-    path: 'home/mobile',
-    loadChildren: () =>
-      import('./vmedo-homepage-mobile/vmedo-homepage-mobile.module').then((m) => m.VmedoHomepageMobileModule),
-  },
-  {
-    path: 'home/desktop',
-    loadChildren: () =>
-      import('./vmedo-homepage-desktop/vmedo-homepage-desktop.module').then((m) => m.VmedoHomepageDesktopModule),
+    loadChildren: () => import('./vmedo-homepage/vmedo-homepage.module').then(m => m.VmedoHomepageModule)
   },
   {
     path:'info',   loadChildren: () => import('./info/info.module').then(m => m.InfoModule)

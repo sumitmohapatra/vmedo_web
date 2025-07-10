@@ -9,8 +9,9 @@ import { Router } from '@angular/router';
 export class DeviceRedirectComponent implements OnInit {
   constructor(private router: Router) {}
 
+  isMobile: boolean = false;
+
   ngOnInit(): void {
-    const isMobile = /Android|webOS|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth < 768;
-    this.router.navigate([isMobile ? 'home/mobile' : 'home/desktop']);
+    this.isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   }
 }
