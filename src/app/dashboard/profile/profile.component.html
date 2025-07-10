@@ -345,171 +345,71 @@
                       <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding"
                         *ngFor="let emID of emergencyIDs;let i = index;">
 
-                        <mat-card class="mb-4" style="padding: 0px;
+                        <mat-card
+  class="mb-4"
+  style="
+    padding: 20px;
+    background-color: #ffffff;
+    color: black;
+    margin: 0 6px;
+    border: 0.5px solid rgb(255, 2, 2);
+    box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.24), 0px 1px 6px rgba(0, 0, 0, 0.12);
+    border-radius: 15px;
+  "
+>
+  <!-- Name Centered -->
+  <div class="row mb-3">
+    <div class="col text-center">
+      <h2 style="font-size: 22px; font-weight: 600; margin: 0;">
+        {{ emID.pname }}
+      </h2>
+    </div>
+  </div>
+
+  <!-- Centered Card Info Section -->
+  <div class="flex gap-3 justify-between mb-3 px-3 py-3">
+    <!-- Left Column: Card No & Type -->
+    <div>
+      <div class="text-lg mb-2">
+        <strong>Card No</strong> - {{ emID.id }}
+      </div>
+      <div class="text-lg">
+        <strong>Card Type</strong> - {{ txtisPaidMember ? 'Family Plus' : 'Free' }}
+      </div>
+    </div>
+
+    <!-- Right Column: Premium Icon & Package -->
+    <div *ngIf="txtisPaidMember">
+      <div class="flex justify-center align-center gap-2 mb-1" >
+        <img
+          src="assets/images/emid_images/premium-icon-card.png"
+          style="height: 20px; width: 20px;"
+          alt="Premium Icon"
+        />
+        <span style="font-weight: 500;" class="text-lg">Premium</span>
+      </div>
+      <div class="text-lg">{{ txtpackageName }}</div>
+    </div>
+  </div>
+
+  <!-- View Button -->
+  <div class="row mt-3">
+    <div class="col text-center">
+      <button
+        (click)="OnClickViewEmergencyCard(emID)"
+        mat-raised-button
+        color="primary"
+        style="background-color: #ce2424; color: white;"
+        class="px-4 py-2 rounded shadow"
+      >
+        View Card Details
+      </button>
+    </div>
+  </div>
+</mat-card>
+
+                      
 
-                      background-color: #ffffff;
-                      background-image: #ffffff;
-                      /* background-color: #ffffff; */
-                      color: black;
-                      margin: 0px 6px;
-                      border: 0.5px solid rgb(255, 2, 2);
-                      box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);
-                      border-radius: 15px;">
-
-                          <div class="row">
-
-                            <div class="col-3 mt-1">
-
-
-                            
-                            </div>
-
-                            <div class="col">
-
-                              <div class="row">
-
-                                <div class="col-4 container  mt-2" style="padding: 0px;">
-
-
-                                  <div class="row mb-1"
-                                    style="font-size: 25px; font-weight: 500;padding: 1px 0px 0px 23px;">
-                                    <div>
-                                      <span style="color: #000000;margin-left: -80px;">
-                                        {{emID.pname}}
-                                      </span>
-                                    </div>
-
-
-
-
-                                  </div>
-
-                                  <div class="row mt-1">
-
-
-
-                                    <div class="col info" style="text-align: left;margin-left: -60px;">
-
-                                      <div>
-                                        <span style="font-weight: 500;">Card No</span> - {{emID.id}}
-
-                                      </div>
-                                    </div>
-
-
-
-                                  </div>
-
-
-
-                                  <div class="row mt-1">
-
-
-                                    <div class="col info">
-
-                                      <div *ngIf="txtisPaidMember">
-                                        <span style="font-weight: 500;margin-left: -60px;">Card Type</span> - Family
-                                        Plus
-                                      </div>
-                                      <div *ngIf="!txtisPaidMember">
-                                        <span style="font-weight: 500;margin-left: -60px;">Card Type</span> - Free
-                                      </div>
-
-                                    </div>
-
-                                  </div>
-
-                                </div>
-
-
-                                <div class="col-8" style="margin-top: 8px;margin-right: -40px;">
-
-                                  <div class="col">
-
-                                    <div *ngIf="txtisPaidMember" style="padding: 7px 0px 0px 0px;">
-
-                                      <!-- <p>Package Name: {{txtpackageName}}</p>
-                               
-                                                                 <p>Valid Till: {{txtpackagevalid_till | date:'shortDate'}}</p> -->
-
-                                      <div>
-
-
-                                        <img routerLink="" routerLinkActive="active"
-                                          src="assets\images\emid_images\premium-icon-card.png"
-                                          style="height: 20px;width: 20px;margin-bottom: 5px;margin-left: -2px;margin-right: 2px;"
-                                          onerror="" alt="User Image">
-
-                                        <span style="font-weight: 500;">Premium &nbsp;</span>
-
-
-
-                                      </div>
-
-
-
-
-                                      <span> {{txtpackageName}}</span>
-
-
-
-
-                                    </div>
-
-
-
-
-                                  </div>
-
-                                </div>
-
-                              </div>
-
-
-
-
-                            </div>
-
-                          </div>
-
-
-
-                         
-
-                          
-                          <div class="row ml-2 info-controls" >
-
-                            <div class="col-12">
-
-                              <button class="mb-3 mt-3 info-controls controls-one" (click)="OnClickViewEmergencyCard(emID)"
-                                mat-raised-button color="primary"
-                                style="background-color: #ce2424;margin-left: 90px;">View Card
-                                Details</button>
-
-
-                              
-
-
-
-
-                            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                          </div>
-
-                        </mat-card>
 
 
                         <div id="download" style="display: none;">
