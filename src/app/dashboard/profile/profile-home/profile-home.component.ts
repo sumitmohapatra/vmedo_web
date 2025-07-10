@@ -130,7 +130,7 @@ export class ProfileHomeComponent implements OnInit {
    * LOADING PROFILE
    * @returns
    */
-
+  packageExpired: boolean = false;
   LoadProfile = () => {
     return new Promise((_res: any, _rej: any) => {
       this.common.api.GetUserProfile(this.common.userInfo.userID).then((res: any) => {
@@ -141,6 +141,10 @@ export class ProfileHomeComponent implements OnInit {
           this.txtisUnpaidPaidMember = res.objret.isPaidMember? false :true;
           this.txtpackageName = res.objret.packageName;
           this.txtpackagevalid_till = res.objret.packagevalid_till;
+
+          const today = new Date();
+          const validTill = new Date(this.txtpackagevalid_till);
+          this.packageExpired = validTill < today;
 
           if(this.common.IsFile(res.objret.profilePhoto)){
             const album = {

@@ -180,19 +180,23 @@
 
         </button>
 
-        <div class="row date date-one mt-2 mb-4" style="text-align: center;">
+        <!-- <div class="row date date-one mt-2 mb-4" style="text-align: center;">
           <span style=" font-size: 0.8rem; color: #ce2424;" [routerLink]="'/subscription'"> Subscription plan details </span>
 
-        </div>
+        </div> -->
 
 
       </div>
 
       
-            <div class="mt-4" *ngIf="txtisPaidMember">
+            <!-- <div class="mt-4" *ngIf="txtisPaidMember">
 
 
-        <mat-card class="cardsDesign" style="color: #fff;background: #5f9f74; box-shadow: 0 5px 20px rgba(250, 129, 232, 0.3);" >
+        <mat-card class="cardsDesign" [ngStyle]="{
+          color: '#fff',
+          background: packageExpired ? '#e57373' : '#5f9f74',
+          boxShadow: '0 5px 20px rgba(250, 129, 232, 0.3)'
+        }" >
 
           <div class="row" style="width: 100%;">
 
@@ -206,23 +210,35 @@
                 <div class="text-style" style="text-wrap: nowrap;">PREMIUM MEMBER </div>
                 <div style="line-height: 1.2;">
                     <div style="text-align: initial; font-size: 0.8rem;text-align: center;">{{txtpackageName}} Plan</div>
-                    <div style=" font-size: 0.8rem;text-wrap: nowrap;text-align: center;"> Valid Till: {{txtpackagevalid_till | date:'dd/MM/yyyy'}}</div>
+                    <div style=" font-size: 0.8rem;text-wrap: nowrap;text-align: center;"> {{ packageExpired ? 'Expired On: ' : 'Valid Till: ' }} {{txtpackagevalid_till | date:'dd/MM/yyyy'}}</div>
                     
                 </div>
                 
               </mat-card-content>
 
+              <div *ngIf="!packageExpired" style="margin-top: 10px;">
+                <button mat-raised-button color="accent">
+                  Renew Package
+                </button>
+              </div>
+
             </div>
 
-            <!-- <div class="col-2">
-              <img class="imagestyle" src="assets\new-home\skip-track.png" 
-                onerror="" alt="User Image">
-            </div> -->
+        
 
 
           </div>
 
         </mat-card>
+    <div class="col-2">
+              <img class="imagestyle" src="assets\new-home\skip-track.png" 
+                onerror="" alt="User Image">
+            </div>
+
+
+
+
+          
 
       </div>
 
@@ -235,8 +251,68 @@
              onerror="" alt="User Image">
           Upgrade to Family Plus</button>
 
-      </div>
+      </div> -->
 
+      <div class="mt-4" *ngIf="txtisPaidMember">
+        <div
+          class="rounded-xl p-3 shadow-md bg-green-600 text-white w-full md:w-fit mx-auto"
+          [ngClass]="
+            packageExpired || txtpackageName === 'Individual'
+              ? 'flex items-center justify-between'
+              : 'flex items-center justify-center'
+          "
+        >
+          <!-- Left: Premium Icon + Text -->
+          <div class="flex items-center gap-2">
+            <img
+              src="assets/images/new_images/premium.png"
+              alt="Premium Icon"
+              class="w-5 h-5 shrink-0"
+            />
+            <div class="leading-snug text-sm">
+              <div class="font-semibold whitespace-nowrap">PREMIUM MEMBER</div>
+              <div class="text-xs whitespace-nowrap">{{ txtpackageName }} Plan</div>
+              <div class="text-xs whitespace-nowrap">
+                {{ packageExpired ? 'Expired On:' : 'Valid Till:' }}
+                {{ txtpackagevalid_till | date: 'dd/MM/yyyy' }}
+              </div>
+            </div>
+          </div>
+      
+          <!-- Right: Conditional Buttons -->
+          <div
+            class="flex items-center gap-2 ml-4"
+            *ngIf="packageExpired || txtpackageName === 'Individual'"
+          >
+            <button
+              *ngIf="packageExpired"
+              [routerLink]="'/dashboard/package'"
+              class="bg-white text-red-600 text-xs font-semibold px-3 py-1.5 rounded-md shadow hover:bg-gray-100 transition duration-150"
+            >
+              Renew Package
+            </button>
+      
+            <button
+              *ngIf="txtpackageName === 'Individual' && !packageExpired"
+              [routerLink]="'/dashboard/package'"
+              class="bg-white text-green-700 text-xs font-semibold px-3 py-1.5 rounded-md shadow hover:bg-gray-100 transition duration-150 flex items-center gap-1"
+            >
+              <img
+                src="assets/images/new_images/premium1.png"
+                alt="Upgrade Icon"
+                class="w-4 h-4"
+              />
+              Upgrade to Family Plus
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+      
+      
     </div>
 
     

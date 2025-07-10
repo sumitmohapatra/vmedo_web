@@ -146,7 +146,7 @@ toggleAccordion2(index2: number): void {
 
     this.common.api.GetSubscribePackages().then((res: any) => {
       if (res && res.statusCode === 200) {
-        this.subscriptionPackagesList = res.objret;
+        this.subscriptionPackagesList = res.objret.filter( p => p.packageStatus);
       } else {
         this.app.ShowError(res.message || 'Failed to fetch subscription packages');
       }
