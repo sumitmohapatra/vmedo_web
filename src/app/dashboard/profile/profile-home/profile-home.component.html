@@ -250,11 +250,14 @@
 
       <div class="mt-4">
         <div
-          class="rounded-xl p-3 shadow-md text-white w-full mx-auto flex flex-col md:flex-row items-center md:items-center justify-center md:justify-between gap-2 md:gap-4"
-          [ngClass]="[
-            txtisUnpaidPaidMember ? 'bg-red-500' : 'bg-green-600'
-          ]"
-        >
+        class="rounded-xl p-3 shadow-md text-white w-full mx-auto flex flex-col md:flex-row items-center gap-2 md:gap-4"
+        [ngClass]="[
+          txtisUnpaidPaidMember || (txtpackageName === 'Individual' && txtisPaidMember)
+            ? 'md:justify-between'
+            : 'md:justify-center',
+          txtisUnpaidPaidMember ? 'bg-red-500' : 'bg-green-600'
+        ]"
+      >
           <!-- Left: Premium Icon + Text -->
           <div class="flex items-center gap-3 justify-center">
             <img
