@@ -21,7 +21,7 @@ import { DoctorConsultationComponentComponent } from './doctor-consultation-comp
 import { VmedoLabsComponentComponent } from './vmedo-labs-component/vmedo-labs-component.component';
 import { DiagnosticsComponentComponent } from './diagnostics-component/diagnostics-component.component';
 import { FindBloodDonorComponentComponent } from './find-blood-donor-component/find-blood-donor-component.component';
-import { NgbCarouselModule, NgbDatepickerModule, NgbTooltipModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarouselModule, NgbDatepickerModule, NgbDropdownModule, NgbTooltipModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -53,7 +53,8 @@ import { NgbCarouselModule, NgbDatepickerModule, NgbTooltipModule, NgbTypeaheadM
     NgbCarouselModule,
     NgMultiSelectDropDownModule.forRoot(),
     MatCardModule,
-    MatTabsModule
+    MatTabsModule,
+    NgbDropdownModule
   ]
 })
 export class VmedoServicesModule { }

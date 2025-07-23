@@ -10,6 +10,7 @@ import * as moment from 'moment';
 import jspdf from 'jspdf';
 import { DOCUMENT } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 declare var require: any;
 
@@ -1789,9 +1790,10 @@ CloseCreateEditIDModal = () => {
 
 OnClickEditEmergencyCard = (cardNumber: any) => {
 
+  const url = `${environment.baseApiUrl}vadmin/SearchALLEmergencyIDPagination?Svalue=${cardNumber}`;
 
 
-  this.http.get('https://apitest.vmedo.com/api/vadmin/SearchALLEmergencyIDPagination?Svalue=' + cardNumber).subscribe(
+  this.http.get(url).subscribe(
     data => {
       this.emID = data['objret'];
       console.log(this.emID);
@@ -2011,7 +2013,8 @@ authToken: any = this.common.auth_token;
 
 OnClicklDownloadEmergencyCardID = (cardNumber: any) => {
   const headers = new HttpHeaders().set('Authorization', `Bearer ${this.authToken}`);
-  this.http.get('https://apitest.vmedo.com/api/vadmin/SearchALLEmergencyIDPagination?Svalue=' + cardNumber, { headers }).subscribe(
+  const url = `${environment.baseApiUrl}vadmin/SearchALLEmergencyIDPagination?Svalue=${cardNumber}`;
+  this.http.get(url, { headers }).subscribe(
     data => {
       if (data['statusCode'] === 200) {
         const apiData = data['objret'];
@@ -2083,7 +2086,9 @@ OnClickEmergencyCardStatus = () => {
 
 
   const headers = new HttpHeaders().set('Authorization', `Bearer ${this.authToken}`);
-  this.http.get('https://apitest.vmedo.com/api/User/ValidateCardCreation?UserID=' + this.common.userInfo.userID, { headers }).subscribe(
+  const url = `${environment.baseApiUrl}User/ValidateCardCreation?UserID=${this.common.userInfo.userID}`;
+
+  this.http.get(url, { headers }).subscribe(
     data => {
       console.log(data);
       if (data['statusCode'] === 200) {

@@ -272,7 +272,7 @@
                 class="text-xs whitespace-nowrap"
                 *ngIf="txtpackagevalid_till !== '0001-01-01T00:00:00'"
               >
-                {{ packageExpired ? 'Expired On:' : 'Valid Till:' }}
+                {{ packageExpired ? 'Your Premium Membership expired on:' : 'Valid Till:' }}
                 {{ txtpackagevalid_till | date: 'dd/MM/yyyy' }}
               </div>
             </div>

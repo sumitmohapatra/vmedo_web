@@ -9,6 +9,7 @@ import { Observable, OperatorFunction, Subject, debounceTime, distinctUntilChang
 import { AppComponent } from 'src/app/app.component';
 import { CommonService } from 'src/app/service/common.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-corporate-profile',
@@ -1847,9 +1848,9 @@ CloseCreateEditIDModal = () => {
 emID: any;
 OnClickEditEmergencyCard = (cardNumber: any) => {
 
+const url = `${environment.baseApiUrl}vadmin/SearchALLEmergencyIDPagination?Svalue=${cardNumber}`;
 
-
-  this.http.get('https://apitest.vmedo.com/api/vadmin/SearchALLEmergencyIDPagination?Svalue=' + cardNumber).subscribe(
+  this.http.get(url).subscribe(
     data => {
       this.emID = data['objret'];
       console.log(this.emID);
@@ -2066,7 +2067,8 @@ authToken: any = this.common.auth_token;
 
 OnClicklDownloadEmergencyCardID = (cardNumber: any) => {
   const headers = new HttpHeaders().set('Authorization', `Bearer ${this.authToken}`);
-  this.http.get('https://apitest.vmedo.com/api/vadmin/SearchALLEmergencyIDPagination?Svalue=' + cardNumber, { headers }).subscribe(
+   const url = `${environment.baseApiUrl}vadmin/SearchALLEmergencyIDPagination?Svalue=${cardNumber}`;
+  this.http.get(url, { headers }).subscribe(
     data => {
       if (data['statusCode'] === 200) {
         const apiData = data['objret'];

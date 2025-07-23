@@ -6,6 +6,7 @@ import { Title, Meta } from '@angular/platform-browser';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -152,8 +153,10 @@ updateView() {
 
     this.currentDateTime = formattedTime;
 
+      const url = `${environment.baseApiUrl}user/ValidateCouponDetails`;
+    
     // Send a POST request to your API endpoint with the coupon code and current date, and headers
-    this.http.post<any>('https://apitest.vmedo.com/api/user/ValidateCouponDetails', { couponCode: this.couponCode, valid_date: this.currentDateTime }, { headers }).subscribe({
+    this.http.post<any>(url, { couponCode: this.couponCode, valid_date: this.currentDateTime }, { headers }).subscribe({
       next: (response) => {
         // Calculate the final amount by subtracting the discounted amount from the initial amount
         // this.finalAmount = this.initialAmount - response.discountedAmount;
@@ -207,8 +210,8 @@ updateView() {
     };
 
     console.log(requestdata);
-
-    return this.http.post<any>('https://apitest.vmedo.com/api/payment/GeneratePaymentLink', requestdata).subscribe((res: any) => {
+    const url = `${environment.baseApiUrl}payment/GeneratePaymentLink`;
+    return this.http.post<any>(url, requestdata).subscribe((res: any) => {
 
       console.log(res);
 

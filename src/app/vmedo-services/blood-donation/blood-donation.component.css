@@ -2,7 +2,6 @@
 
 .search-button{
     border-radius: 25px;
-    position: relative;
     left: 250px;
     margin: 15px;
   }
@@ -827,9 +826,7 @@
   }
   .srch{
     margin: 10px;
-    border-radius: 15px;
-    position: relative;
-  
+    border-radius: 15px;  
   }
   .nearbysrh{
     margin-left: 50px;
@@ -855,10 +852,10 @@
       .results{
         margin-top: -10px;
       }
-  .srch{
+  /* .srch{
     margin-left: -210px;
   
-  }
+  } */
   
   .blooddonor-information{
     margin-top: 30px;
@@ -1044,9 +1041,9 @@
         position: fixed;
         bottom: 0px;
           }
-          .search-button{
+          /* .search-button{
             margin-left: 50px;
-          }
+          } */
           .hospital-register-steps-img01{
             height: 100px;
             width: 100px;
@@ -1067,9 +1064,9 @@
           }
     }
     @media screen and (max-width: 999px) and (min-width: 768px){
-      .search-button{
+      /* .search-button{
         margin-left: -150px;
-      }
+      } */
       .hospital-register-steps-img1{
         margin-left: -160px;
       }
@@ -1126,9 +1123,9 @@
      .sub-footer{
   height: 30%;
      }
-     .search-button{
+     /* .search-button{
       margin-left: 50px;
-    }
+    } */
     .testimonial-blood-img{
       height: 80px;
       margin-left: -70px;
@@ -1387,3 +1384,7 @@
     font-size: 25px;
   }
   
+  .search-icon-img{
+      height: 100px;
+      width: 100px;
+  }

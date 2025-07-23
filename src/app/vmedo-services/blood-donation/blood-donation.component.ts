@@ -174,7 +174,7 @@ export class BloodDonationComponent implements OnInit {
     switchMap( (searchText) =>  this.common.api.GetLocations(searchText) )
   )
 
-  selectedLocation: any;
+  selectedLocation: any = null;
 
   OnKeyDownSearchLocation = (searchInput: any) => {
     this.app.ShowLoader(true);
@@ -183,7 +183,10 @@ export class BloodDonationComponent implements OnInit {
         this.searchedLocations = res.objrt.predictions;
         this.searchLocations = this.searchedLocations.map((s: any) => s.description);
       }
-    });
+      this.app.HideLoader(true);
+    }).catch(err => {
+      this.app.HideLoader(true); // ✅ always stop on error
+    });;
   };
 
   selectedLongitude: any;
@@ -211,11 +214,13 @@ export class BloodDonationComponent implements OnInit {
     if(this.txtSearchLocation === undefined || this.txtSearchLocation.trim() === ''){
       this.app.HideLoader(true);
     }
-    else if(this.txtSearchLocation !== undefined && this.txtSearchLocation === this.selectedLocation.item){
+    else if(this.txtSearchLocation !== undefined && this.txtSearchLocation === this.selectedLocation?.item){
       this.app.HideLoader(true);
     }
     else
       this.app.ShowLoader(true);
+
+      setTimeout(() => this.app.HideLoader(true), 2000);
   };
 
   OnSelectSearchLocation = (location: any) => {
@@ -586,4 +591,49 @@ export class BloodDonationComponent implements OnInit {
       });
     }
   };
+
+  async handleLocationSelection(searchText: string) {
+    try {
+      this.app.ShowLoader(true);
+  
+      // Step 1: Get search predictions
+      const res:any = await this.common.api.GetLocationsByName(searchText);
+      const predictions = res?.objrt?.predictions ?? [];
+      if (!predictions.length) return;
+  
+      this.searchedLocations = predictions;
+      this.searchLocations = predictions.map((s: any) => s.description);
+  
+      const selected = predictions.find(p => p.description === searchText);
+      if (!selected) return;
+  
+      // Step 2: Get coordinates
+      const locRes:any = await this.common.api.GetLocationsByPlaceId(selected.place_id);
+      const location = locRes?.objret?.result?.geometry?.location;
+      if (location) {
+        this.selectedLattitude = location.lat;
+        this.selectedLongitude = location.lng;
+      }
+  
+      this.selectedLocation = { item: searchText }; // unify structure
+    } catch (err) {
+      console.error(err);
+    } finally {
+      this.app.HideLoader(true);
+    }
+  }
+  
+  onBlurSearch(value: string) {
+    if (!value || value.trim() === '') {
+      this.app.HideLoader(true);
+      return;
+    }
+  
+    if (this.selectedLocation?.item === value) {
+      this.app.HideLoader(true);
+    } else {
+      this.handleLocationSelection(value);
+    }
+  }
+  
 }

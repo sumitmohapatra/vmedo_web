@@ -35,13 +35,17 @@
 
      
 
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12 panel-1 mt-3">
-          <div class="col" style="display: flex;justify-content: center;text-align: center;">
+      <div class="row flex align-center">
+        <div class="col-lg-6 col-md-6 col-sm-12 mt-3">
+          <!-- <div class="col" style="display: flex;justify-content: center;text-align: center;">
             <h4><strong>Find Nearby Blood Donor </strong></h4>
           </div>
-          <div class="col" style="display: flex;justify-content: center;text-align: center;">
+          <div class="col mb-2" style="display: flex;justify-content: center;text-align: center;">
             <h6><strong>From 30,000+ Registered Donors</strong></h6>
+          </div> -->
+          <div class="text-center mb-3">
+            <h3 class="mb-1"><strong>Find Nearby Blood Donor</strong></h3>
+            <h6 class="text-muted"><strong>From 30,000+ Registered Donors</strong></h6>
           </div>
           <div class="col" [ngClass]="{'zi-10k': app.statusLoader}">
             <div class="group1 text-control cmbbox">
@@ -49,11 +53,27 @@
               <svg>
                 <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-location"></use>
               </svg>
-              <input class="blood-group1" type="text" placeholder="Location" [(ngModel)]="txtSearchLocation"
+              <!-- <input class="blood-group1" container="body" type="text" placeholder="Location" [(ngModel)]="txtSearchLocation"
                 (focusout)="OnSearchFocusOut($event)" (selectItem)="OnSelectLocation($event)"
                 (keydown)="OnKeyDownSearchLocation(txtSearchLocation)" [ngbTypeahead]="searchLocation"
                 (focus)="focus$.next($any($event).target.value)" (click)="click$.next($any($event).target.value)"
-                #instance="ngbTypeahead">
+                #instance="ngbTypeahead"> -->
+
+                <input
+                class="blood-group1"
+                type="text"
+                placeholder="Location"
+                container="body"
+                [(ngModel)]="txtSearchLocation"
+                [ngbTypeahead]="searchLocation"
+                (selectItem)="OnSelectLocation($event)"
+                (blur)="onBlurSearch(txtSearchLocation)"
+                (keydown.enter)="handleLocationSelection(txtSearchLocation)"
+                (focus)="focus$.next($any($event).target.value)"
+                (click)="click$.next($any($event).target.value)"
+                #instance="ngbTypeahead"
+                autocomplete="off"
+              />
 
             </div>
           </div>
@@ -71,6 +91,8 @@
               </div>
             </div>
           </div>
+          
+          
           <div class="col">
             <div class="group3 text-control cmbbox">
 
@@ -82,8 +104,8 @@
 
             </div>
           </div>
-          <div class="col srch">
-            <button type="button" class="btn btn-sm btn-outline-secondary search-button"
+          <div class="col srch flex justify-center">
+            <button type="button" class="btn btn-sm btn-outline-secondary search-button flex align-center p-2"
             (click)="OnSearchDonors(txtSearchLocation, txtBloodGroup, txtMedicalCondition)">
 
             <svg style="margin-right: 10px;">
@@ -93,7 +115,23 @@
           </button>
           </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-12 panel-2">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="text-center w-100 px-4 py-4 card" *ngIf="!donors || donors.length === 0" style="max-width: 90%; margin: auto;">
+            <!-- Heading -->
+            <!-- <h4 class="mb-1"><strong>Find Nearby Blood Donor</strong></h4>
+            <h6 class="mb-3"><strong>From 30,000+ Registered Donors</strong></h6> -->
+        
+            <!-- Message -->
+            <p class="lead text-muted">Start by selecting your location and blood group to see registered donors nearby.</p>
+        
+            <!-- Image -->
+            <img
+              src="assets/new-images/images/images/blood donation/search.png"
+              alt="Search Blood"
+              class="img-fluid mt-3 mx-auto d-block"
+              style="max-height: 120px;"
+            />
+          </div>
           <div class="row-panel" *ngIf="donors && donors.length > 0" style="flex-direction: column;">
             <div class="results">
               <div class="col mt-2" style="display: flex;justify-content: center;text-align: center;">

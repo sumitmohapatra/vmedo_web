@@ -5,6 +5,7 @@ import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { CommonService } from 'src/app/service/common.service';
+import { environment } from 'src/environments/environment';
 
 import SwiperCore, {
   SwiperOptions,
@@ -173,8 +174,9 @@ togglePartnerEnquiryFormMobile(): void {
       this.formData.phone = Number(this.formData.phone);
   
       //https://apitest.vmedo.com/api/Emailtemplate/GetBedTyperecords
+      const url = `${environment.baseApiUrl}Emailtemplate/GetBedTyperecords`;
   
-      this.http.post('https://apitest.vmedo.com/api/Emailtemplate/GetBedTyperecords', this.formData, { observe: 'response' })
+      this.http.post(url, this.formData, { observe: 'response' })
         .subscribe(
           (response: HttpResponse<any>) => { // Make sure to type response properly or use any
             console.log('API Response:', response);
