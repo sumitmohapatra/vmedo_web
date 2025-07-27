@@ -92,7 +92,8 @@ export class VmedoHomepageComponent {
 
   ngOnInit(): void {
 
-    this.titleService.setTitle("VMEDO Healthcare - Ambulance service | Urgent care at home | Diagnostics at home");
+    // this.titleService.setTitle("VMEDO Healthcare - Ambulance service | Urgent care at home | Diagnostics at home");
+    this.titleService.setTitle("Healthcare at Home in Minutes -VMEDO Healthcare ");
 
     this.metaTagService.addTags([
       { name: 'description', content: 'VMEDO is a digital healthcare platform, on a mission to make quality healthcare accessible and affordable to all providing ambulance service, urgent care at home, diagnostics at home, instant online doctor consultation, emergency hospital admission 24*7 across India'

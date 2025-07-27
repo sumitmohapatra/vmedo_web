@@ -155,7 +155,8 @@ export class VmedoHomepageDesktopComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.titleService.setTitle("VMEDO Healthcare - Ambulance service | Urgent care at home | Diagnostics at home");
+    // this.titleService.setTitle("VMEDO Healthcare - Ambulance service | Urgent care at home | Diagnostics at home");
+    this.titleService.setTitle("Healthcare at Home in Minutes -VMEDO Healthcare");
 
     this.metaTagService.addTags([
       {

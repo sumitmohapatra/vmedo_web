@@ -136,7 +136,8 @@ toggleAccordion2(index2: number): void {
 
   ngOnInit(): void {
 
-    this.titleService.setTitle("VMEDO Subscription | VMEDO Emergency Health card");
+    // this.titleService.setTitle("VMEDO Subscription | VMEDO Emergency Health card");
+    this.titleService.setTitle("VMEDO Suraksha Card - Protect your family during Medical Emergencies");
 
     this.metaTagService.addTags([
       { name: 'description', content: 'Unlock a world of healthcare convenience and savings with VMEDO subscription plans, create a VMEDO health card for yourself and your family to enjoy the benefits of Premium subscription'

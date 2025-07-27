@@ -242,8 +242,8 @@
             <!-- mobile version - emergency cards -->
   
             <li [ngbNavItem]="2" [ngClass]="{'selected': active === 2}">
-              <a ngbNavLink *ngIf="active !== 2" style="border: 2px solid red;">Emergency Cards</a>
-              <a ngbNavLink *ngIf="active === 2" (onload)="OnClickCreateID()">Emergency Cards</a>
+              <a ngbNavLink *ngIf="active !== 2" style="border: 2px solid red;">Suraksha cards</a>
+              <a ngbNavLink *ngIf="active === 2" (onload)="OnClickCreateID()">Suraksha cards</a>
               <ng-template ngbNavContent>
                 <mat-card class="col-12 col-sm-12 col-md-12 col-lg-12 l2 profile-body-card"
                   style="background-color: #ededed;    padding-top: 0px;">
@@ -254,7 +254,7 @@
   
                     <div class="col-12 col-sm-12 col-md-12 col-xl-12" style="margin: 5px 0;">
                       <label style="font-weight: 500;font-size: 20px;display: flex;justify-content: center;margin-left: -5px;">Manage
-                        Emergency Cards
+                        Suraksha cards
                       </label>
                       <div class="manage" style="position: absolute;top: 15%;left: 83%;padding: 0;">
                         <span (click)="OpeninfoModal()" class="info-symbol">&#x2139;</span>
@@ -267,7 +267,7 @@
                     </div>
                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                       
-                        <h6 style="text-align: center;">You have created {{creditsused}}/{{totcredits}} emergency cards</h6>
+                        <h6 style="text-align: center;">You have created {{creditsused}}/{{totcredits}} Suraksha cards</h6>
                        
                     </div>
   
@@ -278,7 +278,7 @@
                         <button class="button-create" style="font-size: 15px; background-color: #ce2424; color: white;" mat-raised-button
                           (click)="OnClickCreateID()">
   
-                          + Add new emergency card</button>
+                          + Add new suraksha card</button>
   
                       </div>
   
@@ -818,7 +818,7 @@
           <mat-card class="col-12 col-sm-12 col-md-4 col-lg-4 profile-body-card dome2">
             <div class="row" style="width: 100%;" >
               <div class="col-12 col-sm-12 col-md-12 col-xl-12 card em-card" *ngIf="credavail > 0" style="background-color: #ffffff;box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);">
-                <label>Create New Emergency Card</label>
+                <label>Create New Suraksha Card</label>
                 <span placement="left" style="background-color: #ce2424;" ngbTooltip="New Emergency Id" (click)="OnClickCreateID()">
                  
                   <span style="color: #ffffff;">Create <strong>+</strong></span>
@@ -833,7 +833,7 @@
                     </svg>
                    </div>
                    <div class="col-lg-11 col-md-11 col-sm-11 col-xl-11 mt-1 ml-3">
-                    <h6 style="text-align: center;">You have created {{creditsused}}/{{totcredits}} emergency cards</h6>
+                    <h6 style="text-align: center;">You have created {{creditsused}}/{{totcredits}} Suraksha cards</h6>
                    </div>
                    
                    
@@ -1338,7 +1338,7 @@
                               <div class="title">VMEDO</div>
                             </div>
                             <div class="row">
-                              <div class="emid">EMERGENCY CARD</div>
+                              <div class="emid">SURAKSHA CARD</div>
                             </div>
                             <div class="row">
                               <div class="message">In case of emergency, Scan the QR Code or
@@ -2946,7 +2946,7 @@
     <div class="modal-body">
       <div class="row logo">
         <span style="display:flex; justify-content:center;text-align: center;">VMEDO</span>
-        <span style="font-size: 75%; margin: 7px;display:flex; justify-content:center;text-align: center;">What is emergency card ?</span>
+        <span style="font-size: 75%; margin: 7px;display:flex; justify-content:center;text-align: center;">What is suraksha card ?</span>
         <label (click)="modal.close('Cancel');">
           <svg>
             <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-cross"></use>
@@ -2961,7 +2961,7 @@
           <ul style="font-size: 65%;color: black;">
             <li >
             
-              Creating an emergency card allows bystanders to access your medical information and inform your emergency contacts using the card's QR code, bridging the information gap during critical situations.
+              Creating an suraksha card allows bystanders to access your medical information and inform your emergency contacts using the card's QR code, bridging the information gap during critical situations.
             </li>
             <li class="mt-2">
               Subscribers or cardholders can contact VMEDO and provide their card number to receive assistance during medical emergencies, such as ambulance booking, doctor consultations, and lab tests.
@@ -3040,7 +3040,7 @@
       </div>
       <div class="row no-padding" style="margin-top: -20px;">
         
-        <h5 class="mt-3" style="font-size: 15px;display: flex;justify-content: center;text-align: center;">Emergency card details updated</h5>
+        <h5 class="mt-3" style="font-size: 15px;display: flex;justify-content: center;text-align: center;">Suraksha card details updated</h5>
         <div class="row" style="width: 100%;">
           <div class="col-12">
             <mat-card (click)="OnClickoneNext(txtCardNumber)" style="margin-left: 5px;margin-right: 5px;box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);border-radius: 10px;" class="col-5">
