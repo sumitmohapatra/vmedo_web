@@ -1,0 +1,138 @@
+<app-topbar></app-topbar>
+
+<div class="min-h-screen p-4 sm:p-6 md:p-8 bg-gray-100 flex flex-col">
+    <div class="shadow-md rounded-xl bg-white dark:bg-gray-900 flex flex-col overflow-hidden">
+
+        <!-- Header Controls -->
+        <div
+            class="flex flex-col md:flex-row md:items-center md:justify-between p-4 space-y-4 md:space-y-0 bg-white dark:bg-gray-900">
+
+            <div class="flex items-center gap-2">
+                <button (click)="openAddCustomer()"
+                class="w-full inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-red-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 transition-colors duration-150"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+                Add Customer
+              </button>
+              
+
+            </div>
+
+            <!-- Search -->
+            <div class=" w-full md:w-64">
+                <input type="text" placeholder="Search for customers"
+                    class="w-full pl-10 py-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" />
+            </div>
+
+
+
+        </div>
+
+        <!-- Table -->
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm">
+                <thead class="bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-400 uppercase">
+                    <tr>
+                      <th class="px-6 py-3 text-left font-semibold w-64">Name</th>
+                      <th class="px-6 py-3 text-left font-semibold w-40">Registered On</th>
+                      <th class="px-6 py-3 text-left font-semibold w-40">Mobile Number</th>
+                      <th class="px-6 py-3 text-left font-semibold w-40">Valid Till</th>
+                      <th class="px-6 py-3 text-left font-semibold w-40">Plan</th>
+                      <th class="px-6 py-3 text-left font-semibold w-40">User Type</th>
+                      <th class="px-6 py-3 text-left font-semibold w-32">Action</th>
+                    </tr>
+                  </thead>
+                  
+                  
+                  <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                    <tr *ngFor="let user of paginatedUsers">
+                      <td class="px-3 py-2 whitespace-nowrap flex items-center gap-3">
+                        <img [src]="user.avatar" alt="avatar" class="w-10 h-10 rounded-full">
+                        <div>
+                          <div class="text-base font-semibold text-gray-900 dark:text-white">{{ user.name }}</div>
+                          <div class="text-sm text-gray-500 dark:text-gray-400">{{ user.email }}</div>
+                        </div>
+                      </td>
+                      <td class="px-6 py-4">{{ user.registeredOn }}</td>
+                      <td class="px-6 py-4">{{ user.mobileNumber }}</td>
+                      <td class="px-6 py-4">{{ user.validTill }}</td>
+                      
+                      <!-- Plan Badge -->
+                      <td class="px-6 py-4 uppercase">
+                        <span 
+                          [ngClass]="{
+                            'bg-blue-100 text-blue-800': user.plan === 'free',
+                            'bg-yellow-100 text-yellow-800': user.plan === 'individual',
+                            'bg-purple-100 text-purple-800': user.plan === 'family plus',
+                            'bg-green-100 text-green-800': user.plan === 'vmedo premium'
+                          }"
+                          class="text-xs font-semibold px-2.5 py-0.5 rounded-full"
+                        >
+                          {{ user.plan }}
+                        </span>
+                      </td>
+                  
+                      <!-- User Type Badge -->
+                      <td class="px-6 py-4 uppercase">
+                        <span 
+                          [ngClass]="{
+                            'bg-gray-200 text-gray-800': user.userType === 'free',
+                            'bg-green-200 text-green-800': user.userType === 'premium'
+                          }"
+                          class="text-xs font-semibold px-2.5 py-0.5 rounded-full"
+                        >
+                          {{ user.userType }}
+                        </span>
+                      </td>
+                  
+                      <td class="px-6 py-4">
+                        <a href="#" (click)="openEditModal(user)"
+                           class="text-blue-600 dark:text-blue-400 hover:underline font-medium">Edit user</a>
+                      </td>
+                    </tr>
+                  </tbody>
+                  
+
+
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <!-- Pagination -->
+        <div
+            class="flex flex-col md:flex-row md:items-center md:justify-between items-center justify-center gap-2 p-3 pb-4 border-t border-gray-200 dark:border-gray-700">
+            <span class="text-sm text-gray-700 dark:text-gray-400 text-center md:text-left">
+                Showing
+                <span class="font-semibold text-gray-900 dark:text-white">{{ currentPageStart }}</span> to
+                <span class="font-semibold text-gray-900 dark:text-white">{{ currentPageEnd }}</span> of
+                <span class="font-semibold text-gray-900 dark:text-white">{{ totalItems }}</span>
+            </span>
+
+            <div class="inline-flex mt-2 md:mt-0">
+                <button (click)="goToPreviousPage()" [disabled]="currentPage === 1"
+                    class="px-3 py-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 disabled:opacity-50">
+                    Previous
+                </button>
+
+                <button *ngFor="let page of pageNumbers" (click)="goToPage(page)"
+                    [ngClass]="{ 'bg-blue-50 text-blue-600': page === currentPage }"
+                    class="px-3 py-1 text-sm font-medium border-t border-b border-gray-300 hover:bg-gray-100">
+                    {{ page }}
+                </button>
+
+                <button (click)="goToNextPage()" [disabled]="currentPage === totalPages"
+                    class="px-3 py-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 disabled:opacity-50">
+                    Next
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<app-add-customer
+  *ngIf="showAddCustomerModal"
+  (closeModal)="closeAddCustomer()"
+></app-add-customer>

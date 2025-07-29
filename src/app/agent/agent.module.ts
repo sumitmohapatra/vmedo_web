@@ -3,12 +3,15 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 import { VerifyOtpComponent } from './verify-otp/verify-otp.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StepperComponent } from './stepper/stepper.component';
 import { BasicInfoComponent } from './basic-info/basic-info.component';
 import { AccountInfoComponent } from './account-info/account-info.component';
 import { PaymentComponent } from './payment/payment.component';
 import { OnboardCustomerComponent } from './onboard-customer/onboard-customer.component';
+import { ManageCustomerComponent } from './manage-customer/manage-customer.component';
+import { NavModule } from '../nav/nav.module';
+import { AddCustomerComponent } from './add-customer/add-customer.component';
 
 const routes: Routes = [
   {
@@ -22,6 +25,10 @@ const routes: Routes = [
   {
     path:'onboard-customer',
     component:OnboardCustomerComponent
+  },
+  {
+    path:'manage-customer',
+    component:ManageCustomerComponent
   }
 ];
 
@@ -33,12 +40,16 @@ const routes: Routes = [
     BasicInfoComponent,
     AccountInfoComponent,
     PaymentComponent,
-    OnboardCustomerComponent
+    OnboardCustomerComponent,
+    ManageCustomerComponent,
+    AddCustomerComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    NavModule
   ]
 })
 export class AgentModule { }

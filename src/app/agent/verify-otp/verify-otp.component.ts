@@ -1,4 +1,5 @@
 import { Component, ViewChildren, QueryList, ElementRef, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-verify-otp',
@@ -6,6 +7,7 @@ import { Component, ViewChildren, QueryList, ElementRef, AfterViewInit } from '@
   styleUrls: ['./verify-otp.component.css']
 })
 export class VerifyOtpComponent implements AfterViewInit {
+  constructor(private router:Router){}
   @ViewChildren('otpInput') otpInputs!: QueryList<ElementRef<HTMLInputElement>>;
 
   ngAfterViewInit() {
@@ -57,5 +59,6 @@ export class VerifyOtpComponent implements AfterViewInit {
   onSubmit() {
     const code = this.otpInputs.map(i => i.nativeElement.value).join('');
     console.log('OTP submitted:', code);
+    this.router.navigate(['agent/manage-customer']);
   }
 }

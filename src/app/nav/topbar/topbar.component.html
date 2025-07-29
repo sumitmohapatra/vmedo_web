@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-lg-12" id="navigation">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="img-box" [routerLink]="'/dashboard/profile'" title="Back" style="width: 36px; margin-left: 14px;cursor: pointer;">
+          <img src="assets\Profile-home\profile\icons8-back-white.png"  alt="some user image">
+        </div>
+        <a class="navbar-brand">
+          <svg class="logo logo-md" style="height: 20px; width: 100px;">
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo"></use>
+          </svg>
+          <svg [routerLink]="'/home'" class="logo logo-sm" style="height: 30px; width: 100px;">
+            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo-white"></use>
+          </svg>
+        </a>
+        <div *ngIf="common.auth_token !== undefined && common.auth_token !== null"  class="profile-icon back pull-right btn btn-sm btn-outline-secondary" 
+          placement="bottom" ngbTooltip="Profile" style="margin-right: 40px;">
+          <nav>
+          <div class="menu-toggle"></div>
+          <div class="profile" (click)="openProfile()">
+            <div class="img-box">
+              <img src="assets\Profile-home\profile\profile.png"  alt="some user image">
+            </div>
+          </div>
+          <div class="menu">
+            <ul>
+              <li [routerLink]="'/dashboard/profile/1'"> Profile</li>
+              <li (click)="OnClickLogout()">Sign Out</li>
+            </ul>
+          </div>
+        </nav>
+        </div>
+      </nav>
+    </div>
+  </div>

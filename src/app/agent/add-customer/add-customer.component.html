@@ -1,0 +1,106 @@
+<div class="fixed inset-0 bg-gray-300 bg-opacity-40 flex items-center justify-center z-50 px-4">
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl w-full max-w-md p-4 sm:p-6 relative">
+        <!-- Close button -->
+        <button (click)="onClose()" class="absolute top-3 right-3 text-gray-400 hover:text-red-500">
+            <svg class="w-5 h-5" fill="currentColor">
+                <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-cross"></use>
+            </svg>
+        </button>
+
+        <!-- Header -->
+        <ng-container *ngIf="!isOTPSentOnRegister">
+            <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-1">Register New Customer</h2>
+            <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">We’re excited to have you onboard!</p>
+        </ng-container>
+
+
+        <!-- Form Fields -->
+        <form class="space-y-4">
+            <!-- Hide fields when OTP is already sent -->
+            <ng-container *ngIf="!isOTPSentOnRegister">
+                <!-- Name -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
+                    <input type="text" placeholder="Enter your name" [(ngModel)]="txtRegUserName" name="txtRegUserName"
+                        (ngModelChange)="OnTextChanged('txtRegUserName', $event)"
+                        class="mt-1 w-full px-3 py-2 border rounded-md bg-white dark:bg-gray-700 dark:text-white" />
+                    <p *ngIf="lblRegUserName" class="text-xs text-red-500 mt-1">{{ lblRegUserName }}</p>
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+                    <input type="text" placeholder="Enter your email ID" [(ngModel)]="txtRegEmailId"
+                        name="txtRegEmailId" (ngModelChange)="OnTextChanged('txtRegEmailId', $event)"
+                        class="mt-1 w-full px-3 py-2 border rounded-md bg-white dark:bg-gray-700 dark:text-white" />
+                    <p *ngIf="lblRegEmailId" class="text-xs text-red-500 mt-1">{{ lblRegEmailId }}</p>
+                </div>
+
+                <!-- Mobile -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Mobile Number</label>
+                    <input type="text" placeholder="Enter your mobile no" [(ngModel)]="txtRegMobileNo"
+                        name="txtRegMobileNo" (ngModelChange)="OnTextChanged('txtRegMobileNo', $event)"
+                        (keypress)="common.AllowOnlyNumbers($event)"
+                        class="mt-1 w-full px-3 py-2 border rounded-md bg-white dark:bg-gray-700 dark:text-white" />
+                    <p *ngIf="lblRegMobileNo" class="text-xs text-red-500 mt-1">{{ lblRegMobileNo }}</p>
+                </div>
+
+                <!-- Terms -->
+                <div class="text-xs text-gray-600 dark:text-gray-400 mt-2">
+                    <label class="inline-flex items-start">
+                        <input type="checkbox" required class="mr-2 mt-1">
+                        By clicking on register, you agree to VMEDO’s
+                        <a href="https://vmedo.com/vmedo-terms.html" class="text-blue-600 hover:underline">Terms and
+                            Conditions of Use</a>
+                    </label>
+                </div>
+            </ng-container>
+
+            <!-- OTP Section -->
+            <!-- OTP Section -->
+            <div *ngIf="isOTPSentOnRegister">
+                <header class="mb-4 text-center">
+                    <h1 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1">Mobile Verification</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">
+                        A 4-digit verification code has been sent to
+                        <span class="font-medium text-gray-900 dark:text-white">+91 {{ txtRegMobileNo }}</span>
+                    </p>
+                    <button type="button" (click)="onChangeNumber()"
+                        class="mt-1 text-sm text-blue-600 hover:underline focus:outline-none">
+                        Change
+                    </button>
+                </header>
+
+                <!-- OTP Input Fields -->
+                <div class="flex items-center justify-center gap-3">
+                    <input
+                      #otpInput
+                      type="text"
+                      maxlength="1"
+                      pattern="\d*"
+                      inputmode="numeric"
+                      class="otp-input"
+                      *ngFor="let i of [0, 1, 2, 3]"
+                    />
+                  </div>
+                <p *ngIf="lblRegOTP" class="text-xs text-red-500 mt-2 text-center">{{ lblRegOTP }}</p>
+            </div>
+
+
+            <!-- Buttons -->
+            <div class="pt-2 sm:pt-4">
+                <button *ngIf="!isOTPSentOnRegister" type="button" (click)="OnClickSendOTPOnRegister()"
+                    class="w-full inline-flex justify-center whitespace-nowrap rounded-lg bg-red-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 transition-colors duration-150">
+                    Send OTP
+                </button>
+
+                <button *ngIf="isOTPSentOnRegister && !isMobileVerified" type="button"
+                    (click)="OnClickVerifyOTPOnRegister('All')"
+                    class="w-full inline-flex justify-center whitespace-nowrap rounded-lg bg-red-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 transition-colors duration-150">
+                    Verify & Register
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
