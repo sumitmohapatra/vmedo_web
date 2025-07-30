@@ -15,6 +15,11 @@ import { AddCustomerComponent } from './add-customer/add-customer.component';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/agent/login',
+    pathMatch: 'full'  // <-- Required
+  },
+  {
     path: 'login',
     component:LoginComponent
   },

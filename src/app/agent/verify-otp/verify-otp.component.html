@@ -1,14 +1,20 @@
 <div class="min-h-screen flex items-center justify-center bg-gray-100 relative z-0 px-2 sm:px-0">
     <div class="max-w-md w-full text-center bg-white px-4 sm:px-8 py-10 rounded-xl">
-      <header class="mb-8">
-        <h1 class="text-2xl font-bold mb-1">Mobile Phone Verification</h1>
-        <p class="text-[15px] text-slate-500">
-          Enter the 4-digit verification code that was sent to your phone number.
+      <header class="mb-4 text-center">
+        <h1 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1">Mobile Verification</h1>
+        <p class="text-sm text-gray-600 dark:text-gray-300">
+          A 4-digit verification code has been sent to
+          <span class="font-medium text-gray-900 dark:text-white">+91 {{ txtRegMobileNo }}</span>
         </p>
+        <button type="button" (click)="onChangeNumber()"
+          class="mt-1 text-sm text-blue-600 hover:underline focus:outline-none">
+          Change
+        </button>
       </header>
+      
   
       <form (ngSubmit)="onSubmit()" #form="ngForm">
-        <div class="flex items-center justify-center gap-3">
+        <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mt-4">
           <input
             #otpInput
             type="text"
@@ -16,9 +22,10 @@
             pattern="\d*"
             inputmode="numeric"
             class="otp-input"
-            *ngFor="let i of [0, 1, 2, 3]"
+            *ngFor="let i of [0, 1, 2, 3, 4, 5]"
           />
         </div>
+        
   
         <div class="max-w-[260px] mx-auto mt-4">
             <button

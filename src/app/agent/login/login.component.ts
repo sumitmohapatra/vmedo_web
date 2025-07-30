@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
+import { CommonService } from 'src/app/service/common.service';
+import { AgentService } from 'src/app/services/agent.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +13,9 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private agentService:AgentService,private common:CommonService,
+    private app:AppComponent
+  ) {
     this.loginForm = this.fb.group({
       phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]]
     });
@@ -20,7 +25,20 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       const phone = this.loginForm.value.phone;
       // You can send OTP API request here if needed before routing
-      this.router.navigate(['agent/verify-otp'], { queryParams: { phone } });
+      const body = {
+        userMobile: phone
+      };
+  
+      this.agentService.generateAgentOTP(phone).subscribe({
+        next: (res) => {
+          if(res.statusCode === 200){
+            this.app.ShowSuccess('Otp succesfully sent to your registered number!');
+            this.router.navigate(['agent/verify-otp'], { queryParams: { phone } });
+          }else{
+            this.app.ShowError(res.message);
+          }
+        }
+      });
     }
   }
 }

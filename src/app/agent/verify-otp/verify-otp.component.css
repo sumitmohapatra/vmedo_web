@@ -1,4 +1,4 @@
-.otp-input {
+/* .otp-input {
     width: 3.5rem;
     height: 3.5rem;
     text-align: center;
@@ -9,7 +9,7 @@
     border-radius: 0.5rem;
     padding: 1rem;
     outline: none;
-  }
+  } */
   
   .otp-input:hover {
     border-color: #cbd5e1;
@@ -20,4 +20,27 @@
     border-color: #818cf8;
     box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.2);
   }
+
+  .otp-input {
+    width: 2.75rem;
+    height: 2.75rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    background-color: #f1f5f9;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    outline: none;
+    transition: all 0.2s ease;
+  }
+  
+  @media (min-width: 640px) {
+    .otp-input {
+      width: 3.5rem;
+      height: 3.5rem;
+      padding: 1rem;
+    }
+  }
+  
   

@@ -49,17 +49,47 @@
                 <!-- Terms -->
                 <div class="text-xs text-gray-600 dark:text-gray-400 mt-2">
                     <label class="inline-flex items-start">
-                        <input type="checkbox" required class="mr-2 mt-1">
+                        <input type="checkbox" [(ngModel)]="isTermsAccepted" name="terms" class="mr-2 mt-1" />
                         By clicking on register, you agree to VMEDO’s
                         <a href="https://vmedo.com/vmedo-terms.html" class="text-blue-600 hover:underline">Terms and
                             Conditions of Use</a>
                     </label>
+                    <p *ngIf="lblTermsError" class="text-xs text-red-500 mt-1">{{ lblTermsError }}</p>
                 </div>
             </ng-container>
 
+           
+
+
+            <!-- Buttons -->
+            <!-- <div class="pt-2 sm:pt-4">
+                <button *ngIf="!isOTPSentOnRegister" type="button" (click)="OnClickSendOTPOnRegister()"
+                    class="w-full inline-flex justify-center whitespace-nowrap rounded-lg bg-red-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 transition-colors duration-150">
+                    Send OTP
+                </button>
+
+                <button *ngIf="isOTPSentOnRegister && !isMobileVerified" type="button"
+                    (click)="OnClickVerifyOTPOnRegister('All')"
+                    class="w-full inline-flex justify-center whitespace-nowrap rounded-lg bg-red-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 transition-colors duration-150">
+                    Verify & Register
+                </button>
+            </div> -->
+            <div class="pt-2 sm:pt-4">
+                <button type="button" (click)="OnClickRegisterUser('All')"
+                  class="w-full inline-flex justify-center whitespace-nowrap rounded-lg bg-red-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 transition-colors duration-150">
+                  Register
+                </button>
+              </div>
+              
+        </form>
+    </div>
+</div>
+
+
+
+ <!-- OTP Section -->
             <!-- OTP Section -->
-            <!-- OTP Section -->
-            <div *ngIf="isOTPSentOnRegister">
+            <!-- <div *ngIf="isOTPSentOnRegister">
                 <header class="mb-4 text-center">
                     <h1 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1">Mobile Verification</h1>
                     <p class="text-sm text-gray-600 dark:text-gray-300">
@@ -72,7 +102,6 @@
                     </button>
                 </header>
 
-                <!-- OTP Input Fields -->
                 <div class="flex items-center justify-center gap-3">
                     <input
                       #otpInput
@@ -85,22 +114,4 @@
                     />
                   </div>
                 <p *ngIf="lblRegOTP" class="text-xs text-red-500 mt-2 text-center">{{ lblRegOTP }}</p>
-            </div>
-
-
-            <!-- Buttons -->
-            <div class="pt-2 sm:pt-4">
-                <button *ngIf="!isOTPSentOnRegister" type="button" (click)="OnClickSendOTPOnRegister()"
-                    class="w-full inline-flex justify-center whitespace-nowrap rounded-lg bg-red-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 transition-colors duration-150">
-                    Send OTP
-                </button>
-
-                <button *ngIf="isOTPSentOnRegister && !isMobileVerified" type="button"
-                    (click)="OnClickVerifyOTPOnRegister('All')"
-                    class="w-full inline-flex justify-center whitespace-nowrap rounded-lg bg-red-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 transition-colors duration-150">
-                    Verify & Register
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
+            </div> -->

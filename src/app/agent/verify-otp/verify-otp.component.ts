@@ -1,5 +1,8 @@
 import { Component, ViewChildren, QueryList, ElementRef, AfterViewInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
+import { CommonService } from 'src/app/service/common.service';
+import { AgentService } from 'src/app/services/agent.service';
 
 @Component({
   selector: 'app-verify-otp',
@@ -7,8 +10,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./verify-otp.component.css']
 })
 export class VerifyOtpComponent implements AfterViewInit {
-  constructor(private router:Router){}
+  constructor(private router: Router, private route: ActivatedRoute, private agentService: AgentService, private common:CommonService,
+    private app:AppComponent
+  ) { }
   @ViewChildren('otpInput') otpInputs!: QueryList<ElementRef<HTMLInputElement>>;
+  txtRegMobileNo: string = '';
+
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.txtRegMobileNo = params['phone'] || '';
+    });
+  }
+
+  onChangeNumber() {
+    this.router.navigate(['agent/login']);
+  }
 
   ngAfterViewInit() {
     const inputs = this.otpInputs.toArray();
@@ -58,7 +74,28 @@ export class VerifyOtpComponent implements AfterViewInit {
 
   onSubmit() {
     const code = this.otpInputs.map(i => i.nativeElement.value).join('');
-    console.log('OTP submitted:', code);
-    this.router.navigate(['agent/manage-customer']);
+    if (code.length !== 6) {
+      this.app.ShowError('Please enter the full 6-digit OTP');
+      return;
+    }
+
+    this.agentService.verifyAgentOTP(this.txtRegMobileNo, code).subscribe({
+      next: (res) => {
+        if (res.statusCode === 200) {
+          this.app.ShowSuccess('Agent login success!');
+
+          if (res.objret) {
+            this.common.userInfo = res.objret;
+            localStorage.setItem('userInfo', JSON.stringify(res.objret));
+          }
+          this.router.navigate(['agent/manage-customer']);
+        }else{
+          this.app.ShowError(res.message);
+        }
+      },
+      error: (err) => {
+        this.app.ShowError('Invalid or expired OTP. Please try again.');
+      }
+    });
   }
 }

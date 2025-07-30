@@ -1,6 +1,8 @@
 import { Component, Output, EventEmitter, ViewChildren, QueryList, ElementRef, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 import { CommonService } from 'src/app/service/common.service';
+import { AgentService } from 'src/app/services/agent.service';
 
 @Component({
   selector: 'app-add-customer',
@@ -8,7 +10,7 @@ import { CommonService } from 'src/app/service/common.service';
   styleUrls: ['./add-customer.component.css']
 })
 export class AddCustomerComponent implements AfterViewInit {
-  constructor(public common: CommonService, private router: Router) { }
+  constructor(public common: CommonService, private router: Router, private agentService: AgentService, private app: AppComponent) { }
   txtRegUserName = '';
   txtRegEmailId = '';
   txtRegMobileNo = '';
@@ -20,6 +22,10 @@ export class AddCustomerComponent implements AfterViewInit {
   lblRegEmailId?: string;
   lblRegMobileNo?: string;
   lblRegOTP?: string;
+
+  isTermsAccepted = false;
+  lblTermsError?: string;
+
 
 
   @Output() closeModal = new EventEmitter<void>();
@@ -36,14 +42,70 @@ export class AddCustomerComponent implements AfterViewInit {
     this.isOTPSentOnRegister = true;
   }
 
-  OnClickVerifyOTPOnRegister(displayPackage: string) {
-    const code = this.otpInputs.map(i => i.nativeElement.value).join('');
-    console.log('OTP submitted:', code);
-    this.isMobileVerified = true;
-    this.closeModal.emit();
-    this.common.viewSubscription(displayPackage);
-    this.router.navigate(['/dashboard/package']);
+  OnClickRegisterUser(displayPackage: string) {
+    // Reset error messages
+    this.lblRegUserName = '';
+    this.lblRegEmailId = '';
+    this.lblRegMobileNo = '';
+
+    let isValid = true;
+
+    if (!this.txtRegUserName || !this.txtRegUserName.trim()) {
+      this.lblRegUserName = 'Name is required';
+      isValid = false;
+    }
+
+    if (!this.txtRegEmailId || !this.txtRegEmailId.trim()) {
+      this.lblRegEmailId = 'Email is required';
+      isValid = false;
+    } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(this.txtRegEmailId)) {
+      this.lblRegEmailId = 'Enter a valid email';
+      isValid = false;
+    }
+
+    if (!this.txtRegMobileNo || !this.txtRegMobileNo.trim()) {
+      this.lblRegMobileNo = 'Mobile number is required';
+      isValid = false;
+    } else if (!/^\d{10}$/.test(this.txtRegMobileNo)) {
+      this.lblRegMobileNo = 'Enter a valid 10-digit mobile number';
+      isValid = false;
+    }
+
+    if (!this.isTermsAccepted) {
+      this.lblTermsError = 'You must accept the Terms and Conditions';
+      isValid = false;
+    } else {
+      this.lblTermsError = '';
+    }
+
+    if (!isValid) return; // Stop if any field is invalid
+
+    const payload = {
+      userName: this.txtRegUserName.trim(),
+      userEmail: this.txtRegEmailId.trim(),
+      userMobile: this.txtRegMobileNo.trim(),
+      created_by: this.common?.userInfo?.userId
+    };
+
+    this.agentService.registerCustomer(payload).subscribe({
+      next: (res) => {
+        if (res.statusCode === 200) {
+          this.app.ShowSuccess('Customer registered successfully!');
+          this.isMobileVerified = true;
+          this.closeModal.emit();
+          // this.common.viewSubscription(displayPackage);
+          // this.router.navigate(['/dashboard/package']);
+        } else {
+          this.app.ShowError(res.message);
+        }
+
+      },
+      error: (err) => {
+      }
+    });
   }
+
+
 
   onClose() {
     this.closeModal.emit();
