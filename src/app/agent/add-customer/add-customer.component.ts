@@ -79,28 +79,31 @@ export class AddCustomerComponent implements AfterViewInit {
     }
 
     if (!isValid) return; // Stop if any field is invalid
+    this.app.ShowLoader();
 
     const payload = {
       userName: this.txtRegUserName.trim(),
       userEmail: this.txtRegEmailId.trim(),
       userMobile: this.txtRegMobileNo.trim(),
-      created_by: this.common?.userInfo?.userId
+      created_by: this.common.userInfo.userID
     };
 
     this.agentService.registerCustomer(payload).subscribe({
       next: (res) => {
+        this.app.HideLoader();
         if (res.statusCode === 200) {
           this.app.ShowSuccess('Customer registered successfully!');
           this.isMobileVerified = true;
           this.closeModal.emit();
-          // this.common.viewSubscription(displayPackage);
-          // this.router.navigate(['/dashboard/package']);
+          this.common.viewSubscription(displayPackage);
+          this.router.navigate(['/dashboard/package']);
         } else {
           this.app.ShowError(res.message);
         }
 
       },
       error: (err) => {
+        this.app.HideLoader();
       }
     });
   }

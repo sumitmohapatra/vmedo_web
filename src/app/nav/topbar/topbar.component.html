@@ -1,7 +1,8 @@
+<!-- {{common.userInfo | json}} -->
 <div class="row">
     <div class="col-md-12 col-sm-12 col-lg-12" id="navigation">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="img-box" [routerLink]="'/dashboard/profile'" title="Back" style="width: 36px; margin-left: 14px;cursor: pointer;">
+        <div class="img-box" [routerLink]="'/home'" title="Back" style="width: 36px; margin-left: 14px;cursor: pointer;">
           <img src="assets\Profile-home\profile\icons8-back-white.png"  alt="some user image">
         </div>
         <a class="navbar-brand">
@@ -23,7 +24,7 @@
           </div>
           <div class="menu">
             <ul>
-              <li [routerLink]="'/dashboard/profile/1'"> Profile</li>
+              <li [routerLink]="'/dashboard/profile'"> Profile</li>
               <li (click)="OnClickLogout()">Sign Out</li>
             </ul>
           </div>

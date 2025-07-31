@@ -11,7 +11,9 @@ export class ManageCustomerComponent implements OnInit {
   constructor(private agentService:AgentService, private common:CommonService){}
   Math = Math;
 
-  users: any[] = [];
+  users: any[] = [
+  ];
+  
   
   openEditModal(user: any) {
     console.log('Editing user:', user);
@@ -30,7 +32,7 @@ loadUsers() {
   const agentId = this.common.userInfo.userID;
   this.agentService.getRegisteredUsers(agentId).subscribe({
     next: (res:any) => {
-      this.users = res.objret || [];
+       this.users = res.objret || [];
     },
     error: (err) => {
     }

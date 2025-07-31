@@ -38,7 +38,6 @@
                       <th class="px-6 py-3 text-left font-semibold w-64">Name</th>
                       <th class="px-6 py-3 text-left font-semibold w-40">Registered On</th>
                       <th class="px-6 py-3 text-left font-semibold w-40">Mobile Number</th>
-                      <th class="px-6 py-3 text-left font-semibold w-40">Valid Till</th>
                       <th class="px-6 py-3 text-left font-semibold w-40">Plan</th>
                       <th class="px-6 py-3 text-left font-semibold w-40">User Type</th>
                       <th class="px-6 py-3 text-left font-semibold w-32">Action</th>
@@ -49,28 +48,26 @@
                   <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                     <tr *ngFor="let user of paginatedUsers">
                       <td class="px-3 py-2 whitespace-nowrap flex items-center gap-3">
-                        <img [src]="user.avatar" alt="avatar" class="w-10 h-10 rounded-full">
+                        <img src="assets\Profile-home\profile\profile.png" alt="avatar" class="w-10 h-10 rounded-full">
                         <div>
-                          <div class="text-base font-semibold text-gray-900 dark:text-white">{{ user.name }}</div>
-                          <div class="text-sm text-gray-500 dark:text-gray-400">{{ user.email }}</div>
+                          <div class="text-base font-semibold text-gray-900 dark:text-white">{{ user.uName }}</div>
+                          <div class="text-sm text-gray-500 dark:text-gray-400">{{ user.uEmail }}</div>
                         </div>
                       </td>
-                      <td class="px-6 py-4">{{ user.registeredOn }}</td>
-                      <td class="px-6 py-4">{{ user.mobileNumber }}</td>
-                      <td class="px-6 py-4">{{ user.validTill }}</td>
-                      
+                        <td class="px-6 py-4">{{ user.registered_on | date:'MMM d, y' }}</td>
+                      <td class="px-6 py-4">{{ user.uMobile }}</td>                      
                       <!-- Plan Badge -->
                       <td class="px-6 py-4 uppercase">
                         <span 
                           [ngClass]="{
-                            'bg-blue-100 text-blue-800': user.plan === 'free',
-                            'bg-yellow-100 text-yellow-800': user.plan === 'individual',
-                            'bg-purple-100 text-purple-800': user.plan === 'family plus',
-                            'bg-green-100 text-green-800': user.plan === 'vmedo premium'
+                            'bg-blue-100 text-blue-800': !user.packageName,
+                            'bg-yellow-100 text-yellow-800': user.packageName === 'individual',
+                            'bg-purple-100 text-purple-800': user.packageName === 'family plus',
+                            'bg-green-100 text-green-800': user.packageName === 'vmedo premium'
                           }"
                           class="text-xs font-semibold px-2.5 py-0.5 rounded-full"
                         >
-                          {{ user.plan }}
+                          {{ user.packageName ? user.packageName : 'DEFAULT' }}
                         </span>
                       </td>
                   
@@ -78,12 +75,12 @@
                       <td class="px-6 py-4 uppercase">
                         <span 
                           [ngClass]="{
-                            'bg-gray-200 text-gray-800': user.userType === 'free',
-                            'bg-green-200 text-green-800': user.userType === 'premium'
+                            'bg-gray-200 text-gray-800': !user.isPaidMember,
+                            'bg-green-200 text-green-800': user.isPaidMember
                           }"
                           class="text-xs font-semibold px-2.5 py-0.5 rounded-full"
                         >
-                          {{ user.userType }}
+                          {{ user.isPaidMember ? 'PREMIUM' : 'FREE' }}
                         </span>
                       </td>
                   

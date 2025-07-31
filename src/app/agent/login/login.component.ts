@@ -28,15 +28,18 @@ export class LoginComponent {
       const body = {
         userMobile: phone
       };
-  
+      this.app.ShowLoader();
       this.agentService.generateAgentOTP(phone).subscribe({
         next: (res) => {
+          this.app.HideLoader();
           if(res.statusCode === 200){
             this.app.ShowSuccess('Otp succesfully sent to your registered number!');
             this.router.navigate(['agent/verify-otp'], { queryParams: { phone } });
           }else{
             this.app.ShowError(res.message);
           }
+        },error: (err) => {
+          this.app.HideLoader();
         }
       });
     }

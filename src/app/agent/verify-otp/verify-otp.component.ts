@@ -15,10 +15,17 @@ export class VerifyOtpComponent implements AfterViewInit {
   ) { }
   @ViewChildren('otpInput') otpInputs!: QueryList<ElementRef<HTMLInputElement>>;
   txtRegMobileNo: string = '';
+  apis:any = {};
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.txtRegMobileNo = params['phone'] || '';
+    });
+    this.common.property.GetProperties().then((resolve: any) => {
+      if(resolve.api)
+        this.apis = resolve.api;
+    }).catch(() => {
+      console.error(`No apis found !`);
     });
   }
 
@@ -52,6 +59,11 @@ export class VerifyOtpComponent implements AfterViewInit {
           inputs[index + 1].nativeElement.focus();
         } else if (index === inputs.length - 1) {
           // Optionally move focus to submit button
+
+          const isComplete = inputs.every(inp => inp.nativeElement.value.length === 1);
+        if (isComplete) {
+          this.onSubmit();
+        }
         }
       });
 
@@ -67,6 +79,11 @@ export class VerifyOtpComponent implements AfterViewInit {
             if (inputs[i]) inputs[i].nativeElement.value = char;
           });
           inputs[inputs.length - 1].nativeElement.focus();
+
+          const isComplete = inputs.every(inp => inp.nativeElement.value.length === 1);
+        if (isComplete) {
+          this.onSubmit();
+        }
         }
       });
     });
@@ -85,6 +102,13 @@ export class VerifyOtpComponent implements AfterViewInit {
           this.app.ShowSuccess('Agent login success!');
 
           if (res.objret) {
+            this.common.auth_token = res.objret.autToken;
+            this.common.refresh_token = res.objret.refreshToken;
+  
+            localStorage.setItem('apis', JSON.stringify(this.apis));
+            localStorage.setItem('userID', res.objret.userID);
+            localStorage.setItem('auth_token', res.objret.autToken);
+            localStorage.setItem('refresh_token', res.objret.refreshToken);
             this.common.userInfo = res.objret;
             localStorage.setItem('userInfo', JSON.stringify(res.objret));
           }
