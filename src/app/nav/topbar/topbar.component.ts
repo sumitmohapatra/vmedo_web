@@ -24,7 +24,7 @@ export class TopbarComponent {
     this.common.refresh_token = undefined;
     localStorage.clear();
     this.app.ShowSuccess(`User logged out successfully`).finally(() => {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/agent/login']);
     });
   };
 }

@@ -259,4 +259,27 @@ updateView() {
     });
   };
 
+  onBackClick(){
+    if(this.common.userInfo.roleID === 4){
+      this.router.navigate(['agent/manage-customer']);
+    }else{
+      this.router.navigate(['dashboard/profile']);
+    }
+  }
+
+  onLogoClick(){
+    if(this.common.userInfo.roleID === 4){
+      this.router.navigate(['agent/manage-customer']);
+    }else{
+      this.router.navigate(['home']);
+    }
+  }
+
+  onProfileClick(){
+    if(this.common.userInfo.roleID === 4){
+      this.router.navigate(['agent/manage-customer']);
+    }else{
+      this.router.navigate(['dashboard/profile/1']);
+    }
+  }
 }

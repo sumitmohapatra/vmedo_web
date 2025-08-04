@@ -2,14 +2,14 @@
 <div class="row">
     <div class="col-md-12 col-sm-12 col-lg-12" id="navigation">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="img-box" [routerLink]="'/home'" title="Back" style="width: 36px; margin-left: 14px;cursor: pointer;">
+        <div class="img-box" [routerLink]="'/agent/login'" title="Back" style="width: 36px; margin-left: 14px;cursor: pointer;">
           <img src="assets\Profile-home\profile\icons8-back-white.png"  alt="some user image">
         </div>
         <a class="navbar-brand">
           <svg class="logo logo-md" style="height: 20px; width: 100px;">
             <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo"></use>
           </svg>
-          <svg [routerLink]="'/home'" class="logo logo-sm" style="height: 30px; width: 100px;">
+          <svg [routerLink]="'/agent/login'" class="logo logo-sm" style="height: 30px; width: 100px;">
             <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-logo-white"></use>
           </svg>
         </a>
@@ -24,7 +24,7 @@
           </div>
           <div class="menu">
             <ul>
-              <li [routerLink]="'/dashboard/profile'"> Profile</li>
+              <li [routerLink]="'/agent/manage-customer'"> Profile</li>
               <li (click)="OnClickLogout()">Sign Out</li>
             </ul>
           </div>

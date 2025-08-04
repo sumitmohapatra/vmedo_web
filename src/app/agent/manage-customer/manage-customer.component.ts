@@ -12,6 +12,24 @@ export class ManageCustomerComponent implements OnInit {
   Math = Math;
 
   users: any[] = [
+  //   {
+  //     "userID": "47d56b15-e354-4e04-b6c8-43812573c2b8",
+  //     "uName": "Sumit Mohapatra",
+  //     "uMobile": "7735008281",
+  //     "uEmail": "sumitmohapatra01@gmail.com",
+  //     "uType": "User",
+  //     "uStatus": false,
+  //     "mobileVerified": false,
+  //     "emailVerified": false,
+  //     "registered_on": "2025-08-04T03:13:33.533",
+  //     "isDoner": 0,
+  //     "hasEID": 0,
+  //     "profilePhoto": "https://apitest.vmedo.com/Profile_Pic/",
+  //     "isPaidMember": false,
+  //     "packageName": null,
+  //     "packagevalid_till": "0001-01-01T00:00:00",
+  //     "expiredsince": 0
+  // }
   ];
   
   
@@ -32,7 +50,7 @@ loadUsers() {
   const agentId = this.common.userInfo.userID;
   this.agentService.getRegisteredUsers(agentId).subscribe({
     next: (res:any) => {
-       this.users = res.objret || [];
+         this.users = res.objret || [];
     },
     error: (err) => {
     }

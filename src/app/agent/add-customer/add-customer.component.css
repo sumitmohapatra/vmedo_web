@@ -1,23 +1,33 @@
 .otp-input {
-    width: 3.5rem;
-    height: 3.5rem;
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: 800;
-    background-color: #f1f5f9;
-    border: 1px solid transparent;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    outline: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  background-color: #f1f5f9;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.otp-input:hover {
+  border-color: #cbd5e1;
+}
+
+.otp-input:focus {
+  background-color: white;
+  border-color: #818cf8;
+  box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.2);
+}
+
+/* Responsive improvement: ensure smaller size on tight mobile screens */
+@media (max-width: 420px) {
+  .otp-input {
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 1rem;
+    padding: 0.2rem;
   }
-  
-  .otp-input:hover {
-    border-color: #cbd5e1;
-  }
-  
-  .otp-input:focus {
-    background-color: white;
-    border-color: #818cf8;
-    box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.2);
-  }
-  
+}

@@ -9,78 +9,134 @@ import { AgentService } from 'src/app/services/agent.service';
   templateUrl: './add-customer.component.html',
   styleUrls: ['./add-customer.component.css']
 })
-export class AddCustomerComponent implements AfterViewInit {
-  constructor(public common: CommonService, private router: Router, private agentService: AgentService, private app: AppComponent) { }
+export class AddCustomerComponent {
+  constructor(
+    public common: CommonService,
+    private router: Router,
+    private agentService: AgentService,
+    private app: AppComponent
+  ) {}
+
   txtRegUserName = '';
   txtRegEmailId = '';
   txtRegMobileNo = '';
-  txtRegOTP = '';
   isOTPSentOnRegister = false;
   isMobileVerified = false;
+  isTermsAccepted = false;
 
   lblRegUserName?: string;
   lblRegEmailId?: string;
   lblRegMobileNo?: string;
   lblRegOTP?: string;
-
-  isTermsAccepted = false;
   lblTermsError?: string;
 
-
-
   @Output() closeModal = new EventEmitter<void>();
+  @ViewChildren('otpInput') otpInputs!: QueryList<ElementRef<HTMLInputElement>>;
 
   OnTextChanged(field: string, value: string) {
-    // validation placeholder
+    // Placeholder: add per-field real-time validation if needed
   }
 
   AllowOnlyNumbers(event: KeyboardEvent) {
     if (!/^\d$/.test(event.key)) event.preventDefault();
   }
 
-  OnClickSendOTPOnRegister() {
-    this.isOTPSentOnRegister = true;
+  onClose() {
+    this.closeModal.emit();
   }
 
-  OnClickRegisterUser(displayPackage: string) {
-    // Reset error messages
-    this.lblRegUserName = '';
-    this.lblRegEmailId = '';
-    this.lblRegMobileNo = '';
+  onCancelRegister() {
+    this.closeModal.emit();
+  }
+
+  onChangeNumber() {
+    this.isOTPSentOnRegister = false;
+    this.lblRegOTP = '';
+    this.otpInputs?.forEach(input => (input.nativeElement.value = ''));
+  }
+
+  getOTPFromInputs(): string {
+    return this.otpInputs.map(input => input.nativeElement.value).join('');
+  }
+
+  generateOTP() {
+    const otpPayload = {
+      userMobile: this.txtRegMobileNo.trim()
+    };
+
+    this.app.ShowLoader();
+    this.agentService.generateRegisterOTP(otpPayload).subscribe({
+      next: (res) => {
+        this.app.HideLoader();
+        if (res.statusCode === 200) {
+          this.isOTPSentOnRegister = true;
+          this.app.ShowSuccess('OTP sent successfully!');
+          setTimeout(() => this.setupOTPListeners(), 100);
+        } else {
+          this.app.ShowError(res.message);
+        }
+      },
+      error: () => this.app.HideLoader()
+    });
+  }
+
+  verifyOtp() {
+    const otp = this.getOTPFromInputs();
+    if (!/^\d{6}$/.test(otp)) {
+      this.lblRegOTP = 'Enter a valid 6-digit OTP';
+      return;
+    }
+
+    this.app.ShowLoader();
+    const payload = {
+      Umobile: this.txtRegMobileNo.trim(),
+      OTP: otp
+    };
+
+    this.agentService.authenticateRegisterOTP(payload).subscribe({
+      next: (res) => {
+        this.app.HideLoader();
+        if (res.statusCode === 200) {
+          this.app.ShowSuccess('Mobile number verified!');
+          this.isMobileVerified = true;
+          this.common.viewSubscription('All');
+          this.router.navigate(['/dashboard/package']);
+        } else {
+          this.app.ShowError(res.message);
+        }
+      },
+      error: () => this.app.HideLoader()
+    });
+  }
+
+  OnClickRegisterUser() {
+    // Reset validation labels
+    this.lblRegUserName = this.lblRegEmailId = this.lblRegMobileNo = this.lblTermsError = '';
 
     let isValid = true;
 
-    if (!this.txtRegUserName || !this.txtRegUserName.trim()) {
+    if (!this.txtRegUserName.trim()) {
       this.lblRegUserName = 'Name is required';
       isValid = false;
     }
 
-    if (!this.txtRegEmailId || !this.txtRegEmailId.trim()) {
+    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    if (!this.txtRegEmailId.trim()) {
       this.lblRegEmailId = 'Email is required';
       isValid = false;
-    } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(this.txtRegEmailId)) {
+    } else if (!emailRegex.test(this.txtRegEmailId.trim())) {
       this.lblRegEmailId = 'Enter a valid email';
       isValid = false;
     }
 
-    if (!this.txtRegMobileNo || !this.txtRegMobileNo.trim()) {
-      this.lblRegMobileNo = 'Mobile number is required';
-      isValid = false;
-    } else if (!/^\d{10}$/.test(this.txtRegMobileNo)) {
+    if (!/^\d{10}$/.test(this.txtRegMobileNo.trim())) {
       this.lblRegMobileNo = 'Enter a valid 10-digit mobile number';
       isValid = false;
     }
 
-    if (!this.isTermsAccepted) {
-      this.lblTermsError = 'You must accept the Terms and Conditions';
-      isValid = false;
-    } else {
-      this.lblTermsError = '';
-    }
+    if (!isValid) return;
 
-    if (!isValid) return; // Stop if any field is invalid
     this.app.ShowLoader();
-
     const payload = {
       userName: this.txtRegUserName.trim(),
       userEmail: this.txtRegEmailId.trim(),
@@ -93,79 +149,103 @@ export class AddCustomerComponent implements AfterViewInit {
         this.app.HideLoader();
         if (res.statusCode === 200) {
           this.app.ShowSuccess('Customer registered successfully!');
-          this.isMobileVerified = true;
-          this.closeModal.emit();
-          this.common.viewSubscription(displayPackage);
-          this.router.navigate(['/dashboard/package']);
+          this.generateOTP();
         } else {
           this.app.ShowError(res.message);
         }
-
       },
-      error: (err) => {
-        this.app.HideLoader();
-      }
+      error: () => this.app.HideLoader()
     });
   }
 
-
-
-  onClose() {
-    this.closeModal.emit();
+  skipOtp() {
+    this.common.viewSubscription('All');
+    this.router.navigate(['/dashboard/package']);
   }
 
-  onChangeNumber() {
-    this.isOTPSentOnRegister = false;
-    this.txtRegOTP = '';
-    this.lblRegOTP = '';
-  }
-
-  @ViewChildren('otpInput') otpInputs!: QueryList<ElementRef<HTMLInputElement>>;
-
-  ngAfterViewInit() {
+  // ngAfterViewInit() {
+  //   const inputs = this.otpInputs.toArray();
+  
+  //   inputs.forEach((inputRef, index) => {
+  //     const el = inputRef.nativeElement;
+  
+  //     el.addEventListener('input', (e: Event) => {
+  //       const value = el.value.replace(/\D/g, ''); // Only digits
+  //       el.value = value.slice(0, 1); // Trim to 1 character
+  
+  //       // Auto-move to next
+  //       if (value && index < inputs.length - 1) {
+  //         inputs[index + 1].nativeElement.focus();
+  //       }
+  //     });
+  
+  //     el.addEventListener('keydown', (e: KeyboardEvent) => {
+  //       if (e.key === 'Backspace' && !el.value && index > 0) {
+  //         inputs[index - 1].nativeElement.focus();
+  //       }
+  //     });
+  
+  //     el.addEventListener('focus', () => {
+  //       el.select();
+  //     });
+  
+  //     el.addEventListener('paste', (e: ClipboardEvent) => {
+  //       e.preventDefault();
+  //       const pasted = (e.clipboardData?.getData('text') || '').replace(/\D/g, '');
+  //       pasted.split('').forEach((char, i) => {
+  //         if (inputs[i]) inputs[i].nativeElement.value = char;
+  //       });
+  //       const lastFilled = Math.min(pasted.length, inputs.length) - 1;
+  //       if (inputs[lastFilled]) inputs[lastFilled].nativeElement.focus();
+  //     });
+  //   });
+  
+  //   // Auto-focus first box
+  //   setTimeout(() => {
+  //     if (inputs.length) {
+  //       inputs[0].nativeElement.focus();
+  //     }
+  //   }, 50);
+  // }
+  
+  setupOTPListeners() {
     const inputs = this.otpInputs.toArray();
-
-    inputs.forEach((input, index) => {
-      const el = input.nativeElement;
-
-      el.addEventListener('keydown', (e: KeyboardEvent) => {
-        if (
-          !/^[0-9]{1}$/.test(e.key) &&
-          e.key !== 'Backspace' &&
-          e.key !== 'Delete' &&
-          e.key !== 'Tab'
-        ) {
-          e.preventDefault();
+  
+    inputs.forEach((inputRef, index) => {
+      const el = inputRef.nativeElement;
+  
+      el.addEventListener('input', () => {
+        const value = el.value.replace(/\D/g, '');
+        el.value = value.slice(0, 1);
+        if (value && index < inputs.length - 1) {
+          inputs[index + 1].nativeElement.focus();
         }
-
-        if ((e.key === 'Backspace' || e.key === 'Delete') && !el.value && index > 0) {
+      });
+  
+      el.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key === 'Backspace' && !el.value && index > 0) {
           inputs[index - 1].nativeElement.focus();
         }
       });
-
-      el.addEventListener('input', () => {
-        if (el.value && index < inputs.length - 1) {
-          inputs[index + 1].nativeElement.focus();
-        } else if (index === inputs.length - 1) {
-          // Optionally move focus to submit button
-        }
-      });
-
+  
       el.addEventListener('focus', () => {
         el.select();
       });
-
+  
       el.addEventListener('paste', (e: ClipboardEvent) => {
         e.preventDefault();
-        const pasteData = e.clipboardData?.getData('text') || '';
-        if (/^\d{4}$/.test(pasteData)) {
-          pasteData.split('').forEach((char, i) => {
-            if (inputs[i]) inputs[i].nativeElement.value = char;
-          });
-          inputs[inputs.length - 1].nativeElement.focus();
-        }
+        const pasted = (e.clipboardData?.getData('text') || '').replace(/\D/g, '');
+        pasted.split('').forEach((char, i) => {
+          if (inputs[i]) inputs[i].nativeElement.value = char;
+        });
+        const lastFilled = Math.min(pasted.length, inputs.length) - 1;
+        if (inputs[lastFilled]) inputs[lastFilled].nativeElement.focus();
       });
     });
+  
+    // Focus first box
+    if (inputs.length) inputs[0].nativeElement.focus();
   }
+  
 
 }
