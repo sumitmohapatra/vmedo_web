@@ -35,12 +35,12 @@ export class AgentService {
   }
   
   generateRegisterOTP(payload: { userMobile: string }): Observable<any> {
-    const url = `${environment.baseApiUrl}auth/GenerateRegisterOTP`;
+    const url = `${environment.baseApiUrl}agent/AgentGenerateRegisterOTP`;
     return this.http.post<any>(url, payload);
   }
 
   authenticateRegisterOTP(payload: { Umobile: string; OTP: string }): Observable<any> {
-    const url = `${environment.baseApiUrl}auth/UserauthenticateRegisterOTP`;
+    const url = `${environment.baseApiUrl}agent/AgentUserauthenticateRegisterOTP`;
     return this.http.post<any>(url, payload);
   }
   
