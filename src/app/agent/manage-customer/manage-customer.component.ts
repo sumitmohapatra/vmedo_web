@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonService } from 'src/app/service/common.service';
 import { AgentService } from 'src/app/services/agent.service';
 
@@ -8,100 +9,117 @@ import { AgentService } from 'src/app/services/agent.service';
   styleUrls: ['./manage-customer.component.css']
 })
 export class ManageCustomerComponent implements OnInit {
-  constructor(private agentService:AgentService, private common:CommonService){}
+  constructor(private agentService: AgentService, private common: CommonService, private router: Router) { }
+
   Math = Math;
 
-  users: any[] = [
-  //   {
-  //     "userID": "47d56b15-e354-4e04-b6c8-43812573c2b8",
-  //     "uName": "Sumit Mohapatra",
-  //     "uMobile": "7735008281",
-  //     "uEmail": "sumitmohapatra01@gmail.com",
-  //     "uType": "User",
-  //     "uStatus": false,
-  //     "mobileVerified": false,
-  //     "emailVerified": false,
-  //     "registered_on": "2025-08-04T03:13:33.533",
-  //     "isDoner": 0,
-  //     "hasEID": 0,
-  //     "profilePhoto": "https://apitest.vmedo.com/Profile_Pic/",
-  //     "isPaidMember": false,
-  //     "packageName": null,
-  //     "packagevalid_till": "0001-01-01T00:00:00",
-  //     "expiredsince": 0
-  // }
-  ];
-  
-  
-  openEditModal(user: any) {
-    console.log('Editing user:', user);
-    // Optionally open a modal with user data
+  users: any[] = [];
+  filteredUsers: any[] = [];
+  searchQuery: string = '';
+
+  currentPage = 1;
+  itemsPerPage = 5;
+  showAddCustomerModal = false;
+  @ViewChild('createCustomerModal') createCustomerModal: any;
+  createCustomerModalRef:any;
+
+  ngOnInit() {
+    this.loadUsers();
   }
 
+  loadUsers() {
+    const agentId = this.common.userInfo.userID;
+    this.agentService.getRegisteredUsers(agentId).subscribe({
+      next: (res: any) => {
+        this.users = res.objret || [];
+        this.filteredUsers = [...this.users];  // Initialize filtered users
+      },
+      error: (err) => {
+        console.error('Failed to load users', err);
+      }
+    });
+  }
 
-currentPage = 1;
-itemsPerPage = 5;
+  // 🔍 Filter function (called on input)
+  filterUsers() {
+    const query = this.searchQuery.toLowerCase().trim();
 
-ngOnInit(){
-  this.loadUsers();
-}
-
-loadUsers() {
-  const agentId = this.common.userInfo.userID;
-  this.agentService.getRegisteredUsers(agentId).subscribe({
-    next: (res:any) => {
-         this.users = res.objret || [];
-    },
-    error: (err) => {
+    if (!query) {
+      this.filteredUsers = [...this.users];
+    } else {
+      this.filteredUsers = this.users.filter(user =>
+        user.uName?.toLowerCase().includes(query) ||
+        user.uEmail?.toLowerCase().includes(query) ||
+        user.uMobile?.toString().includes(query)
+      );
     }
-  });
-}
 
-get totalItems() {
-  return this.users.length;
-}
+    this.currentPage = 1; // Reset to first page on new search
+  }
 
-get totalPages() {
-  return Math.ceil(this.totalItems / this.itemsPerPage);
-}
+  // 🔢 Pagination values based on filteredUsers
+  get totalItems() {
+    return this.filteredUsers.length;
+  }
 
-get pageNumbers() {
-  return Array(this.totalPages).fill(0).map((_, i) => i + 1);
-}
+  get totalPages() {
+    return Math.ceil(this.totalItems / this.itemsPerPage);
+  }
 
-get currentPageStart() {
-  return (this.currentPage - 1) * this.itemsPerPage + 1;
-}
+  get pageNumbers() {
+    return Array(this.totalPages).fill(0).map((_, i) => i + 1);
+  }
 
-get currentPageEnd() {
-  return Math.min(this.currentPage * this.itemsPerPage, this.totalItems);
-}
+  get currentPageStart() {
+    return (this.currentPage - 1) * this.itemsPerPage + 1;
+  }
 
-get paginatedUsers() {
-  const start = (this.currentPage - 1) * this.itemsPerPage;
-  return this.users.slice(start, start + this.itemsPerPage);
-}
+  get currentPageEnd() {
+    return Math.min(this.currentPage * this.itemsPerPage, this.totalItems);
+  }
 
-goToPage(page: number) {
-  this.currentPage = page;
-}
+  get paginatedUsers() {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    return this.filteredUsers.slice(start, start + this.itemsPerPage);
+  }
 
-goToPreviousPage() {
-  if (this.currentPage > 1) this.currentPage--;
-}
+  goToPage(page: number) {
+    this.currentPage = page;
+  }
 
-goToNextPage() {
-  if (this.currentPage < this.totalPages) this.currentPage++;
-}
+  goToPreviousPage() {
+    if (this.currentPage > 1) this.currentPage--;
+  }
 
-showAddCustomerModal = false;
+  goToNextPage() {
+    if (this.currentPage < this.totalPages) this.currentPage++;
+  }
 
-openAddCustomer() {
-  this.showAddCustomerModal = true;
-}
+  openAddCustomer() {
+    this.createCustomerModalRef = this.common.modal.OpenModal(this.createCustomerModal);
+    this.showAddCustomerModal = true;
+  }
 
-closeAddCustomer() {
-  this.showAddCustomerModal = false;
-}
+  closeAddCustomer() {
+    this.showAddCustomerModal = false;
+  }
+
+  upgradePlan() {
+    this.common.viewSubscription('All');
+    this.router.navigate(['/dashboard/package']);
+  }
+
+  createCard() {
+    console.log('Create card clicked');
+    this.router.navigate(['agent/create-suraksha-card'])
+    // Add logic here
+  }
+
+  openEditModal(user: any) {
+    console.log('Editing user:', user);
+
+    // Implement modal logic
+  }
+
 
 }

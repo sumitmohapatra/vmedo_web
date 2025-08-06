@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, ViewChildren, QueryList, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, Output, EventEmitter, ViewChildren, QueryList, ElementRef, AfterViewInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { CommonService } from 'src/app/service/common.service';
@@ -32,6 +32,7 @@ export class AddCustomerComponent {
 
   @Output() closeModal = new EventEmitter<void>();
   @ViewChildren('otpInput') otpInputs!: QueryList<ElementRef<HTMLInputElement>>;
+  @Input() createCustomerModalRef:any;
 
   OnTextChanged(field: string, value: string) {
     // Placeholder: add per-field real-time validation if needed
@@ -47,6 +48,7 @@ export class AddCustomerComponent {
 
   onCancelRegister() {
     this.closeModal.emit();
+    this.createCustomerModalRef.close();
   }
 
   onChangeNumber() {

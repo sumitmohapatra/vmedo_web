@@ -12,6 +12,10 @@ import { OnboardCustomerComponent } from './onboard-customer/onboard-customer.co
 import { ManageCustomerComponent } from './manage-customer/manage-customer.component';
 import { NavModule } from '../nav/nav.module';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
+import { CreateCardComponent } from './create-card/create-card.component';
+import { MatCardModule } from '@angular/material/card';
+import { QRCodeModule } from 'angularx-qrcode';
+import { NgbModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
   {
@@ -34,6 +38,10 @@ const routes: Routes = [
   {
     path:'manage-customer',
     component:ManageCustomerComponent
+  },
+  {
+    path:'create-suraksha-card',
+    component:CreateCardComponent
   }
 ];
 
@@ -47,14 +55,18 @@ const routes: Routes = [
     PaymentComponent,
     OnboardCustomerComponent,
     ManageCustomerComponent,
-    AddCustomerComponent
+    AddCustomerComponent,
+    CreateCardComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     FormsModule,
-    NavModule
+    NavModule,
+    MatCardModule,
+    QRCodeModule,
+    NgbModule
   ]
 })
 export class AgentModule { }

@@ -4,12 +4,15 @@
   text-align: center;
   font-size: 1.25rem;
   font-weight: 700;
-  background-color: #f1f5f9;
-  border: 1px solid transparent;
+  /* background-color: #f1f5f9; */
+  background-color: #f5f5f5;
+  /* border: 1px solid transparent; */
+  border: 1px solid #ccc;;
   border-radius: 0.5rem;
   padding: 0.25rem;
   outline: none;
-  transition: all 0.2s ease;
+  /* transition: all 0.2s ease; */
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .otp-input:hover {
@@ -17,9 +20,11 @@
 }
 
 .otp-input:focus {
-  background-color: white;
+  /* background-color: white;
   border-color: #818cf8;
-  box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.2);
+  box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.2); */
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
 }
 
 /* Responsive improvement: ensure smaller size on tight mobile screens */
