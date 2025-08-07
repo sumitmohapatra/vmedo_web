@@ -6,5 +6,6 @@
   "/services",
   "/dashboard",
   "/emergency",
-  "/hospitals"
+  "/hospitals",
+  "/agent"
 ]
