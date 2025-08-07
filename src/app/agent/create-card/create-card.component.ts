@@ -1847,8 +1847,10 @@ export class CreateCardComponent {
   // ------------------------------ submit
   
   submit(){
-    this.IsEmergencyEntityEdit === false;
-    this.OnClickCreateSubmit();
+    if(this.IsValidCardDetails()){
+      this.IsEmergencyEntityEdit === false;
+      this.OnClickCreateSubmit();
+    }
   }
   
   OnClickCreateSubmit = () => {
