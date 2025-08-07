@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonService } from 'src/app/service/common.service';
 import { AppComponent } from 'src/app/app.component';
@@ -11,6 +11,8 @@ import { AppComponent } from 'src/app/app.component';
 })
 export class TopbarComponent {
   constructor(public common: CommonService, private router:Router,public app: AppComponent){}
+
+  @Input() backRouteUrl:string;
 
   openProfile() {
     let profile = document.querySelector('.profile');

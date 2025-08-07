@@ -15,7 +15,7 @@ export class AddCustomerComponent {
     private router: Router,
     private agentService: AgentService,
     private app: AppComponent
-  ) {}
+  ) { }
 
   txtRegUserName = '';
   txtRegEmailId = '';
@@ -32,7 +32,7 @@ export class AddCustomerComponent {
 
   @Output() closeModal = new EventEmitter<void>();
   @ViewChildren('otpInput') otpInputs!: QueryList<ElementRef<HTMLInputElement>>;
-  @Input() createCustomerModalRef:any;
+  @Input() createCustomerModalRef: any;
 
   OnTextChanged(field: string, value: string) {
     // Placeholder: add per-field real-time validation if needed
@@ -82,6 +82,8 @@ export class AddCustomerComponent {
     });
   }
 
+  userId: string;
+
   verifyOtp() {
     const otp = this.getOTPFromInputs();
     if (!/^\d{6}$/.test(otp)) {
@@ -101,8 +103,7 @@ export class AddCustomerComponent {
         if (res.statusCode === 200) {
           this.app.ShowSuccess('Mobile number verified!');
           this.isMobileVerified = true;
-          this.common.viewSubscription('All');
-          this.router.navigate(['/dashboard/package']);
+          this.skipOtp();
         } else {
           this.app.ShowError(res.message);
         }
@@ -143,7 +144,7 @@ export class AddCustomerComponent {
       userName: this.txtRegUserName.trim(),
       userEmail: this.txtRegEmailId.trim(),
       userMobile: this.txtRegMobileNo.trim(),
-      created_by: this.common.userInfo.userID
+      created_by: this.agentService.getAgentId()
     };
 
     this.agentService.registerCustomer(payload).subscribe({
@@ -151,6 +152,7 @@ export class AddCustomerComponent {
         this.app.HideLoader();
         if (res.statusCode === 200) {
           this.app.ShowSuccess('Customer registered successfully!');
+          this.userId = res.userID;
           this.generateOTP();
         } else {
           this.app.ShowError(res.message);
@@ -161,36 +163,42 @@ export class AddCustomerComponent {
   }
 
   skipOtp() {
+    const userInfo: any = JSON.parse(localStorage.getItem('agentInfo'));
+    userInfo.userID = this.userId;
+    localStorage.setItem('userID', userInfo.userID);
+    localStorage.setItem('auth_token', userInfo.autToken);
+    localStorage.setItem('refresh_token', userInfo.refreshToken);
+    localStorage.setItem('userInfo', JSON.stringify(userInfo));
     this.common.viewSubscription('All');
     this.router.navigate(['/dashboard/package']);
   }
 
   // ngAfterViewInit() {
   //   const inputs = this.otpInputs.toArray();
-  
+
   //   inputs.forEach((inputRef, index) => {
   //     const el = inputRef.nativeElement;
-  
+
   //     el.addEventListener('input', (e: Event) => {
   //       const value = el.value.replace(/\D/g, ''); // Only digits
   //       el.value = value.slice(0, 1); // Trim to 1 character
-  
+
   //       // Auto-move to next
   //       if (value && index < inputs.length - 1) {
   //         inputs[index + 1].nativeElement.focus();
   //       }
   //     });
-  
+
   //     el.addEventListener('keydown', (e: KeyboardEvent) => {
   //       if (e.key === 'Backspace' && !el.value && index > 0) {
   //         inputs[index - 1].nativeElement.focus();
   //       }
   //     });
-  
+
   //     el.addEventListener('focus', () => {
   //       el.select();
   //     });
-  
+
   //     el.addEventListener('paste', (e: ClipboardEvent) => {
   //       e.preventDefault();
   //       const pasted = (e.clipboardData?.getData('text') || '').replace(/\D/g, '');
@@ -201,7 +209,7 @@ export class AddCustomerComponent {
   //       if (inputs[lastFilled]) inputs[lastFilled].nativeElement.focus();
   //     });
   //   });
-  
+
   //   // Auto-focus first box
   //   setTimeout(() => {
   //     if (inputs.length) {
@@ -209,13 +217,13 @@ export class AddCustomerComponent {
   //     }
   //   }, 50);
   // }
-  
+
   setupOTPListeners() {
     const inputs = this.otpInputs.toArray();
-  
+
     inputs.forEach((inputRef, index) => {
       const el = inputRef.nativeElement;
-  
+
       el.addEventListener('input', () => {
         const value = el.value.replace(/\D/g, '');
         el.value = value.slice(0, 1);
@@ -223,17 +231,17 @@ export class AddCustomerComponent {
           inputs[index + 1].nativeElement.focus();
         }
       });
-  
+
       el.addEventListener('keydown', (e: KeyboardEvent) => {
         if (e.key === 'Backspace' && !el.value && index > 0) {
           inputs[index - 1].nativeElement.focus();
         }
       });
-  
+
       el.addEventListener('focus', () => {
         el.select();
       });
-  
+
       el.addEventListener('paste', (e: ClipboardEvent) => {
         e.preventDefault();
         const pasted = (e.clipboardData?.getData('text') || '').replace(/\D/g, '');
@@ -244,10 +252,10 @@ export class AddCustomerComponent {
         if (inputs[lastFilled]) inputs[lastFilled].nativeElement.focus();
       });
     });
-  
+
     // Focus first box
     if (inputs.length) inputs[0].nativeElement.focus();
   }
-  
+
 
 }

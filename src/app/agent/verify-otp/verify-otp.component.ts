@@ -106,11 +106,8 @@ export class VerifyOtpComponent implements AfterViewInit {
             this.common.refresh_token = res.objret.refreshToken;
   
             localStorage.setItem('apis', JSON.stringify(this.apis));
-            localStorage.setItem('userID', res.objret.userID);
-            localStorage.setItem('auth_token', res.objret.autToken);
-            localStorage.setItem('refresh_token', res.objret.refreshToken);
             this.common.userInfo = res.objret;
-            localStorage.setItem('userInfo', JSON.stringify(res.objret));
+            localStorage.setItem('agentInfo', JSON.stringify(res.objret));
           }
           this.router.navigate(['agent/manage-customer']);
         }else{

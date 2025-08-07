@@ -202,7 +202,7 @@ updateView() {
 
     const requestdata = {
 
-      userId: this.common.userInfo.userID,
+      userId: this.common.getUserId(),
       packageName: this.selectedCard.packageName,
       amountPaid: this.totalAmount,
       packageId: this.selectedCard.id,

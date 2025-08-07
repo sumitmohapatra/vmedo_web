@@ -81,10 +81,11 @@ export class CreateCardComponent {
         // The event.url will give you the current route URL
         console.log('Current Route:', event.url);
       });
-  
-  
-  this.OnClickEmergencyCardStatus();
-  
+
+      this.LoadGenders();
+      this.LoadBloodGroups();
+      this.OnClickEmergencyCardStatus();
+      this.LoadEmergencyCards();
     }
     // ------------------------------------------------------------------------------------
    areFieldsFilled(): boolean {
@@ -226,7 +227,7 @@ export class CreateCardComponent {
       this.emergencyIDs = [];
   
       return new Promise((_res: any, _rej: any) => {
-        this.common.api.GetAllEmergencyCards(this.common.userInfo.userID).then((res: any) => {
+        this.common.api.GetAllEmergencyCards(this.common.getUserId()).then((res: any) => {
           if (res.objret)
             this.emergencyIDs = res.objret;
   
@@ -1845,7 +1846,10 @@ export class CreateCardComponent {
   
   // ------------------------------ submit
   
-  
+  submit(){
+    this.IsEmergencyEntityEdit === false;
+    this.OnClickCreateSubmit();
+  }
   
   OnClickCreateSubmit = () => {
     if (this.IsValidInsuranceDetails()) {
@@ -2084,7 +2088,7 @@ export class CreateCardComponent {
   
   
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.authToken}`);
-    const url = `${environment.baseApiUrl}User/ValidateCardCreation?UserID=${this.common.userInfo.userID}`;
+    const url = `${environment.baseApiUrl}User/ValidateCardCreation?UserID=${this.common.getUserId()}`;
   
     this.http.get(url, { headers }).subscribe(
       data => {

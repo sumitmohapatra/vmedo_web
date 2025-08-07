@@ -28,7 +28,7 @@ export class ManageCustomerComponent implements OnInit {
   }
 
   loadUsers() {
-    const agentId = this.common.userInfo.userID;
+    const agentId = this.agentService.getAgentId();
     this.agentService.getRegisteredUsers(agentId).subscribe({
       next: (res: any) => {
         this.users = res.objret || [];
@@ -109,10 +109,14 @@ export class ManageCustomerComponent implements OnInit {
     this.router.navigate(['/dashboard/package']);
   }
 
-  createCard() {
-    console.log('Create card clicked');
-    this.router.navigate(['agent/create-suraksha-card'])
-    // Add logic here
+  createCard(user:any) {
+    this.router.navigate(['agent/create-suraksha-card']);
+    const userInfo:any = JSON.parse(localStorage.getItem('agentInfo'));
+    userInfo.userID = user.userID;
+    localStorage.setItem('userID', userInfo.userID);
+    localStorage.setItem('auth_token', userInfo.autToken);
+    localStorage.setItem('refresh_token', userInfo.refreshToken);
+    localStorage.setItem('userInfo', JSON.stringify(userInfo));
   }
 
   openEditModal(user: any) {

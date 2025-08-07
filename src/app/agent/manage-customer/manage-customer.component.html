@@ -1,6 +1,6 @@
-<app-topbar></app-topbar>
+<app-topbar [backRouteUrl]="'/agent/login'"></app-topbar>
 
-<div class="p-4 sm:p-6 md:p-8 bg-gray-100 flex flex-col overflow-hidden min-h-[calc(100vh-64px)]"
+<div class="p-2 md:p-8 bg-gray-100 flex flex-col overflow-hidden min-h-[calc(100vh-64px)]"
   *ngIf="users.length>0">
   <div class="shadow-md rounded-xl bg-white dark:bg-gray-900 flex flex-col flex-1 overflow-hidden">
 
@@ -30,7 +30,7 @@
     <div class="flex-1 overflow-y-auto max-h-[calc(100vh-220px)] min-h-[300px]"> <!-- Adjust height offset if needed -->
 
       <!-- Table -->
-      <div class="overflow-x-auto">
+      <div class="hidden md:block overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm">
           <thead class="bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-400 uppercase">
             <tr>
@@ -57,13 +57,13 @@
               <td class="px-6 py-4">{{ user.uMobile }}</td>
               <td class="px-6 py-4 uppercase">
                 <span [ngClass]="{
-                    'bg-blue-100 text-blue-800': !user.packageName,
-                    'bg-yellow-100 text-yellow-800': user.packageName === 'individual',
-                    'bg-purple-100 text-purple-800': user.packageName === 'family plus',
-                    'bg-green-100 text-green-800': user.packageName === 'vmedo premium'
-                  }" class="text-xs font-semibold px-2.5 py-0.5 rounded-full">
+                  'bg-blue-100 text-blue-800': !user.packageName,
+                  'bg-yellow-100 text-yellow-800': user.packageName?.toLowerCase() === 'individual',
+                  'bg-purple-100 text-purple-800': user.packageName?.toLowerCase() === 'family plus',
+                  'bg-green-100 text-green-800': user.packageName?.toLowerCase() === 'vmedo premium'
+                }" class="text-xs font-semibold px-2.5 py-0.5 rounded-full">
                   {{ user.packageName ? user.packageName : 'DEFAULT' }}
-                </span>
+                </span>                
               </td>
               <td class="px-6 py-4 uppercase">
                 <span [ngClass]="{
@@ -82,7 +82,7 @@
                 </button>
 
                 <!-- Create Card Button -->
-                <button (click)="createCard()"
+                <button (click)="createCard(user)"
                   class=" flex items-center gap-1 px-2 py-1 bg-green-100 text-green-700 rounded-md hover:bg-green-200 transition-all text-sm font-medium">
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
@@ -97,6 +97,69 @@
           </tbody>
         </table>
       </div>
+
+      <!-- CARDS: Visible on small screens only -->
+      <div class="block md:hidden space-y-4">
+        <div *ngFor="let user of paginatedUsers" class="bg-white border border-gray-300 rounded-lg p-3 mx-2">
+          <div class="flex items-center gap-4 mb-3">
+            <img src="assets/Profile-home/profile/profile.png" alt="avatar" class="w-12 h-12 rounded-full">
+            <div>
+              <div class="text-base font-semibold text-gray-900">{{ user.uName }}</div>
+              <div class="text-sm text-gray-500">{{ user.uEmail }}</div>
+            </div>
+          </div>
+      
+          <div class="text-sm text-gray-700 mb-1">
+            📅 <strong>Registered:</strong> {{ user.registered_on | date:'MMM d, y' }}
+          </div>
+          <div class="text-sm text-gray-700 mb-1">
+            📱 <strong>Mobile:</strong> {{ user.uMobile }}
+          </div>
+      
+          <div class="text-sm mb-1">
+            🧾 <strong>Plan:</strong>
+            <span [ngClass]="{
+              'bg-blue-100 text-blue-800': !user.packageName,
+              'bg-yellow-100 text-yellow-800': user.packageName?.toLowerCase() === 'individual',
+              'bg-purple-100 text-purple-800': user.packageName?.toLowerCase() === 'family plus',
+              'bg-green-100 text-green-800': user.packageName?.toLowerCase() === 'vmedo premium'
+            }" class="text-xs font-semibold px-2.5 py-0.5 rounded-full">
+              {{ user.packageName ? user.packageName : 'DEFAULT' }}
+            </span>
+            
+          </div>
+      
+          <div class="text-sm mb-3">
+            👤 <strong>Type:</strong>
+            <span [ngClass]="{
+                'bg-gray-200 text-gray-800': !user.isPaidMember,
+                'bg-green-200 text-green-800': user.isPaidMember
+              }" class="text-xs font-semibold px-2.5 py-0.5 rounded-full">
+              {{ user.isPaidMember ? 'PREMIUM' : 'FREE' }}
+            </span>
+          </div>
+      
+          <!-- Centered Buttons -->
+          <div class="flex justify-center gap-3 mt-2">
+            <button (click)="upgradePlan()"
+              class="flex items-center gap-1 px-3 py-1 bg-blue-100 text-blue-700 rounded-md hover:bg-blue-200 text-sm font-medium">
+              <img src="assets/images/new_images/premium1.png" alt="Upgrade Icon" class="w-4 h-4" />
+              Upgrade Plan
+            </button>
+      
+            <button (click)="createCard(user)"
+              class="flex items-center gap-1 px-3 py-1 bg-green-100 text-green-700 rounded-md hover:bg-green-200 text-sm font-medium">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+              </svg>
+              Create Card
+            </button>
+          </div>
+        </div>
+      </div>
+      
+
 
       <!-- Pagination -->
       <div
@@ -160,6 +223,6 @@
 
     </div>
     <app-add-customer *ngIf="showAddCustomerModal" (closeModal)="closeAddCustomer()"
-    [createCustomerModalRef]="createCustomerModalRef"></app-add-customer>
+      [createCustomerModalRef]="createCustomerModalRef"></app-add-customer>
   </div>
 </ng-template>

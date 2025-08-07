@@ -92,6 +92,11 @@ export class CommonService {
     return regex.test(value);
   };
 
+  getUserId(){
+    const userId = JSON.parse(localStorage.getItem('userInfo'))?.userID;
+    return userId;
+  }
+
   /**
    * ALLOWING INPUT ONLY NUMBERS
    * @param event 

@@ -1,194 +1,194 @@
-<app-topbar></app-topbar>
+<app-topbar [backRouteUrl]="'/agent/manage-customer'"></app-topbar>
 
-<mat-card class="col-12 col-sm-12 col-md-4 col-lg-4 profile-body-card dome2">
-          
-    <!-- *ngIf="emergencyIDs.length < 5" -->
+<mat-card class="col-12 col-sm-12 col-md-4 col-lg-4 profile-body-card dome2 mx-auto">
 
-    <div class="row" style="width: 100%;">
-      <div *ngIf="cardStatus?.cardCreated < cardStatus?.maxCard" class="col-12 col-sm-12 col-md-12 col-xl-12 card em-card" style="background-color: #ffffff;box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);">
-        <label>Create New suraksha card</label>
-        <span placement="left" style="background-color: #ce2424;" ngbTooltip="New Emergency Id" (click)="OnClickCreateID()">
-          
-          <span style="color: #ffffff;">Create <strong>+</strong></span>
-        </span>
-      </div>
+  <!-- *ngIf="emergencyIDs.length < 5" -->
 
-      
+  <div class="row" style="width: 100%;">
+    <div *ngIf="cardStatus?.cardCreated < cardStatus?.maxCard" class="col-12 col-sm-12 col-md-12 col-xl-12 card em-card"
+      style="background-color: #ffffff;box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);">
+      <label>Create New suraksha card</label>
+      <span placement="left" style="background-color: #ce2424;" ngbTooltip="New Emergency Id"
+        (click)="OnClickCreateID()" class="cursor-pointer">
 
-
-      <div class="col-12 col-sm-12 col-md-12 col-xl-12 card em-card" style="margin: 5px 0;box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);">
-        <label style="font: size 9px;color: #ce2424;"> {{cardStatus?.cardCreated}} out of {{cardStatus?.maxCard}} Emergency health card created </label>
-
-      </div>
-
-      <div class="mb-2" style="display: flex;justify-content: center;" *ngIf="cardStatus?.cardCreated === cardStatus?.maxCard">
-
-        <div class="col-12">
-
-          <button class="upgrade-premium-button" style="font-size: 12px;"
-            mat-raised-button [routerLink]="'/dashboard/package'">
-
-            Upgrade subscription to add suraksha card</button>
-
-        </div>
+        <span style="color: #ffffff;">Create <strong>+</strong></span>
+      </span>
+    </div>
 
 
 
-      </div>
+
+    <div class="col-12 col-sm-12 col-md-12 col-xl-12 card em-card"
+      style="margin: 5px 0;box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);">
+      <label style="font: size 9px;color: #ce2424;"> {{cardStatus?.cardCreated}} out of {{cardStatus?.maxCard}}
+        Emergency health card created </label>
 
     </div>
 
-    <div class="row profile-body-card-form"
-      [ngClass]="{'emid-ht-1': emergencyIDs.length < 5, 'emid-ht-2': emergencyIDs.length === 5}">
-      <div class="col-12 col-sm-12 col-md-12 col-xl-12">
-        <div class="row" *ngIf="emergencyIDs.length > 0">
-          <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding"
-            *ngFor="let emID of emergencyIDs;let i = index;">
+    <div class="mb-2" style="display: flex;justify-content: center;"
+      *ngIf="cardStatus?.cardCreated === cardStatus?.maxCard">
 
-            <div class="" #screen [id]="i+'-'+emID.pname">
+      <div class="col-12">
 
-              <div class="row ml-5">
+        <button class="upgrade-premium-button" style="font-size: 12px;" mat-raised-button
+          [routerLink]="'/dashboard/package'">
 
-                <div class="col col-12 section-2 wf-section" style="padding-right: 0px;">
+          Upgrade subscription to add suraksha card</button>
 
-                  <div class="card " style="height: 55mm; width: 85mm;background-color: #eadd24;">
+      </div>
 
-                    <div class="container">
 
-                      <div class="row Top-Heading" style="background-color: #ce2424; height: 8mm;">
 
-                        <div class="col-5" style="background-color: #eadd24; height: 7.5mm;">
+    </div>
 
-                          <img src="assets/images/emid_images/vmedologoemid.png" style="width: 90%;" />
+  </div>
 
-                          <div
-                            style="position: absolute; top: 0; right: 0px; width: 0; height: 8mm; border-top: 7.5mm solid transparent; border-right: 7.5mm solid #ce2424;">
-                          </div>
+  <div class="row profile-body-card-form"
+    [ngClass]="{'emid-ht-1': emergencyIDs.length < 5, 'emid-ht-2': emergencyIDs.length === 5}">
+    <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+      <div class="row" *ngIf="emergencyIDs.length > 0">
+        <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding" *ngFor="let emID of emergencyIDs;let i = index;">
 
-                        </div>
+          <div class="" #screen [id]="i+'-'+emID.pname">
 
-                        <div class="col-7"
-                          style="display: flex; align-items: center; justify-content: center; color: white;">
+            <div class="row md:ml-5">
 
-                          <div style="font-size: 9px; text-align: center;">
-                            EMERGENCY HEALTH CARD
-                          </div>
+              <div class="col col-12 section-2 wf-section" style="padding-right: 0px;">
 
+                <div class="card " style="height: 55mm; width: 85mm;background-color: #eadd24;">
+
+                  <div class="container">
+
+                    <div class="row Top-Heading" style="background-color: #ce2424; height: 8mm;">
+
+                      <div class="col-5" style="background-color: #eadd24; height: 7.5mm;">
+
+                        <img src="assets/images/emid_images/vmedologoemid.png" style="width: 90%;" />
+
+                        <div
+                          style="position: absolute; top: 0; right: 0px; width: 0; height: 8mm; border-top: 7.5mm solid transparent; border-right: 7.5mm solid #ce2424;">
                         </div>
 
                       </div>
 
-                      <div class="row Main-content" style="height: 30mm;">
+                      <div class="col-7"
+                        style="display: flex; align-items: center; justify-content: center; color: white;">
 
-                        <div class="col-7 member-details"
-                          style="font-size: 11px; padding-left: 31px; padding-top: 17px;">
+                        <div style="font-size: 9px; text-align: center;">
+                          EMERGENCY HEALTH CARD
+                        </div>
 
-                          <div class="row member-name" style="height: 5mm; font-weight: 600; color: #a11e1e;">
+                      </div>
 
-                            Name - {{ emID.pname }}
+                    </div>
 
-                          </div>
+                    <div class="row Main-content" style="height: 30mm;">
 
-                          <div class="row Card-No" style="height: 5mm; font-weight: 600; color: #a11e1e;">
+                      <div class="col-7 member-details" style="font-size: 11px; padding-left: 31px; padding-top: 17px;">
 
-                            Card No - {{ emID.emid }}
+                        <div class="row member-name" style="height: 5mm; font-weight: 600; color: #a11e1e;">
 
-                          </div>
-                          
-                          <div class="row Card-No" style="height: 5mm; font-weight: 600; color: #a11e1e;">
-
-                            Validity - {{ emID.package_validity | date: 'dd/MM/yyyy' }}
-
-                          </div>
-
-                          <div *ngIf="txtisPaidMember" class="row Card-Type"
-                            style="height: 5mm; font-weight: 600; color: #a11e1e;">
-
-                            Card Type - Premium
-
-                          </div>
-
-                          <div *ngIf="!txtisPaidMember" class="row Card-Type"
-                            style="height: 5mm; font-weight: 600; color: #a11e1e;">
-
-                            Card Type - Free
-
-                          </div>
-
-                          <div class="row Card-Type" style="height: 5mm; font-weight: 600; color: #a11e1e;">
-
-                            <!-- Company - {{ orgName }} -->
-
-                          </div>
-
+                          Name - {{ emID.pname }}
 
                         </div>
 
-                        <div class="col-5 QR-Code">
+                        <div class="row Card-No" style="height: 5mm; font-weight: 600; color: #a11e1e;">
 
-                          <div class="row" *ngIf="txtisPaidMember"
-                            style=" padding-left: 12px; padding-top: 4px; display: flex; align-items: center; flex-direction: row; flex-wrap: nowrap;">
+                          Card No - {{ emID.emid }}
 
-                            <img src="assets/images/emid_images/premium-icon-card.png"
-                              style="width: 18%; padding: 0px;" />
+                        </div>
 
-                            <span style="font-size: 12px; padding-left: 8px;">Premium</span>
+                        <div class="row Card-No" style="height: 5mm; font-weight: 600; color: #a11e1e;">
 
-                          </div>
+                          Validity - {{ emID.package_validity | date: 'dd/MM/yyyy' }}
 
-                          <div class="qrcodeImage mt-2">
-                            <qrcode [qrdata]='userDataUrl' [allowEmptyString]="true" [colorDark]="'#000000'"
-                              [colorLight]="'#eadd24'" [elementType]="'canvas'" [errorCorrectionLevel]="'M'"
-                              [scale]="1" [margin]="1" [width]="85"></qrcode>
-                          </div>
+                        </div>
 
-                          <!-- <div class="row" style="display: flex; align-items: center; justify-content: center;">
+                        <div *ngIf="txtisPaidMember" class="row Card-Type"
+                          style="height: 5mm; font-weight: 600; color: #a11e1e;">
+
+                          Card Type - Premium
+
+                        </div>
+
+                        <div *ngIf="!txtisPaidMember" class="row Card-Type"
+                          style="height: 5mm; font-weight: 600; color: #a11e1e;">
+
+                          Card Type - Free
+
+                        </div>
+
+                        <div class="row Card-Type" style="height: 5mm; font-weight: 600; color: #a11e1e;">
+
+                          <!-- Company - {{ orgName }} -->
+
+                        </div>
+
+
+                      </div>
+
+                      <div class="col-5 QR-Code">
+
+                        <div class="row" *ngIf="txtisPaidMember"
+                          style=" padding-left: 12px; padding-top: 4px; display: flex; align-items: center; flex-direction: row; flex-wrap: nowrap;">
+
+                          <img src="assets/images/emid_images/premium-icon-card.png"
+                            style="width: 18%; padding: 0px;" />
+
+                          <span style="font-size: 12px; padding-left: 8px;">Premium</span>
+
+                        </div>
+
+                        <div class="qrcodeImage mt-2">
+                          <qrcode [qrdata]='userDataUrl' [allowEmptyString]="true" [colorDark]="'#000000'"
+                            [colorLight]="'#eadd24'" [elementType]="'canvas'" [errorCorrectionLevel]="'M'" [scale]="1"
+                            [margin]="1" [width]="85"></qrcode>
+                        </div>
+
+                        <!-- <div class="row" style="display: flex; align-items: center; justify-content: center;">
                               <qr-code [value]="qrCodeVal" [backgroundAlpha]="0" size="90">
                               </qr-code>
                             </div> -->
 
+                      </div>
+
+
+                    </div>
+
+                    <div class="row Description" style="height: 11mm;">
+
+                      <div class="col-9" style="font-size: 9px; padding-top: 4px;padding-right: 6px;">
+                        In case of emergency, Scan the QR Code and get the emergency details of the user
+                      </div>
+
+                    </div>
+
+                    <div class="row Bottom-Heading" style="height: 5.5mm;background-color: #ce2424;">
+
+                      <div class="col-8"
+                        style="display: flex; align-items: center; justify-content: center; color: white;padding-right: 0px;">
+
+                        <div style="font-size: 10px; text-align: center;">
+                          24x7 Medical Emergency Assistance
                         </div>
+
 
 
                       </div>
 
-                      <div class="row Description" style="height: 11mm;">
 
-                        <div class="col-9" style="font-size: 9px; padding-top: 4px;padding-right: 6px;">
-                          In case of emergency, Scan the QR Code and get the emergency details of the user
+
+                      <div class="col-4"
+                        style="display: flex; align-items: center; justify-content: flex-start; color: white;padding: 0px;">
+
+                        <div style="font-size: 11px; text-align: left;" class="gap-1 flex align-center">
+
+                          <img src="assets/images/emid_images/Mobile-Icon.png" style="width: 12%;height:10%" />
+
+                          9343-18-0000
                         </div>
 
                       </div>
-
-                      <div class="row Bottom-Heading" style="height: 5.5mm;background-color: #ce2424;">
-
-                        <div class="col-8"
-                          style="display: flex; align-items: center; justify-content: center; color: white;padding-right: 0px;">
-
-                          <div style="font-size: 10px; text-align: center;">
-                            24x7 Medical Emergency Assistance
-                          </div>
-
-
-
-                        </div>
-
-
-
-                        <div class="col-4"
-                          style="display: flex; align-items: center; justify-content: flex-start; color: white;padding: 0px;">
-
-                          <div style="font-size: 11px; text-align: left;" class="gap-1 flex align-center">
-
-                            <img src="assets/images/emid_images/Mobile-Icon.png" style="width: 12%;height:10%" />
-
-                            9343-18-0000
-                          </div>
-
-                        </div>
-
-                      </div>
-
 
                     </div>
 
@@ -199,204 +199,208 @@
                 </div>
 
 
-
-
               </div>
+
+
+
+
             </div>
+          </div>
 
 
-            
-              
-              <button class="mb-3 mt-3 info-controls controls-one" (click)="OnClickViewEmergencyCard(emID)"
-              mat-raised-button color="primary"
-              style="background-color: #ffffff;margin-left: 140px;color: #ce2424;border:1px solid; border-color: #ce2424;font-weight: 500;border-radius: 5px;">view card
-              details</button>
 
-            
-            <div id="download" style="display: none;">
-              <img #canvas>
-              <a #downloadLink></a>
-            </div>
+
+          <!-- <button class="mb-3 mt-3 info-controls controls-one" (click)="OnClickViewEmergencyCard(emID)"
+            mat-raised-button color="primary"
+            style="background-color: #ffffff;margin-left: 140px;color: #ce2424;border:1px solid; border-color: #ce2424;font-weight: 500;border-radius: 5px;">view
+            card
+            details</button> -->
+
+
+          <div id="download" style="display: none;">
+            <img #canvas>
+            <a #downloadLink></a>
           </div>
         </div>
       </div>
     </div>
+  </div>
 </mat-card>
 
-  <ng-template #createID let-modal>
-    <div class="modal-body">
-      <div class="row logo">
-  
-        <label (click)="modal.close('Cancel');">
-          <svg>
-            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-cross"></use>
-          </svg>
-        </label>
-  
+<ng-template #createID let-modal>
+  <div class="modal-body">
+    <div class="row logo">
+
+      <label (click)="modal.close('Cancel');">
+        <svg>
+          <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-cross"></use>
+        </svg>
+      </label>
+
+    </div>
+
+
+    <div class="row title">
+      <div class="col-12 col-sm-12 col-md-12 col-xl-12 createID">
+
       </div>
-  
-  
-      <div class="row title">
-        <div class="col-12 col-sm-12 col-md-12 col-xl-12 createID">
-     
-        </div>
-      </div>
-      <div class="row createID no-padding  mt-3">
-        <ul ngbNav #nav="ngbNav" [(activeId)]="activeTabId" class="nav-tabs  no-padding">
-          <li [ngbNavItem]="1">
-            <ng-template ngbNavContent>
-              <div class="col-12 col-sm-12 col-md-12 col-xl-12 createID createID1 no-padding">
-  
-  
-                <div>
-                  <p
-                    style="background-color: #f1f1f1;border-color: #f1f1f1;color:black;font-size: 15px;display: flex;text-align: center;justify-content: center;margin-top: -20px;font-weight: 500;">
-                    Step [1/4]</p>
-                </div>
-                <div>
-                  <p
-                    style="background-color: #f1f1f1;border-color: #f1f1f1;color:red;font-size: 25px;display: flex;text-align: center;justify-content: center;margin-top: -20px;font-weight: 500;text-wrap: nowrap;">
-                    Personal Details</p>
-                </div>
-                <div class="mb-2" style="display: flex;justify-content: center;text-align: center;">
-                  <span style="font-size: 12PX;">Please enter personal details of the card member </span>
-                </div>
-                <div class="pos-rel align-center card"
-                  [ngClass]="{'error': lblCardNumber !== undefined && !IsCardAvailable}">
-                  <div class="text-control">
-  
-  
-                    <input type="text" placeholder="Create emergency id* (eg:priya12)"
-                      (keypress)="common.DisableSpecialCharOnKeyPress($event)" [(ngModel)]="txtCardNumber"
-                      (ngModelChange)="OnTextChanged('txtCardNumber', $event)" readonly hidden>
-                    <span class="error-line" placement="bottom" [ngClass]="{'success': IsCardAvailable}"
-                      ngbTooltip="{{lblCardNumber}}">{{lblCardNumber}}</span>
-                    <!-- <svg>
+    </div>
+    <div class="row createID no-padding  mt-3">
+      <ul ngbNav #nav="ngbNav" [(activeId)]="activeTabId" class="nav-tabs  no-padding">
+        <li [ngbNavItem]="1">
+          <ng-template ngbNavContent>
+            <div class="col-12 col-sm-12 col-md-12 col-xl-12 createID createID1 no-padding">
+
+
+              <!-- <div>
+                <p
+                  style="background-color: #f1f1f1;border-color: #f1f1f1;color:black;font-size: 15px;display: flex;text-align: center;justify-content: center;margin-top: -20px;font-weight: 500;">
+                  Step [1/4]</p>
+              </div> -->
+              <div>
+                <p
+                  style="background-color: #f1f1f1;border-color: #f1f1f1;color:red;font-size: 25px;display: flex;text-align: center;justify-content: center;margin-top: -20px;font-weight: 500;text-wrap: nowrap;">
+                  Personal Details</p>
+              </div>
+              <div class="mb-2" style="display: flex;justify-content: center;text-align: center;">
+                <span style="font-size: 12PX;">Please enter personal details of the card member </span>
+              </div>
+              <div class="pos-rel align-center card"
+                [ngClass]="{'error': lblCardNumber !== undefined && !IsCardAvailable}">
+                <div class="text-control">
+
+
+                  <input type="text" placeholder="Create emergency id* (eg:priya12)"
+                    (keypress)="common.DisableSpecialCharOnKeyPress($event)" [(ngModel)]="txtCardNumber"
+                    (ngModelChange)="OnTextChanged('txtCardNumber', $event)" readonly hidden>
+                  <span class="error-line" placement="bottom" [ngClass]="{'success': IsCardAvailable}"
+                    ngbTooltip="{{lblCardNumber}}">{{lblCardNumber}}</span>
+                  <!-- <svg>
                                     <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-warning"></use>
                                     <title>{{lblCardNumber}}</title>
                                 </svg> -->
-                  </div>
                 </div>
-                <div class="pos-rel card" [ngClass]="{'error': lblCardName !== undefined}">
-                  <div class="text-control">
-                    <svg>
-                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user"></use>
-                    </svg>
-  
-                    <input type="text" placeholder="Enter cardholder's name*"
-                      (keypress)="common.DisableSpecialCharOnKeyPress($event)" [(ngModel)]="txtCardName"
-                      (ngModelChange)="OnTextChanged('txtCardName', $event)">
-                    <span class="error-line" placement="bottom" ngbTooltip="{{lblCardName}}">{{lblCardName}}</span>
-                    <!-- <svg>
+              </div>
+              <div class="pos-rel card" [ngClass]="{'error': lblCardName !== undefined}">
+                <div class="text-control">
+                  <svg>
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-user"></use>
+                  </svg>
+
+                  <input type="text" placeholder="Enter cardholder's name*"
+                    (keypress)="common.DisableSpecialCharOnKeyPress($event)" [(ngModel)]="txtCardName"
+                    (ngModelChange)="OnTextChanged('txtCardName', $event)">
+                  <span class="error-line" placement="bottom" ngbTooltip="{{lblCardName}}">{{lblCardName}}</span>
+                  <!-- <svg>
                                     <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-warning"></use>
                                     <title>{{lblCardName}}</title>
                                 </svg> -->
-                  </div>
                 </div>
-  
-  
-  
-                <div class=" pos-rel card" [ngClass]="{'error': lblMemberContactNo !== undefined}">
-                  <div class="text-control">
-                    <svg>
-                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-mobile2"></use>
-                    </svg>
-  
-                    <input type="text" placeholder="Mobile no*" [(ngModel)]="txtMemberContactNo"
-                      (ngModelChange)="OnTextChanged('txtMemberContactNo', $event)"
-                      (keypress)="common.AllowOnlyNumbers($event)">
-                    <span class="error-line" placement="bottom"
-                      ngbTooltip="{{lblMemberContactNo}}">{{lblMemberContactNo}}</span>
-                    <!-- <svg>
+              </div>
+
+
+
+              <div class=" pos-rel card" [ngClass]="{'error': lblMemberContactNo !== undefined}">
+                <div class="text-control">
+                  <svg>
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-mobile2"></use>
+                  </svg>
+
+                  <input type="text" placeholder="Mobile no*" [(ngModel)]="txtMemberContactNo"
+                    (ngModelChange)="OnTextChanged('txtMemberContactNo', $event)"
+                    (keypress)="common.AllowOnlyNumbers($event)">
+                  <span class="error-line" placement="bottom"
+                    ngbTooltip="{{lblMemberContactNo}}">{{lblMemberContactNo}}</span>
+                  <!-- <svg>
                                 <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-warning"></use>
                                 <title>{{lblPrimaryContactNo}}</title>
                             </svg> -->
-                  </div>
                 </div>
-  
-  
-  
-  
-  
-  
-                <div class="date pos-rel card" [ngClass]="{'error': lblCardDOB !== undefined}">
-                  <div class="text-control">
-                    <svg>
-                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-calendar"></use>
-                    </svg>
-  
-                    <input type="text" placeholder="Birth date*" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()"
-                      [minDate]="{year: 1950, month:1, day: 1}" [maxDate]="maxDate" readonly [(ngModel)]="txtCardDOB"
-                      (ngModelChange)="OnTextChanged('txtCardDOB', $event)">
-                    <span class="error-line" placement="bottom" ngbTooltip="{{lblCardDOB}}">{{lblCardDOB}}</span>
-                    <!-- <svg>
+              </div>
+
+
+
+
+
+
+              <div class="date pos-rel card" [ngClass]="{'error': lblCardDOB !== undefined}">
+                <div class="text-control">
+                  <svg>
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-calendar"></use>
+                  </svg>
+
+                  <input type="text" placeholder="Birth date*" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()"
+                    [minDate]="{year: 1950, month:1, day: 1}" [maxDate]="maxDate" readonly [(ngModel)]="txtCardDOB"
+                    (ngModelChange)="OnTextChanged('txtCardDOB', $event)">
+                  <span class="error-line" placement="bottom" ngbTooltip="{{lblCardDOB}}">{{lblCardDOB}}</span>
+                  <!-- <svg>
                                     <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-warning"></use>
                                     <title>{{lblCardDOB}}</title>
                                 </svg> -->
-                  </div>
                 </div>
-                <div class="combobox pos-rel card" [ngClass]="{'error': lblCardBloodGroup !== undefined}">
-                  <div class="text-control cmbbox ddlist" ngbDropdown>
-                    <svg>
-                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-droplet"></use>
-                    </svg>
-  
-                    <input type="text" placeholder="Blood group*" id="dropdownBloodGroup" ngbDropdownToggle readonly
-                      [(ngModel)]="txtCardBloodGroup" (ngModelChange)="OnTextChanged('txtCardBloodGroup', $event)">
-                    <span class="error-line" placement="bottom"
-                      ngbTooltip="{{lblCardBloodGroup}}">{{lblCardBloodGroup}}</span>
-                    <div ngbDropdownMenu aria-labelledby="dropdownBloodGroup">
-                      <div ngbDropdownItem *ngFor="let group of bloodGroups"
-                        (click)="txtCardBloodGroup = group; OnTextChanged('txtCardBloodGroup', $event);">
-                        {{group}}</div>
-                    </div>
-                    <svg class="dropdown" style="display: block !important;">
-                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-cheveron-down"></use>
-                    </svg>
-  
-                  </div>
-                </div>
-                <div class="combobox pos-rel card" [ngClass]="{'error': lblCardGender !== undefined}">
-                  <div class="text-control cmbbox ddlist" ngbDropdown>
-                    <svg>
-                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-adjust"></use>
-                    </svg>
-  
-                    <input type="text" placeholder="Gender*" id="dropdownGender" ngbDropdownToggle readonly
-                      [(ngModel)]="txtCardGender" (ngModelChange)="OnTextChanged('txtCardGender', $event)">
-                    <span class="error-line" placement="bottom" ngbTooltip="{{lblCardGender}}">{{lblCardGender}}</span>
-                    <div ngbDropdownMenu aria-labelledby="dropdownGender">
-                      <div ngbDropdownItem *ngFor="let gender of genders"
-                        (click)="txtCardGender = gender; OnTextChanged('txtCardGender', $event);">
-                        {{gender}}</div>
-                    </div>
-                    <svg class="dropdown" style="display: block !important;">
-                      <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-cheveron-down"></use>
-                    </svg>
-  
-  
-                  </div>
-                </div>
-                <div class="row controls">
-                  <div class="col-12 col-sm-12 col-md-12 col-xl-12 register">
-                    <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="activeTabId < 4"
-                     (click)="OnClickNext()">Next</button>
-                  </div>
-                </div>
-                
-  
               </div>
-            </ng-template>
-          </li>
-  
-        </ul>
-  
-  
-  
-  
-        <div [ngbNavOutlet]="nav" class="mt-2 full-width"></div>
-      </div>
-     
-  
-      </div>
-  </ng-template>
+              <div class="combobox pos-rel card" [ngClass]="{'error': lblCardBloodGroup !== undefined}">
+                <div class="text-control cmbbox ddlist" ngbDropdown>
+                  <svg>
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-droplet"></use>
+                  </svg>
+
+                  <input type="text" placeholder="Blood group*" id="dropdownBloodGroup" ngbDropdownToggle readonly
+                    [(ngModel)]="txtCardBloodGroup" (ngModelChange)="OnTextChanged('txtCardBloodGroup', $event)">
+                  <span class="error-line" placement="bottom"
+                    ngbTooltip="{{lblCardBloodGroup}}">{{lblCardBloodGroup}}</span>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBloodGroup">
+                    <div ngbDropdownItem *ngFor="let group of bloodGroups"
+                      (click)="txtCardBloodGroup = group; OnTextChanged('txtCardBloodGroup', $event);">
+                      {{group}}</div>
+                  </div>
+                  <svg class="dropdown" style="display: block !important;">
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-cheveron-down"></use>
+                  </svg>
+
+                </div>
+              </div>
+              <div class="combobox pos-rel card" [ngClass]="{'error': lblCardGender !== undefined}">
+                <div class="text-control cmbbox ddlist" ngbDropdown>
+                  <svg>
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-adjust"></use>
+                  </svg>
+
+                  <input type="text" placeholder="Gender*" id="dropdownGender" ngbDropdownToggle readonly
+                    [(ngModel)]="txtCardGender" (ngModelChange)="OnTextChanged('txtCardGender', $event)">
+                  <span class="error-line" placement="bottom" ngbTooltip="{{lblCardGender}}">{{lblCardGender}}</span>
+                  <div ngbDropdownMenu aria-labelledby="dropdownGender">
+                    <div ngbDropdownItem *ngFor="let gender of genders"
+                      (click)="txtCardGender = gender; OnTextChanged('txtCardGender', $event);">
+                      {{gender}}</div>
+                  </div>
+                  <svg class="dropdown" style="display: block !important;">
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-cheveron-down"></use>
+                  </svg>
+
+
+                </div>
+              </div>
+              <div class="row controls">
+                <div class="col-12 col-sm-12 col-md-12 col-xl-12 register">
+                  <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="activeTabId < 4"
+                    (click)="submit()">Submit</button>
+                </div>
+              </div>
+
+
+            </div>
+          </ng-template>
+        </li>
+
+      </ul>
+
+
+
+
+      <div [ngbNavOutlet]="nav" class="mt-2 full-width"></div>
+    </div>
+
+
+  </div>
+</ng-template>

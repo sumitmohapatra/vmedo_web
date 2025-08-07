@@ -43,5 +43,16 @@ export class AgentService {
     const url = `${environment.baseApiUrl}agent/AgentUserauthenticateRegisterOTP`;
     return this.http.post<any>(url, payload);
   }
+
+  getAgentId(){
+    const agentInfo = localStorage.getItem('agentInfo');
+    const userId = JSON.parse(agentInfo)?.userID;
+    return userId;
+  }
+
+  getUserId(){
+    const userId = localStorage.getItem('userID');
+    return userId;
+  }
   
 }
