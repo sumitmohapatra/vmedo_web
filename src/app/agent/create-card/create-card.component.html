@@ -4,25 +4,31 @@
 
   <!-- *ngIf="emergencyIDs.length < 5" -->
 
-  <div class="row" style="width: 100%;">
-    <div *ngIf="cardStatus?.cardCreated < cardStatus?.maxCard" class="col-12 col-sm-12 col-md-12 col-xl-12 card em-card"
-      style="background-color: #ffffff;box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);">
-      <label>Create New suraksha card</label>
-      <span placement="left" style="background-color: #ce2424;" ngbTooltip="New Emergency Id"
-        (click)="OnClickCreateID()" class="cursor-pointer">
+  <!-- <div class="row" style="width: 100%;">
+    <div class="col-12 mb-6">
+      <div class="bg-white rounded-lg p-2 text-center">
+        <h3 class="text-lg font-semibold text-gray-800">
+          Welcome, <span class="text-red-600">{{ userName }}</span>!
+        </h3>
+      </div>
+    </div>
+    
 
+    <div *ngIf="cardStatus?.cardCreated < cardStatus?.maxCard" class="col-12 card em-card" style="background-color: #ffffff; padding: 20px; margin-bottom: 20px;
+           box-shadow: 1px 2px 10px rgba(0,0,0,0.3);">
+
+      <label style="font-size: 18px; font-weight: bold;">Create New Suraksha Card</label><br>
+      <span placement="left" style="background-color: #ce2424; padding: 10px 15px; border-radius: 5px;"
+        ngbTooltip="New Emergency Id" (click)="OnClickCreateID()" class="cursor-pointer">
         <span style="color: #ffffff;">Create <strong>+</strong></span>
       </span>
     </div>
 
-
-
-
-    <div class="col-12 col-sm-12 col-md-12 col-xl-12 card em-card"
-      style="margin: 5px 0;box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);">
-      <label style="font: size 9px;color: #ce2424;"> {{cardStatus?.cardCreated}} out of {{cardStatus?.maxCard}}
-        Emergency health card created </label>
-
+    <div class="col-12 card em-card p-2" style="margin-bottom: 20px;
+           ">
+      <label style="font-size: 16px; color: #ce2424;">
+        {{ cardStatus?.cardCreated }} out of {{ cardStatus?.maxCard }} suraksha card(s) created
+      </label>
     </div>
 
     <div class="mb-2" style="display: flex;justify-content: center;"
@@ -41,7 +47,55 @@
 
     </div>
 
+  </div> -->
+
+  <div class="w-full max-w-md mx-auto">
+    <!-- Welcome Box -->
+    <div class="bg-white rounded-lg px-4 py-3 mb-2 flex items-center justify-center relative">
+      <!-- Back Button (absolute left) -->
+      <div class="absolute left-4 top-1/2 -translate-y-1/2">
+        <a [routerLink]="'/agent/manage-customer'" title="Back" class="w-5 h-5 block">
+          <img
+            src="assets/Profile-home/profile/icons8-back-black.png"
+            alt="Back"
+            class="w-full h-full object-contain"
+          />
+        </a>
+      </div>
+    
+      <!-- Welcome Message -->
+      <div class="text-center">
+        <h5 class="text-base font-semibold text-black">
+          Welcome, <span class="text-red-600">{{ userName }}</span>!
+        </h5>
+        <span class="text-gray-600 text-xs">
+          Manage your Suraksha cards below.
+        </span>
+      </div>
+    </div>
+
+
+    <!-- Card Status -->
+    <div class="bg-white rounded-lg p-2 text-center mb-2">
+      <span class="text-lg font-medium text-red-600">
+        {{ cardStatus?.cardCreated }} out of {{ cardStatus?.maxCard }} Suraksha card(s) created
+      </span>
+
+      <button *ngIf="cardStatus?.cardCreated < cardStatus?.maxCard" (click)="OnClickCreateID()" ngbTooltip="New Suraksha Id"
+      class="bg-red-600 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded-md transition duration-200 mt-2">
+      Create <strong>+</strong>
+    </button>
+    </div>
+
+    <!-- Upgrade CTA -->
+    <div *ngIf="cardStatus?.cardCreated === cardStatus?.maxCard" class="text-center">
+      <a [routerLink]="'/dashboard/package'"
+        class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white text-xs font-semibold p-2 rounded-md transition duration-200">
+        Upgrade subscription to add Suraksha card
+      </a>
+    </div>
   </div>
+
 
   <div class="row profile-body-card-form"
     [ngClass]="{'emid-ht-1': emergencyIDs.length < 5, 'emid-ht-2': emergencyIDs.length === 5}">
@@ -54,150 +108,151 @@
             <div class="row md:ml-5">
 
               <div class="col col-12 section-2 wf-section" style="padding-right: 0px;">
+                <div class="flex justify-center my-4">
+                  <div class="card " style="height: 55mm; width: 85mm;background-color: #eadd24;">
 
-                <div class="card " style="height: 55mm; width: 85mm;background-color: #eadd24;">
+                    <div class="container">
 
-                  <div class="container">
+                      <div class="row Top-Heading" style="background-color: #ce2424; height: 8mm;">
 
-                    <div class="row Top-Heading" style="background-color: #ce2424; height: 8mm;">
+                        <div class="col-5" style="background-color: #eadd24; height: 7.5mm;">
 
-                      <div class="col-5" style="background-color: #eadd24; height: 7.5mm;">
+                          <img src="assets/images/emid_images/vmedologoemid.png" style="width: 90%;" />
 
-                        <img src="assets/images/emid_images/vmedologoemid.png" style="width: 90%;" />
+                          <div
+                            style="position: absolute; top: 0; right: 0px; width: 0; height: 8mm; border-top: 7.5mm solid transparent; border-right: 7.5mm solid #ce2424;">
+                          </div>
 
-                        <div
-                          style="position: absolute; top: 0; right: 0px; width: 0; height: 8mm; border-top: 7.5mm solid transparent; border-right: 7.5mm solid #ce2424;">
+                        </div>
+
+                        <div class="col-7"
+                          style="display: flex; align-items: center; justify-content: center; color: white;">
+
+                          <div style="font-size: 9px; text-align: center;">
+                            SURAKSHA CARD
+                          </div>
+
                         </div>
 
                       </div>
 
-                      <div class="col-7"
-                        style="display: flex; align-items: center; justify-content: center; color: white;">
+                      <div class="row Main-content" style="height: 30mm;">
 
-                        <div style="font-size: 9px; text-align: center;">
-                          EMERGENCY HEALTH CARD
-                        </div>
+                        <div class="col-7 member-details"
+                          style="font-size: 11px; padding-left: 31px; padding-top: 17px;">
 
-                      </div>
+                          <div class="row member-name" style="height: 5mm; font-weight: 600; color: #a11e1e;">
 
-                    </div>
+                            Name - {{ emID.pname }}
 
-                    <div class="row Main-content" style="height: 30mm;">
+                          </div>
 
-                      <div class="col-7 member-details" style="font-size: 11px; padding-left: 31px; padding-top: 17px;">
+                          <div class="row Card-No" style="height: 5mm; font-weight: 600; color: #a11e1e;">
 
-                        <div class="row member-name" style="height: 5mm; font-weight: 600; color: #a11e1e;">
+                            Card No - {{ emID.emid }}
 
-                          Name - {{ emID.pname }}
+                          </div>
 
-                        </div>
+                          <div class="row Card-No" style="height: 5mm; font-weight: 600; color: #a11e1e;">
 
-                        <div class="row Card-No" style="height: 5mm; font-weight: 600; color: #a11e1e;">
+                            Validity - {{ emID.package_validity | date: 'dd/MM/yyyy' }}
 
-                          Card No - {{ emID.emid }}
+                          </div>
 
-                        </div>
+                          <div *ngIf="txtisPaidMember" class="row Card-Type"
+                            style="height: 5mm; font-weight: 600; color: #a11e1e;">
 
-                        <div class="row Card-No" style="height: 5mm; font-weight: 600; color: #a11e1e;">
+                            Card Type - Premium
 
-                          Validity - {{ emID.package_validity | date: 'dd/MM/yyyy' }}
+                          </div>
 
-                        </div>
+                          <div *ngIf="!txtisPaidMember" class="row Card-Type"
+                            style="height: 5mm; font-weight: 600; color: #a11e1e;">
 
-                        <div *ngIf="txtisPaidMember" class="row Card-Type"
-                          style="height: 5mm; font-weight: 600; color: #a11e1e;">
+                            Card Type - Free
 
-                          Card Type - Premium
+                          </div>
 
-                        </div>
+                          <div class="row Card-Type" style="height: 5mm; font-weight: 600; color: #a11e1e;">
 
-                        <div *ngIf="!txtisPaidMember" class="row Card-Type"
-                          style="height: 5mm; font-weight: 600; color: #a11e1e;">
+                            <!-- Company - {{ orgName }} -->
 
-                          Card Type - Free
+                          </div>
 
-                        </div>
-
-                        <div class="row Card-Type" style="height: 5mm; font-weight: 600; color: #a11e1e;">
-
-                          <!-- Company - {{ orgName }} -->
 
                         </div>
 
+                        <div class="col-5 QR-Code">
 
-                      </div>
+                          <div class="row" *ngIf="txtisPaidMember"
+                            style=" padding-left: 12px; padding-top: 4px; display: flex; align-items: center; flex-direction: row; flex-wrap: nowrap;">
 
-                      <div class="col-5 QR-Code">
+                            <img src="assets/images/emid_images/premium-icon-card.png"
+                              style="width: 18%; padding: 0px;" />
 
-                        <div class="row" *ngIf="txtisPaidMember"
-                          style=" padding-left: 12px; padding-top: 4px; display: flex; align-items: center; flex-direction: row; flex-wrap: nowrap;">
+                            <span style="font-size: 12px; padding-left: 8px;">Premium</span>
 
-                          <img src="assets/images/emid_images/premium-icon-card.png"
-                            style="width: 18%; padding: 0px;" />
+                          </div>
 
-                          <span style="font-size: 12px; padding-left: 8px;">Premium</span>
+                          <div class="qrcodeImage mt-2">
+                            <qrcode [qrdata]='userDataUrl' [allowEmptyString]="true" [colorDark]="'#000000'"
+                              [colorLight]="'#eadd24'" [elementType]="'canvas'" [errorCorrectionLevel]="'M'" [scale]="1"
+                              [margin]="1" [width]="85"></qrcode>
+                          </div>
 
-                        </div>
-
-                        <div class="qrcodeImage mt-2">
-                          <qrcode [qrdata]='userDataUrl' [allowEmptyString]="true" [colorDark]="'#000000'"
-                            [colorLight]="'#eadd24'" [elementType]="'canvas'" [errorCorrectionLevel]="'M'" [scale]="1"
-                            [margin]="1" [width]="85"></qrcode>
-                        </div>
-
-                        <!-- <div class="row" style="display: flex; align-items: center; justify-content: center;">
+                          <!-- <div class="row" style="display: flex; align-items: center; justify-content: center;">
                               <qr-code [value]="qrCodeVal" [backgroundAlpha]="0" size="90">
                               </qr-code>
                             </div> -->
 
+                        </div>
+
+
                       </div>
 
+                      <div class="row Description" style="height: 11mm;">
 
-                    </div>
+                        <div class="col-9" style="font-size: 9px; padding-top: 4px;padding-right: 6px;">
+                          In case of emergency, Scan the QR Code and get the emergency details of the user
+                        </div>
 
-                    <div class="row Description" style="height: 11mm;">
-
-                      <div class="col-9" style="font-size: 9px; padding-top: 4px;padding-right: 6px;">
-                        In case of emergency, Scan the QR Code and get the emergency details of the user
                       </div>
 
-                    </div>
+                      <div class="row Bottom-Heading" style="height: 5.5mm;background-color: #ce2424;">
 
-                    <div class="row Bottom-Heading" style="height: 5.5mm;background-color: #ce2424;">
+                        <div class="col-8"
+                          style="display: flex; align-items: center; justify-content: center; color: white;padding-right: 0px;">
 
-                      <div class="col-8"
-                        style="display: flex; align-items: center; justify-content: center; color: white;padding-right: 0px;">
+                          <div style="font-size: 10px; text-align: center;">
+                            24x7 Medical Emergency Assistance
+                          </div>
 
-                        <div style="font-size: 10px; text-align: center;">
-                          24x7 Medical Emergency Assistance
+
+
                         </div>
 
 
 
-                      </div>
+                        <div class="col-4"
+                          style="display: flex; align-items: center; justify-content: flex-start; color: white;padding: 0px;">
 
+                          <div style="font-size: 11px; text-align: left;" class="gap-1 flex align-center">
 
+                            <img src="assets/images/emid_images/Mobile-Icon.png" style="width: 12%;height:10%" />
 
-                      <div class="col-4"
-                        style="display: flex; align-items: center; justify-content: flex-start; color: white;padding: 0px;">
+                            9343-18-0000
+                          </div>
 
-                        <div style="font-size: 11px; text-align: left;" class="gap-1 flex align-center">
-
-                          <img src="assets/images/emid_images/Mobile-Icon.png" style="width: 12%;height:10%" />
-
-                          9343-18-0000
                         </div>
 
                       </div>
+
 
                     </div>
 
 
                   </div>
-
-
                 </div>
-
 
               </div>
 

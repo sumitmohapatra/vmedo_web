@@ -2118,4 +2118,9 @@ export class CreateCardComponent {
         this.router.navigate(['/home']);
       });
     };
+
+    get userName(){
+      const userName = JSON.parse(localStorage.getItem('userInfo'))?.uname;
+      return userName;
+    }
 }

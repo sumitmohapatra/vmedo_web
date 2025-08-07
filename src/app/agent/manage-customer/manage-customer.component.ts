@@ -113,6 +113,7 @@ export class ManageCustomerComponent implements OnInit {
     this.router.navigate(['agent/create-suraksha-card']);
     const userInfo:any = JSON.parse(localStorage.getItem('agentInfo'));
     userInfo.userID = user.userID;
+    userInfo.uname = user.uName;
     localStorage.setItem('userID', userInfo.userID);
     localStorage.setItem('auth_token', userInfo.autToken);
     localStorage.setItem('refresh_token', userInfo.refreshToken);
