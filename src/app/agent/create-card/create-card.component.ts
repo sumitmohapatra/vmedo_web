@@ -61,17 +61,17 @@ export class CreateCardComponent {
      * ON PAGE INITIALIZED
      */
     ngOnInit(): void {
-      // this.common.ValidateUser(this.router, this.app).then(() => {
-      //   this.OnPageLoad();
+      this.common.ValidateUser(this.router, this.app).then(() => {
+        this.OnPageLoad();
   
-      //   if (localStorage.getItem("emtext") === null) {
+        if (localStorage.getItem("emtext") === null) {
   
-      //   } else {
-      //     // this.OnClickCreateID();
-      //     this.displayEmergencyForm();
+        } else {
+          // this.OnClickCreateID();
+          this.displayEmergencyForm();
   
-      //   }
-      // });
+        }
+      });
   
       this.userDataUrl = `https://vmedo.com/emid?id=` + this.emid + `&pin=` + this.pin;
   
