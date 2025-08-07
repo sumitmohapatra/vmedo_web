@@ -126,7 +126,7 @@ export class CommonService {
       if(!router.url.includes('/dashboard/hospitals')){
         if(!this.auth_token){
           app.ShowWarn('No active Session found, please Login ! Redirecting to home page...').finally(() => {
-              router.navigate(['/home']);
+              router.navigate(['/agent/login']);
               rej();
           });
         }
