@@ -62,7 +62,7 @@ export class CreateCardComponent {
      */
     ngOnInit(): void {
       this.common.ValidateUser(this.router, this.app).then(() => {
-        this.OnPageLoad();
+         this.OnPageLoad();
   
         if (localStorage.getItem("emtext") === null) {
   
@@ -85,7 +85,7 @@ export class CreateCardComponent {
       this.LoadGenders();
       this.LoadBloodGroups();
       this.OnClickEmergencyCardStatus();
-      this.LoadEmergencyCards();
+      // this.LoadEmergencyCards();
     }
     // ------------------------------------------------------------------------------------
    areFieldsFilled(): boolean {
@@ -153,10 +153,10 @@ export class CreateCardComponent {
           this.regex = this.common.propInfo.regex;
           try {
             this.maxDate = { year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() };
-            this.LoadBloodGroups();
-            this.LoadGenders();
+            // this.LoadBloodGroups();
+            // this.LoadGenders();
             this.LoadProfile().then((res: any) => {
-              this.LoadDonorDetails();
+              // this.LoadDonorDetails();
               this.InitEmergencyCards();
             }).catch((rej: any) => {
               if (rej.message.toLowerCase().includes('invalid refresh token')) {
@@ -165,7 +165,7 @@ export class CreateCardComponent {
                   this.common.auth_token = undefined;
                   this.common.refresh_token = undefined;
                   localStorage.clear();
-                  this.router.navigate(['/home']);
+                  this.router.navigate(['/agent/login']);
                 });
               }
               else
@@ -240,7 +240,7 @@ export class CreateCardComponent {
             this.emid = element.emid;
   
             this.userDataUrl = `https://vmedo.com/emid?id=` + element.emid + `&pin=` + element.pin;
-            this.common.api.GetEmergencyIDProfileVisitor(element.emID, this.common.userInfo.userID).then((res: any) => {
+            this.common.api.GetEmergencyIDProfileVisitor(element.emID, this.common.getUserId()).then((res: any) => {
               if (res.objret && res.objret.length > 0) {
                 element.visitors = res.objret;
               }
@@ -320,7 +320,7 @@ export class CreateCardComponent {
       this.emergencyIDs = [];
   
       return new Promise((_res: any, _rej: any) => {
-        this.common.api.GetAllEmergencyCards(this.common.userInfo.userID).then((res: any) => {
+        this.common.api.GetAllEmergencyCards(this.common.getUserId()).then((res: any) => {
           if (res.objret)
             this.emergencyIDs = res.objret;
   
@@ -351,7 +351,7 @@ export class CreateCardComponent {
      */
     LoadDonorDetails = () => {
       return new Promise((_res: any, _rej: any) => {
-        this.common.api.GetDonorDetails(this.common.userInfo.userID).then((res: any) => {
+        this.common.api.GetDonorDetails(this.common.getUserId()).then((res: any) => {
           if (res.objret)
             this.donorDetails = res.objret;
           this.IsDonorAvailable = this.donorDetails.bStatus;
@@ -384,7 +384,7 @@ export class CreateCardComponent {
     LoadDonations = () => {
       this.donations = [];
       return new Promise((_res: any, _rej: any) => {
-        this.common.api.GetAllDonations(this.common.userInfo.userID).then((res: any) => {
+        this.common.api.GetAllDonations(this.common.getUserId()).then((res: any) => {
           if (this.common.donor_location === undefined || this.common.donor_location === '') {
             if (res.objret)
               this.donations = res.objret;
@@ -424,7 +424,7 @@ export class CreateCardComponent {
   
       this.app.ShowWarn('Are you sure to delete this donation!').then((res: any) => {
         this.app.ShowLoader();
-        this.common.api.DeleteDonation(donationInfo, this.common.userInfo.userID).then((res: any) => {
+        this.common.api.DeleteDonation(donationInfo, this.common.getUserId()).then((res: any) => {
           this.app.HideLoader();
           this.app.ShowSuccess('Donation deleted successfully').finally(() => {
             this.OnPageLoad();
@@ -449,7 +449,7 @@ export class CreateCardComponent {
      */
     LoadProfile = () => {
       return new Promise((_res: any, _rej: any) => {
-        this.common.api.GetUserProfile(this.common.userInfo.userID).then((res: any) => {
+        this.common.api.GetUserProfile(this.common.getUserId()).then((res: any) => {
           if (res.objret) {
             this.profileInfo = res.objret;
             this.txtName = res.objret.userName;
@@ -471,7 +471,7 @@ export class CreateCardComponent {
             }
             if (res.objret.profileDOB.toString() !== '0001-01-01T00:00:00')
               this.txtDOB = this.common.StringToDate(res.objret.profileDOB.toString().split('T')[0]);
-            this.GetBloodGroup(res.objret.userName).then((res: any) => this.profileInfo.bloodgroup = res);
+            //this.GetBloodGroup(res.objret.userName).then((res: any) => this.profileInfo.bloodgroup = res);
           }
           else
             this.app.ShowError('No records found');
@@ -485,7 +485,7 @@ export class CreateCardComponent {
     OnClickVerifyEmail = () => {
       this.app.ShowLoader();
   
-      this.common.api.VerifyEmailId(this.common.userInfo.userID).then((res: any) => {
+      this.common.api.VerifyEmailId(this.common.getUserId()).then((res: any) => {
         this.app.HideLoader();
         this.app.ShowSuccess(`A verification link sent to your mail, please check your inbox !`);
       }).catch((rej: any) => {
@@ -603,7 +603,7 @@ export class CreateCardComponent {
       return new Promise((res: any) => {
         var bgroup = '';
   
-        this.common.api.GetAllDonors(this.common.userInfo.userID).then((res: any) => {
+        this.common.api.GetAllDonors(this.common.getUserId()).then((res: any) => {
           if (res.objret) {
             var donor = res.objret.find((s: any) => s.name === userName);
             if (donor)
@@ -890,7 +890,7 @@ export class CreateCardComponent {
       if (this.IsValidProfile()) {
         var userInfo = {
           MyObj: {
-            UserID: this.common.userInfo.userID,
+            UserID: this.common.getUserId(),
             userName: this.txtName,
             userMobile: this.txtPhone,
             userEmail: this.txtEmail,
@@ -917,7 +917,7 @@ export class CreateCardComponent {
       this.app.ShowLoader();
   
       var userInfo = {
-        UserID: this.common.userInfo.userID,
+        UserID: this.common.getUserId(),
         Astatus: this.IsDonorAvailable
       };
   
@@ -968,7 +968,7 @@ export class CreateCardComponent {
       }
   
       this.app.ShowLoader();
-      this.common.api.ValidateEmergencyNumber(this.txtCardNumber, this.common.userInfo.userID).then((res: any) => {
+      this.common.api.ValidateEmergencyNumber(this.txtCardNumber, this.common.getUserId()).then((res: any) => {
         this.app.HideLoader();
         this.IsCardAvailable = true;
         this.lblCardNumber = `Emergency id available`;
@@ -1193,7 +1193,7 @@ export class CreateCardComponent {
             Location: this.txtDonationLocation
           };
   
-          this.common.api.AddDonation(_donationInfo, this.common.userInfo.userID).then((res: any) => {
+          this.common.api.AddDonation(_donationInfo, this.common.getUserId()).then((res: any) => {
             this.CloseDonationModal();
             this.app.HideLoader();
             this.app.ShowSuccess('Donation added successfully').finally(() => {
@@ -1219,7 +1219,7 @@ export class CreateCardComponent {
             Location: this.txtDonationLocation
           };
   
-          this.common.api.EditDonation(donationInfo, this.common.userInfo.userID).then((res: any) => {
+          this.common.api.EditDonation(donationInfo, this.common.getUserId()).then((res: any) => {
             this.CloseDonationModal();
             this.app.HideLoader();
             this.app.ShowSuccess('Donation updated successfully').finally(() => {
@@ -1447,7 +1447,7 @@ export class CreateCardComponent {
   
             // if(this.donorEntityType === 'add')
             if (this.chkBloodDonor === false) {
-              this.common.api.AddDonor(donorInfo, this.common.userInfo.userID).then((res: any) => {
+              this.common.api.AddDonor(donorInfo, this.common.getUserId()).then((res: any) => {
                 this.app.HideLoader();
                 this.CloseDonorRegisterModal();
                 this.app.ShowSuccess('Donor registered successfully');
@@ -1458,7 +1458,7 @@ export class CreateCardComponent {
   
             }
             else {
-              this.common.api.UpdateDonor(donorInfo, this.common.userInfo.userID).then((res: any) => {
+              this.common.api.UpdateDonor(donorInfo, this.common.getUserId()).then((res: any) => {
                 this.app.HideLoader();
                 this.CloseDonorRegisterModal();
                 this.app.ShowSuccess('Donor details updated successfully');
@@ -1495,7 +1495,7 @@ export class CreateCardComponent {
         this.app.ShowLoader();
   
         this.storedCardNumber = localStorage.getItem('edittxtCardNumber');
-        this.common.api.DeleteEmergencyId(this.storedCardNumber, this.common.userInfo.userID).then((res: any) => {
+        this.common.api.DeleteEmergencyId(this.storedCardNumber, this.common.getUserId()).then((res: any) => {
           this.app.HideLoader();
           this.app.ShowSuccess(`Emergency id deleted successfully`).finally(() => {
             this.LoadEmergencyCards();
@@ -1515,7 +1515,7 @@ export class CreateCardComponent {
       this.OpenEMIDProfileVisitorModal();
       this.visitors = [];
       this.storedCardNumber = localStorage.getItem('edittxtCardNumber');
-      this.common.api.GetEmergencyIDProfileVisitor(this.storedCardNumber, this.common.userInfo.userID).then((res: any) => {
+      this.common.api.GetEmergencyIDProfileVisitor(this.storedCardNumber, this.common.getUserId()).then((res: any) => {
         if (res.objret && res.objret.length > 0) {
           this.visitors = res.objret;
         }
@@ -1887,7 +1887,7 @@ export class CreateCardComponent {
       console.log(cardInfo);
   
       if (this.IsEmergencyEntityEdit === true) {
-        this.common.api.UpdateEmergencyCard(cardInfo, this.common.userInfo.userID).then((res: any) => {
+        this.common.api.UpdateEmergencyCard(cardInfo, this.common.getUserId()).then((res: any) => {
           this.app.HideLoader();
           this.CloseCreateEditIDModal();
           this.app.ShowSuccess(`Emergency ID updated successfully`).finally(() => {
@@ -1902,7 +1902,7 @@ export class CreateCardComponent {
   
       }
       else {
-        this.common.api.AddEmergencyCard(cardInfo, this.common.userInfo.userID).then((res: any) => {
+        this.common.api.AddEmergencyCard(cardInfo, this.common.getUserId()).then((res: any) => {
           this.app.HideLoader();
           this.CloseCreateIDModal();
           this.app.ShowSuccess(`Family member added successfully`).finally(() => {
@@ -1959,7 +1959,7 @@ export class CreateCardComponent {
       console.log(cardInfo);
   
       if (this.IsEmergencyEntityEdit === true) {
-        this.common.api.UpdateEmergencyCard(cardInfo, this.common.userInfo.userID).then((res: any) => {
+        this.common.api.UpdateEmergencyCard(cardInfo, this.common.getUserId()).then((res: any) => {
           this.app.HideLoader();
           this.CloseCreateEditIDModal();
           this.app.ShowSuccess(`Emergency ID updated successfully`).finally(() => {
@@ -1974,7 +1974,7 @@ export class CreateCardComponent {
   
       }
       else {
-        this.common.api.AddEmergencyCard(cardInfo, this.common.userInfo.userID).then((res: any) => {
+        this.common.api.AddEmergencyCard(cardInfo, this.common.getUserId()).then((res: any) => {
           this.app.HideLoader();
           this.CloseCreateIDModal();
           this.app.ShowSuccess(`Family member added successfully`).finally(() => {
@@ -2072,8 +2072,8 @@ export class CreateCardComponent {
   
   
   cardStatus:any;
-  // subscriberID = String(this.common.userInfo.userID);
-  // subscriberID: string = this.common.userInfo.userID.toString();
+  // subscriberID = String(this.common.getUserId());
+  // subscriberID: string = this.common.getUserId().toString();
   
   
   // subscriberID:string;

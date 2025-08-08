@@ -20,7 +20,7 @@ import { NgbModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/agent/login',
+    redirectTo: 'login',
     pathMatch: 'full'  // <-- Required
   },
   {
