@@ -1,0 +1,74 @@
+
+    <!-- Card content here -->
+    <div class="bg-white rounded-xl shadow-md items-center py-3 overflow-hidden" (click)="$event.stopPropagation()">
+        <h2 class="text-lg font-medium mb-4 mt-2 text-center">
+            Corporate Enquiry Form
+        </h2>
+
+        <form class="corporates-enquiry-form flex flex-col items-center px-4" (ngSubmit)="submitForm()">
+            <!-- Name Input -->
+            <input type="text" placeholder="Organization name" id="organisation" name="organisation"
+                [(ngModel)]="formData.organisation"
+                class="w-full rounded-md shadow-none border border-gray-300 px-4 py-2 mb-3 bg-white" />
+
+            <!-- Name Input -->
+            <input type="text" placeholder="Your name" id="name" name="name" [(ngModel)]="formData.name"
+                class="w-full rounded-md shadow-none border border-gray-300 px-4 py-2 mb-3 bg-white" />
+
+            <!-- Phone Number Input -->
+            <input type="tel" placeholder="Phone Number" id="phone" name="phone" [(ngModel)]="formData.phone"
+                class="w-full rounded-md border border-gray-300 px-4 py-2 mb-3" />
+
+            <!-- Email Input -->
+            <input type="email" placeholder="Email" id="email" name="email" [(ngModel)]="formData.email"
+                class="w-full rounded-md border border-gray-300 px-4 py-2 mb-3" />
+
+            <!-- Phone Number Input -->
+            <input type="tel" placeholder="Employee count" id="employeecount" name="employeecount"
+                [(ngModel)]="formData.employeecount" class="w-full rounded-md border border-gray-300 px-4 py-2 mb-3" />
+
+
+            <input type="hidden" name="formtype" value="1">
+
+            <!-- Name Input -->
+            <select class="w-full rounded-md shadow-none border border-gray-300 px-4 py-2 mb-3 bg-white"
+                id="servicerequest" name="servicerequest" [(ngModel)]="formData.servicerequest">
+                <option disabled selected value="">Select service</option>
+                <option value="Occupational Health Centre">
+                    Occupational Health Centre
+                </option>
+                <option value="Standby Ambulance">Standby Ambulance</option>
+                <option value="Employee health checkup">
+                    Employee health checkup
+                </option>
+                <option value="Employee Vaccination">Employee Vaccination</option>
+                <option value="Wellness workshops">Wellness workshops</option>
+                <option value="First aid and CPR training">
+                    First aid and CPR training
+                </option>
+                <option value="Medical supplies">Medical supplies</option>
+                <option value="Doctor consultation">Doctor consultation</option>
+                <option value="At home care">At home care</option>
+            </select>
+
+            <!-- Message Input -->
+            <textarea placeholder="Message" id="message" name="message" [(ngModel)]="formData.message"
+                class="w-full rounded-md border shadow-none border-gray-300 px-4 py-2 mb-3 h-32 bg-white"></textarea>
+
+
+            <!-- Submit and Cancel Buttons -->
+            <div class="flex">
+                <button type="submit"
+                    class="bg-red-500 text-white rounded-md py-2 px-4 mr-2 hover:bg-red-600 transition duration-300">
+                    Submit
+                </button>
+                <button type="button" (click)="cancelForm()"
+                    class="bg-red-500 text-white rounded-md py-2 px-4 mr-2 hover:bg-red-600 transition duration-300">
+                    Cancel
+                </button>
+            </div>
+
+
+        </form>
+
+    </div>

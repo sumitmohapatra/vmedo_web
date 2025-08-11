@@ -5,17 +5,21 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { SubscriptionComponentComponent } from './subscription-component/subscription-component.component';
 import { SwiperModule } from 'swiper/angular';
+import { FormsModule } from '@angular/forms';
+import { CorporateEnquiryFormComponent } from './corporate-enquiry-form/corporate-enquiry-form.component';
 
 @NgModule({
   declarations: [
-    SubscriptionComponentComponent
+    SubscriptionComponentComponent,
+    CorporateEnquiryFormComponent
   ],
   imports: [
     CommonModule,
     SwiperModule,
     SubscriptionModuleRoutingModule,
     MatExpansionModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule
   ]
 })
 export class SubscriptionModuleModule { }

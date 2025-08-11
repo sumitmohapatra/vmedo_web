@@ -1,0 +1,11 @@
+.corporates-enquiry-form{
+    height: 500px;
+    width: 500px;
+  }
+
+  @media (max-width: 768px) {
+  .corporates-enquiry-form {
+    height: 450px;
+    width: 360px;
+  }
+}

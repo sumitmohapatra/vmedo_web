@@ -206,7 +206,15 @@
 
 
             </section>
-
+            <section class="py-4 px-3">
+                <div class="flex justify-center cursor-pointer" (click)="toggleCorporateEnquiryForm()" >
+                    <!-- Mobile image -->
+                    <img *ngIf="isMobile" src="assets/images/website-images/website-banner-mobile.png" alt="Website banner mobile">
+                  
+                    <!-- Desktop image -->
+                    <img *ngIf="!isMobile" src="assets/images/website-images/website-banner-web.png" alt="Website banner web">
+                  </div>
+            </section> 
             <!-- Mobile about us  -->
             <section class="how-it-works-mobile-section px-3 py-4 bg-white">
 
@@ -1925,6 +1933,19 @@
                 </div>
             </section>
 
+            <section>
+                <div class="flex justify-center cursor-pointer" (click)="toggleCorporateEnquiryForm()">
+                    <!-- Mobile image -->
+                    <img *ngIf="isMobile" src="assets/images/website-images/website-banner-mobile.png" alt="Website banner mobile">
+                  
+                    <!-- Desktop image -->
+                    <img *ngIf="!isMobile" src="assets/images/website-images/website-banner-web.png" alt="Website banner web">
+                  </div>
+            </section> 
+            
+            
+            
+
             <!-- Other services section -->
             <section class="other-services-section py-8 px-8">
                 <div class="px-5">
@@ -3050,3 +3071,8 @@
         </div>
     </div>
 </ng-template>
+
+<div *ngIf="corporateEnquiryForm" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10"
+    (click)="toggleCorporateEnquiryForm()">
+    <app-corporate-enquiry-form (closeModal)="corporateEnquiryForm = false"></app-corporate-enquiry-form>
+</div>

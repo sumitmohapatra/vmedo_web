@@ -216,5 +216,15 @@ toggleAccordion2(index2: number): void {
     });
   };
 
-  
+  // corporateEnquiryFormMobile: boolean = false;
+
+  // toggleCorporateEnquiryFormMobile(): void {
+  //   this.corporateEnquiryFormMobile = !this.corporateEnquiryFormMobile;
+  // }
+
+  corporateEnquiryForm: boolean = false;
+
+  toggleCorporateEnquiryForm(): void {
+    this.corporateEnquiryForm = !this.corporateEnquiryForm;
+  }
 }
