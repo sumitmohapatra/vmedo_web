@@ -919,7 +919,7 @@ input[type=password]:active{
     }
 
     .emergencyid .search.search-md button{
-        display: none;
+        /* display: none; */
     }
 
     .emergencyid .search2{

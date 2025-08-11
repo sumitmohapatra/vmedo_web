@@ -2141,7 +2141,7 @@ export class ApiService {
       headers = headers.set('Authorization', `Bearer ${this.common.auth_token}`);
 
       var url = `${this.apis.baseUrl}${this.apis.emergency.searchCard.url}`;
-      url = url.replace('<EMID>', emidInfo.EMID).replace('<EPin>', emidInfo.Pin);
+      url = url.replace('<EMID>', emidInfo.EMID);
       this.common.http.SendRequest(url, this.apis.emergency.searchCard.method, headers, undefined).then((res: any) => {
         if(res.statusCode && res.statusCode === 200)
           resolve(res);
@@ -2718,7 +2718,7 @@ export class ApiService {
       headers = headers.set('Content-Type', 'application/json');
 
       var url = `${this.apis.baseUrl}${this.apis.emergency.validateCardWithPin.url}`;
-      url = url.replace('<emid>',cardNumber).replace('<pin>',pin);
+      url = url.replace('<emid>',cardNumber);
 
       this.common.http.SendRequest(url, this.apis.emergency.validateCardWithPin.method, headers, undefined).then((res: any) => {
         if(res.statusCode && res.statusCode === 200)

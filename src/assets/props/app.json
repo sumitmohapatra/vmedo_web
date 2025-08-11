@@ -271,7 +271,7 @@
         },
         "emergency": {
             "searchCard":{
-                "url": "/api/user/SearchEmergencyID?EMID=<EMID>&EPin=<EPin>",
+                "url": "/api/user/SearchEmergencyID?EMID=<EMID>",
                 "method": "GET"
             },
             "fetchCards": {
@@ -303,7 +303,7 @@
                 "method": "GET"
             },
             "validateCardWithPin": {
-                "url": "/api/auth/ValidateEMID?EMID=<emid>&PIN=<pin>",
+                "url": "/api/auth/ValidateEMID?EMID=<emid>",
                 "method": "GET"
             },
             "fetchOtp": {
