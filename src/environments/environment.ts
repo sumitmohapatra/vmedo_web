@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseApiUrl:'https://apitest.vmedo.com/api/'
+  baseApiUrl:'https://apitest.vmedo.com/api/',
+  baseApplicationUrl:'https://webtest.vmedo.com/'
 };
 
 /*

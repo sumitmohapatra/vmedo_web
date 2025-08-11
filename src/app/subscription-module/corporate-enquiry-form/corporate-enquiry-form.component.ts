@@ -31,9 +31,9 @@ export class CorporateEnquiryFormComponent {
     phone: null, // Initialize phone as number
     email: '',
     employeecount: null,
-    servicerequest: '',
+    servicerequest: 'Corporate suraksha card',
     message: '',
-    formtype: 1 // Fixed value
+    formtype: 8 // Fixed value
 
   };
 
@@ -99,9 +99,9 @@ export class CorporateEnquiryFormComponent {
       phone: null,
       email: '',
       employeecount: null,
-      servicerequest: '',
+      servicerequest: 'Corporate suraksha card',
       message: '',
-      formtype: 1
+      formtype: 8
     };
     this.closeModal.emit()
   }

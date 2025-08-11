@@ -8,6 +8,7 @@ import { CommonService } from 'src/app/service/common.service';
 import { DOCUMENT } from '@angular/common';
 import jsPDF from 'jspdf';
 import jspdf from 'jspdf';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -86,7 +87,7 @@ export class DownloademidComponent implements OnInit {
 
     console.log(this.subscribedDate);
 
-    this.userDataUrl = `https://vmedo.com/emid?id=` + this.emid;
+    this.userDataUrl = `${environment.baseApplicationUrl}/emid?id=` + this.emid;
 
 
     // this.userDataUrl = 'https://vmedo.com/emid?id='+this.emid+'&pin='+this.pin;

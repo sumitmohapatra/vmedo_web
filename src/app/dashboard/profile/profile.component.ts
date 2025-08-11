@@ -240,7 +240,7 @@ this.OnClickEmergencyCardStatus();
           element.emidUrl = `${this.emidPage}?id=${element.emid}&pin=${element.pin}`;
           this.emid = element.emid;
 
-          this.userDataUrl = `https://vmedo.com/emid?id=` + element.emid + `&pin=` + element.pin;
+          this.userDataUrl = `${environment.baseApplicationUrl}/emid?id=` + element.emid + `&pin=` + element.pin;
           this.common.api.GetEmergencyIDProfileVisitor(element.emID, this.common.userInfo.userID).then((res: any) => {
             if (res.objret && res.objret.length > 0) {
               element.visitors = res.objret;

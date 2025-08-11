@@ -57,11 +57,32 @@
                     <div class="row panel" *ngIf="!searchedEmergencyCard"
                         style="width: 95%; margin-right: 17%; margin-left: 3%;">
                         <div class="col-12 col-sm-12 col-md-6 col-xl-6">
-
                             <div class="row">
+                                <div class="col-10 col-sm-10 col-md-10 col-lg-6 no-padding card">
+                                    <div class="text-control" style="display: flex; align-items: center; width: 100%;">
+                                        <svg style="width: 18px; height: 18px; margin-right: 5px;">
+                                            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-idcard"></use>
+                                        </svg>
+                                        <input type="text" placeholder="Enter emergency ID" [(ngModel)]="txtSearch"
+                                            style="flex: 1; border: none; outline: none;">
+                                    </div>
+                                </div>
+
+                                <!-- Search button -->
+                                <div class="col-auto no-padding flex align-center" style="margin-left: 8px;">
+                                    <button type="button" (click)="OnClickSearch()"
+                                        style="background-color: #ce2424; border: none; padding: 10px 10px; display: flex; align-items: center; justify-content: center; border-radius: 4px; cursor: pointer;">
+                                        <svg style="width: 18px; height: 18px; fill: white;">
+                                            <use xlink:href="assets/icon/svg/symbol-defs.svg#icon-search"></use>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- <div class="row">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12" *ngIf="!isHideSearch">
                                     <div class="row">
-                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 no-padding card"
+                                        <div class="col-10 col-sm-10 col-md-10 col-lg-10 no-padding card"
                                             style="margin-right: 5px;">
                                             <div class="text-control">
                                                 <svg>
@@ -72,7 +93,21 @@
                                                     [(ngModel)]="txtSearch">
                                             </div>
                                         </div>
-                                        <!-- <div
+                       
+
+                                        <div class="col-2 col-sm-2 col-md-2 col-lg-2 no-padding" style="display: flex; align-items: center;">
+                                            <button type="button" 
+                                                    (click)="OnClickSearch()" 
+                                                    style="background-color: #ce2424; border: none; padding: 16px 12px;border-radius: 4px; cursor: pointer;">
+                                              <svg style="width: 18px; height: 18px; fill: white;">
+                                                <use xlink:href="assets/icon/svg/symbol-defs.svg#icon-search"></use>
+                                              </svg>
+                                            </button>
+                                          </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <!-- <div
                                             class="col-12 col-sm-12 col-md-5 col-lg-5 no-padding search card srch align-center">
                                             <div class="text-control">
                                                 <svg>
@@ -85,7 +120,7 @@
                                            
                                         </div> -->
 
-                                        <!-- <button type="button"
+                            <!-- <button type="button"
                                         class="btn btn-sm btn-outline-secondary rd-button search2"
                                         (click)="OnClickSearch()">
                                         <svg style="height: 20px; width: 20px;">
@@ -95,7 +130,7 @@
                                         </svg>
                                         <span style="margin-left: 10px;">Get details</span>
                                     </button> -->
-                                        <!-- <div
+                            <!-- <div
                                             class="col-12 col-sm-12 col-md-1 col-lg-1 no-padding search search-md srch align-center">
                                             <button type="button" class="btn btn-sm btn-outline-secondary"
                                                 (click)="OnClickSearch()">
@@ -107,19 +142,6 @@
                                                 <span style="margin-left: 10px;">Get details</span>
                                             </button>
                                         </div> -->
-
-                                        <div class="col-auto no-padding" style="display: flex; align-items: center;">
-                                            <button type="button" 
-                                                    (click)="OnClickSearch()" 
-                                                    style="background-color: #ce2424; border: none; padding: 16px 12px;border-radius: 4px; cursor: pointer;">
-                                              <svg style="width: 18px; height: 18px; fill: white;">
-                                                <use xlink:href="assets/icon/svg/symbol-defs.svg#icon-search"></use>
-                                              </svg>
-                                            </button>
-                                          </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
 
@@ -127,7 +149,7 @@
 
                     </div>
 
-                   
+
 
 
 
@@ -150,7 +172,7 @@
                                         <span class="name">{{searchedEmergencyCard.pname}}</span>
                                     </div>
                                 </div> -->
-                                
+
                             </div>
                         </div>
                     </div>
@@ -163,7 +185,8 @@
                                     <div class="col-12 col-sm-12 col-md-12 col-xl-12 no-padding">
                                         <div class="row">
                                             <div class="col-6 col-sm-6 col-md-5 col-xl-5 title">Card Holder Name:</div>
-                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">{{searchedEmergencyCard.pname}}
+                                            <div class="col-6 col-sm-6 col-md-7 col-xl-7">
+                                                {{searchedEmergencyCard.pname}}
                                             </div>
                                         </div>
                                         <!-- <div class="row">
@@ -343,8 +366,8 @@
                             </div>
                         </div>
                     </div>
-                    
-                    
+
+
                 </div>
             </div>
 
@@ -353,13 +376,13 @@
         <div class="container" style="position: relative;top: -35px;" *ngIf="searchedEmergencyCard">
             <div style="display: flex;justify-content: center;text-align: center;">
                 <a [href]="'tel:' + phone">
-                    <button class="btn btn-danger btn-lg" > Call 24x7 VMEDO Helpline
+                    <button class="btn btn-danger btn-lg"> Call 24x7 VMEDO Helpline
 
                     </button>
                 </a>
             </div>
         </div>
-      
+
 
 
 
@@ -385,7 +408,9 @@
 
                         </h4>
                         <p class="about-vmedo">
-                            VMEDO is a digital healthcare platform, on a mission to make quality healthcare accessible and affordable to all..
+                            VMEDO is a digital healthcare platform, on a mission to make quality healthcare accessible
+                            and
+                            affordable to all..
                             <br>
                             <a [routerLink]="'/info/aboutus'" class="know" style="color: #fff;">View More. . .</a>
 
@@ -409,19 +434,23 @@
                             <li><a (click)="common.RedirectToUrl(links.pages.training)"><i
                                         class="fa fa-chevron-right"></i>VMEDO
                                     Academy</a></li>
-                             <li><a href="https://store.vmedo.com"><i class="fa fa-chevron-right"></i>VMEDO Store</a>
-                </li>
+                            <li><a href="https://store.vmedo.com"><i class="fa fa-chevron-right"></i>VMEDO Store</a>
+                            </li>
 
-                           
-                <li><a [routerLink]="'/services/ambulance-service-india'"><i class="fa fa-chevron-right"></i>VMEDO
-                    Ambulance</a></li>
+
+                            <li><a [routerLink]="'/services/ambulance-service-india'"><i
+                                        class="fa fa-chevron-right"></i>VMEDO
+                                    Ambulance</a></li>
                             <li><a href="corporate.html"><i class="fa fa-chevron-right"></i>For
                                     Corporates</a></li>
 
-                                <li><a href="https://vmedo.com/first-aid-training/index.html"><i class="fa fa-chevron-right"></i>First
-                    Aid Training</a></li>
+                            <li><a href="https://vmedo.com/first-aid-training/index.html"><i
+                                        class="fa fa-chevron-right"></i>First
+                                    Aid Training</a></li>
 
-                                    <li><a [routerLink]="'/services/find-blood-donor'"><i class="fa fa-chevron-right"></i>Find blood donors</a></li>
+                            <li><a [routerLink]="'/services/find-blood-donor'"><i class="fa fa-chevron-right"></i>Find
+                                    blood
+                                    donors</a></li>
                         </ul>
                     </div>
 
@@ -439,12 +468,13 @@
                             <li><a [routerLink]="'/info/aboutus'"><i class="fa fa-chevron-right"></i> About Us</a>
                             </li>
                             <li><a href="https://vmedo.com/blog/join-our-team-vmedo/"><i
-                                        class="fa fa-chevron-right"></i> Career</a></li>
+                                        class="fa fa-chevron-right"></i>
+                                    Career</a></li>
 
-                           <li><a [routerLink]="'/info/partner-with-us'"><i class="fa fa-chevron-right"></i> Partner
-                    With Us</a></li>
-                          <li><a [routerLink]="'/info/contact-us'"><i class="fa fa-chevron-right"></i> Contact
-                    Us</a></li>
+                            <li><a [routerLink]="'/info/partner-with-us'"><i class="fa fa-chevron-right"></i> Partner
+                                    With Us</a></li>
+                            <li><a [routerLink]="'/info/contact-us'"><i class="fa fa-chevron-right"></i> Contact
+                                    Us</a></li>
 
 
 
@@ -473,7 +503,8 @@
                             <a href="" class="follow-us-text">Follow Us On</a>
                         </div>
                         <ul class="foot-social">
-                            <li><a href="https://www.facebook.com/vmedohealthcare"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://www.facebook.com/vmedohealthcare"><i class="fa fa-facebook"></i></a>
+                            </li>
                             <li><a href="https://twitter.com/vmedoapp"><i class="fa fa-twitter"></i></a>
                             </li>
 
@@ -496,42 +527,41 @@
     </div>
 
     <div class="row widget-menu" *ngIf="!searchedEmergencyCard">
-        <div class="col-4 col-md-4 col-sm-4 col-lg-4" >
-         
-          <div *ngIf="!common.auth_token">
-            <svg (click)="app.OnOpenLoginForm('/dashboard/profile')"  >
-              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-key1"></use>
-            </svg>
-          </div>
-         
-          <div *ngIf="common.auth_token">
-            <svg [routerLink]="getDashboardLink()">
-              <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-user-1"></use>
-            </svg>
-          </div>
-          
-      
-          <!-- Profile -->
-      
-          <div>
-            {{ common.auth_token ? 'Profile' : 'Login' }}
-          </div>
-      
-        </div>
-        <div class="col-4 col-md-4 col-sm-4 col-lg-4"
-        >
-      <svg [routerLink]="'/home'">
-       <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-home"></use>
-      </svg>
-      Home
-      </div>
         <div class="col-4 col-md-4 col-sm-4 col-lg-4">
-          <svg [routerLink]="'/services/more'">
-            <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-navigation-more"></use>
-          </svg>
-          More
+
+            <div *ngIf="!common.auth_token">
+                <svg (click)="app.OnOpenLoginForm('/dashboard/profile')">
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-key1"></use>
+                </svg>
+            </div>
+
+            <div *ngIf="common.auth_token">
+                <svg [routerLink]="getDashboardLink()">
+                    <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-user-1"></use>
+                </svg>
+            </div>
+
+
+            <!-- Profile -->
+
+            <div>
+                {{ common.auth_token ? 'Profile' : 'Login' }}
+            </div>
+
         </div>
-      </div>
+        <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+            <svg [routerLink]="'/home'">
+                <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-home"></use>
+            </svg>
+            Home
+        </div>
+        <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+            <svg [routerLink]="'/services/more'">
+                <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-navigation-more"></use>
+            </svg>
+            More
+        </div>
+    </div>
 </div>
 
 <ng-template #emidOtplogin let-modal>
