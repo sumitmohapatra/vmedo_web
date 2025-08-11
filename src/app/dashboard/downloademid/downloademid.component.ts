@@ -86,7 +86,7 @@ export class DownloademidComponent implements OnInit {
 
     console.log(this.subscribedDate);
 
-    this.userDataUrl = `https://vmedo.com/emid?id=` + this.emid + `&pin=` + this.pin;
+    this.userDataUrl = `https://vmedo.com/emid?id=` + this.emid;
 
 
     // this.userDataUrl = 'https://vmedo.com/emid?id='+this.emid+'&pin='+this.pin;

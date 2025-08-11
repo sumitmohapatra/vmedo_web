@@ -1590,10 +1590,10 @@ html, body {
 
 #scanqrcode{
   position: absolute;
-    margin-top: 15%;
+    /* margin-top: 15%; */
     font-weight: 600;
     margin-left: 27%;
-    font-size: 16pt;
+    font-size: 14pt;
 }
 
 #squareoutline{
@@ -1603,6 +1603,7 @@ html, body {
   margin-top: 5%;
   position: absolute;
   border-style: dotted;
+  margin-left: 12%;
 }
 
 #squarered{
@@ -2804,6 +2805,7 @@ html, body {
     margin-top: 2%;
     position: absolute;
     border-style: dotted;
+    margin-left: 12%;
   }
   
   #squarered {

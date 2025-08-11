@@ -174,12 +174,12 @@ export class EmergencyIdComponent implements OnInit{
         return;
       }
 
-      if(this.txtPin === ''){
-        this.common.toaster.Error(`Please enter pin!`);
-        return;
-      }
+      // if(this.txtPin === ''){
+      //   this.common.toaster.Error(`Please enter pin!`);
+      //   return;
+      // }
 
-    if(this.txtSearch === '' || this.txtPin === ''){
+    if(this.txtSearch === ''){
       // this.OnPageLoad();
       return;
     }
