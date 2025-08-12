@@ -224,7 +224,7 @@ export class EmergencyIdComponent implements OnInit{
         emidMobile: this.txtMobileNo,
         userOtp: this.txtOTP,
         emidNumber: this.txtSearch,
-        emidPin:this.txtPin
+        emidPin:0
       };
 
       this.common.api.GetEmidDetails(userInfo).then((resolve: any) => {
