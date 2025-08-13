@@ -73,7 +73,7 @@
       <div class="mt-3">
 
 
-        <mat-card class="cardsDesign" [routerLink]="'/dashboard/profile/1'">
+        <mat-card class="cardsDesign cursor-pointer" [routerLink]="'/dashboard/profile/1'">
 
           <div class="row" style="width: 100%;">
 
@@ -103,7 +103,7 @@
       <div class="mt-4">
 
 
-        <mat-card class="cardsDesign" [routerLink]="'/dashboard/profile/2'" >
+        <mat-card class="cardsDesign cursor-pointer" [routerLink]="'/dashboard/profile/2'" >
 
           <div class="row" style="width: 100%;">
 
@@ -131,7 +131,7 @@
 
       </div>
 
-      <div class="mt-4" [routerLink]="'/dashboard/profile/3'">
+      <div class="mt-4 cursor-pointer" [routerLink]="'/dashboard/profile/3'">
 
         <mat-card class="cardsDesign" >
 
@@ -248,7 +248,7 @@
 
       </div> -->
 
-      <div class="mt-4">
+      <div class="mt-4" *ngIf="txtisUnpaidPaidMember != null || txtisPaidMember != null">
         <div
         class="rounded-xl p-3 shadow-md text-white w-full mx-auto flex flex-col md:flex-row items-center gap-2 md:gap-4"
         [ngClass]="[

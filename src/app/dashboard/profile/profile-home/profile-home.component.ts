@@ -121,8 +121,8 @@ export class ProfileHomeComponent implements OnInit {
   IsDonorAvailable: any = false;
   txtName: any;
   profileImage: any = [];
-  txtisPaidMember: any = false;
-  txtisUnpaidPaidMember: any = false;
+  txtisPaidMember: any = null;
+  txtisUnpaidPaidMember: any = null;
   txtpackageName:any;
   txtpackagevalid_till:any;
 

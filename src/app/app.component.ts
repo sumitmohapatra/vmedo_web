@@ -932,7 +932,7 @@ export class AppComponent {
             if (resolve.objret) {
               this.common.userInfo = resolve.objret;
               localStorage.setItem('userInfo', JSON.stringify(resolve.objret));
-
+              this.common.viewSubscription('All');
               this.route.navigate(['/dashboard/package']);
 
               const userInfoPromise = new Promise((resolve, reject) => {

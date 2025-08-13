@@ -89,7 +89,7 @@
 
     <!-- Upgrade CTA -->
     <div *ngIf="cardStatus?.cardCreated === cardStatus?.maxCard" class="text-center">
-      <a [routerLink]="'/dashboard/package'"
+      <a [routerLink]="'/dashboard/package'" (click)="this.common.viewSubscription('All')"
         class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white text-xs font-semibold p-2 rounded-md transition duration-200">
         Upgrade subscription to add Suraksha card
       </a>
