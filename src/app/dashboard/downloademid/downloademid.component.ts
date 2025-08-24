@@ -134,7 +134,7 @@ export class DownloademidComponent implements OnInit {
   public openCombinedPDF(): void {
     // Get references to the two HTML elements
     let WelcomeLetter: any = document.getElementById('htmlData2');
-    let Qrcode: any = document.getElementById('htmlData');
+    // let Qrcode: any = document.getElementById('htmlData');
 
     // Create a new PDFDocument instance for the combined document
     const combinedPdfDoc = new jsPDF('p', 'mm', 'a4', true);
@@ -153,21 +153,20 @@ export class DownloademidComponent implements OnInit {
       combinedPdfDoc.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
       position += fileHeight;
 
+      // Save the combined PDF document to the user's device
+       combinedPdfDoc.save(this.slNo + '-' + this.username + '-Healthcard.pdf');
+
+      // Navigate to the next page
+       this.router.navigate(['/dashboard/profile/2']);
+
       // Use html2canvas to capture the contents of the first element as an image
-      html2canvas(Qrcode, { scale: 1 }).then((canvas) => {
-        let fileHeight2 = (canvas.height * fileWidth) / canvas.width;
-        const FILEURI2 = canvas.toDataURL('image/png');
+      // html2canvas(Qrcode, { scale: 1 }).then((canvas) => {
+      //   let fileHeight2 = (canvas.height * fileWidth) / canvas.width;
+      //   const FILEURI2 = canvas.toDataURL('image/png');
 
-        // Add the second image to the second page of the combined PDF document
-        combinedPdfDoc.addPage();
-        combinedPdfDoc.addImage(FILEURI2, 'PNG', 0, 0, fileWidth, fileHeight2);
-
-        // Save the combined PDF document to the user's device
-         combinedPdfDoc.save(this.slNo + '-' + this.username + '-Healthcard.pdf');
-
-        // Navigate to the next page
-         this.router.navigate(['/dashboard/profile/2']);
-      });
+      //   // Add the second image to the second page of the combined PDF document
+ 
+      // });
     });
   }
 

@@ -67,6 +67,7 @@ export class VmedoHomepageMobileComponent {
       pagination: true,
     };
   
-   
+   navigate(){
+    window.location.href = 'https://store.vmedo.com';   }
   
 }
