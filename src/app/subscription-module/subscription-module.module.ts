@@ -20,6 +20,6 @@ import { CorporateEnquiryFormComponent } from './corporate-enquiry-form/corporat
     MatExpansionModule,
     MatCardModule,
     FormsModule
-  ]
+  ],exports:[CorporateEnquiryFormComponent]
 })
 export class SubscriptionModuleModule { }

@@ -15,6 +15,7 @@ import { SwiperModule } from 'swiper/angular';
 import { AboutUsComponentComponent } from './about-us-component/about-us-component.component';
 import { ContactUsComponentComponent } from './contact-us-component/contact-us-component.component';
 import { PartnerWithUsComponentComponent } from './partner-with-us-component/partner-with-us-component.component';
+import { SubscriptionModuleModule } from '../subscription-module/subscription-module.module';
 
 
 
@@ -40,7 +41,8 @@ import { PartnerWithUsComponentComponent } from './partner-with-us-component/par
     MatExpansionModule,
     SwiperModule,
     NgMultiSelectDropDownModule.forRoot(),
-    MatCardModule
+    MatCardModule,
+    SubscriptionModuleModule
   ]
 })
 export class InfoModule { }

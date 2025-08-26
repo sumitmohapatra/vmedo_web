@@ -290,12 +290,12 @@
 
                   </div>
 
-                  <div class="row mb-2" style="display: flex;justify-content: center;" *ngIf="cardStatus?.cardCreated === cardStatus?.maxCard">
+                  <!-- <div class="row mb-2" style="display: flex;justify-content: center;" *ngIf="cardStatus?.cardCreated === cardStatus?.maxCard">
 
                     <div class="col-12 ml-2">
 
                       <button class="upgrade-premium-button" style="font-size: 15px;"
-                        mat-raised-button [routerLink]="'/dashboard/package'">
+                        mat-raised-button [routerLink]="'/dashboard/package'" (click)="">
 
                         Upgrade subscription to add suraksha card</button>
 
@@ -303,6 +303,13 @@
 
 
 
+                  </div> -->
+
+                  <div *ngIf="cardStatus?.cardCreated === cardStatus?.maxCard" class="text-center">
+                    <a [routerLink]="'/dashboard/package'" (click)="this.common.viewSubscription('All')"
+                      class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white text-xs font-semibold p-2 rounded-md transition duration-200">
+                      Upgrade subscription to add Suraksha card
+                    </a>
                   </div>
 
                   <div class="row mb-2" style="display: flex;justify-content: center;" *ngIf="cardStatus?.cardCreated < cardStatus?.maxCard">
@@ -592,19 +599,20 @@
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
               <div class="row">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 photo">
-                  <div>
-                    <img [src]="profileImage[0].src" [alt]="profileImage[0].caption" class="img2" for="img-upload"
-                      *ngIf="profileImage.length > 0 && profileImage[0].src !== undefined">
+                  <div class="photo-box">
+                    <img [src]="profileImage[0].src" 
+                         [alt]="profileImage[0].caption" 
+                         *ngIf="profileImage.length > 0 && profileImage[0].src !== undefined">
+                
                     <label class="img-upload" *ngIf="profileImage.length === 0">
                       <svg>
-                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-profile">
-                        </use>
+                        <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-profile"></use>
                       </svg>
                     </label>
                   </div>
+                
                   <span>
-                    <input type="file" id="img-upload" accept="image/*" (change)="OnProfileImageUpload($event)"
-                      [hidden]="true">
+                    <input type="file" id="img-upload" accept="image/*" (change)="OnProfileImageUpload($event)" [hidden]="true">
                     <label for="img-upload" class="img-upload">
                       <svg>
                         <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-pencil"></use>
@@ -613,14 +621,15 @@
                       <span>Edit Profile Photo</span>
                     </label>
                   </span>
-                  <!-- <a class="change-password" (click)="app.OnClickChangePassword()">
+                </div>
+                
+              </div>
+              <!-- <a class="change-password" (click)="app.OnClickChangePassword()">
                     <svg>
                       <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-lock-closed"></use>
                     </svg>
                     Change password
                   </a> -->
-                </div>
-              </div>
               <div class="row">
                 <div class="col-12 col-sm-12 col-md-12 col-xl-12 card" [ngClass]="{'error': lblName !== undefined}">
                   <div class="text-control">
@@ -795,7 +804,7 @@
 
             </div>
 
-            <div class="mb-2" style="display: flex;justify-content: center;" *ngIf="cardStatus?.cardCreated === cardStatus?.maxCard">
+            <!-- <div class="mb-2" style="display: flex;justify-content: center;" *ngIf="cardStatus?.cardCreated === cardStatus?.maxCard">
 
               <div class="col-12">
 
@@ -808,6 +817,13 @@
 
 
 
+            </div> -->
+
+            <div *ngIf="cardStatus?.cardCreated === cardStatus?.maxCard" class="text-center mb-2 mt-2">
+              <a [routerLink]="'/dashboard/package'" (click)="this.common.viewSubscription('All')"
+                class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white text-xs font-semibold p-2 rounded-md transition duration-200">
+                Upgrade subscription to add Suraksha card
+              </a>
             </div>
 
           </div>
@@ -821,7 +837,7 @@
 
                   <div class="" #screen [id]="i+'-'+emID.pname">
 
-                    <div class="row ml-5">
+                    <div class="row ml-8">
 
                       <div class="col col-12 section-2 wf-section" style="padding-right: 0px;">
 

@@ -34,15 +34,19 @@
   fill: #ffffff;
 }
 
-.profile .photo{
+/* .profile .photo {
+  position: sticky;
+  top: 20px;
+  z-index: 10;
   margin: 20px 0 10px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
+} */
 
-.profile .photo > div{
+/* .profile .photo > div{
+  position: relative; 
   height: 100px;
   width: 100px;
   padding: 20px;
@@ -55,7 +59,42 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+} */
+
+.profile .photo {
+  position: sticky;
+  top: 20px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
+/* Circle wrapper */
+.profile .photo > div {
+  position: relative;
+  height: 120px;
+  width: 120px;
+  border: 2px solid #ce2424;
+  border-radius: 50%;
+  overflow: hidden;     /* 👈 ensures image never escapes */
+  background: #ffffff;
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+/* Image inside circle */
+.profile .photo > div > img.img2 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* keep aspect ratio and cover circle */
+  border-radius: 50%;  /* keep circular */
+  display: block;
+}
+
+
+
 
 .profile .photo > span,
 .profile .photo > span > label{
@@ -114,13 +153,14 @@
   color: #ce2424;
 }
 
-.profile .photo > div > img.img2{
+/* .profile .photo > div > img.img2{
+  position: relative; 
   cursor: pointer;
   height: 96px;
   width: 96px;
   border-radius: 50px;
   position: absolute;
-}
+} */
 
 .profile .menu ul,
 .profile .menu ul > li{
@@ -372,7 +412,6 @@ padding: 10px 10px 5px 10px;
 .profile-body-card .photo > div{
   height: 100px;
   width: 100px;
-  padding: 20px;
   background: #ffffff;
   border: 2px solid #ce2424;
   border-radius: 50px;
@@ -2074,5 +2113,27 @@ body {
 
 .highlighted-icon {
   color: red; /* You can adjust the style as needed */
+}
+
+.photo-box {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;       /* ensures image never leaks out */
+  border: 2px solid #ce2424;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  background: #fff;       /* optional */
+}
+
+.photo-box img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;     /* makes sure image matches circle shape */
+  object-fit: cover;      /* crop to fit like WhatsApp/LinkedIn */
+  object-position: center;
+  display: block;
 }
 
