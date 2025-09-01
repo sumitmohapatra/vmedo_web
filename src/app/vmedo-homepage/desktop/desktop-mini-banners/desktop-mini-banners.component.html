@@ -1,28 +1,30 @@
 <section class="mini-banners-section py-10 px-0">
-    <swiper [config]="vmedo_mini_banners_desktop">
+  <div class="px-4">
+    <swiper class="px-6" [config]="vmedo_mini_banners_desktop">
       <ng-template swiperSlide>
         <div class="bg-gray-100 mini_banners-card rounded-xl mx-7">
           <img src="assets/images/website-images/banners/mini_banner_1.png" alt="Image Description"
-            class="w-full h-full rounded-xl object-cover" [routerLink]="'/subscription'"/>
+            class="w-full h-full rounded-xl object-cover cursor-pointer" [routerLink]="'/subscription'"/>
         </div>
       </ng-template>
       <ng-template swiperSlide>
         <div class="bg-gray-100 mini_banners-card rounded-xl mx-7">
           <img src="assets/images/website-images/banners/mini_banner_2.png" alt="Image Description"
-            class="w-full h-full rounded-xl object-cover" [routerLink]="'/services/diagnostics-at-home'"/>
+            class="w-full h-full rounded-xl object-cover cursor-pointer" [routerLink]="'/services/diagnostics-at-home'"/>
         </div>
       </ng-template>
       <ng-template swiperSlide>
         <div class="bg-gray-100 mini_banners-card rounded-xl mx-7">
           <img src="assets/images/website-images/banners/mini_banner_3.png" alt="Image Description"
-            class="w-full h-full rounded-xl object-cover" onclick="window.location.href='https://store.vmedo.com/'"/>
+            class="w-full h-full rounded-xl object-cover cursor-pointer" onclick="window.location.href='https://store.vmedo.com/'"/>
         </div>
       </ng-template>
       <ng-template swiperSlide>
         <div class="bg-gray-100 mini_banners-card rounded-xl mx-7">
           <img src="assets/images/website-images/banners/mini_banner_4.png" alt="Image Description"
-            class="w-full h-full rounded-xl object-cover" onclick="window.location.href='https://academy.vmedo.com/'"/>
+            class="w-full h-full rounded-xl object-cover cursor-pointer" onclick="window.location.href='https://academy.vmedo.com/'"/>
         </div>
       </ng-template>
     </swiper>
+  </div>
   </section>

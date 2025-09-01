@@ -11,6 +11,6 @@ export class DesktopMiniBannersComponent {
   vmedo_mini_banners_desktop: SwiperOptions = {
     slidesPerView: 3.2,
     spaceBetween: 14,
-
+    navigation:true
   };
 }

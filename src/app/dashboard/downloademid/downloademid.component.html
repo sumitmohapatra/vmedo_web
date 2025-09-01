@@ -756,25 +756,25 @@
       
                           
                          
-                          <div class="row member-name" style="height: 5mm; font-weight: 600; color: #a11e1e;">
+                          <div class="row member-name" style="font-weight: 600; color: #a11e1e; margin-bottom: 2px;">
       
                             Name -  {{ username }}
       
                           </div>
       
-                          <div class="row Card-No" style="height: 5mm; font-weight: 600; color: #a11e1e;">
+                          <div class="row Card-No" style="font-weight: 600; color: #a11e1e;margin-bottom: 2px;">
       
                             Card No - {{ emid }}
       
                           </div>
 
-                          <div class="row Card-No" style="height: 5mm; font-weight: 600; color: #a11e1e;"> 
+                          <div class="row Card-No" style=" font-weight: 600; color: #a11e1e;"> 
       
                             <!-- validity - {{ txtpackagevalid_till | date: 'dd/MM/yyyy' }}  -->
                             Validity - {{txtisPaidMember ? (txtpackagevalid_till | date:'dd/MM/yyyy') : 'Lifetime'}}                     
                           </div>
       
-                          <div *ngIf="!txtisPaidMember" class="row Card-Type" style="height: 5mm; font-weight: 600; color: #a11e1e;">
+                          <!-- <div *ngIf="!txtisPaidMember" class="row Card-Type" style="height: 5mm; font-weight: 600; color: #a11e1e;">
       
                             Card Type - Free
       
@@ -783,7 +783,7 @@
       
                             Card Type - Premium
       
-                          </div>
+                          </div> -->
       
                           <div class="row Card-Type" style="height: 5mm; font-weight: 600; color: #a11e1e;">
       
@@ -814,7 +814,7 @@
                               [errorCorrectionLevel]="'M'"
                               [scale]="1"
                               [margin]="1"
-                              [width]="85"
+                              [width]="110"
                             ></qrcode>
                           </div>
       
@@ -828,9 +828,9 @@
       
                       </div>
       
-                      <div class="row Description" style="height: 11mm;">
+                      <div class="row Description" style="height: 11mm;margin-bottom: 2px;">
       
-                        <div class="col-9" style="font-size: 9px; padding-top: 4px;padding-right: 6px;">
+                        <div class="col-9" style="font-size: 11px; padding-top: 4px;padding-right: 6px;">
                           In case of emergency, Scan the QR Code and get the emergency details of the user
                         </div>
       

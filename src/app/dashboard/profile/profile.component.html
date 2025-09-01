@@ -316,7 +316,7 @@
 
                     <div class="col-7">
 
-                      <button class="button-create" style="font-size: 15px; background-color: #ce2424; color: white;"
+                      <button class="button-create cursor-pointer" style="font-size: 15px; background-color: #ce2424; color: white;"
                         mat-raised-button (click)="OnClickCreateID()">
 
                         + Add new suraksha card</button>
@@ -380,9 +380,9 @@
       <div class="text-lg mb-2">
         <strong>Card No</strong> - {{ emID.id }}
       </div>
-      <div class="text-lg">
+      <!-- <div class="text-lg">
         <strong>Card Type</strong> - {{ txtisPaidMember ? 'Family Plus' : 'Free' }}
-      </div>
+      </div> -->
     </div>
 
     <!-- Right Column: Premium Icon & Package -->
@@ -790,7 +790,7 @@
           <div class="row" style="width: 100%;">
             <div *ngIf="cardStatus?.cardCreated < cardStatus?.maxCard" class="col-12 col-sm-12 col-md-12 col-xl-12 card em-card" style="background-color: #ffffff;box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);">
               <label>Create New suraksha card</label>
-              <span class="cursor-pointer" placement="left" style="background-color: #ce2424;" ngbTooltip="New Emergency Id" (click)="OnClickCreateID()">
+              <span class="cursor-pointer" placement="left" style="background-color: #ce2424;" ngbTooltip="New Suraksha Card" (click)="OnClickCreateID()">
                 
                 <span style="color: #ffffff;">Create <strong>+</strong></span>
               </span>
@@ -800,7 +800,7 @@
 
 
             <div class="col-12 col-sm-12 col-md-12 col-xl-12 card em-card" style="margin: 5px 0;box-shadow: 1px 2px 6px rgba(0,0,0,0.24), 0px 1px 6px rgba(0,0,0,0.12);">
-              <label style="font: size 9px;color: #ce2424;"> {{cardStatus?.cardCreated}} out of {{cardStatus?.maxCard}} Emergency health card created </label>
+              <label style="font: size 9px;color: #ce2424;"> {{cardStatus?.cardCreated}} out of {{cardStatus?.maxCard}} Suraksha card created </label>
 
             </div>
 
@@ -873,25 +873,25 @@
                               <div class="col-7 member-details"
                                 style="font-size: 11px; padding-left: 31px; padding-top: 17px;">
 
-                                <div class="row member-name" style="height: 5mm; font-weight: 600; color: #a11e1e;">
+                                <div class="row member-name mb-2" style=" font-weight: 600; color: #a11e1e;">
 
                                   Name - {{ emID.pname }}
 
                                 </div>
 
-                                <div class="row Card-No" style="height: 5mm; font-weight: 600; color: #a11e1e;">
+                                <div class="row Card-No mb-2" style="font-weight: 600; color: #a11e1e;">
 
                                   Card No - {{ emID.emid }}
 
                                 </div>
                                 
-                                <div class="row Card-No" style="height: 5mm; font-weight: 600; color: #a11e1e;">
+                                <div class="row Card-No" style=" font-weight: 600; color: #a11e1e;">
 
                                   Validity - {{ emID.package_validity | date: 'dd/MM/yyyy' }}
 
                                 </div>
 
-                                <div *ngIf="txtisPaidMember" class="row Card-Type"
+                                <!-- <div *ngIf="txtisPaidMember" class="row Card-Type"
                                   style="height: 5mm; font-weight: 600; color: #a11e1e;">
 
                                   Card Type - Premium
@@ -903,7 +903,7 @@
 
                                   Card Type - Free
 
-                                </div>
+                                </div> -->
 
                                 <div class="row Card-Type" style="height: 5mm; font-weight: 600; color: #a11e1e;">
 
@@ -1327,7 +1327,7 @@
                 (click)="collapseEmergencyCards.toggle()" [attr.aria-expanded]="!isCollapsedEmergencyCards">Emergency
                 Cards</label>
 
-              <span placement="left" ngbTooltip="New Emergency Id" (click)="OnClickCreateID()">
+              <span placement="left" ngbTooltip="New Suraksha Card" (click)="OnClickCreateID()">
                 <svg>
                   <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-plus"></use>
                 </svg>
@@ -1423,7 +1423,7 @@
                             Information.</li>
                           <li>Once information is accessed, Message along with location and
                             Your number will be sent to emergency contacts.</li>
-                          <li>All the information related to the emergency id is created by
+                          <li>All the information related to the suraksha id is created by
                             the user or his gaurdian, vmedo will not be held responsible for
                             wrong information and any form of technical issues.</li>
                           <li>Your are accepting for all the terms of vmedo and abide to force
@@ -1708,7 +1708,7 @@
                 <div class="text-control">
 
 
-                  <input type="text" placeholder="Create emergency id* (eg:priya12)"
+                  <input type="text" placeholder="Create suraksha card* (eg:priya12)"
                     (keypress)="common.DisableSpecialCharOnKeyPress($event)" [(ngModel)]="txtCardNumber"
                     (ngModelChange)="OnTextChanged('txtCardNumber', $event)" readonly hidden>
                   <span class="error-line" placement="bottom" [ngClass]="{'success': IsCardAvailable}"
@@ -2302,7 +2302,7 @@
                 <div class="text-control">
 
 
-                  <input type="text" placeholder="Create emergency id* (eg:priya12)"
+                  <input type="text" placeholder="Create suraksha card* (eg:priya12)"
                     (keypress)="common.DisableSpecialCharOnKeyPress($event)" [(ngModel)]="txtCardNumber"
                     (ngModelChange)="OnTextChanged('txtCardNumber', $event)" readonly hidden>
                   <span class="error-line" placement="bottom" [ngClass]="{'success': IsCardAvailable}"
@@ -3043,7 +3043,7 @@
             <use xlink:href="./assets/icon/svg/symbol-defs.svg#icon-v-emergency-id"></use>
           </svg>
         </div>
-        Emergency ID Profile Visitors
+        Suraksha Card Profile Visitors
       </div>
     </div>
     <div class="row no-padding">
