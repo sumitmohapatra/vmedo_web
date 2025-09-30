@@ -231,8 +231,11 @@ updateView() {
     //  this.router.navigate(['/dashboard/package']);
 
      this.app.ShowSuccess(`You have successfully registered your account`).finally(() => {
-      this.router.navigate(['/dashboard/profile']);
-
+      if(this.common.userInfo.roleID === 4){
+        this.router.navigate(['agent/manage-customer']);
+      }else{
+        this.router.navigate(['/dashboard/profile']);
+      }
     });
 
 
